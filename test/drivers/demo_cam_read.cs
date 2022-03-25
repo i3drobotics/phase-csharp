@@ -69,11 +69,22 @@ namespace I3DR
                 } else {
                     Console.WriteLine("Missing or invalid I3DRSGM license");
                 }
-                string resource_folder = "resources";
-                string camera_name = "stereotheatresim";
+
+                string test_folder = ".phase_test";
+                string data_folder = "data";
+                string left_yaml = data_folder + "/left.yaml";
+                string right_yaml = data_folder + "/right.yaml";
+                string left_image_file = data_folder + "/left.png";
+                string right_image_file = data_folder + "/right.png";
+                string out_ply = test_folder + "/out.ply";
+                string out_rgb_video = test_folder + "/rgb.mp4";
+                string out_depth_video = test_folder + "/depth.avi";
+
                 string left_serial = "0815-0000";
                 string right_serial = "0815-0001";
-                string cal_type = "ros"; // ros / cv
+
+                Directory.CreateDirectory(test_folder);
+
                 CameraDeviceType dev_type = CameraDeviceType.DEVICE_TYPE_GENERIC_PYLON; // DEVICE_TYPE_GENERIC_PYLON / DEVICE_TYPE_TITANIA
                 bool use_test_images = true;
                 int repeat_capture = 1;
@@ -87,11 +98,8 @@ namespace I3DR
                     interface_type = CameraInterfaceType.INTERFACE_TYPE_USB;
                 }
 
-                string left_yaml = resource_folder + "/test/" + camera_name + "/" + cal_type + "/left.yaml";
-                string right_yaml = resource_folder + "/test/" + camera_name + "/" + cal_type + "/right.yaml";
-
                 CameraDeviceInfo device_info = new CameraDeviceInfo(
-                    left_serial, right_serial, camera_name,
+                    left_serial, right_serial, "virtual-camera",
                     dev_type, interface_type
                 );
 
@@ -113,8 +121,7 @@ namespace I3DR
                 if (use_test_images)
                 {
                     sv.setTestImagePaths(
-                        resource_folder + "/test/" + camera_name + "/left.png",
-                        resource_folder + "/test/" + camera_name + "/right.png"
+                        left_image_file, right_image_file
                     );
                 }
 

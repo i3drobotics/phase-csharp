@@ -18,31 +18,31 @@ namespace I3DR.Phase
     public class StereoI3DRSGM : AbstractStereoMatcher
     {
         // Straight From the c++ Dll (unmanaged)
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_StereoI3DRSGM_create", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_StereoI3DRSGM_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr StereoI3DRSGM_create();
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_StereoI3DRSGM_setWindowSize", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_StereoI3DRSGM_setWindowSize", CallingConvention = CallingConvention.Cdecl)]
         private static extern void StereoI3DRSGM_setWindowSize(IntPtr matcher, int value);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_StereoI3DRSGM_setMinDisparity", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_StereoI3DRSGM_setMinDisparity", CallingConvention = CallingConvention.Cdecl)]
         private static extern void StereoI3DRSGM_setMinDisparity(IntPtr matcher, int value);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_StereoI3DRSGM_setNumDisparities", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_StereoI3DRSGM_setNumDisparities", CallingConvention = CallingConvention.Cdecl)]
         private static extern void StereoI3DRSGM_setNumDisparities(IntPtr matcher, int value);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_StereoI3DRSGM_setSpeckleMaxSize", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_StereoI3DRSGM_setSpeckleMaxSize", CallingConvention = CallingConvention.Cdecl)]
         private static extern void StereoI3DRSGM_setSpeckleMaxSize(IntPtr matcher, int value);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_StereoI3DRSGM_setSpeckleMaxDiff", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_StereoI3DRSGM_setSpeckleMaxDiff", CallingConvention = CallingConvention.Cdecl)]
         private static extern void StereoI3DRSGM_setSpeckleMaxDiff(IntPtr matcher, float value);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_StereoI3DRSGM_enableSubpixel", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_StereoI3DRSGM_enableSubpixel", CallingConvention = CallingConvention.Cdecl)]
         private static extern void StereoI3DRSGM_enableSubpixel(IntPtr matcher, bool enable);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_StereoI3DRSGM_enableInterpolation", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_StereoI3DRSGM_enableInterpolation", CallingConvention = CallingConvention.Cdecl)]
         private static extern void StereoI3DRSGM_enableInterpolation(IntPtr matcher, bool enable);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_StereoI3DRSGM_isLicenseValid", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_StereoI3DRSGM_isLicenseValid", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool StereoI3DRSGM_isLicenseValid();
 
         public StereoI3DRSGM(IntPtr abstractStereoMatcher_instance): base(abstractStereoMatcher_instance){}

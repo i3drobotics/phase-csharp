@@ -18,7 +18,7 @@ namespace I3DR.Phase
     public class PhobosStereoCamera : AbstractStereoCamera
     {
         // Straight From the c++ Dll (unmanaged)
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_PhobosStereoCamera_create", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_PhobosStereoCamera_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr PhobosStereoCamera_create(string left_serial, string right_serial, string unique_serial, CameraDeviceType device_type, CameraInterfaceType interface_type);
         
         public PhobosStereoCamera(CameraDeviceInfo camera_device_info): base(camera_device_info){}

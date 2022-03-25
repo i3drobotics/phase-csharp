@@ -18,16 +18,16 @@ namespace I3DR.Phase
     public class StereoHOBM : AbstractStereoMatcher
     {
         // Straight From the c++ Dll (unmanaged)
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_StereoHOBM_create", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_StereoHOBM_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr StereoHOBM_create();
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_StereoHOBM_setWindowSize", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_StereoHOBM_setWindowSize", CallingConvention = CallingConvention.Cdecl)]
         private static extern void StereoHOBM_setWindowSize(IntPtr matcher, int value);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_StereoHOBM_setMinDisparity", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_StereoHOBM_setMinDisparity", CallingConvention = CallingConvention.Cdecl)]
         private static extern void StereoHOBM_setMinDisparity(IntPtr matcher, int value);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_StereoHOBM_setNumDisparities", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_StereoHOBM_setNumDisparities", CallingConvention = CallingConvention.Cdecl)]
         private static extern void StereoHOBM_setNumDisparities(IntPtr matcher, int value);
 
         public StereoHOBM(IntPtr abstractStereoMatcher_instance): base(abstractStereoMatcher_instance){}

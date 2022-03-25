@@ -18,67 +18,67 @@ namespace I3DR.Phase
 {
     public class AbstractStereoCamera
     {
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_AbstractStereoCamera_CConnect", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_CConnect", CallingConvention = CallingConvention.Cdecl)]
         protected static extern bool AbstractStereoCamera_connect(IntPtr cam);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_AbstractStereoCamera_CStartCapture", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_CStartCapture", CallingConvention = CallingConvention.Cdecl)]
         protected static extern bool AbstractStereoCamera_startCapture(IntPtr cam);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_AbstractStereoCamera_CStopCapture", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_CStopCapture", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void AbstractStereoCamera_stopCapture(IntPtr cam);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_AbstractStereoCamera_CIsCapturing", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_CIsCapturing", CallingConvention = CallingConvention.Cdecl)]
         protected static extern bool AbstractStereoCamera_isCapturing(IntPtr cam);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_AbstractStereoCamera_CIsConnected", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_CIsConnected", CallingConvention = CallingConvention.Cdecl)]
         protected static extern bool AbstractStereoCamera_isConnected(IntPtr cam);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_AbstractStereoCamera_CGetWidth", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_CGetWidth", CallingConvention = CallingConvention.Cdecl)]
         protected static extern int AbstractStereoCamera_getWidth(IntPtr cam);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_AbstractStereoCamera_CGetHeight", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_CGetHeight", CallingConvention = CallingConvention.Cdecl)]
         protected static extern int AbstractStereoCamera_getHeight(IntPtr cam);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_AbstractStereoCamera_CGetFrameRate", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_CGetFrameRate", CallingConvention = CallingConvention.Cdecl)]
         protected static extern float AbstractStereoCamera_getFrameRate(IntPtr cam);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_AbstractStereoCamera_CSetTestImagePaths", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_CSetTestImagePaths", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void AbstractStereoCamera_setTestImagePaths(IntPtr cam, string left_test_image_path, string right_test_image_path);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_AbstractStereoCamera_CRead", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_CRead", CallingConvention = CallingConvention.Cdecl)]
         protected static extern bool AbstractStereoCamera_read(IntPtr cam, int timeout, [In] byte[] left_img, [In] byte[] right_img);
         
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_AbstractStereoCamera_CStartReadThread", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_CStartReadThread", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void AbstractStereoCamera_startReadThread(IntPtr cam, int timeout);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_AbstractStereoCamera_CIsReadThreadRunning", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_CIsReadThreadRunning", CallingConvention = CallingConvention.Cdecl)]
         protected static extern bool AbstractStereoCamera_isReadThreadRunning(IntPtr cam);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_AbstractStereoCamera_CGetReadThreadResult", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_CGetReadThreadResult", CallingConvention = CallingConvention.Cdecl)]
         protected static extern bool AbstractStereoCamera_getReadThreadResult(IntPtr cam, [In] byte[] left_img, [In] byte[] right_img);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_AbstractStereoCamera_CSetDownsampleFactor", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_CSetDownsampleFactor", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void AbstractStereoCamera_setDownsampleFactor(IntPtr cam, float value);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_AbstractStereoCamera_CSetExposure", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_CSetExposure", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void AbstractStereoCamera_setExposure(IntPtr cam, int value);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_AbstractStereoCamera_CSetFrameRate", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_CSetFrameRate", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void AbstractStereoCamera_setFrameRate(IntPtr cam, float value);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_AbstractStereoCamera_CEnableHardwareTrigger", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_CEnableHardwareTrigger", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void AbstractStereoCamera_enableHardwareTrigger(IntPtr cam, bool enable);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_AbstractStereoCamera_CSetLeftAOI", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_CSetLeftAOI", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void AbstractStereoCamera_setLeftAOI(IntPtr cam, int x_min, int y_min, int x_max, int y_max);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_AbstractStereoCamera_CSetRightAOI", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_CSetRightAOI", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void AbstractStereoCamera_setRightAOI(IntPtr cam, int x_min, int y_min, int x_max, int y_max);
         
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_AbstractStereoCamera_CDisconnect", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_CDisconnect", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void AbstractStereoCamera_disconnect(IntPtr cam);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_AbstractStereoCamera_dispose", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_dispose", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void AbstractStereoCamera_dispose(IntPtr cam);
 
         protected IntPtr m_AbstractStereoCamera_instance;

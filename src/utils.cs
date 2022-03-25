@@ -19,55 +19,55 @@ namespace I3DR.Phase
     public class Utils
     {
         // Straight From the c++ Dll (unmanaged)
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_CScaleImageUChar")]
+        [DllImport("phase", EntryPoint = "I3DR_CScaleImageUChar")]
         private static extern void CScaleImageUChar([In] byte[] in_img, int width, int height, float scale_factor, [Out] byte[] out_scaled_img);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_CNormaliseDisparity")]
+        [DllImport("phase", EntryPoint = "I3DR_CNormaliseDisparity")]
         private static extern void CNormaliseDisparity([In] float[] in_disparity, int width, int height, [Out] byte[] out_norm_disparity);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_CBgra2rgba")]
+        [DllImport("phase", EntryPoint = "I3DR_CBgra2rgba")]
         private static extern void CBgra2rgba([In] byte[] in_bgra, int width, int height, [Out] byte[] out_rgba);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_CBgr2rgba")]
+        [DllImport("phase", EntryPoint = "I3DR_CBgr2rgba")]
         private static extern void CBgr2rgba([In] byte[] in_bgr, int width, int height, [Out] byte[] out_rgba);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_CBgr2bgra")]
+        [DllImport("phase", EntryPoint = "I3DR_CBgr2bgra")]
         private static extern void CBgr2bgra([In] byte[] in_bgr, int width, int height, [Out] byte[] out_bgra);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_CDisparity2depth")]
+        [DllImport("phase", EntryPoint = "I3DR_CDisparity2depth")]
         private static extern void CDisparity2Depth([In] float[] in_disparity, int width, int height, [In] float[] in_Q, [Out] float[] out_depth);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_CDisparity2xyz")]
+        [DllImport("phase", EntryPoint = "I3DR_CDisparity2xyz")]
         private static extern void CDisparity2xyz([In] float[] in_disparity, int width, int height, [In] float[] in_Q, [Out] float[] out_xyz);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_CDepth2xyz")]
+        [DllImport("phase", EntryPoint = "I3DR_CDepth2xyz")]
         private static extern void CDepth2xyz([In] float[] in_depth, int width, int height, float hfov, [Out] float[] out_xyz);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_CXyz2depth")]
+        [DllImport("phase", EntryPoint = "I3DR_CXyz2depth")]
         private static extern void CXyz2depth([In] float[] in_xyz, int width, int height, [Out] float[] out_depth);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_CShowImageUChar")]
+        [DllImport("phase", EntryPoint = "I3DR_CShowImageUChar")]
         private static extern int CShowImageUChar(string window_name, [In] byte[] in_img, int img_width, int img_height);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_CReadImageUChar")]
+        [DllImport("phase", EntryPoint = "I3DR_CReadImageUChar")]
         private static extern bool CReadImageUChar(string image_filepath, [Out] byte[] out_img, int img_width, int img_height);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_CFlipUChar")]
+        [DllImport("phase", EntryPoint = "I3DR_CFlipUChar")]
         private static extern void CFlipUChar([In] byte[] in_img, [Out] byte[] out_flipped_img, int img_width, int img_height, int img_channels, int flipcode);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_CFlipFloat")]
+        [DllImport("phase", EntryPoint = "I3DR_CFlipFloat")]
         private static extern void CFlipFloat([In] float[] in_img, [Out] float[] out_flipped_img, int img_width, int img_height, int img_channels, int flipcode);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_CSavePLY")]
+        [DllImport("phase", EntryPoint = "I3DR_CSavePLY")]
         private static extern bool CSavePLY(string ply_filepath, [In] float[] in_xyz, byte[] in_bgr, int width, int height);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_CcvMatIsEqualUChar")]
+        [DllImport("phase", EntryPoint = "I3DR_CcvMatIsEqualUChar")]
         private static extern bool CcvMatIsEqualUChar([In] byte[] in_mat1, [In] byte[] in_mat2, int width, int height, int channels);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_CcvMatIsEqualFloat")]
+        [DllImport("phase", EntryPoint = "I3DR_CcvMatIsEqualFloat")]
         private static extern bool CcvMatIsEqualFloat([In] float[] in_mat1, [In] float[] in_mat2, int width, int height, int channels);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_CcvMatIsEqualDouble")]
+        [DllImport("phase", EntryPoint = "I3DR_CcvMatIsEqualDouble")]
         private static extern bool CcvMatIsEqualDouble([In] double[] in_mat1, [In] double[] in_mat2, int width, int height, int channels);
 
         static public byte[] scaleImage(byte[] image, int input_width, int input_height, float scaling_factor)

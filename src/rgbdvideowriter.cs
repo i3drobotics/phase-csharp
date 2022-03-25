@@ -18,37 +18,37 @@ namespace I3DR.Phase
 {
     public class RGBDVideoWriter
     {
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoWriter_create", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr RGBDVideoWriter_create(string rgb_video_filepath, string depth_video_filepath, int width, int height);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoWriter_CGetWidth", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_CGetWidth", CallingConvention = CallingConvention.Cdecl)]
         private static extern int RGBDVideoWriter_getWidth(IntPtr writer);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoWriter_CGetHeight", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_CGetHeight", CallingConvention = CallingConvention.Cdecl)]
         private static extern int RGBDVideoWriter_getHeight(IntPtr writer);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoWriter_CAdd", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_CAdd", CallingConvention = CallingConvention.Cdecl)]
         private static extern void RGBDVideoWriter_add(IntPtr writer, [In] byte[] rgb, [In] float[] depth);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoWriter_CIsOpened", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_CIsOpened", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoWriter_isOpened(IntPtr writer);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoWriter_CSave", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_CSave", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoWriter_save(IntPtr writer);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoWriter_CSaveThreaded", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_CSaveThreaded", CallingConvention = CallingConvention.Cdecl)]
         private static extern void RGBDVideoWriter_saveThreaded(IntPtr writer);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoWriter_CIsSaveThreadRunning", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_CIsSaveThreadRunning", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoWriter_isSaveThreadRunning(IntPtr writer);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoWriter_CGetSaveThreadResult", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_CGetSaveThreadResult", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoWriter_getSaveThreadResult(IntPtr writer);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoWriter_CClose", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_CClose", CallingConvention = CallingConvention.Cdecl)]
         private static extern void RGBDVideoWriter_close(IntPtr writer);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoWriter_dispose", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_dispose", CallingConvention = CallingConvention.Cdecl)]
         private static extern void RGBDVideoWriter_dispose(IntPtr writer);
 
         private IntPtr m_RGBDVideoWriter_instance;

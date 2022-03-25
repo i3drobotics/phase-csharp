@@ -18,40 +18,40 @@ namespace I3DR.Phase
 {
     public class MatrixFloat
     {
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixFloat_create", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr MatrixFloat_create(int rows, int columns, int layers);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixFloat_createData", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_createData", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr MatrixFloat_createData(int rows, int columns, int layers, [In] float[] data, bool copy);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixFloat_dispose", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_dispose", CallingConvention = CallingConvention.Cdecl)]
         private static extern void MatrixFloat_dispose(IntPtr MatrixFloat_ptr);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixFloat_getRows", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_getRows", CallingConvention = CallingConvention.Cdecl)]
         private static extern int MatrixFloat_getRows(IntPtr mat);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixFloat_getColumns", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_getColumns", CallingConvention = CallingConvention.Cdecl)]
         private static extern int MatrixFloat_getColumns(IntPtr mat);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixFloat_getLayers", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_getLayers", CallingConvention = CallingConvention.Cdecl)]
         private static extern int MatrixFloat_getLayers(IntPtr mat);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixFloat_isEmpty", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_isEmpty", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool MatrixFloat_isEmpty(IntPtr mat);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixFloat_getLength", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_getLength", CallingConvention = CallingConvention.Cdecl)]
         private static extern int MatrixFloat_getLength(IntPtr mat);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixFloat_getSize", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_getSize", CallingConvention = CallingConvention.Cdecl)]
         private static extern int MatrixFloat_getSize(IntPtr mat);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixFloat_getAt", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_getAt", CallingConvention = CallingConvention.Cdecl)]
         private static extern float MatrixFloat_getAt(IntPtr mat, int row, int column, int layer);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixFloat_setAt", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_setAt", CallingConvention = CallingConvention.Cdecl)]
         private static extern void MatrixFloat_setAt(IntPtr mat, int row, int column, int layer, float value);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixFloat_getData", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_getData", CallingConvention = CallingConvention.Cdecl)]
         private static extern void MatrixFloat_getData(IntPtr mat, [Out] float[] data);
 
         private float[] m_data;
@@ -141,40 +141,40 @@ namespace I3DR.Phase
 
     public class MatrixUInt8
     {
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixUInt8_create", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr MatrixUInt8_create(int rows, int columns, int layers);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixUInt8_createData", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_createData", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr MatrixUInt8_createData(int rows, int columns, int layers, [In] byte[] data, bool copy);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixUInt8_dispose", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_dispose", CallingConvention = CallingConvention.Cdecl)]
         private static extern void MatrixUInt8_dispose(IntPtr MatrixUInt8_ptr);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixUInt8_getRows", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_getRows", CallingConvention = CallingConvention.Cdecl)]
         private static extern int MatrixUInt8_getRows(IntPtr mat);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixUInt8_getColumns", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_getColumns", CallingConvention = CallingConvention.Cdecl)]
         private static extern int MatrixUInt8_getColumns(IntPtr mat);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixUInt8_getLayers", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_getLayers", CallingConvention = CallingConvention.Cdecl)]
         private static extern int MatrixUInt8_getLayers(IntPtr mat);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixUInt8_isEmpty", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_isEmpty", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool MatrixUInt8_isEmpty(IntPtr mat);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixUInt8_getLength", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_getLength", CallingConvention = CallingConvention.Cdecl)]
         private static extern int MatrixUInt8_getLength(IntPtr mat);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixUInt8_getSize", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_getSize", CallingConvention = CallingConvention.Cdecl)]
         private static extern int MatrixUInt8_getSize(IntPtr mat);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixUInt8_getAt", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_getAt", CallingConvention = CallingConvention.Cdecl)]
         private static extern byte MatrixUInt8_getAt(IntPtr mat, int row, int column, int layer);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixUInt8_setAt", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_setAt", CallingConvention = CallingConvention.Cdecl)]
         private static extern void MatrixUInt8_setAt(IntPtr mat, int row, int column, int layer, byte value);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_MatrixUInt8_getData", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_getData", CallingConvention = CallingConvention.Cdecl)]
         private static extern void MatrixUInt8_getData(IntPtr mat, [Out] byte[] data);
 
         private byte[] m_data;

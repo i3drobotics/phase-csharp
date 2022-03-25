@@ -18,7 +18,7 @@ namespace I3DR.Phase
     public class UVCStereoCamera : AbstractStereoCamera
     {
         // Straight From the c++ Dll (unmanaged)
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_UVCStereoCamera_create", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_UVCStereoCamera_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr UVCStereoCamera_create(string left_serial, string right_serial, string unique_serial, CameraDeviceType device_type, CameraInterfaceType interface_type);
         
         public UVCStereoCamera(CameraDeviceInfo camera_device_info): base(camera_device_info){}

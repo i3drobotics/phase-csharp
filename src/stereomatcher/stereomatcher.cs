@@ -18,7 +18,7 @@ namespace I3DR.Phase
     public class StereoMatcher
     {
         // Straight From the c++ Dll (unmanaged)
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_CCreateStereoMatcher", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_CCreateStereoMatcher", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr CCreateStereoMatcher(StereoMatcherType matcher_type);
 
         public static AbstractStereoMatcher createStereoMatcher(StereoMatcherType matcher_type){

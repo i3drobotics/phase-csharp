@@ -18,64 +18,64 @@ namespace I3DR.Phase
 {
     public class RGBDVideoStream
     {
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoStream_create", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr RGBDVideoStream_create(string rgb_video_filepath, string depth_video_filepath, int width, int height);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoStream_CGetWidth", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CGetWidth", CallingConvention = CallingConvention.Cdecl)]
         private static extern int RGBDVideoStream_getWidth(IntPtr stream);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoStream_CGetHeight", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CGetHeight", CallingConvention = CallingConvention.Cdecl)]
         private static extern int RGBDVideoStream_getHeight(IntPtr stream);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoStream_CLoad", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CLoad", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoStream_load(IntPtr stream);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoStream_CLoadThreaded", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CLoadThreaded", CallingConvention = CallingConvention.Cdecl)]
         private static extern void RGBDVideoStream_loadThreaded(IntPtr stream);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoStream_CIsLoadThreadRunning", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CIsLoadThreadRunning", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoStream_isLoadThreadRunning(IntPtr stream);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoStream_CGetLoadThreadResult", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CGetLoadThreadResult", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoStream_getLoadThreadResult(IntPtr stream);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoStream_CRestart", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CRestart", CallingConvention = CallingConvention.Cdecl)]
         private static extern void RGBDVideoStream_restart(IntPtr stream);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoStream_CRead", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CRead", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoStream_read(IntPtr stream, [Out] byte[] rgb, [Out] float[] depth);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoStream_CGetReadThreadResult", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CGetReadThreadResult", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoStream_getReadThreadResult(IntPtr stream, [Out] byte[] rgb, [Out] float[] depth);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoStream_CReadThreaded", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CReadThreaded", CallingConvention = CallingConvention.Cdecl)]
         private static extern void RGBDVideoStream_readThreaded(IntPtr stream);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoStream_CIsReadThreadRunning", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CIsReadThreadRunning", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoStream_isReadThreadRunning(IntPtr stream);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoStream_CIsOpened", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CIsOpened", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoStream_isOpened(IntPtr stream);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoStream_CIsLoaded", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CIsLoaded", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoStream_isLoaded(IntPtr stream);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoStream_CIsFinished", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CIsFinished", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoStream_isFinished(IntPtr stream);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoStream_CGetHFOV", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CGetHFOV", CallingConvention = CallingConvention.Cdecl)]
         private static extern float RGBDVideoStream_getHFOV(IntPtr stream);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoStream_CGetDownsampleFactor", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CGetDownsampleFactor", CallingConvention = CallingConvention.Cdecl)]
         private static extern float RGBDVideoStream_getDownsampleFactor(IntPtr stream);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoStream_CSetDownsampleFactor", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CSetDownsampleFactor", CallingConvention = CallingConvention.Cdecl)]
         private static extern void RGBDVideoStream_setDownsampleFactor(IntPtr stream, float value);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoStream_CClose", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CClose", CallingConvention = CallingConvention.Cdecl)]
         private static extern void RGBDVideoStream_close(IntPtr stream);
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_RGBDVideoStream_dispose", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_dispose", CallingConvention = CallingConvention.Cdecl)]
         private static extern void RGBDVideoStream_dispose(IntPtr stream);
 
         private IntPtr m_RGBDVideoStream_instance;

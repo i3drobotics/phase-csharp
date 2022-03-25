@@ -59,16 +59,17 @@ namespace I3DR
         {
             static int Main(string[] args)
             {
-                string camera_name = "stereotheatresim";
-                string cal_type = "ros";
-                string out_folder = "out/csharp";
-                string resource_folder = "resources";
-                string left_yaml = resource_folder + "/test/" + camera_name + "/" + cal_type + "/left.yaml";
-                string right_yaml = resource_folder + "/test/" + camera_name + "/" + cal_type + "/right.yaml";
-                string left_image_file = resource_folder + "/test/" + camera_name + "/left.png";
-                string right_image_file = resource_folder + "/test/" + camera_name + "/right.png";
-                string out_rgb_video = out_folder + "/rgb.mp4";
-                string out_depth_video = out_folder + "/depth.avi";
+                string test_folder = ".phase_test";
+                string data_folder = "data";
+                string left_yaml = data_folder + "/left.yaml";
+                string right_yaml = data_folder + "/right.yaml";
+                string left_image_file = data_folder + "/left.png";
+                string right_image_file = data_folder + "/right.png";
+                string out_ply = test_folder + "/out.ply";
+                string out_rgb_video = test_folder + "/rgb.mp4";
+                string out_depth_video = test_folder + "/depth.avi";
+
+                Directory.CreateDirectory(test_folder);
 
                 int num_of_frames = 1;
 

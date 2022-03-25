@@ -18,16 +18,16 @@ namespace I3DR.Phase
 {
     public class PhaseVersion
     {
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_getVersionString", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_getVersionString", CallingConvention = CallingConvention.Cdecl)]
         private static extern string I3DR_getVersionString();
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_getVersionMajor", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_getVersionMajor", CallingConvention = CallingConvention.Cdecl)]
         private static extern int I3DR_getVersionMajor();
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_getVersionMinor", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_getVersionMinor", CallingConvention = CallingConvention.Cdecl)]
         private static extern int I3DR_getVersionMinor();
 
-        [DllImport("i3dr-phase_core", EntryPoint = "I3DR_getVersionPatch", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "I3DR_getVersionPatch", CallingConvention = CallingConvention.Cdecl)]
         private static extern int I3DR_getVersionPatch();
 
         public static string getVersionString(){
