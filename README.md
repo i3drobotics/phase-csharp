@@ -15,7 +15,7 @@ Install using the installer GUI, this should install to `C:\Program Files\i3DR\P
 ### Visual Studio
 Visual Studio is required to build the PhaseSharp library. The following components are required:
 - `.NET desktop development tools`
-- `.NET Framework 4.7.2 development tools`
+- `.Net Framework 4.8 development tools`
 - `C# and Visual Basic`
 
 ### Additional dependencies

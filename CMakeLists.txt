@@ -54,13 +54,14 @@ set_property(TARGET ${PROJECT_NAME_LOWER} PROPERTY VS_DOTNET_REFERENCES
 
 if(BUILD_TESTS)
     # Build C# library
-    add_library(${PROJECT_NAME_LOWER}_test SHARED ${SRC_FILES})
+    add_library(${PROJECT_NAME_LOWER}_test SHARED ${UNIT_TEST_SRC_FILES})
     target_link_libraries(${PROJECT_NAME_LOWER}_test PRIVATE ${PROJECT_NAME_LOWER})
     set_property(TARGET ${PROJECT_NAME_LOWER}_test PROPERTY VS_DOTNET_REFERENCES
         "System"
         "System.Core"
-        "Microsoft.VisualStudio.TestPlatform.TestFramework"
-        "Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions"
+    )
+    set_property(TARGET ${PROJECT_NAME_LOWER}_test PROPERTY VS_PACKAGE_REFERENCES
+        "MSTest.TestAdapter_2.2.5;MSTest.TestFramework_2.2.5"
     )
     set_target_properties(${PROJECT_NAME_LOWER}_test PROPERTIES
         VS_GLOBAL_TestProjectType "UnitTest"
