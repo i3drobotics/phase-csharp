@@ -1,2 +1,5 @@
 /build
 version.txt
+nuget.exe
+/.vs
+/out

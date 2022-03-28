@@ -1,4 +1,6 @@
-cmake_minimum_required(VERSION 3.9)
+# Lowest version with C# support is 3.8.
+# Lowest version that supports VS 2019 is 3.14.
+CMAKE_MINIMUM_REQUIRED(VERSION 3.14)
 
 if (NOT (WIN32 OR UNIX OR APPLE))
     message(FATAL_ERROR "Unsupport os. WIN32, UNIX and APPLE currently supported.")
@@ -15,11 +17,31 @@ file(READ "${CMAKE_SOURCE_DIR}/version.txt" ver)
 string(REGEX REPLACE "(\r?\n)+" "" ver ${ver}) # remove newlines
 message("version: ${ver}")
 
-project(PhaseSharp LANGUAGES CSharp VERSION ${ver})
+project(PhaseSharp LANGUAGES CSharp CXX VERSION ${ver})
 
 # Define names
 string(TOUPPER ${PROJECT_NAME} PROJECT_NAME_UPPER)
 string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWER)
+
+# Set global .NET Framework version.
+SET(CMAKE_DOTNET_TARGET_FRAMEWORK_VERSION "v4.7.2")
+
+# Set the C# language version for all projects.
+SET(CMAKE_CSharp_FLAGS "/langversion:6")
+
+# Explicitly set the `PlatformTarget` for C# projects, since AnyCPU can result in 
+# System.BadImageFormatException throws, when trying to load C++/CLI assemblies.
+IF(CMAKE_GENERATOR_PLATFORM STREQUAL "x64")
+  SET(CMAKE_CSharp_FLAGS "/platform:x64")
+ELSEIF(CMAKE_GENERATOR_PLATFORM STREQUAL "Win32")
+    SET(CMAKE_CSharp_FLAGS "/platform:x86")
+ELSE()
+  MESSAGE(WARNING "Generator platform is set to '${CMAKE_GENERATOR_PLATFORM}', which is not supported by managed projects. Defaulting to 'AnyCPU'...")
+  SET(CMAKE_CSharp_FLAGS "/platform:AnyCPU")
+ENDIF()
+
+SET(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 option(BUILD_TESTS "Build Unit tests" OFF)
 
@@ -45,25 +67,30 @@ if (BUILD_TESTS)
     )
 endif()
 
+# Create assembly info with current version.
+CONFIGURE_FILE("${CMAKE_SOURCE_DIR}/src/AssemblyInfo.cs.template" "${CMAKE_BINARY_DIR}/Config/${PROJECT_NAME}/AssemblyInfo.cs")
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
 # Build C# library
-add_library(${PROJECT_NAME_LOWER} SHARED ${SRC_FILES})
-set_property(TARGET ${PROJECT_NAME_LOWER} PROPERTY VS_DOTNET_REFERENCES
-    "Microsoft.CSharp"
-    "System"
+add_library(${PROJECT_NAME_LOWER} SHARED 
+    "${CMAKE_BINARY_DIR}/Config/${PROJECT_NAME}/AssemblyInfo.cs"
+    ${SRC_FILES}
+)
+set_target_properties(${PROJECT_NAME_LOWER} PROPERTIES
+    VS_DOTNET_REFERENCES "System;System.Core"
+    VS_GLOBAL_ROOTNAMESPACE ${PROJECT_NAME}
 )
 
 if(BUILD_TESTS)
     # Build C# library
     add_library(${PROJECT_NAME_LOWER}_test SHARED ${UNIT_TEST_SRC_FILES})
     target_link_libraries(${PROJECT_NAME_LOWER}_test PRIVATE ${PROJECT_NAME_LOWER})
-    set_property(TARGET ${PROJECT_NAME_LOWER}_test PROPERTY VS_DOTNET_REFERENCES
-        "System"
-        "System.Core"
-    )
-    set_property(TARGET ${PROJECT_NAME_LOWER}_test PROPERTY VS_PACKAGE_REFERENCES
-        "MSTest.TestAdapter_2.2.5;MSTest.TestFramework_2.2.5"
-    )
     set_target_properties(${PROJECT_NAME_LOWER}_test PROPERTIES
+        VS_DOTNET_REFERENCES "System;System.Core"
+        VS_PACKAGE_REFERENCES "MSTest.TestAdapter_2.2.8;MSTest.TestFramework_2.2.8"
         VS_GLOBAL_TestProjectType "UnitTest"
         VS_GLOBAL_PROJECT_TYPES "{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
         VS_GLOBAL_IsTestProject "true"
@@ -85,6 +112,12 @@ if(BUILD_TESTS)
         "System"
         "System.Drawing"
         "System.Windows.Forms"
+    )
+
+    install(TARGETS ${PROJECT_NAME_LOWER}_test
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
     )
 
     install(TARGETS ${PROJECT_NAME_LOWER}_demo_rgbd

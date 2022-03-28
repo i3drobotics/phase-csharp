@@ -27,9 +27,11 @@ Build Phase Sharp library using CMake:
 ```bash
 mkdir build
 cd build
-cmake -G "Visual Studio 16 2019" -A x64 -DPhase_DIR="C:\Program Files\i3DR\Phase\lib\cmake" ..
-cmake --build . --config Release
+cmake -G "Visual Studio 16 2019" -A x64 -DPhase_DIR="C:\Program Files\i3DR\Phase\lib\cmake" .. 
+cmake --build . --config Release -- -r
 ```
+`-- -r` is important for nuget packages to be restored during build.
+
 On Windows, if using Visual Studio 2022 the v142 toolset is still required for dependencies.  
 The `MSVC v142 - VS 2019 C++ x64/x86 build tools` component is required to be installed.  
 To build with the v142 toolset, use the following command:
@@ -41,16 +43,18 @@ cmake -G "Visual Studio 17 2022" -A x64 -T v142 -DPhase_DIR="C:\Program Files\i3
 To build the library tests enable the CMake option `BUILD_TESTS`:
 ```bash
 cmake -G "Visual Studio 16 2019" -A x64 -DPhase_DIR="C:\Program Files\i3DR\Phase\lib\cmake" -DBUILD_TESTS=ON ..
-cmake --build . --config Release
+cmake --build . --config Release -- -r
 ```
 
 ### Unit test
-To run the tests, run the following commands:
+Unit testing is performed by MSTest. You will need to add the vstest.console application to the path in order for it to be found for runnings tests. This is usually found in `C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow`.  
+To run the tests, use the following commands:
 ```bash
-./build/bin/phase_test
+cd build/bin
+vstest.console phasesharp_test.dll /platform:x64
 ```
-
-*Note: Make sure to run this from the project root directory*
+*Note: Make sure to run this from the project root directory*  
+Alternatively, after building run the tests graphically using Visual Studio and Test Explorer.  
 
 ### Apps
 To run the test applications, use the following commands:
@@ -66,5 +70,5 @@ cd build/bin
 To install the library locally, run the following commands:
 ```bash
 cmake -G "Visual Studio 16 2019" -A x64 -DPhase_DIR="C:\Program Files\i3DR\Phase\lib\cmake" -DCMAKE_INSTALL_PREFIX="../install" ..
-cmake --build . --config Release --target install
+cmake --build . --config Release --target install -- -r
 ```
