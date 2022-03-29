@@ -48,6 +48,10 @@ option(BUILD_TESTS "Build Unit tests" OFF)
 # Find Phase
 find_package(Phase REQUIRED)
 
+file (GLOB PHASE_LIBRARY_FILES
+    "${Phase_DIR}/../../bin/*.dll"
+)
+
 # Define C# include/source files
 file (GLOB SRC_FILES
     "src/*.cs"
@@ -90,6 +94,10 @@ set_target_properties(${PROJECT_NAME_LOWER} PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
     LIBRARY_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/lib
     LIBRARY_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/lib
+)
+add_custom_command(TARGET ${PROJECT_NAME_LOWER} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy
+    ${PHASE_LIBRARY_FILES} ${CMAKE_BINARY_DIR}/bin
 )
 
 if(BUILD_TESTS)
@@ -167,10 +175,10 @@ if(BUILD_TESTS)
     add_custom_command(
         TARGET ${PROJECT_NAME_LOWER}_test POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
-                ${CMAKE_SOURCE_DIR}/test/data/
-                ${CMAKE_BINARY_DIR}/bin/data)
+            ${PROJECT_SOURCE_DIR}/test/data/
+            ${CMAKE_BINARY_DIR}/bin/data)
 
-    install(DIRECTORY ${CMAKE_SOURCE_DIR}/test/data/ DESTINATION ${CMAKE_INSTALL_BINDIR}/data)
+    install(DIRECTORY ${PROJECT_SOURCE_DIR}/test/data/ DESTINATION bin/data)
 
 endif()
 
@@ -178,4 +186,9 @@ install(TARGETS ${PROJECT_NAME_LOWER}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
+
+install(FILES
+    ${PHASE_LIBRARY_FILES}
+    DESTINATION bin
 )

@@ -22,21 +22,64 @@ namespace I3DR.Phase.Test
         [TestMethod]
         public void test_RGBDVideoWriter()
         {
-            string camera_name = "stereotheatresim";
-            string cal_type = "ros";
-            string out_folder = "../../out/csharp";
-            string resource_folder = "../../resources";
-            string left_yaml = resource_folder+"/test/"+ camera_name +"/"+ cal_type +"/left.yaml";
-            string right_yaml = resource_folder + "/test/" + camera_name + "/" + cal_type + "/right.yaml";
-            string left_image_file = resource_folder + "/test/" + camera_name + "/left.png";
-            string right_image_file = resource_folder + "/test/" + camera_name + "/right.png";
-            string out_rgb_video = out_folder + "/rgb.mp4";
-            string out_depth_video = out_folder + "/depth.avi";
+            string test_folder = ".phase_test";
+            string data_folder = "data";
+            string left_image_file = data_folder + "/left.png";
+            string right_image_file = data_folder + "/right.png";
+            string left_yaml = test_folder + "/left.yaml";
+            string right_yaml = test_folder + "/right.yaml";
+            string out_rgb_video = test_folder + "/rgb.mp4";
+            string out_depth_video = test_folder + "/depth.avi";
 
-            Directory.CreateDirectory(out_folder);
+            Directory.CreateDirectory(test_folder);
 
-            string path = Directory.GetCurrentDirectory();
-            Console.WriteLine(path);
+            Console.WriteLine("Generating test data...");
+
+            string left_yaml_data = "" +
+                "image_width: 2448\n" +
+                "image_height: 2048\n" +
+                "camera_name: leftCamera\n" +
+                "camera_matrix:\n" +
+                "   rows: 3\n" +
+                "   cols: 3\n" +
+                "   data: [ 3.4782608695652175e+03, 0., 1224., 0., 3.4782608695652175e+03, 1024., 0., 0., 1. ]\n" +
+                "distortion_model: plumb_bob\n" +
+                "distortion_coefficients:\n" +
+                "   rows: 1\n" +
+                "   cols: 5\n" +
+                "   data: [ 0., 0., 0., 0., 0. ]\n" +
+                "rectification_matrix:\n" +
+                "   rows: 3\n" +
+                "   cols: 3\n" +
+                "   data: [1., 0., 0., 0., 1., 0., 0., 0., 1.]\n" +
+                "projection_matrix:\n" +
+                "   rows: 3\n" +
+                "   cols: 4\n" +
+                "   data: [ 3.4782608695652175e+03, 0., 1224., 0., 0., 3.4782608695652175e+03, 1024., 0., 0., 0., 1., 0. ]\n";
+            string right_yaml_data = "" +
+                "image_width: 2448\n" +
+                "image_height: 2048\n" +
+                "camera_name: rightCamera\n" +
+                "camera_matrix:\n" +
+                "   rows: 3\n" +
+                "   cols: 3\n" +
+                "   data: [ 3.4782608695652175e+03, 0., 1224., 0., 3.4782608695652175e+03, 1024., 0., 0., 1. ]\n" +
+                "distortion_model: plumb_bob\n" +
+                "distortion_coefficients:\n" +
+                "   rows: 1\n" +
+                "   cols: 5\n" +
+                "   data: [ 0., 0., 0., 0., 0. ]\n" +
+                "rectification_matrix:\n" +
+                "   rows: 3\n" +
+                "   cols: 3\n" +
+                "   data: [1., 0., 0., 0., 1., 0., 0., 0., 1.]\n" +
+                "projection_matrix:\n" +
+                "   rows: 3\n" +
+                "   cols: 4\n" +
+                "   data: [ 3.4782608695652175e+03, 0., 1224., -3.4782608695652175e+02, 0., 3.4782608695652175e+03, 1024., 0., 0., 0., 1., 0. ]\n";
+
+            File.WriteAllText(left_yaml, left_yaml_data);
+            File.WriteAllText(right_yaml, right_yaml_data);
 
             int num_of_frames = 1;
 

@@ -10,6 +10,7 @@
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.IO;
 using I3DR;
 
 namespace I3DR.Phase.Test
@@ -21,12 +22,120 @@ namespace I3DR.Phase.Test
         [TestMethod]
         public void test_LoadCalibration()
         {
-            string camera_name = "stereotheatresim";
-            string resource_folder = "../../resources";
-            string left_ros_yaml = resource_folder + "/test/" + camera_name + "/ros/left.yaml";
-            string right_ros_yaml = resource_folder + "/test/" + camera_name + "/ros/right.yaml";
-            string left_cv_yaml = resource_folder + "/test/" + camera_name + "/cv/left.yaml";
-            string right_cv_yaml = resource_folder + "/test/" + camera_name + "/cv/right.yaml";
+            string test_folder = ".phase_test";
+            string data_folder = "data";
+            string left_ros_yaml = test_folder + "/left_ros.yaml";
+            string right_ros_yaml = test_folder + "/right_ros.yaml";
+            string left_cv_yaml = test_folder + "/left_cv.yaml";
+            string right_cv_yaml = test_folder + "/right_cv.yaml";
+
+            Console.WriteLine("Generating test data...");
+
+            Directory.CreateDirectory(test_folder);
+
+            string left_ros_yaml_data = "" +
+                "image_width: 2448\n" +
+                "image_height: 2048\n" +
+                "camera_name: leftCamera\n" +
+                "camera_matrix:\n" +
+                "   rows: 3\n" +
+                "   cols: 3\n" +
+                "   data: [ 3.4782608695652175e+03, 0., 1224., 0., 3.4782608695652175e+03, 1024., 0., 0., 1. ]\n" +
+                "distortion_model: plumb_bob\n" +
+                "distortion_coefficients:\n" +
+                "   rows: 1\n" +
+                "   cols: 5\n" +
+                "   data: [ 0., 0., 0., 0., 0. ]\n" +
+                "rectification_matrix:\n" +
+                "   rows: 3\n" +
+                "   cols: 3\n" +
+                "   data: [1., 0., 0., 0., 1., 0., 0., 0., 1.]\n" +
+                "projection_matrix:\n" +
+                "   rows: 3\n" +
+                "   cols: 4\n" +
+                "   data: [ 3.4782608695652175e+03, 0., 1224., 0., 0., 3.4782608695652175e+03, 1024., 0., 0., 0., 1., 0. ]\n";
+            string right_ros_yaml_data = "" +
+                "image_width: 2448\n" +
+                "image_height: 2048\n" +
+                "camera_name: rightCamera\n" +
+                "camera_matrix:\n" +
+                "   rows: 3\n" +
+                "   cols: 3\n" +
+                "   data: [ 3.4782608695652175e+03, 0., 1224., 0., 3.4782608695652175e+03, 1024., 0., 0., 1. ]\n" +
+                "distortion_model: plumb_bob\n" +
+                "distortion_coefficients:\n" +
+                "   rows: 1\n" +
+                "   cols: 5\n" +
+                "   data: [ 0., 0., 0., 0., 0. ]\n" +
+                "rectification_matrix:\n" +
+                "   rows: 3\n" +
+                "   cols: 3\n" +
+                "   data: [1., 0., 0., 0., 1., 0., 0., 0., 1.]\n" +
+                "projection_matrix:\n" +
+                "   rows: 3\n" +
+                "   cols: 4\n" +
+                "   data: [ 3.4782608695652175e+03, 0., 1224., -3.4782608695652175e+02, 0., 3.4782608695652175e+03, 1024., 0., 0., 0., 1., 0. ]\n";
+            string left_cv_yaml_data = "" +
+                "%YAML:1.0\n" +
+                "---\n" +
+                "image_width: 2448\n" +
+                "image_height: 2048\n" +
+                "camera_name: leftCamera\n" +
+                "camera_matrix: !!opencv-matrix\n" +
+                "   rows: 3\n" +
+                "   cols: 3\n" +
+                "   dt: d\n" +
+                "   data: [ 3.4782608695652175e+03, 0., 1224., 0., 3.4782608695652175e+03, 1024., 0., 0., 1. ]\n" +
+                "distortion_model: plumb_bob\n" +
+                "distortion_coefficients: !!opencv-matrix\n" +
+                "   rows: 1\n" +
+                "   cols: 5\n" +
+                "   dt: d\n" +
+                "   data: [ 0., 0., 0., 0., 0. ]\n" +
+                "rectification_matrix: !!opencv-matrix\n" +
+                "   rows: 3\n" +
+                "   cols: 3\n" +
+                "   dt: d\n" +
+                "   data: [1., 0., 0., 0., 1., 0., 0., 0., 1.]\n" +
+                "projection_matrix: !!opencv-matrix\n" +
+                "   rows: 3\n" +
+                "   cols: 4\n" +
+                "   dt: d\n" +
+                "   data: [ 3.4782608695652175e+03, 0., 1224., 0., 0., 3.4782608695652175e+03, 1024., 0., 0., 0., 1., 0. ]\n" +
+                "rms_error: \"\"\n";
+            string right_cv_yaml_data = "" +
+                "%YAML:1.0\n" +
+                "---\n" +
+                "image_width: 2448\n" +
+                "image_height: 2048\n" +
+                "camera_name: leftCamera\n" +
+                "camera_matrix: !!opencv-matrix\n" +
+                "   rows: 3\n" +
+                "   cols: 3\n" +
+                "   dt: d\n" +
+                "   data: [ 3.4782608695652175e+03, 0., 1224., 0., 3.4782608695652175e+03, 1024., 0., 0., 1. ]\n" +
+                "distortion_model: plumb_bob\n" +
+                "distortion_coefficients: !!opencv-matrix\n" +
+                "   rows: 1\n" +
+                "   cols: 5\n" +
+                "   dt: d\n" +
+                "   data: [ 0., 0., 0., 0., 0. ]\n" +
+                "rectification_matrix: !!opencv-matrix\n" +
+                "   rows: 3\n" +
+                "   cols: 3\n" +
+                "   dt: d\n" +
+                "   data: [1., 0., 0., 0., 1., 0., 0., 0., 1.]\n" +
+                "projection_matrix: !!opencv-matrix\n" +
+                "   rows: 3\n" +
+                "   cols: 4\n" +
+                "   dt: d\n" +
+                "   data: [ 3.4782608695652175e+03, 0., 1224., -3.4782608695652175e+02, 0., 3.4782608695652175e+03, 1024., 0., 0., 0., 1., 0. ]\n" +
+                "rms_error: \"\"\n";
+
+            File.WriteAllText(left_ros_yaml, left_ros_yaml_data);
+            File.WriteAllText(right_ros_yaml, right_ros_yaml_data);
+            File.WriteAllText(left_cv_yaml, left_cv_yaml_data);
+            File.WriteAllText(right_cv_yaml, right_cv_yaml_data);
 
             StereoCameraCalibration cal_ros = StereoCameraCalibration.calibrationFromYAML(left_ros_yaml, right_ros_yaml);
             Assert.IsTrue(cal_ros.isValid());
@@ -40,17 +149,70 @@ namespace I3DR.Phase.Test
         [TestMethod]
         public void test_SaveCalibration()
         {
-            string camera_name = "stereotheatresim";
-            string out_folder = "../../out/csharp";
-            string resource_folder = "../../resources";
-            string left_yaml = resource_folder + "/test/" + camera_name + "/ros/left.yaml";
-            string right_yaml = resource_folder + "/test/" + camera_name + "/ros/right.yaml";
+            string test_folder = ".phase_test";
+            string data_folder = "data";
+            string left_yaml = test_folder + "/left.yaml";
+            string right_yaml = test_folder + "/right.yaml";
+            string left_ros_yaml = test_folder + "/left_ros.yaml";
+            string right_ros_yaml = test_folder + "/right_ros.yaml";
+            string left_cv_yaml = test_folder + "/left_cv.yaml";
+            string right_cv_yaml = test_folder + "/right_cv.yaml";
+
+            Console.WriteLine("Generating test data...");
+
+            Directory.CreateDirectory(test_folder);
+
+            string left_yaml_data = "" +
+                "image_width: 2448\n" +
+                "image_height: 2048\n" +
+                "camera_name: leftCamera\n" +
+                "camera_matrix:\n" +
+                "   rows: 3\n" +
+                "   cols: 3\n" +
+                "   data: [ 3.4782608695652175e+03, 0., 1224., 0., 3.4782608695652175e+03, 1024., 0., 0., 1. ]\n" +
+                "distortion_model: plumb_bob\n" +
+                "distortion_coefficients:\n" +
+                "   rows: 1\n" +
+                "   cols: 5\n" +
+                "   data: [ 0., 0., 0., 0., 0. ]\n" +
+                "rectification_matrix:\n" +
+                "   rows: 3\n" +
+                "   cols: 3\n" +
+                "   data: [1., 0., 0., 0., 1., 0., 0., 0., 1.]\n" +
+                "projection_matrix:\n" +
+                "   rows: 3\n" +
+                "   cols: 4\n" +
+                "   data: [ 3.4782608695652175e+03, 0., 1224., 0., 0., 3.4782608695652175e+03, 1024., 0., 0., 0., 1., 0. ]\n";
+            string right_yaml_data = "" +
+                "image_width: 2448\n" +
+                "image_height: 2048\n" +
+                "camera_name: rightCamera\n" +
+                "camera_matrix:\n" +
+                "   rows: 3\n" +
+                "   cols: 3\n" +
+                "   data: [ 3.4782608695652175e+03, 0., 1224., 0., 3.4782608695652175e+03, 1024., 0., 0., 1. ]\n" +
+                "distortion_model: plumb_bob\n" +
+                "distortion_coefficients:\n" +
+                "   rows: 1\n" +
+                "   cols: 5\n" +
+                "   data: [ 0., 0., 0., 0., 0. ]\n" +
+                "rectification_matrix:\n" +
+                "   rows: 3\n" +
+                "   cols: 3\n" +
+                "   data: [1., 0., 0., 0., 1., 0., 0., 0., 1.]\n" +
+                "projection_matrix:\n" +
+                "   rows: 3\n" +
+                "   cols: 4\n" +
+                "   data: [ 3.4782608695652175e+03, 0., 1224., -3.4782608695652175e+02, 0., 3.4782608695652175e+03, 1024., 0., 0., 0., 1., 0. ]\n";
+
+            File.WriteAllText(left_yaml, left_yaml_data);
+            File.WriteAllText(right_yaml, right_yaml_data);
 
             StereoCameraCalibration cal = StereoCameraCalibration.calibrationFromYAML(left_yaml, right_yaml);
             Assert.IsTrue(cal.isValid());
 
-            cal.saveToYAML(out_folder + "/left_ros.yaml", out_folder + "/right_ros.yaml", CalibrationFileType.ROS_YAML);
-            cal.saveToYAML(out_folder + "/left_cv.yaml", out_folder + "/right_cv.yaml", CalibrationFileType.OPENCV_YAML);
+            cal.saveToYAML(left_ros_yaml, right_ros_yaml, CalibrationFileType.ROS_YAML);
+            cal.saveToYAML(left_cv_yaml, right_cv_yaml, CalibrationFileType.OPENCV_YAML);
 
             Console.WriteLine("calibration save test success");
 
