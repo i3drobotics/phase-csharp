@@ -59,8 +59,8 @@ Alternatively, after building run the tests graphically using Visual Studio and 
 To run the test applications, use the following commands:
 ```bash
 cd build/bin
-./phase_demo_cam_read
-./phase_demo_rgbd
+./phasesharp_demo_cam_read
+./phasesharp_demo_rgbd
 ```
 
 *Note: Make sure to run this from the project root directory*
