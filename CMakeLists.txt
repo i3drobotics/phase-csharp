@@ -186,3 +186,6 @@ install(FILES
     ${PHASE_LIBRARY_FILES}
     DESTINATION bin
 )
+
+# Install LICENSE file in install folder
+install(FILES LICENSE DESTINATION bin)
