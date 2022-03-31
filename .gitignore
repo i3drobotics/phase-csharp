@@ -2,3 +2,4 @@ build
 version.txt
 nuget.exe
 install
+deployment

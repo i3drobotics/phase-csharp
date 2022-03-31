@@ -1,11 +1,10 @@
 # PhaseSharp
 PhaseSharp is a C# library is a wrapper over the Phase C++ library to enable running Phase in C#.
 
-**NOTE: This package is still in development with very little functionality. Updates coming soon.**
+**NOTE: This package is still in development with missing functionality. Updates coming soon.**
 ## Install
-```
-TODO 
-```
+Download PhaseSharp library from [latest release](https://github.com/i3drobotics/phase-sharp/releases)  
+This includes the binararies for running and using PhaseSharp.
 
 ## Dependencies
 ### Phase
@@ -72,3 +71,10 @@ To install the library locally, run the following commands:
 cmake -G "Visual Studio 16 2019" -A x64 -DPhase_DIR="C:/Program Files/i3DR/Phase/lib/cmake" -DCMAKE_INSTALL_PREFIX="../install" ..
 cmake --build . --config Release --target install -- -r
 ```
+
+## Docs
+Documentation is generated and deployed in GitHub actions, however, to test documentation generation locally, run the following commands:
+```bash
+./docs/gen_docs.sh
+```
+This requires [doxygen](https://www.doxygen.nl/index.html) to be installed and available on the path.

@@ -6,10 +6,10 @@
 
 PROJECT_NAME           = "PhaseSharp"
 PROJECT_LOGO           = "./docs/i3dr_logo_128x128.png"
-OUTPUT_DIRECTORY       = "./deployment/docs/external"
+OUTPUT_DIRECTORY       = "./deployment/docs"
 INPUT                  = ./src \
-                         ./docs/README_csharp_external.md
-USE_MDFILE_AS_MAINPAGE = README_csharp_external.md
+                         ./docs/doxygen/README_docs.md
+USE_MDFILE_AS_MAINPAGE = README_docs.md
 
 #---------------------------------------------------------------------------
 # HTML style options
