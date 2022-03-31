@@ -102,8 +102,8 @@ jobs:
       - name: Upload deployment artifact
         uses: actions/upload-artifact@v3
         with:
-          name: deployment/bin
-          path: phase-sharp-v${{ env.PROJ_VER }}-windows-x86_64.zip
+          name: deployment-windows-2019-${{ github.sha }}-phase-sharp-release
+          path: deployment/bin
 
   deploy:
     needs: [build]
