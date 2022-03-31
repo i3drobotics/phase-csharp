@@ -97,17 +97,12 @@ jobs:
         run: |
           cd build/bin
           vstest.console phasesharp_test.dll /platform:x64
-      # Zip binaries
-      - uses: papeloto/action-zip@v1
-        with:
-          files: deployment/bin/
-          dest: phase-sharp-v${{ env.PROJ_VER }}-windows-x86_64.zip
       # Upload deployment artifact
       # (for data sharing across jobs)
       - name: Upload deployment artifact
         uses: actions/upload-artifact@v3
         with:
-          name: deployment-${{ matrix.os }}-${{ github.sha }}-phase-sharp-release
+          name: deployment/bin
           path: phase-sharp-v${{ env.PROJ_VER }}-windows-x86_64.zip
 
   deploy:
@@ -147,7 +142,12 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: deployment-windows-2019-${{ github.sha }}-phase-sharp-release
-          path: phase-sharp-v${{ env.PROJ_VER }}-windows-x86_64.zip
+          path: deployment/bin
+      # Zip binaries
+      - uses: papeloto/action-zip@v1
+        with:
+          files: deployment/bin/
+          dest: phase-sharp-v${{ env.PROJ_VER }}-windows-x86_64.zip
       # Create release
       - name: GitHub release
         uses: softprops/action-gh-release@v1
