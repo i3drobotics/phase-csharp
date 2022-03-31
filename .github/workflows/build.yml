@@ -1,10 +1,9 @@
-name: Build
+name: Pull Request
 
 on:
-  push:
+  pull_request:
     branches: [ main ]
-  # Allow manual triggering
-  workflow_dispatch:
+    types: [ opened, synchronize, reopened ]
 
 env:
   PHASE_VERSION: v0.0.20
@@ -21,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup MSBuild Path
-        uses: warrenbuckley/Setup-MSBuild@v1
+        uses: microsoft/setup-msbuild@v1.1
       - name: Setup VSTest Path
         uses: darenm/Setup-VSTest@v1
       # Install Phase
