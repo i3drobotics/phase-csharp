@@ -95,7 +95,7 @@ jobs:
       - name: Unit Test
         shell: bash
         run: |
-          cd deployment/bin
+          cd build/bin
           vstest.console phasesharp_test.dll /platform:x64
       # Zip deployment
       - uses: papeloto/action-zip@v1
