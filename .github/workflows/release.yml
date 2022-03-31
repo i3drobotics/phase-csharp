@@ -58,7 +58,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup MSBuild Path
-        uses: warrenbuckley/Setup-MSBuild@v1
+        uses: microsoft/setup-msbuild@v1.1
       - name: Setup VSTest Path
         uses: darenm/Setup-VSTest@v1
       # Get project version
@@ -81,44 +81,43 @@ jobs:
           tag: ${{ env.PHASE_VERSION }}
           fileName: phase-${{ env.PHASE_VERSION }}-windows-x86_64.zip
       - name: Install Phase
-        shell: powershell
+        shell: bash
         run: |
-          Expand-Archive -Path phase-${{ env.PHASE_VERSION }}-windows-x86_64.zip -DestinationPath phase_install
+          unzip phase-${{ env.PHASE_VERSION }}-windows-x86_64.zip -d ./phase_install
       # Build
       - name: Build
         shell: bash
         run: |
           mkdir -p build && cd build
-          cmake -G "Visual Studio 16 2019" -A x64 -DPhase_DIR="./phase_install/install/lib/cmake" -DBUILD_TESTS=ON ..
+          cmake -G "Visual Studio 16 2019" -A x64 -DPhase_DIR="./phase_install/install/lib/cmake" -DBUILD_TESTS=ON -DCMAKE_INSTALL_PREFIX="../deployment" ..
           cmake --build . --config Release -- -r
       # Unit Test
       - name: Unit Test
         shell: bash
         run: |
-          cd build/bin
+          cd deployment/bin
           vstest.console phasesharp_test.dll /platform:x64
       # Zip deployment
       - uses: papeloto/action-zip@v1
         with:
-          files: install/bin/
+          files: deployment/bin/
           dest: phase-sharp-v${{ env.PROJ_VER }}-windows-x86_64.zip
       # Generate docs
-      - name: Download Doxygen tool
-        run: C:\msys64\usr\bin\wget.exe https://www.doxygen.nl/files/doxygen-1.9.3.windows.x64.bin.zip
-      - name: Expand Doxygen package
-        run: Expand-Archive -LiteralPath '.\doxygen-1.9.3.windows.x64.bin.zip' -DestinationPath .\src\Documentation -Force
+      - name: Install Doxygen
+        shell: bash
+          run: |
+            wget https://www.doxygen.nl/files/doxygen-1.9.3.windows.x64.bin.zip
+            unzip doxygen-1.9.3.windows.x64.bin.zip -d ./doxygen-install
+            rm -rf doxygen-1.9.3.windows.x64.bin.zip
       - name: Generate docs
         shell: bash
-        run: ./docs/gen_docs.sh
-      # Zip developer docs
+        run: |
+          export PATH="$(pwd)/doxygen-install:$PATH"
+          ./docs/gen_docs.sh
+      # Zip docs
       - uses: papeloto/action-zip@v1
         with:
-          files: deployment/docs/developer/
-          dest: docs-dev.zip
-      # Zip external docs
-      - uses: papeloto/action-zip@v1
-        with:
-          files: deployment/docs/external/
+          files: deployment/docs/
           dest: docs.zip
       # Create release
       - name: Developer release
@@ -130,13 +129,12 @@ jobs:
           files: |
             phase-sharp-v${{ env.PROJ_VER }}-*.zip
             docs.zip
-            docs-dev.zip
       # Update public docs
       - name: Deploy public docs
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: docs # The branch the action should deploy to.
-          folder: deployment/docs/external # The folder the action should deploy.
+          folder: deployment/docs # The folder the action should deploy.
           repository-name: i3drobotics/phase-sharp
       # Get git variables
       - name: Get commit variables
