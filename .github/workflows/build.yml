@@ -1,9 +1,10 @@
-name: Pull Request
+name: Build
 
 on:
-  pull_request:
+  push:
     branches: [ main ]
-    types: [ opened, synchronize, reopened ]
+  # Allow manual triggering
+  workflow_dispatch:
 
 env:
   PHASE_VERSION: v0.0.20
