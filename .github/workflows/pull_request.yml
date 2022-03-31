@@ -31,9 +31,9 @@ jobs:
           tag: ${{ env.PHASE_VERSION }}
           fileName: phase-${{ env.PHASE_VERSION }}-windows-x86_64.zip
       - name: Install Phase
-        shell: bash
+        shell: powershell
         run: |
-          unzip phase-${{ env.PHASE_VERSION }}-windows-x86_64.zip -d ./phase_install
+          Expand-Archive -Path phase-${{ env.PHASE_VERSION }}-windows-x86_64.zip -DestinationPath phase_install
       # Build
       - name: Build
         shell: bash
