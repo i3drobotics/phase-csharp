@@ -156,7 +156,7 @@ jobs:
           body_path: release.md
           tag_name: v${{ env.PROJ_VER }}
           files: |
-            phase-sharp-v${{ env.PROJ_VER }}-*.zip
+            phase-sharp-v${{ env.PROJ_VER }}-windows-x86_64.zip
             docs.zip
       # Update public docs
       - name: Deploy public docs

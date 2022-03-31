@@ -1,5 +1,5 @@
 # PhaseSharp
-PhaseSharp is a C# library is a wrapper over the Phase C++ library to enable running Phase in C#.
+PhaseSharp is a C# wrapper library over the Phase C++ library to enable running Phase in C#.
 
 **NOTE: This package is still in development with missing functionality. Updates coming soon.**
 ## Install
