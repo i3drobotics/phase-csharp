@@ -1,0 +1,50 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  # Allow manual triggering
+  workflow_dispatch:
+
+env:
+  PHASE_VERSION: v0.0.20
+  PHASE_REPO: i3drobotics/phase
+
+jobs:
+  # Build / test
+  build-windows:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-2019]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup MSBuild Path
+        uses: microsoft/setup-msbuild@v1.1
+      - name: Setup VSTest Path
+        uses: darenm/Setup-VSTest@v1
+      # Install Phase
+      - name: Download Phase
+        uses: robinraju/release-downloader@v1.3
+        with:
+          repository: ${{ env.PHASE_REPO }}
+          tag: ${{ env.PHASE_VERSION }}
+          fileName: phase-${{ env.PHASE_VERSION }}-windows-x86_64.zip
+      - name: Install Phase
+        shell: powershell
+        run: |
+          Expand-Archive -Path phase-${{ env.PHASE_VERSION }}-windows-x86_64.zip -DestinationPath phase_install
+      # Build
+      - name: Build
+        shell: bash
+        run: |
+          mkdir -p build && cd build
+          cmake -G "Visual Studio 16 2019" -A x64 -DPhase_DIR="./phase_install/install/lib/cmake" -DBUILD_TESTS=ON ..
+          cmake --build . --config Release -- -r
+      # Unit Test
+      - name: Unit Test
+        shell: bash
+        run: |
+          cd build/bin
+          vstest.console phasesharp_test.dll /platform:x64

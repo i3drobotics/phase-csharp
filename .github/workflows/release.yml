@@ -1,0 +1,171 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+        level:
+          type: choice
+          description: Release type
+          options: 
+          - patch
+          - minor
+          - major
+
+env:
+  PHASE_VERSION: v0.0.20
+  PHASE_REPO: i3drobotics/phase
+
+jobs:
+  versioning:
+    runs-on: ubuntu-20.04
+    steps:
+      # Get latest released version
+      - uses: oprypin/find-latest-tag@v1
+        with:
+          repository: i3drobotics/phase-sharp  # The repository to scan.
+          releases-only: true  # All relevant tags have a GitHub release for them.
+        id: latest-tag  # The step ID to refer to later.
+      # Generate new release version
+      - name: Generate new version
+        uses: actions-ecosystem/action-bump-semver@v1
+        id: bump-version
+        with:
+          current_version: ${{ steps.latest-tag.outputs.tag }}
+          level: ${{ github.event.inputs.level }}
+      # Add generated version to VERSION file
+      # remove 'v' character from version string
+      - name: Add to Version file
+        shell: bash
+        run: |
+          PROJ_VERSION=${{ steps.bump-version.outputs.new_version }}
+          PROJ_VERSION=${PROJ_VERSION:1}
+          echo "$PROJ_VERSION" > version.txt
+      # Upload version file for use in other jobs
+      - name: Archive version file
+        uses: actions/upload-artifact@v2
+        with:
+          name: version-file-${{ github.sha }}-phase-sharp-release
+          path: version.txt
+
+  # Build / test
+  deploy:
+    needs: [versioning]
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-2019]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup MSBuild Path
+        uses: microsoft/setup-msbuild@v1.1
+      - name: Setup VSTest Path
+        uses: darenm/Setup-VSTest@v1
+      # Get project version
+      - name: Download version file artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: version-file-${{ github.sha }}-phase-sharp-release
+          path: versioning
+      - name: Get project version
+        shell: bash
+        run: |
+          PROJ_VER=$(cat versioning/version.txt)
+          echo "$PROJ_VER" > version.txt
+          echo "PROJ_VER=$PROJ_VER" >> $GITHUB_ENV
+      # Install Phase
+      - name: Download Phase
+        uses: robinraju/release-downloader@v1.3
+        with:
+          repository: ${{ env.PHASE_REPO }}
+          tag: ${{ env.PHASE_VERSION }}
+          fileName: phase-${{ env.PHASE_VERSION }}-windows-x86_64.zip
+      - name: Install Phase
+        shell: powershell
+        run: |
+          Expand-Archive -Path phase-${{ env.PHASE_VERSION }}-windows-x86_64.zip -DestinationPath phase_install
+      # Build
+      - name: Build
+        shell: bash
+        run: |
+          mkdir -p build && cd build
+          cmake -G "Visual Studio 16 2019" -A x64 -DPhase_DIR="./phase_install/install/lib/cmake" -DBUILD_TESTS=ON -DCMAKE_INSTALL_PREFIX="../deployment" ..
+          cmake --build . --config Release -- -r
+      # Unit Test
+      - name: Unit Test
+        shell: bash
+        run: |
+          cd deployment/bin
+          vstest.console phasesharp_test.dll /platform:x64
+      # Zip deployment
+      - uses: papeloto/action-zip@v1
+        with:
+          files: deployment/bin/
+          dest: phase-sharp-v${{ env.PROJ_VER }}-windows-x86_64.zip
+      # Generate docs
+      - name: Install Doxygen
+        shell: bash
+        run: |
+          wget https://www.doxygen.nl/files/doxygen-1.9.3.windows.x64.bin.zip
+          unzip doxygen-1.9.3.windows.x64.bin.zip -d ./doxygen-install
+          rm -rf doxygen-1.9.3.windows.x64.bin.zip
+      - name: Generate docs
+        shell: bash
+        run: |
+          export PATH="$(pwd)/doxygen-install:$PATH"
+          ./docs/gen_docs.sh
+      # Zip docs
+      - uses: papeloto/action-zip@v1
+        with:
+          files: deployment/docs/
+          dest: docs.zip
+      # Create release
+      - name: Developer release
+        uses: softprops/action-gh-release@v1
+        with:
+          draft: false
+          body_path: release.md
+          tag_name: v${{ env.PROJ_VER }}
+          files: |
+            phase-sharp-v${{ env.PROJ_VER }}-*.zip
+            docs.zip
+      # Update public docs
+      - name: Deploy public docs
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: docs # The branch the action should deploy to.
+          folder: deployment/docs # The folder the action should deploy.
+          repository-name: i3drobotics/phase-sharp
+      # Get git variables
+      - name: Get commit variables
+        id: commit-vars
+        shell: bash
+        run: |
+          echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+          echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+      # Merge branch into production
+      - name: Merge main -> prod
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          target_branch: prod
+          github_token: ${{ github.token }}
+          message: merged ${{ steps.commit-vars.outputs.sha_short }}
+      # Merge main back to production
+      - name: Merge prod -> main
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: prod
+          target_branch: main
+          github_token: ${{ github.token }}
+          message: merged ${{ steps.commit-vars.outputs.sha_short }}
+
+  cleanup:
+      needs: [deploy]
+      runs-on: ubuntu-20.04
+
+      steps:
+        - uses: geekyeggo/delete-artifact@v1
+          with:
+            name: version-file-${{ github.sha }}-phase-sharp-release
