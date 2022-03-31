@@ -48,7 +48,7 @@ jobs:
           path: version.txt
 
   # Build / test
-  deploy:
+  build:
     needs: [versioning]
     runs-on: ${{ matrix.os }}
     strategy:
@@ -97,30 +97,59 @@ jobs:
         run: |
           cd build/bin
           vstest.console phasesharp_test.dll /platform:x64
-      # Zip deployment
+      # Zip binaries
       - uses: papeloto/action-zip@v1
         with:
           files: deployment/bin/
           dest: phase-sharp-v${{ env.PROJ_VER }}-windows-x86_64.zip
+      # Upload deployment artifact
+      # (for data sharing across jobs)
+      - name: Upload deployment artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: deployment-${{ matrix.os }}-${{ github.sha }}-phase-sharp-release
+          path: phase-sharp-v${{ env.PROJ_VER }}-windows-x86_64.zip
+
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      # Get project version
+      - name: Download version file artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: version-file-${{ github.sha }}-phase-sharp-release
+          path: versioning
+      - name: Get project version
+        shell: bash
+        run: |
+          PROJ_VER=$(cat versioning/version.txt)
+          echo "$PROJ_VER" > version.txt
+          echo "PROJ_VER=$PROJ_VER" >> $GITHUB_ENV
       # Generate docs
       - name: Install Doxygen
         shell: bash
         run: |
-          curl -SL --output doxygen.zip https://www.doxygen.nl/files/doxygen-1.9.3.windows.x64.bin.zip
-          unzip doxygen.zip -d ./doxygen-install
-          rm -rf doxygen.zip
+          sudo apt update
+          sudo apt install -y doxygen
       - name: Generate docs
         shell: bash
         run: |
-          export PATH="$(pwd)/doxygen-install:$PATH"
           ./docs/gen_docs.sh
       # Zip docs
       - uses: papeloto/action-zip@v1
         with:
           files: deployment/docs/
           dest: docs.zip
+      # Download deployments from build artifacts
+      - name: Download deployment artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: deployment-windows-2019-${{ github.sha }}-phase-sharp-release
+          path: phase-sharp-v${{ env.PROJ_VER }}-windows-x86_64.zip
       # Create release
-      - name: Developer release
+      - name: GitHub release
         uses: softprops/action-gh-release@v1
         with:
           draft: false
@@ -168,4 +197,6 @@ jobs:
       steps:
         - uses: geekyeggo/delete-artifact@v1
           with:
-            name: version-file-${{ github.sha }}-phase-sharp-release
+            name: |
+              version-file-${{ github.sha }}-phase-sharp-release
+              deployment-windows-2019-${{ github.sha }}-phase-sharp-release
