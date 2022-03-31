@@ -105,10 +105,10 @@ jobs:
       # Generate docs
       - name: Install Doxygen
         shell: bash
-          run: |
-            wget https://www.doxygen.nl/files/doxygen-1.9.3.windows.x64.bin.zip
-            unzip doxygen-1.9.3.windows.x64.bin.zip -d ./doxygen-install
-            rm -rf doxygen-1.9.3.windows.x64.bin.zip
+        run: |
+          wget https://www.doxygen.nl/files/doxygen-1.9.3.windows.x64.bin.zip
+          unzip doxygen-1.9.3.windows.x64.bin.zip -d ./doxygen-install
+          rm -rf doxygen-1.9.3.windows.x64.bin.zip
       - name: Generate docs
         shell: bash
         run: |
