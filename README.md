@@ -1,10 +1,10 @@
-# PhaseSharp
-PhaseSharp is a C# wrapper library over the Phase C++ library to enable running Phase in C#.
+# Phase CSharp
+Phase CSharp is a C# wrapper library over the Phase C++ library to enable running Phase in C#.
 
 **NOTE: This package is still in development with missing functionality. Updates coming soon.**
 ## Install
-Download PhaseSharp library from [latest release](https://github.com/i3drobotics/phase-sharp/releases)  
-This includes the binararies for running and using PhaseSharp.
+Download Phase CSharp library from [latest release](https://github.com/i3drobotics/phase-csharp/releases)  
+This includes the binararies for running and using Phase CSharp.
 
 ## Dependencies
 ### Phase
@@ -12,7 +12,7 @@ Phase library is required to be installed for use in the build process.
 Download Windows installer from the [v0.0.20 release](https://github.com/i3drobotics/phase-dev/releases/tag/v0.0.20).  
 Install using the installer GUI, this should install to `C:\Program Files\i3DR\Phase`
 ### Visual Studio
-Visual Studio is required to build the PhaseSharp library. The following components are required:
+Visual Studio is required to build the Phase CSharp library. The following components are required:
 - `.NET desktop development tools`
 - `.Net Framework 4.7.2 development tools`
 - `C# and Visual Basic`
@@ -22,7 +22,7 @@ Doxygen is used for documentation.
 On Windows download and install doxygen from [here](https://www.doxygen.nl/download.html)
 
 ## Build
-Build Phase Sharp library using CMake:
+Build Phase CSharp library using CMake:
 ```bash
 mkdir build
 cd build
@@ -50,7 +50,7 @@ Unit testing is performed by MSTest. You will need to add the vstest.console app
 To run the tests, use the following commands:
 ```bash
 cd build/bin
-vstest.console phasesharp_test.dll /platform:x64
+vstest.console phasecsharp_test.dll /platform:x64
 ```
 *Note: Make sure to run this from the project root directory*  
 Alternatively, after building run the tests graphically using Visual Studio and Test Explorer.  
@@ -59,8 +59,8 @@ Alternatively, after building run the tests graphically using Visual Studio and 
 To run the test applications, use the following commands:
 ```bash
 cd build/bin
-./phasesharp_demo_cam_read
-./phasesharp_demo_rgbd
+./phasecsharp_demo_cam_read
+./phasecsharp_demo_rgbd
 ```
 
 *Note: Make sure to run this from the project root directory*
