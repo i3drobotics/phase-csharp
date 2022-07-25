@@ -22,7 +22,7 @@ jobs:
       # Get latest released version
       - uses: oprypin/find-latest-tag@v1
         with:
-          repository: i3drobotics/phase-sharp  # The repository to scan.
+          repository: i3drobotics/phase-csharp  # The repository to scan.
           releases-only: true  # All relevant tags have a GitHub release for them.
         id: latest-tag  # The step ID to refer to later.
       # Generate new release version
@@ -44,7 +44,7 @@ jobs:
       - name: Archive version file
         uses: actions/upload-artifact@v2
         with:
-          name: version-file-${{ github.sha }}-phase-sharp-release
+          name: version-file-${{ github.sha }}-phase-csharp-release
           path: version.txt
 
   # Build / test
@@ -65,7 +65,7 @@ jobs:
       - name: Download version file artifact
         uses: actions/download-artifact@v2
         with:
-          name: version-file-${{ github.sha }}-phase-sharp-release
+          name: version-file-${{ github.sha }}-phase-csharp-release
           path: versioning
       - name: Get project version
         shell: bash
@@ -96,13 +96,13 @@ jobs:
         shell: bash
         run: |
           cd build/bin
-          vstest.console phasesharp_test.dll /platform:x64
+          vstest.console phasecsharp_test.dll /platform:x64
       # Upload deployment artifact
       # (for data sharing across jobs)
       - name: Upload deployment artifact
         uses: actions/upload-artifact@v3
         with:
-          name: deployment-windows-2019-${{ github.sha }}-phase-sharp-release
+          name: deployment-windows-2019-${{ github.sha }}-phase-csharp-release
           path: deployment/bin
 
   deploy:
@@ -114,7 +114,7 @@ jobs:
       - name: Download version file artifact
         uses: actions/download-artifact@v2
         with:
-          name: version-file-${{ github.sha }}-phase-sharp-release
+          name: version-file-${{ github.sha }}-phase-csharp-release
           path: versioning
       - name: Get project version
         shell: bash
@@ -141,13 +141,13 @@ jobs:
       - name: Download deployment artifact
         uses: actions/download-artifact@v2
         with:
-          name: deployment-windows-2019-${{ github.sha }}-phase-sharp-release
+          name: deployment-windows-2019-${{ github.sha }}-phase-csharp-release
           path: deployment/bin
       # Zip binaries
       - uses: papeloto/action-zip@v1
         with:
           files: deployment/bin/
-          dest: phase-sharp-v${{ env.PROJ_VER }}-windows-x86_64.zip
+          dest: phase-csharp-v${{ env.PROJ_VER }}-windows-x86_64.zip
       # Create release
       - name: GitHub release
         uses: softprops/action-gh-release@v1
@@ -156,7 +156,7 @@ jobs:
           body_path: release.md
           tag_name: v${{ env.PROJ_VER }}
           files: |
-            phase-sharp-v${{ env.PROJ_VER }}-windows-x86_64.zip
+            phase-csharp-v${{ env.PROJ_VER }}-windows-x86_64.zip
             docs.zip
       # Update public docs
       - name: Deploy public docs
@@ -164,7 +164,7 @@ jobs:
         with:
           branch: docs # The branch the action should deploy to.
           folder: deployment/docs # The folder the action should deploy.
-          repository-name: i3drobotics/phase-sharp
+          repository-name: i3drobotics/phase-csharp
       # Get git variables
       - name: Get commit variables
         id: commit-vars
@@ -198,5 +198,5 @@ jobs:
         - uses: geekyeggo/delete-artifact@v1
           with:
             name: |
-              version-file-${{ github.sha }}-phase-sharp-release
-              deployment-windows-2019-${{ github.sha }}-phase-sharp-release
+              version-file-${{ github.sha }}-phase-csharp-release
+              deployment-windows-2019-${{ github.sha }}-phase-csharp-release

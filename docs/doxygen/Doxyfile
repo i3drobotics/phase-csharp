@@ -4,7 +4,7 @@
 # Frequenty used configuration options
 #---------------------------------------------------------------------------
 
-PROJECT_NAME           = "PhaseSharp"
+PROJECT_NAME           = "PhaseCSharp"
 PROJECT_LOGO           = "./docs/i3dr_logo_128x128.png"
 OUTPUT_DIRECTORY       = "./deployment/docs"
 INPUT                  = ./src \

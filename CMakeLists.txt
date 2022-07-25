@@ -17,7 +17,7 @@ file(READ "${CMAKE_SOURCE_DIR}/version.txt" ver)
 string(REGEX REPLACE "(\r?\n)+" "" ver ${ver}) # remove newlines
 message("version: ${ver}")
 
-project(PhaseSharp LANGUAGES CSharp CXX VERSION ${ver})
+project(PhaseCSharp LANGUAGES CSharp CXX VERSION ${ver})
 
 # Define names
 string(TOUPPER ${PROJECT_NAME} PROJECT_NAME_UPPER)

@@ -47,4 +47,4 @@ jobs:
         shell: bash
         run: |
           cd build/bin
-          vstest.console phasesharp_test.dll /platform:x64
+          vstest.console phasecsharp_test.dll /platform:x64
