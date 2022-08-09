@@ -9,7 +9,7 @@ This includes the binararies for running and using Phase CSharp.
 ## Dependencies
 ### Phase
 Phase library is required to be installed for use in the build process.  
-Download Windows installer from the [v0.0.20 release](https://github.com/i3drobotics/phase-dev/releases/tag/v0.0.20).  
+Download Windows installer from the [v0.0.20 release](https://github.com/i3drobotics/phase/releases/tag/v0.0.20).  
 Install using the installer GUI, this should install to `C:\Program Files\i3DR\Phase`
 ### Visual Studio
 Visual Studio is required to build the Phase CSharp library. The following components are required:

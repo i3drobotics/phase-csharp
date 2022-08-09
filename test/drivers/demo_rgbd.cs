@@ -8,52 +8,12 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Linq;
-using System.Text;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
-using System.Windows.Forms;
 
 namespace I3DR
 {
     namespace Phase
     {
-        class ImageViewer
-        {
-            private Form form;
-            private PictureBox pm;
-            public ImageViewer(){
-                form = new Form(){
-                    FormBorderStyle = FormBorderStyle.FixedDialog
-                };
-                pm = new PictureBox(){
-                    Dock = DockStyle.Fill
-                };
-                form.Controls.Add(pm);
-            }
-
-            public void setImage(byte[] byte_image, int width, int height, int stride){
-                Bitmap bit_image = new Bitmap(width, height, stride, 
-                    PixelFormat.Format32bppArgb,
-                    Marshal.UnsafeAddrOfPinnedArrayElement(byte_image, 0));
-                form.Size = new Size(width,height+25);
-                pm.Image = bit_image;
-            }
-
-            public void show(int wait_time=10){
-                form.TopMost = true;
-                if (wait_time == 0){
-                    form.ShowDialog();
-                } else {
-                    form.Show();
-                    form.Refresh();
-                    System.Threading.Thread.Sleep(wait_time);
-                }
-            }
-        }
 
         class DemoRGBD
         {
