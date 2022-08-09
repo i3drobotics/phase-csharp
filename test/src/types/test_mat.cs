@@ -8,16 +8,16 @@
  * @details Unit tests generated using MSTest
  */
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using I3DR;
 
 namespace I3DR.Phase.Test
 {
 
-    [TestClass]
+    
     public class MatTests
     {
-        [TestMethod]
+        [Fact]
         public void test_Mat()
         {
             // TODO

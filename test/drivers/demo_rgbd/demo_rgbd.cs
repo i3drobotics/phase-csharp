@@ -20,7 +20,7 @@ namespace I3DR
             static int Main(string[] args)
             {
                 string test_folder = ".phase_test";
-                string data_folder = "data";
+                string data_folder = "test/data";
                 string left_yaml = data_folder + "/left.yaml";
                 string right_yaml = data_folder + "/right.yaml";
                 string left_image_file = data_folder + "/left.png";

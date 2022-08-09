@@ -7,7 +7,7 @@
 PROJECT_NAME           = "PhaseCSharp"
 PROJECT_LOGO           = "./docs/i3dr_logo_128x128.png"
 OUTPUT_DIRECTORY       = "./deployment/docs"
-INPUT                  = ./src \
+INPUT                  = ./core \
                          ./docs/doxygen/README_docs.md
 USE_MDFILE_AS_MAINPAGE = README_docs.md
 

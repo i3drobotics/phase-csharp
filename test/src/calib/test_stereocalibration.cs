@@ -8,7 +8,7 @@
  * @details Unit tests generated using MSTest
  */
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System;
 using System.IO;
 using I3DR;
@@ -16,14 +16,14 @@ using I3DR;
 namespace I3DR.Phase.Test
 {
 
-    [TestClass]
+    
     public class StereoCalibrationTests
     {
-        [TestMethod]
+        [Fact]
         public void test_LoadCalibration()
         {
             string test_folder = ".phase_test";
-            string data_folder = "data";
+            string data_folder = "../../../../data";
             string left_ros_yaml = test_folder + "/left_ros.yaml";
             string right_ros_yaml = test_folder + "/right_ros.yaml";
             string left_cv_yaml = test_folder + "/left_cv.yaml";
@@ -138,19 +138,19 @@ namespace I3DR.Phase.Test
             File.WriteAllText(right_cv_yaml, right_cv_yaml_data);
 
             StereoCameraCalibration cal_ros = StereoCameraCalibration.calibrationFromYAML(left_ros_yaml, right_ros_yaml);
-            Assert.IsTrue(cal_ros.isValid());
+            Assert.True(cal_ros.isValid());
 
             StereoCameraCalibration cal_cv = StereoCameraCalibration.calibrationFromYAML(left_cv_yaml, right_cv_yaml);
-            Assert.IsTrue(cal_cv.isValid());
+            Assert.True(cal_cv.isValid());
 
             Console.WriteLine("calibration load test success");
         }
 
-        [TestMethod]
+        [Fact]
         public void test_SaveCalibration()
         {
             string test_folder = ".phase_test";
-            string data_folder = "data";
+            string data_folder = "../../../../data";
             string left_yaml = test_folder + "/left.yaml";
             string right_yaml = test_folder + "/right.yaml";
             string left_ros_yaml = test_folder + "/left_ros.yaml";
@@ -209,7 +209,7 @@ namespace I3DR.Phase.Test
             File.WriteAllText(right_yaml, right_yaml_data);
 
             StereoCameraCalibration cal = StereoCameraCalibration.calibrationFromYAML(left_yaml, right_yaml);
-            Assert.IsTrue(cal.isValid());
+            Assert.True(cal.isValid());
 
             cal.saveToYAML(left_ros_yaml, right_ros_yaml, CalibrationFileType.ROS_YAML);
             cal.saveToYAML(left_cv_yaml, right_cv_yaml, CalibrationFileType.OPENCV_YAML);
