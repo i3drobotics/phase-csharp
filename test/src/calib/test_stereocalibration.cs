@@ -15,8 +15,7 @@ using I3DR;
 
 namespace I3DR.Phase.Test
 {
-
-    
+    [Collection("PhaseSequentialTests")]
     public class StereoCalibrationTests
     {
         [Fact]
