@@ -88,15 +88,12 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          mkdir -p build && cd build
-          cmake -G "Visual Studio 16 2019" -A x64 -DPhase_DIR="./phase_install/install/lib/cmake" -DBUILD_TESTS=ON -DCMAKE_INSTALL_PREFIX="../deployment" ..
-          cmake --build . --config Release --target install -- -r
+          dotnet build --configuration Release //p:Version=${PROJ_VER}
       # Unit Test
       - name: Unit Test
         shell: bash
         run: |
-          cd build/bin
-          vstest.console phasecsharp_test.dll /platform:x64
+          dotnet test
       # Upload deployment artifact
       # (for data sharing across jobs)
       - name: Upload deployment artifact

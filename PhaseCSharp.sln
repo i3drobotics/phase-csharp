@@ -2,17 +2,17 @@
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhaseCSharp.core", "core\PhaseCSharp.core.csproj", "{0184EDC1-A123-47E2-93AB-84E1010B980A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "phasecsharp", "src\phasecsharp.csproj", "{0184EDC1-A123-47E2-93AB-84E1010B980A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{54536433-C606-4E45-8617-53718D6BCBF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhaseCSharp.test", "test\src\PhaseCSharp.test.csproj", "{9EF61BD9-FD0C-4C48-9B71-CD3B7C3F6D89}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "phasecsharp-test", "test\src\phasecsharp-test.csproj", "{9EF61BD9-FD0C-4C48-9B71-CD3B7C3F6D89}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "drivers", "drivers", "{A708CD37-9D2A-43DD-BA45-53121AB3533F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhaseCSharp.demo_cam_read", "test\drivers\demo_cam_read\PhaseCSharp.demo_cam_read.csproj", "{272CED2E-0330-4A86-B0A4-135A0050D9B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "phasecsharp-demo-cam-read", "test\drivers\demo_cam_read\phasecsharp-demo-cam-read.csproj", "{272CED2E-0330-4A86-B0A4-135A0050D9B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhaseCSharp.demo_rgbd", "test\drivers\demo_rgbd\PhaseCSharp.demo_rgbd.csproj", "{98170F0A-0B37-423A-AEB3-1F563AE8762B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "phasecsharp-demo-rgbd", "test\drivers\demo_rgbd\phasecsharp-demo-rgbd.csproj", "{98170F0A-0B37-423A-AEB3-1F563AE8762B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

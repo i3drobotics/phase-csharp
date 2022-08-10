@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\core\PhaseCSharp.core.csproj" />
+    <ProjectReference Include="..\..\..\src\phasecsharp.csproj" />
   </ItemGroup>
 
 </Project>
