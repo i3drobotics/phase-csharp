@@ -57,10 +57,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Setup MSBuild Path
-        uses: microsoft/setup-msbuild@v1.1
-      - name: Setup VSTest Path
-        uses: darenm/Setup-VSTest@v1
+      - uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '5.0.408'
       # Get project version
       - name: Download version file artifact
         uses: actions/download-artifact@v2
@@ -83,7 +82,7 @@ jobs:
       - name: Install Phase
         shell: powershell
         run: |
-          Expand-Archive -Path phase-${{ env.PHASE_VERSION }}-windows-x86_64.zip -DestinationPath phase_install
+          Expand-Archive -Path phase-${{ env.PHASE_VERSION }}-windows-x86_64.zip -DestinationPath "C:\Program Files\I3DR\Phase"
       # Build
       - name: Build
         shell: bash

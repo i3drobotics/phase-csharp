@@ -20,10 +20,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Setup MSBuild Path
-        uses: microsoft/setup-msbuild@v1.1
-      - name: Setup VSTest Path
-        uses: darenm/Setup-VSTest@v1
+      - uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '5.0.408'
       # Install Phase
       - name: Download Phase
         uses: robinraju/release-downloader@v1.3
@@ -34,17 +33,14 @@ jobs:
       - name: Install Phase
         shell: powershell
         run: |
-          Expand-Archive -Path phase-${{ env.PHASE_VERSION }}-windows-x86_64.zip -DestinationPath phase_install
+          Expand-Archive -Path phase-${{ env.PHASE_VERSION }}-windows-x86_64.zip -DestinationPath "C:\Program Files\I3DR\Phase"
       # Build
       - name: Build
         shell: bash
         run: |
-          mkdir -p build && cd build
-          cmake -G "Visual Studio 16 2019" -A x64 -DPhase_DIR="./phase_install/install/lib/cmake" -DBUILD_TESTS=ON ..
-          cmake --build . --config Release -- -r
+          dotnet build --configuration Release //p:Version=${PROJ_VER}
       # Unit Test
       - name: Unit Test
         shell: bash
         run: |
-          cd build/bin
-          vstest.console phasecsharp_test.dll /platform:x64
+          dotnet test
