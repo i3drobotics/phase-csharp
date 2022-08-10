@@ -9,4 +9,35 @@
     <ProjectReference Include="..\..\..\src\phasecsharp.csproj" />
   </ItemGroup>
 
+  <Target Name="CopyBuild" AfterTargets="Build" Condition="$([MSBuild]::IsOSPlatform('Windows'))">
+    <Message Text="Executing CopyBuild task" Importance="High" />
+
+    <Copy
+      SourceFiles="$(TargetDir)$(ProjectName).dll"
+      DestinationFolder="$(TargetDir)../../../../../../deployment/bin" />
+
+    <Copy
+      SourceFiles="$(TargetDir)$(ProjectName).exe"
+      DestinationFolder="$(TargetDir)../../../../../../deployment/bin" />
+
+    <Copy
+      SourceFiles="$(TargetDir)$(ProjectName).runtimeconfig.json"
+      DestinationFolder="$(TargetDir)../../../../../../deployment/bin" />
+
+    <Message Text="Copied build files to deployment" Importance="High" />
+  </Target>
+
+  <ItemGroup>
+    <_TestData Include="$(TargetDir)../../../../../data/*" />
+  </ItemGroup>
+  <Target Name="CopyTestData" AfterTargets="Build" Condition="$([MSBuild]::IsOSPlatform('Windows'))">
+    <Message Text="Executing CopyTestData task" Importance="High" />
+
+    <Copy
+      SourceFiles="@(_TestData)"
+      DestinationFolder="$(TargetDir)../../../../../../deployment/bin/test/data" />
+
+    <Message Text="Copied test data to deployment" Importance="High" />
+  </Target>
+
 </Project>
