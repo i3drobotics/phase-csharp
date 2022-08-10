@@ -182,7 +182,7 @@ namespace I3DR.Phase
             RGBDVideoStream_close(m_RGBDVideoStream_instance);
         }
 
-        [HandleProcessCorruptedStateExceptions]
+        // [HandleProcessCorruptedStateExceptions]
         public void dispose(){
             
             if (m_RGBDVideoStream_instance != IntPtr.Zero)

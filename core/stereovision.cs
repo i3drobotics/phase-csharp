@@ -236,7 +236,7 @@ namespace I3DR.Phase
             StereoVision_disconnect(m_StereoVision_instance);
         }
 
-        [HandleProcessCorruptedStateExceptions]
+        // [HandleProcessCorruptedStateExceptions]
         public void dispose(){
             
             if (m_StereoVision_instance != IntPtr.Zero)

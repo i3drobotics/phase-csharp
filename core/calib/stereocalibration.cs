@@ -156,7 +156,7 @@ namespace I3DR.Phase
             m_StereoCameraCalibration_instance = IntPtr.Zero;
         }
 
-        [HandleProcessCorruptedStateExceptions]
+        // [HandleProcessCorruptedStateExceptions]
         public void dispose(){
             if (m_StereoCameraCalibration_instance != IntPtr.Zero){
                 try {

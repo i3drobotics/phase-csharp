@@ -114,7 +114,7 @@ namespace I3DR.Phase
             m_AbstractStereoMatcher_instance = IntPtr.Zero;
         }
 
-        [HandleProcessCorruptedStateExceptions]
+        // [HandleProcessCorruptedStateExceptions]
         public void dispose(){
             if (m_AbstractStereoMatcher_instance != IntPtr.Zero){
                 try { 
