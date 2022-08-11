@@ -5,7 +5,7 @@
  * 
  * @file mat.cs
  * @brief Matrix class
- * @details TODOC
+ * @brief Matrix data storage
  */
 
 using System;
@@ -14,7 +14,10 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
-    // TODOC: Class definition
+    //!  Matrix Float class
+    /*!
+    Matrix float data storage. Targeted towards storing image data in floatin point precision. 
+    */
     public class MatrixFloat
     {
         // Import Phase functions from C API
@@ -154,7 +157,10 @@ namespace I3DR.Phase
         }
     }
 
-    // TODOC: Class definition
+    //!  Matrix UInt8 class
+    /*!
+    Matrix uint8 data storage. Targeted towards storing image data in unsigned 8-bit integer precision. 
+    */
     public class MatrixUInt8
     {
         // Import Phase functions from C API

@@ -4,8 +4,8 @@
  * @copyright Copyright (c) I3D Robotics Ltd, 2021
  * 
  * @file stereoi3drsgm.cs
- * @brief I3DR's Semi-Global Stereo Matcher  class
- * @details TODOC
+ * @brief I3DR's Semi-Global Stereo Matcher class
+ * @details Wrapper for I3DRS's stereo semi-global matcher.
  */
  
 using System;
@@ -13,7 +13,10 @@ using System.Runtime.InteropServices;
 
 namespace I3DR.Phase
 {
-    // TODOC: Class definition
+    //!  Stereo I3DRSGM class
+    /*!
+    I3DRS's stereo semi-global matcher for generting disparity from stereo images.
+    */
     public class StereoI3DRSGM : AbstractStereoMatcher
     {
         // Import Phase functions from C API

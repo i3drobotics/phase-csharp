@@ -4,8 +4,8 @@
  * @copyright Copyright (c) I3D Robotics Ltd, 2021
  * 
  * @file stereosgbm.cs
- * @brief Stereo Semi-Global Block Matcher  class
- * @details TODOC
+ * @brief Stereo Semi-Global Block Matcher class
+ * @details OpenCV's stereo semi-global block matcher.
  */
 
 using System;
@@ -13,7 +13,10 @@ using System.Runtime.InteropServices;
 
 namespace I3DR.Phase
 {
-    // TODOC: Class definition
+    //!  Stereo SGBM class
+    /*!
+    OpenCV's semi-global block matcher for generting disparity from stereo images.
+    */
     public class StereoSGBM : AbstractStereoMatcher
     {
         // Import Phase functions from C API

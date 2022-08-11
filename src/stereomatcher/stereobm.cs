@@ -4,8 +4,8 @@
  * @copyright Copyright (c) I3D Robotics Ltd, 2021
  * 
  * @file stereobm.cs
- * @brief Stereo Block Matcher  class
- * @details TODOC
+ * @brief Stereo Block Matcher class
+ * @details OpenCV's stereo block matcher.
  */
 
 using System;
@@ -13,7 +13,10 @@ using System.Runtime.InteropServices;
 
 namespace I3DR.Phase
 {
-    // TODOC: Class definition
+    //!  Stereo BM class
+    /*!
+    OpenCV's block matcher for generting disparity from stereo images.
+    */
     public class StereoBM : AbstractStereoMatcher
     {
         // Import Phase functions from C API

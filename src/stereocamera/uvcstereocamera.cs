@@ -5,7 +5,8 @@
  * 
  * @file uvcstereocamera.cs
  * @brief UVC Stereo Camera class
- * @details TODOC
+ * @details Capture data from a stereo camera using UVC cameras
+ * where left and right is transported via green and red channels.
  */
 
 using System;
@@ -13,7 +14,11 @@ using System.Runtime.InteropServices;
 
 namespace I3DR.Phase
 {   
-    // TODOC: Class definition
+    //!  UVC Stereo Camera class
+    /*!
+    Capture data from a stereo camera using UVC cameras
+    where left and right is transported via green and red channels.
+    */
     public class UVCStereoCamera : AbstractStereoCamera
     {
         // Import Phase functions from C API

@@ -5,7 +5,7 @@
  * 
  * @file phaseversion.cs
  * @brief version functions
- * @details TODOC
+ * @brief Phase version information
  */
 
 using System;
@@ -14,7 +14,10 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
-    // TODOC: Class definition
+    //!  Phase Version class
+    /*!
+    Phase version information
+    */
     public class PhaseVersion
     {
         // Import Phase functions from C API

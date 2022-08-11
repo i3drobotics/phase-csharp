@@ -4,8 +4,13 @@
  * @copyright Copyright (c) I3D Robotics Ltd, 2021
  * 
  * @file abstractstereomatcher.cs
- * @brief Abstract Stereo Matcher  class
- * @details TODOC
+ * @brief Abstract Stereo Matcher class
+ * @details Parent class for building stereo matcher
+ * classes. Includes functions/structures common across
+ * all stereo matchers. A stereo matcher takes a two images
+ * (left and right) and calculates to pixel disparity of features.
+ * The produces a disparity value for each pixel which can be
+ * used to generate depth. 
  */
 
 using System;
@@ -14,7 +19,10 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
-    // TODOC
+    //!  Stereo Params structure
+    /*!
+    Struture to store stereo parameters
+    */
     public struct StereoParams {
         public StereoMatcherType matcherType; // TODOC
         public int windowSize; // TODOC
@@ -32,7 +40,15 @@ namespace I3DR.Phase
         }
     };
 
-    // TODOC: Class definition
+    //!  Abstract Stereo Matcher class
+    /*!
+    Abstract base class for building stereo matcher
+    classes. Includes functions/structures common across
+    all stereo matchers. A stereo matcher takes a two images
+    (left and right) and calculates to pixel disparity of features.
+    The produces a disparity value for each pixel which can be
+    used to generate depth. 
+    */
     public class AbstractStereoMatcher
     {
         // Import Phase functions from C API

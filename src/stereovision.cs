@@ -5,7 +5,7 @@
  * 
  * @file stereovision.cs
  * @brief Stereo Vision class
- * @details TODOC
+ * @details Capture and process images from stereo cameras.
  */
 
 using System;
@@ -14,7 +14,12 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
-    // TODOC: Class definition
+    //!  Stereo Vision class
+    /*!
+    Capture images from stereo camera and process with stereo matcher
+    to generate depth. Brings together Stereo Camera and Stereo Matcher classes into
+    single class for easy use.
+    */
     public class StereoVision
     {
         // Import Phase functions from C API

@@ -11,11 +11,8 @@ This includes the binararies for running and using Phase CSharp.
 Phase library is required to be installed for use in the build process.  
 Download Windows installer from the [v0.0.20 release](https://github.com/i3drobotics/phase/releases/tag/v0.0.20).  
 Install using the installer GUI, this should install to `C:\Program Files\i3DR\Phase`
-### Visual Studio
-Visual Studio is required to build the Phase CSharp library. The following components are required:
-- `.NET desktop development tools`
-- `.Net Framework 4.7.2 development tools`
-- `C# and Visual Basic`
+### Dotnet
+.NET 5.0 is required to build the Phase CSharp library. Download and install from [here](https://dotnet.microsoft.com/en-us/download/dotnet/5.0)
 
 ### Additional dependencies
 Doxygen is used for documentation.  
@@ -45,9 +42,6 @@ dotnet run --project=test/drivers/demo_rgbd/PhaseCSharp.demo_rgbd.csproj
 ```
 
 *Note: Make sure to run this from the project root directory*
-
-## Install
-TODO
 
 ## Docs
 Documentation is generated and deployed in GitHub actions, however, to test documentation generation locally, run the following commands:

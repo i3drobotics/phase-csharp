@@ -5,7 +5,7 @@
  * 
  * @file rgbdvideostream.cs
  * @brief RGBD Video Stream class
- * @details TODOC
+ * @details Stream RGBD video from an mp4 file
  */
 
 using System;
@@ -14,7 +14,10 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
-    // TODOC: Class definition
+    //!  RGBD Video Stream class
+    /*!
+    Stream RGBD video from an mp4 file
+    */
     public class RGBDVideoStream
     {
         // Import Phase functions from C API

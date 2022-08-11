@@ -4,8 +4,7 @@
  * @copyright Copyright (c) I3D Robotics Ltd, 2021
  * 
  * @file stereoprocess.cs
- * @brief Stereo File System Wrapper class
- * @details TODOC
+ * @brief Functions for running Phase with local files
  */
 
 using System;
@@ -14,7 +13,10 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
-    // TODOC: Class definition
+    //!  Stereo Process class
+    /*!
+    Functions for running Phase with local files
+    */
     public class StereoProcess
     {
         // Import Phase functions from C API

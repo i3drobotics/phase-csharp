@@ -5,7 +5,7 @@
  * 
  * @file titaniastereocamera.cs
  * @brief Titania Stereo Camera class
- * @details TODOC
+ * @details Capture data from I3DR's Titania stereo camera.
  */
 
 using System;
@@ -13,7 +13,10 @@ using System.Runtime.InteropServices;
 
 namespace I3DR.Phase
 {
-    // TODOC: Class definition
+    //!  Titania Stereo Camera class
+    /*!
+    Capture data from I3DR's Titania stereo camera.
+    */
     public class TitaniaStereoCamera : AbstractStereoCamera
     {
         // Import Phase functions from C API

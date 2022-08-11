@@ -5,7 +5,7 @@
  * 
  * @file common.cs
  * @brief Common types.
- * @details TODOC
+ * @brief Commmon types used in Phase
  */
 
 using System;
@@ -14,7 +14,10 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
-    // TODOC
+    //!  2D point structure
+    /*!
+    Struture to 2D point (x, y) with double precision
+    */
     public struct Point2d {
         public double x;
         public double y;
@@ -24,7 +27,10 @@ namespace I3DR.Phase
         }
     };
 
-    // TODOC
+    //!  2D point structure
+    /*!
+    Struture to 2D point (x, y) with float precision
+    */
     public struct Point2f {
         public float x;
         public float y;
@@ -34,7 +40,10 @@ namespace I3DR.Phase
         }
     };
 
-    // TODOC
+    //!  2D point structure
+    /*!
+    Struture to 2D point (x, y) with integer precision
+    */
     public struct Point2i {
         public int x;
         public int y;
@@ -44,7 +53,10 @@ namespace I3DR.Phase
         }
     };
 
-    // TODOC
+    //!  Stereo Image Pair structure
+    /*!
+    Struture to store stereo image pair (left, right)
+    */
     public struct StereoImagePair
     {
         public byte[] left;
@@ -57,7 +69,10 @@ namespace I3DR.Phase
         }
     }
 
-    // TODOC
+    //!  Camera Read Result structure
+    /*!
+    Struture to store the result from reading a camera frame. Used in the stereo camera classes.
+    */
     public struct CameraReadResult
     {
         public bool valid;
@@ -72,13 +87,19 @@ namespace I3DR.Phase
         }
     }
 
-    // TODOC
+    //!  Left or Right enum
+    /*!
+    Enum to indicate left or right camera/image
+    */
     public enum LeftOrRight { 
         LEFT,
         RIGHT
     };
 
-    // TODOC
+    //!  Camera Device Type enum
+    /*!
+    Enum to indicate the device type of the camera. Used in stereo camera class to select which type to use.
+    */
     public enum CameraDeviceType { 
         DEVICE_TYPE_GENERIC_PYLON,
         DEVICE_TYPE_GENERIC_UVC,
@@ -88,17 +109,26 @@ namespace I3DR.Phase
         DEVICE_TYPE_INVALID
     };
 
-    // TODOC
+    //!  Camera Interface Type enum
+    /*!
+    Enum to indicate the interface type of the camera. Used in stereo camera class to select which interface to use.
+    */
     public enum CameraInterfaceType { 
         INTERFACE_TYPE_USB, INTERFACE_TYPE_GIGE, INTERFACE_TYPE_VIRTUAL
     };
 
-    // TODOC
+    //!  Stereo Matcher Type enum
+    /*!
+    Enum to indicate stereo matcher type. Used in stereo matcher class to select which matcher to use.
+    */
     public enum StereoMatcherType { 
         STEREO_MATCHER_BM, STEREO_MATCHER_SGBM, STEREO_MATCHER_I3DRSGM, STEREO_MATCHER_HOBM
     };
 
-    // TODOC
+    //!  Stereo Matcher Compute Result structure
+    /*!
+    Struture to store the result from a stereo match. Used in the stereo matcher classes.
+    */
     public struct StereoMatcherComputeResult
     {
         public bool valid;
@@ -111,7 +141,10 @@ namespace I3DR.Phase
         }
     }
 
-    // TODOC
+    //!  Stereo Vision Read Result structure
+    /*!
+    Struture to store the result from reading a stereo vision frame. Used in the stereo vision class.
+    */
     public struct StereoVisionReadResult
     {
         public bool valid;
@@ -129,7 +162,10 @@ namespace I3DR.Phase
     }
 
 
-    // TODOC
+    //!  RGBD Video Frame structure
+    /*!
+    Struture to store RGBD Video frame data (image, depth)
+    */
     public struct RGBDVideoFrame
     {
         public bool valid;

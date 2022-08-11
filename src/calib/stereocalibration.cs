@@ -5,7 +5,8 @@
  * 
  * @file stereocalibration.cs
  * @brief Stereo Calibration class
- * @details TODOC
+ * @details Camera calibration structures and support functions
+ * for generating stereo calibration from images.
  */
 
 using System;
@@ -14,7 +15,10 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
-    // TODOC: Class definition
+    //!  Stereo Camera Calibration class
+    /*!
+    Store and manipulate stereo camera calibration data.
+    */
     public class StereoCameraCalibration
     {
         // Import Phase functions from C API

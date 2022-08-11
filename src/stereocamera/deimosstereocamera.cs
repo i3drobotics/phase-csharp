@@ -5,7 +5,7 @@
  * 
  * @file deimosstereocamera.cs
  * @brief Deimos Stereo Camera class
- * @details TODOC
+ * @details Capture data from I3DR's Deimos stereo camera
  */
 
 using System;
@@ -13,7 +13,10 @@ using System.Runtime.InteropServices;
 
 namespace I3DR.Phase
 {
-    // TODOC: Class definition
+    //!  Deimos Stereo Camera class
+    /*!
+    Capture data from I3DR's Deimos stereo camera.
+    */
     public class DeimosStereoCamera : AbstractStereoCamera
     {
         // Import Phase functions from C API

@@ -14,6 +14,10 @@ namespace I3DR
 {
     namespace Phase
     {
+        //!  Demo Camera Read class
+        /*!
+        Example application reading from a camera using Phase
+        */
         class DemoCameraRead
         {
             static int Main(string[] args)

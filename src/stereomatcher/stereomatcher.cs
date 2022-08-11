@@ -4,8 +4,10 @@
  * @copyright Copyright (c) I3D Robotics Ltd, 2021
  * 
  * @file stereomatcher.cs
- * @brief Stereo Matcher  class
- * @details TODOC
+ * @brief Stereo Matcher class
+ * @details Create stereo matcher of any type using 
+ * StereoMatcherType. This allows for the same interface to be
+ * used for any stereo matcher. 
  */
 
 using System;
@@ -13,7 +15,12 @@ using System.Runtime.InteropServices;
 
 namespace I3DR.Phase
 {
-    // TODOC: Class definition
+    //!  Stereo Matcher class
+    /*!
+    Create stereo matcher of any type using 
+    StereoMatcherType. This allows for the same interface to be
+    used for any stereo matcher. 
+    */
     public class StereoMatcher
     {
         // Import Phase functions from C API

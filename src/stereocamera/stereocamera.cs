@@ -5,7 +5,9 @@
  * 
  * @file stereocamera.cs
  * @brief Stereo Camera class
- * @details TODOC
+ * @details Create stereo camera of any type using 
+ * CameraDeviceInfo. This allows for the same interface to be
+ * used for any stereo camera. 
  */
 
 using System;
@@ -13,7 +15,12 @@ using System.Runtime.InteropServices;
 
 namespace I3DR.Phase
 {
-    // TODOC: Class definition
+    //!  Stereo Camera class
+    /*!
+    Create stereo camera of any type using 
+    CameraDeviceInfo. This allows for the same interface to be
+    used for any stereo camera. 
+    */
     public class StereoCamera
     {
         // Import Phase functions from C API
