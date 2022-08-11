@@ -57,10 +57,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Setup MSBuild Path
-        uses: microsoft/setup-msbuild@v1.1
-      - name: Setup VSTest Path
-        uses: darenm/Setup-VSTest@v1
+      - uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '5.0.408'
       # Get project version
       - name: Download version file artifact
         uses: actions/download-artifact@v2
@@ -83,20 +82,21 @@ jobs:
       - name: Install Phase
         shell: powershell
         run: |
-          Expand-Archive -Path phase-${{ env.PHASE_VERSION }}-windows-x86_64.zip -DestinationPath phase_install
+          Expand-Archive -Path phase-${{ env.PHASE_VERSION }}-windows-x86_64.zip -DestinationPath "C:\Temp\Phase"
+          New-Item "C:\Program Files\I3DR\Phase" -type directory
+          Move-Item -Path "C:\Temp\Phase\install\*" -Destination "C:\Program Files\I3DR\Phase" -force
+          Get-ChildItem -Path "C:\Program Files\I3DR\Phase"
+          echo "C:\Program Files\I3DR\Phase\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
       # Build
       - name: Build
         shell: bash
         run: |
-          mkdir -p build && cd build
-          cmake -G "Visual Studio 16 2019" -A x64 -DPhase_DIR="./phase_install/install/lib/cmake" -DBUILD_TESTS=ON -DCMAKE_INSTALL_PREFIX="../deployment" ..
-          cmake --build . --config Release --target install -- -r
+          dotnet build --configuration Release //p:Version=${PROJ_VER}
       # Unit Test
       - name: Unit Test
         shell: bash
         run: |
-          cd build/bin
-          vstest.console phasecsharp_test.dll /platform:x64
+          dotnet test
       # Upload deployment artifact
       # (for data sharing across jobs)
       - name: Upload deployment artifact

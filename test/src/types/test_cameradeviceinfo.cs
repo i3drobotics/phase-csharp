@@ -8,16 +8,15 @@
  * @details Unit tests generated using MSTest
  */
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using I3DR;
 
 namespace I3DR.Phase.Test
 {
-
-    [TestClass]
+    [Collection("PhaseSequentialTests")]
     public class CameraDeviceInfoTests
     {
-        [TestMethod]
+        [Fact]
         public void test_CameraDeviceInfo()
         {
             //TODO

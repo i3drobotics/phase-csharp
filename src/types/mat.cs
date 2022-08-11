@@ -118,7 +118,7 @@ namespace I3DR.Phase
             return m_data;
         }
 
-        [HandleProcessCorruptedStateExceptions]
+        // [HandleProcessCorruptedStateExceptions]
         public void dispose(){
             if (m_MatrixFloat_ptr != IntPtr.Zero){
                 try {
@@ -241,7 +241,7 @@ namespace I3DR.Phase
             return m_data;
         }
 
-        [HandleProcessCorruptedStateExceptions]
+        // [HandleProcessCorruptedStateExceptions]
         public void dispose(){
             if (m_MatrixUInt8_ptr != IntPtr.Zero){
                 try {

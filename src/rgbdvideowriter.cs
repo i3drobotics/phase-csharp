@@ -95,7 +95,7 @@ namespace I3DR.Phase
             RGBDVideoWriter_close(m_RGBDVideoWriter_instance);
         }
 
-        [HandleProcessCorruptedStateExceptions]
+        // [HandleProcessCorruptedStateExceptions]
         public void dispose(){
             
             if (m_RGBDVideoWriter_instance != IntPtr.Zero)

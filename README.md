@@ -9,7 +9,7 @@ This includes the binararies for running and using Phase CSharp.
 ## Dependencies
 ### Phase
 Phase library is required to be installed for use in the build process.  
-Download Windows installer from the [v0.0.20 release](https://github.com/i3drobotics/phase-dev/releases/tag/v0.0.20).  
+Download Windows installer from the [v0.0.20 release](https://github.com/i3drobotics/phase/releases/tag/v0.0.20).  
 Install using the installer GUI, this should install to `C:\Program Files\i3DR\Phase`
 ### Visual Studio
 Visual Studio is required to build the Phase CSharp library. The following components are required:
@@ -22,35 +22,17 @@ Doxygen is used for documentation.
 On Windows download and install doxygen from [here](https://www.doxygen.nl/download.html)
 
 ## Build
-Build Phase CSharp library using CMake:
 ```bash
-mkdir build
-cd build
-cmake -G "Visual Studio 16 2019" -A x64 -DPhase_DIR="C:/Program Files/i3DR/Phase/lib/cmake" .. 
-cmake --build . --config Release -- -r
-```
-`-- -r` is important for nuget packages to be restored during build.
-
-On Windows, if using Visual Studio 2022 the v142 toolset is still required for dependencies.  
-The `MSVC v142 - VS 2019 C++ x64/x86 build tools` component is required to be installed.  
-To build with the v142 toolset, use the following command:
-```bash
-cmake -G "Visual Studio 17 2022" -A x64 -T v142 -DPhase_DIR="C:/Program Files/i3DR/Phase/lib/cmake" ..
+dotnet build
 ```
 
 ## Test
-To build the library tests enable the CMake option `BUILD_TESTS`:
-```bash
-cmake -G "Visual Studio 16 2019" -A x64 -DPhase_DIR="C:/Program Files/i3DR/Phase/lib/cmake" -DBUILD_TESTS=ON ..
-cmake --build . --config Release -- -r
-```
 
 ### Unit test
-Unit testing is performed by MSTest. You will need to add the vstest.console application to the path in order for it to be found for runnings tests. This is usually found in `C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow`.  
+Unit testing is performed by xunity.  
 To run the tests, use the following commands:
 ```bash
-cd build/bin
-vstest.console phasecsharp_test.dll /platform:x64
+dotnet test
 ```
 *Note: Make sure to run this from the project root directory*  
 Alternatively, after building run the tests graphically using Visual Studio and Test Explorer.  
@@ -58,19 +40,14 @@ Alternatively, after building run the tests graphically using Visual Studio and 
 ### Apps
 To run the test applications, use the following commands:
 ```bash
-cd build/bin
-./phasecsharp_demo_cam_read
-./phasecsharp_demo_rgbd
+dotnet run --project=test/drivers/demo_cam_read/PhaseCSharp.demo_cam_read.csproj 
+dotnet run --project=test/drivers/demo_rgbd/PhaseCSharp.demo_rgbd.csproj 
 ```
 
 *Note: Make sure to run this from the project root directory*
 
 ## Install
-To install the library locally, run the following commands:
-```bash
-cmake -G "Visual Studio 16 2019" -A x64 -DPhase_DIR="C:/Program Files/i3DR/Phase/lib/cmake" -DCMAKE_INSTALL_PREFIX="../deployment" ..
-cmake --build . --config Release --target install -- -r
-```
+TODO
 
 ## Docs
 Documentation is generated and deployed in GitHub actions, however, to test documentation generation locally, run the following commands:
