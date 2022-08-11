@@ -5,9 +5,7 @@
  * 
  * @file stereobm.cs
  * @brief Stereo Block Matcher  class
- * @details C#  class for Stereo Block Matcher class export.
- * DllImports for using C type exports. Pointer to class instance
- * is passed between functions.
+ * @details TODOC
  */
 
 using System;
@@ -15,9 +13,10 @@ using System.Runtime.InteropServices;
 
 namespace I3DR.Phase
 {
+    // TODOC: Class definition
     public class StereoBM : AbstractStereoMatcher
     {
-        // Straight From the c++ Dll (unmanaged)
+        // Import Phase functions from C API
         [DllImport("phase", EntryPoint = "I3DR_StereoBM_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr StereoBM_create();
 
@@ -30,20 +29,25 @@ namespace I3DR.Phase
         [DllImport("phase", EntryPoint = "I3DR_StereoBM_setNumDisparities", CallingConvention = CallingConvention.Cdecl)]
         private static extern void StereoBM_setNumDisparities(IntPtr matcher, int value);
 
+        // TODOC
         public StereoBM(IntPtr abstractStereoMatcher_instance): base(abstractStereoMatcher_instance){}
 
+        // TODOC
         public StereoBM(): base(){
             m_AbstractStereoMatcher_instance = StereoBM_create();
         }
 
+        // TODOC
         public void setWindowSize(int value){
             StereoBM_setWindowSize(m_AbstractStereoMatcher_instance, value);
         }
 
+        // TODOC
         public void setMinDisparity(int value){
             StereoBM_setMinDisparity(m_AbstractStereoMatcher_instance, value);
         }
 
+        // TODOC
         public void setNumDisparities(int value){
             StereoBM_setNumDisparities(m_AbstractStereoMatcher_instance, value);
         }

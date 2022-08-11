@@ -5,9 +5,7 @@
  * 
  * @file stereomatcher.cs
  * @brief Stereo Matcher  class
- * @details C#  class for Stereo Matcher class export.
- * DllImports for using C type exports. Pointer to class instance
- * is passed between functions.
+ * @details TODOC
  */
 
 using System;
@@ -15,12 +13,14 @@ using System.Runtime.InteropServices;
 
 namespace I3DR.Phase
 {
+    // TODOC: Class definition
     public class StereoMatcher
     {
-        // Straight From the c++ Dll (unmanaged)
+        // Import Phase functions from C API
         [DllImport("phase", EntryPoint = "I3DR_CCreateStereoMatcher", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr CCreateStereoMatcher(StereoMatcherType matcher_type);
 
+        // TODOC
         public static AbstractStereoMatcher createStereoMatcher(StereoMatcherType matcher_type){
             if (matcher_type == StereoMatcherType.STEREO_MATCHER_I3DRSGM){
                 return new StereoI3DRSGM(CCreateStereoMatcher(matcher_type));

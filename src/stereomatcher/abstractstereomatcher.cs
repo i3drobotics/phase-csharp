@@ -5,9 +5,7 @@
  * 
  * @file abstractstereomatcher.cs
  * @brief Abstract Stereo Matcher  class
- * @details C#  class for Abstract Stereo Matcher class export.
- * DllImports for using C type exports. Pointer to class instance
- * is passed between functions.
+ * @details TODOC
  */
 
 using System;
@@ -16,14 +14,15 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
-
+    // TODOC
     public struct StereoParams {
-        public StereoMatcherType matcherType;
-        public int windowSize;
-        public int minDisparity;
-        public int numDisparities;
-        public bool interpolation;
+        public StereoMatcherType matcherType; // TODOC
+        public int windowSize; // TODOC
+        public int minDisparity; // TODOC
+        public int numDisparities; // TODOC
+        public bool interpolation; // TODOC
 
+        // TODOC
         public StereoParams(StereoMatcherType matcherType, int windowSize, int minDisparity, int numDisparities, bool interpolation) {
             this.matcherType = matcherType;
             this.windowSize = windowSize;
@@ -33,8 +32,10 @@ namespace I3DR.Phase
         }
     };
 
+    // TODOC: Class definition
     public class AbstractStereoMatcher
     {
+        // Import Phase functions from C API
         [DllImport("phase", EntryPoint = "I3DR_AbstractStereoMatcher_CCompute", CallingConvention = CallingConvention.Cdecl)]
         protected static extern bool AbstractStereoMatcher_CCompute(IntPtr matcher, [In] byte[] left_image, [In] byte[] right_image, int in_width, int in_height, [Out] float[] disparity);
 
@@ -50,21 +51,26 @@ namespace I3DR.Phase
         [DllImport("phase", EntryPoint = "I3DR_AbstractStereoMatcher_dispose", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void AbstractStereoMatcher_dispose(IntPtr matcher);
         
-        protected IntPtr m_AbstractStereoMatcher_instance;
-        private float[] disparity;
+        protected IntPtr m_AbstractStereoMatcher_instance; // TODOC
+        private float[] disparity; // TODOC
 
+        // TODOC
         public AbstractStereoMatcher(){}
 
+        // TODOC
         public AbstractStereoMatcher(IntPtr abstractStereoMatcher_instance){
             m_AbstractStereoMatcher_instance = abstractStereoMatcher_instance;
         }
 
+        // TODOC
         public IntPtr getInstancePtr(){
             return m_AbstractStereoMatcher_instance;
         }
 
+        // TODOC
         protected virtual void init(){}
-        
+
+        // TODOC
         public StereoMatcherComputeResult compute(byte[] left_image, byte[] right_image, int width, int height)
         {
             disparity = new float[width * height];
@@ -78,12 +84,14 @@ namespace I3DR.Phase
             return processComputeResult(valid);
         }
 
+        // TODOC
         private StereoMatcherComputeResult processComputeResult(bool valid)
         {
             StereoMatcherComputeResult result = new StereoMatcherComputeResult(valid, disparity);
             return result;
         }
 
+        // TODOC
         public void startComputeThread(byte[] left_image, byte[] right_image, int width, int height)
         {
             AbstractStereoMatcher_CStartComputeThread(
@@ -94,10 +102,12 @@ namespace I3DR.Phase
             );
         }
 
+        // TODOC
         public bool isComputeThreadRunning(){
             return AbstractStereoMatcher_CIsComputeThreadRunning(m_AbstractStereoMatcher_instance);
         }
 
+        // TODOC
         public StereoMatcherComputeResult getComputeThreadResult(int width, int height)
         {
             disparity = new float[width * height];
@@ -109,11 +119,13 @@ namespace I3DR.Phase
             return processComputeResult(valid);
         }
 
+        // TODOC
         public void markDisposed()
         {
             m_AbstractStereoMatcher_instance = IntPtr.Zero;
         }
 
+        // TODOC
         // [HandleProcessCorruptedStateExceptions]
         public void dispose(){
             if (m_AbstractStereoMatcher_instance != IntPtr.Zero){
@@ -129,6 +141,7 @@ namespace I3DR.Phase
             }
         }
 
+        // TODOC
         ~AbstractStereoMatcher()
         {
             dispose();

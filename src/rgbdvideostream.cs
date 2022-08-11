@@ -5,9 +5,7 @@
  * 
  * @file rgbdvideostream.cs
  * @brief RGBD Video Stream class
- * @details C# class for RGBD Video Stream class export.
- * DllImports for using C type exports. Pointer to class instance
- * is passed between functions.
+ * @details TODOC
  */
 
 using System;
@@ -16,8 +14,10 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
+    // TODOC: Class definition
     public class RGBDVideoStream
     {
+        // Import Phase functions from C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr RGBDVideoStream_create(string rgb_video_filepath, string depth_video_filepath, int width, int height);
 
@@ -78,43 +78,52 @@ namespace I3DR.Phase
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_dispose", CallingConvention = CallingConvention.Cdecl)]
         private static extern void RGBDVideoStream_dispose(IntPtr stream);
 
-        private IntPtr m_RGBDVideoStream_instance;
-        private byte[] rgb;
-        private float[] depth;
+        private IntPtr m_RGBDVideoStream_instance; // TODOC
+        private byte[] rgb; // TODOC
+        private float[] depth; // TODOC
 
+        // TODOC
         public RGBDVideoStream(string rgb_video_filepath, string depth_video_filepath, int width, int height)
         {
             m_RGBDVideoStream_instance = RGBDVideoStream_create(rgb_video_filepath, depth_video_filepath, width, height);
         }
 
+        // TODOC
         public int getWidth(){
             return RGBDVideoStream_getWidth(m_RGBDVideoStream_instance);
         }
 
+        // TODOC
         public int getHeight(){
             return RGBDVideoStream_getHeight(m_RGBDVideoStream_instance);
         }
 
+        // TODOC
         public bool load(){
             return RGBDVideoStream_load(m_RGBDVideoStream_instance);
         }
 
+        // TODOC
         public void loadThreaded(){
             RGBDVideoStream_loadThreaded(m_RGBDVideoStream_instance);
         }
 
+        // TODOC
         public bool isLoadThreadRunning(){
             return RGBDVideoStream_isLoadThreadRunning(m_RGBDVideoStream_instance);
         }
 
+        // TODOC
         public bool getLoadThreadResult(){
             return RGBDVideoStream_getLoadThreadResult(m_RGBDVideoStream_instance);
         }
 
+        // TODOC
         public void restart(){
             RGBDVideoStream_restart(m_RGBDVideoStream_instance);
         }
 
+        // TODOC
         public RGBDVideoFrame read()
         {
             int image_size = getWidth() * getHeight();
@@ -131,6 +140,7 @@ namespace I3DR.Phase
             return frame;
         }
 
+        // TODOC
         public RGBDVideoFrame getReadThreadResult()
         {
             int image_size = getWidth() * getHeight();
@@ -147,41 +157,52 @@ namespace I3DR.Phase
             return frame;
         }
 
+        // TODOC
         public void readThreaded(){
             RGBDVideoStream_readThreaded(m_RGBDVideoStream_instance);
         }
 
+        // TODOC
         public bool isReadThreadRunning(){
             return RGBDVideoStream_isReadThreadRunning(m_RGBDVideoStream_instance);
         }
 
+        // TODOC
         public bool isOpened(){
             return RGBDVideoStream_isOpened(m_RGBDVideoStream_instance);
         }
 
+        // TODOC
         public bool isLoaded(){
             return RGBDVideoStream_isLoaded(m_RGBDVideoStream_instance);
         }
 
+        // TODOC
         public bool isFinished(){
             return RGBDVideoStream_isFinished(m_RGBDVideoStream_instance);
         }
 
+        // TODOC
         public float getHFOV(){
             return RGBDVideoStream_getHFOV(m_RGBDVideoStream_instance);
         }
 
+        // TODOC
         public float getDownsampleFactor(){
             return RGBDVideoStream_getDownsampleFactor(m_RGBDVideoStream_instance);
         }
+
+        // TODOC
         public void setDownsampleFactor(float value){
             RGBDVideoStream_setDownsampleFactor(m_RGBDVideoStream_instance, value);
         }
 
+        // TODOC
         public void close(){
             RGBDVideoStream_close(m_RGBDVideoStream_instance);
         }
 
+        // TODOC
         // [HandleProcessCorruptedStateExceptions]
         public void dispose(){
             
@@ -200,6 +221,7 @@ namespace I3DR.Phase
             }
         }
 
+        // TODOC
         ~RGBDVideoStream()
         {
             dispose();

@@ -5,9 +5,7 @@
  * 
  * @file stereovision.cs
  * @brief Stereo Vision class
- * @details C# class for Stereo Vision class export.
- * DllImports for using C type exports. Pointer to class instance
- * is passed between functions.
+ * @details TODOC
  */
 
 using System;
@@ -16,8 +14,10 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
+    // TODOC: Class definition
     public class StereoVision
     {
+        // Import Phase functions from C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr StereoVision_create(
             string left_serial, string right_serial, string unique_serial,
@@ -89,17 +89,19 @@ namespace I3DR.Phase
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_dispose", CallingConvention = CallingConvention.Cdecl)]
         private static extern void StereoVision_dispose(IntPtr sv);
 
-        private IntPtr m_StereoVision_instance;
-        private byte[] left_image;
-        private byte[] right_image;
-        private float[] disparity;
-        private AbstractStereoCamera m_abstractStereoCamera;
-        private AbstractStereoMatcher m_abstractStereoMatcher;
-        private StereoCameraCalibration m_stereoCameraCalibration;
+        private IntPtr m_StereoVision_instance; // TODOC
+        private byte[] left_image; // TODOC
+        private byte[] right_image; // TODOC
+        private float[] disparity; // TODOC
+        private AbstractStereoCamera m_abstractStereoCamera; // TODOC
+        private AbstractStereoMatcher m_abstractStereoMatcher; // TODOC
+        private StereoCameraCalibration m_stereoCameraCalibration; // TODOC
 
+        // TODOC
         public StereoVision(
             CameraDeviceInfo camera_device_info, StereoMatcherType stereo_matcher_type, string left_yaml, string right_yaml)
         {
+            // TODOC
             m_StereoVision_instance = StereoVision_create(
                 camera_device_info.left_camera_serial, camera_device_info.right_camera_serial, 
                 camera_device_info.unique_serial, 
@@ -108,7 +110,7 @@ namespace I3DR.Phase
                 left_yaml,
                 right_yaml
             );
-            // TODO do specific camera type initalisation
+            // TODOC
             m_abstractStereoCamera = new AbstractStereoCamera(StereoVision_getCamera(m_StereoVision_instance));
             if (stereo_matcher_type == StereoMatcherType.STEREO_MATCHER_I3DRSGM){
                 m_abstractStereoMatcher = new StereoI3DRSGM(StereoVision_getMatcher(m_StereoVision_instance));
@@ -123,67 +125,83 @@ namespace I3DR.Phase
             m_stereoCameraCalibration = new StereoCameraCalibration(StereoVision_getCalibration(m_StereoVision_instance));
         }
 
+        // TODOC
         public void getCamera(out AbstractStereoCamera abstractStereoCamera){
             abstractStereoCamera = m_abstractStereoCamera;
         }
 
+        // TODOC
         public void getMatcher(out AbstractStereoMatcher abstractStereoMatcher){
             abstractStereoMatcher = m_abstractStereoMatcher;
         }
 
+        // TODOC
         public void getCalibration(out StereoCameraCalibration stereoCameraCalibration){
             stereoCameraCalibration = m_stereoCameraCalibration;
         }
 
+        // TODOC
         public bool connect(){
             bool success = StereoVision_connect(m_StereoVision_instance);
             return success;
         }
 
+        // TODOC
         public bool isConnected(){
             return StereoVision_isConnected(m_StereoVision_instance);
         }
 
+        // TODOC
         public bool startCapture(){
             return StereoVision_startCapture(m_StereoVision_instance);
         }
 
+        // TODOC
         public void stopCapture(){
             StereoVision_stopCapture(m_StereoVision_instance);
         }
 
+        // TODOC
         public bool isCapturing(){
             return StereoVision_isCapturing(m_StereoVision_instance);
         }
 
+        // TODOC
         public bool isValidCalibration(){
             return StereoVision_isValidCalibration(m_StereoVision_instance);
         }
 
+        // TODOC
         public int getWidth(){
             return StereoVision_getWidth(m_StereoVision_instance);
         }
 
+        // TODOC
         public int getHeight(){
             return StereoVision_getHeight(m_StereoVision_instance);
         }
 
+        // TODOC
         public float getHFOV(){
             return StereoVision_getHFOV(m_StereoVision_instance);
         }
 
+        // TODOC
         public float getDownsampleFactor(){
             return StereoVision_getDownsampleFactor(m_StereoVision_instance);
         }
 
+        // TODOC
         public void setDownsampleFactor(float value){
             StereoVision_setDownsampleFactor(m_StereoVision_instance, value);
         }
 
+        // TODOC
         public void setTestImagePaths(string left_test_image_path, string right_test_image_path){
             StereoVision_setTestImagePaths(m_StereoVision_instance, left_test_image_path, right_test_image_path);
         }
 
+        // TODOC
         public StereoVisionReadResult read(int timeout = 1000, bool recitfy = true)
         {
             int image_size = getWidth() * getHeight();
@@ -204,14 +222,17 @@ namespace I3DR.Phase
             return readResult;
         }
 
+        // TODOC
         public void startReadThread(int timeout = 1000, bool rectify = true){
             StereoVision_startReadThread(m_StereoVision_instance, timeout, rectify);
         }
 
+        // TODOC
         public bool isReadThreadRunning(){
             return StereoVision_isReadThreadRunning(m_StereoVision_instance);
         }
 
+        // TODOC
         public StereoVisionReadResult getReadThreadResult()
         {
             int image_size = getWidth() * getHeight();
@@ -232,10 +253,12 @@ namespace I3DR.Phase
             return readResult;
         }
 
+        // TODOC
         public void disconnect(){
             StereoVision_disconnect(m_StereoVision_instance);
         }
 
+        // TODOC
         // [HandleProcessCorruptedStateExceptions]
         public void dispose(){
             
@@ -257,6 +280,7 @@ namespace I3DR.Phase
             m_stereoCameraCalibration.markDisposed();
         }
 
+        // TODOC
         ~StereoVision()
         {
             dispose();

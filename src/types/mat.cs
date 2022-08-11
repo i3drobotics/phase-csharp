@@ -5,9 +5,7 @@
  * 
  * @file mat.cs
  * @brief Matrix class
- * @details C# class for Matrix class export.
- * DllImports for using C type exports. Pointer to class instance
- * is passed between functions.
+ * @details TODOC
  */
 
 using System;
@@ -16,8 +14,10 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
+    // TODOC: Class definition
     public class MatrixFloat
     {
+        // Import Phase functions from C API
         [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr MatrixFloat_create(int rows, int columns, int layers);
 
@@ -54,70 +54,84 @@ namespace I3DR.Phase
         [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_getData", CallingConvention = CallingConvention.Cdecl)]
         private static extern void MatrixFloat_getData(IntPtr mat, [Out] float[] data);
 
-        private float[] m_data;
+        private float[] m_data; // TODOC
 
-        private IntPtr m_MatrixFloat_ptr;
+        private IntPtr m_MatrixFloat_ptr; // TODOC
 
+        // TODOC
         public MatrixFloat(IntPtr MatrixFloat_ptr){
             m_MatrixFloat_ptr = MatrixFloat_ptr;
         }
 
+        // TODOC
         public MatrixFloat(int rows, int cols, int channels){
             m_MatrixFloat_ptr = MatrixFloat_create(rows, cols, channels);
         }
 
+        // TODOC
         public MatrixFloat(int rows, int cols, int channels, float[] data, bool copy){
             m_MatrixFloat_ptr = MatrixFloat_createData(rows, cols, channels, data, copy);
         }
 
+        // TODOC
         public IntPtr getInstancePtr(){
             return m_MatrixFloat_ptr;
         }
 
+        // TODOC
         public int getRows()
         {
             return MatrixFloat_getRows(m_MatrixFloat_ptr);
         }
 
+        // TODOC
         public int getColumns()
         {
             return MatrixFloat_getColumns(m_MatrixFloat_ptr);
         }
 
+        // TODOC
         public int getLayers()
         {
             return MatrixFloat_getLayers(m_MatrixFloat_ptr);
         }
 
+        // TODOC
         public bool isEmpty()
         {
             return MatrixFloat_isEmpty(m_MatrixFloat_ptr);
         }
 
+        // TODOC
         public int getLength()
         {
             return MatrixFloat_getLength(m_MatrixFloat_ptr);
         }
 
+        // TODOC
         public int getSize()
         {
             return MatrixFloat_getSize(m_MatrixFloat_ptr);
         }
 
+        // TODOC
         public void setAt(int row, int column, int layer, float value){
             MatrixFloat_setAt(m_MatrixFloat_ptr, row, column, layer, value);
         }
 
+        // TODOC
         public float getAt(int row, int column, int layer){
             return MatrixFloat_getAt(m_MatrixFloat_ptr, row, column, layer);
         }
 
+        // TODOC
         public float[] getData(){
             m_data = new float[getLength()];
             MatrixFloat_getData(m_MatrixFloat_ptr, m_data);
             return m_data;
         }
 
+        // TODOC
         // [HandleProcessCorruptedStateExceptions]
         public void dispose(){
             if (m_MatrixFloat_ptr != IntPtr.Zero){
@@ -133,14 +147,17 @@ namespace I3DR.Phase
             }
         }
 
+        // TODOC
         ~MatrixFloat()
         {
             dispose();
         }
     }
 
+    // TODOC: Class definition
     public class MatrixUInt8
     {
+        // Import Phase functions from C API
         [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr MatrixUInt8_create(int rows, int columns, int layers);
 
@@ -177,70 +194,84 @@ namespace I3DR.Phase
         [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_getData", CallingConvention = CallingConvention.Cdecl)]
         private static extern void MatrixUInt8_getData(IntPtr mat, [Out] byte[] data);
 
-        private byte[] m_data;
+        private byte[] m_data; // TODOC
 
-        private IntPtr m_MatrixUInt8_ptr;
+        private IntPtr m_MatrixUInt8_ptr; // TODOC
 
+        // TODOC
         public MatrixUInt8(IntPtr MatrixUInt8_ptr){
             m_MatrixUInt8_ptr = MatrixUInt8_ptr;
         }
 
+        // TODOC
         public MatrixUInt8(int rows, int cols, int channels){
             m_MatrixUInt8_ptr = MatrixUInt8_create(rows, cols, channels);
         }
 
+        // TODOC
         public MatrixUInt8(int rows, int cols, int channels, byte[] data, bool copy){
             m_MatrixUInt8_ptr = MatrixUInt8_createData(rows, cols, channels, data, copy);
         }
 
+        // TODOC
         public IntPtr getInstancePtr(){
             return m_MatrixUInt8_ptr;
         }
 
+        // TODOC
         public int getRows()
         {
             return MatrixUInt8_getRows(m_MatrixUInt8_ptr);
         }
 
+        // TODOC
         public int getColumns()
         {
             return MatrixUInt8_getColumns(m_MatrixUInt8_ptr);
         }
 
+        // TODOC
         public int getLayers()
         {
             return MatrixUInt8_getLayers(m_MatrixUInt8_ptr);
         }
 
+        // TODOC
         public bool isEmpty()
         {
             return MatrixUInt8_isEmpty(m_MatrixUInt8_ptr);
         }
 
+        // TODOC
         public int getLength()
         {
             return MatrixUInt8_getLength(m_MatrixUInt8_ptr);
         }
 
+        // TODOC
         public int getSize()
         {
             return MatrixUInt8_getSize(m_MatrixUInt8_ptr);
         }
 
+        // TODOC
         public void setAt(int row, int column, int layer, byte value){
             MatrixUInt8_setAt(m_MatrixUInt8_ptr, row, column, layer, value);
         }
 
+        // TODOC
         public byte getAt(int row, int column, int layer){
             return MatrixUInt8_getAt(m_MatrixUInt8_ptr, row, column, layer);
         }
 
+        // TODOC
         public byte[] getData(){
             m_data = new byte[getLength()];
             MatrixUInt8_getData(m_MatrixUInt8_ptr, m_data);
             return m_data;
         }
 
+        // TODOC
         // [HandleProcessCorruptedStateExceptions]
         public void dispose(){
             if (m_MatrixUInt8_ptr != IntPtr.Zero){
@@ -256,6 +287,7 @@ namespace I3DR.Phase
             }
         }
 
+        // TODOC
         ~MatrixUInt8()
         {
             dispose();

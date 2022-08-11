@@ -13,9 +13,11 @@ using I3DR;
 
 namespace I3DR.Phase.Test
 {
+    // TODOC: Class definition
     [Collection("PhaseSequentialTests")]
     public class StereoVisionTests
-    {
+    {   
+        // TODOC: Test description
         [Fact]
         public void test_StereoVision()
         {

@@ -5,9 +5,7 @@
  * 
  * @file cameracalibration.cs
  * @brief Camera Calibration Wrapper class
- * @details C# wrapper class for Camera Calibration class export.
- * DllImports for using C type exports. Pointer to class instance
- * is passed between functions.
+ * @details TODOC
  */
 
 using System;
@@ -16,6 +14,7 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
+    // TODOC
     public enum CalibrationFileType { 
         ROS_YAML,
         OPENCV_YAML,
