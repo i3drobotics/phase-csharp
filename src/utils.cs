@@ -14,7 +14,10 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
-    // TODOC: Class definition
+    //!  Utils class
+    /*!
+    Utility functions for common tasks in Phase
+    */
     public class Utils
     {
         // Import Phase functions from C API

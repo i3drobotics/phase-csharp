@@ -5,7 +5,7 @@
  * 
  * @file phobosstereocamera.cs
  * @brief Phobos Stereo Camera class
- * @details TODOC
+ * @details Capture data from I3DR's Phobos stereo camera.
  */
 
 using System;
@@ -13,7 +13,10 @@ using System.Runtime.InteropServices;
 
 namespace I3DR.Phase
 {
-    // TODOC: Class definition
+    //!  Phobos Stereo Camera class
+    /*!
+    Capture data from I3DR's Phobos stereo camera.
+    */
     public class PhobosStereoCamera : AbstractStereoCamera
     {
         // Import Phase functions from C API

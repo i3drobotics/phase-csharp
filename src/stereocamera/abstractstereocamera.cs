@@ -5,7 +5,9 @@
  * 
  * @file abstractstereocamera.cs
  * @brief Abstract Stereo Camera class
- * @details TODOC
+ * @details Parent class for building stereo camera
+ * classes. Includes functions/structures common across
+ * all stereo cameras.
  */
 
 using System;
@@ -14,7 +16,12 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
-    // TODOC: Class definition
+    //!  Abstract Stereo Camera class
+    /*!
+    Abstract base class for building stereo camera
+    classes. Includes functions/structures common across
+    all stereo cameras.
+    */
     public class AbstractStereoCamera
     {
         // Import Phase functions from C API

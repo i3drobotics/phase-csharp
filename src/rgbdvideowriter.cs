@@ -5,7 +5,7 @@
  * 
  * @file rgbdvideowriter.cs
  * @brief RGBD Video Writer class
- * @details TODOC
+ * @details Write RGBD video from a mp4 file
  */
 
 using System;
@@ -14,7 +14,10 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
-    // TODOC: Class definition
+    //!  RGBD Video Writer class
+    /*!
+    Write RGBD video to mp4 file
+    */
     public class RGBDVideoWriter
     {
         // Import Phase functions from C API

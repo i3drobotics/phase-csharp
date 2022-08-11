@@ -5,7 +5,7 @@
  * 
  * @file pylonstereocamera.cs
  * @brief Pylon Stereo Camera class
- * @details TODOC
+ * @details Capture data from a stereo camera using Basler cameras.
  */
 
 using System;
@@ -13,7 +13,10 @@ using System.Runtime.InteropServices;
 
 namespace I3DR.Phase
 {
-    // TODOC: Class definition
+    //!  Pylon Stereo Camera class
+    /*!
+    Capture data from a stereo camera using Basler cameras via the Pylon API
+    */
     public class PylonStereoCamera : AbstractStereoCamera
     {
         // Import Phase functions from C API

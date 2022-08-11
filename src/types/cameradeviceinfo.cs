@@ -5,7 +5,8 @@
  * 
  * @file cameradeviceinfo.cs
  * @brief Camera Device Info class
- * @details TODOC
+ * @details Stores information about a camera device
+ * including the camera's serials, interface, and device type
  */
 
 using System;
@@ -14,7 +15,11 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
-    // TODOC
+    //!  Camera Device Info class
+    /*!
+    Structure to hold information on a camera.
+    Includes serial, interface, and device type.
+    */
     public struct CameraDeviceInfo {
         public string left_camera_serial; // right camera serial
         public string right_camera_serial; // left camera serial

@@ -4,8 +4,8 @@
  * @copyright Copyright (c) I3D Robotics Ltd, 2021
  * 
  * @file stereohobm.cs
- * @brief Stereo High-resolution Optimised Block Matcher  class
- * @details TODOC
+ * @brief Stereo High-resolution Optimised Block Matcher class
+ * @details High resolution optimised block matcher.
  */
 
 using System;
@@ -13,7 +13,10 @@ using System.Runtime.InteropServices;
 
 namespace I3DR.Phase
 {
-    // TODOC: Class definition
+    //!  Stereo HOBM class
+    /*!
+    High resolution optimised block matcher for generting disparity from stereo images.
+    */
     public class StereoHOBM : AbstractStereoMatcher
     {
         // Import Phase functions from C API

@@ -14,7 +14,11 @@ namespace I3DR
 {
     namespace Phase
     {
-
+        
+        //!  Demo Camera Read class
+        /*!
+        Example application using RGBD in Phase
+        */
         class DemoRGBD
         {
             static int Main(string[] args)
