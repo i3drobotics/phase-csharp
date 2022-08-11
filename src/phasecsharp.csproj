@@ -4,7 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
-  <Target Name="CopyBuild" AfterTargets="Build" Condition="$([MSBuild]::IsOSPlatform('Windows'))">
+  <Target Name="CopyBuild" AfterTargets="Build">
     <Message Text="Executing CopyBuild task" Importance="High" />
 
     <Copy
@@ -17,7 +17,7 @@
   <ItemGroup>
     <_PhaseDLLs Include="C:\Program Files\I3DR\Phase\bin\*.dll" />
   </ItemGroup>
-  <Target Name="CopyPhaseDlls" AfterTargets="Build" Condition="$([MSBuild]::IsOSPlatform('Windows'))">
+  <Target Name="CopyPhaseDlls" AfterTargets="Build">
     <Message Text="Executing CopyPhaseDlls task" Importance="High" />
     
     <Copy

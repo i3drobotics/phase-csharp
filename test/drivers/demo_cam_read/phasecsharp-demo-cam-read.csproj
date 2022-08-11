@@ -3,21 +3,40 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
+    <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows> 
+    <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX> 
+    <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux> 
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\phasecsharp.csproj" />
   </ItemGroup>
 
-  <Target Name="CopyBuild" AfterTargets="Build" Condition="$([MSBuild]::IsOSPlatform('Windows'))">
+  <Target Name="CopyEXBuild" AfterTargets="Build" Condition="'$(IsWindows)'=='true'">
     <Message Text="Executing CopyBuild task" Importance="High" />
 
     <Copy
-      SourceFiles="$(TargetDir)$(ProjectName).dll"
+      SourceFiles="$(TargetDir)$(ProjectName).exe"
       DestinationFolder="$(TargetDir)../../../../../../deployment/bin" />
 
+    <Message Text="Copied build files to deployment" Importance="High" />
+  </Target>
+
+  <Target Name="CopyEXBuild" AfterTargets="Build" Condition="'$(IsLinux)'=='true'">
+    <Message Text="Executing CopyEXBuild task" Importance="High" />
+
     <Copy
-      SourceFiles="$(TargetDir)$(ProjectName).exe"
+      SourceFiles="$(TargetDir)$(ProjectName)"
+      DestinationFolder="$(TargetDir)../../../../../../deployment/bin" />
+
+    <Message Text="Copied build files to deployment" Importance="High" />
+  </Target>
+
+  <Target Name="CopyBuildDll" AfterTargets="Build" >
+    <Message Text="Executing CopyBuildDll task" Importance="High" />
+
+    <Copy
+      SourceFiles="$(TargetDir)$(ProjectName).dll"
       DestinationFolder="$(TargetDir)../../../../../../deployment/bin" />
 
     <Copy
@@ -30,7 +49,7 @@
   <ItemGroup>
     <_TestData Include="$(TargetDir)../../../../../data/*" />
   </ItemGroup>
-  <Target Name="CopyTestData" AfterTargets="Build" Condition="$([MSBuild]::IsOSPlatform('Windows'))">
+  <Target Name="CopyTestData" AfterTargets="Build" >
     <Message Text="Executing CopyTestData task" Importance="High" />
 
     <Copy
