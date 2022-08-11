@@ -33,6 +33,7 @@ jobs:
         shell: powershell
         run: |
           Expand-Archive -Path phase-${{ env.PHASE_VERSION }}-windows-x86_64.zip -DestinationPath "C:\Program Files\I3DR\Phase"
+          Get-ChildItem -Path "C:\Program Files\I3DR\Phase"
       # Build
       - name: Build
         shell: bash
