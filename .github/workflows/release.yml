@@ -83,6 +83,7 @@ jobs:
         shell: powershell
         run: |
           Expand-Archive -Path phase-${{ env.PHASE_VERSION }}-windows-x86_64.zip -DestinationPath "C:\Program Files\I3DR\Phase"
+          echo "C:\Program Files\I3DR\Phase\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
       # Build
       - name: Build
         shell: bash
