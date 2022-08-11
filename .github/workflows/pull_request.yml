@@ -33,7 +33,7 @@ jobs:
         shell: powershell
         run: |
           Expand-Archive -Path phase-${{ env.PHASE_VERSION }}-windows-x86_64.zip -DestinationPath "C:\Program Files\I3DR\Phase"
-          Get-ChildItem -Path "C:\Program Files\I3DR\Phase"
+          Get-ChildItem -Path "C:\Program Files\I3DR\Phase\install"
       # Build
       - name: Build
         shell: bash
@@ -43,5 +43,5 @@ jobs:
       - name: Unit Test
         shell: bash
         run: |
-          echo "C:\Program Files\I3DR\Phase\bin" >> $GITHUB_PATH
+          echo "C:\Program Files\I3DR\Phase\install\bin" >> $GITHUB_PATH
           dotnet test
