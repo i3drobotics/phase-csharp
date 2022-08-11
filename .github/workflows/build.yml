@@ -42,7 +42,7 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          dotnet build --configuration Release //p:Version=${PROJ_VER}
+          dotnet build --configuration Release
       # Unit Test
       - name: Unit Test
         shell: bash
