@@ -5,9 +5,7 @@
  * 
  * @file common.cs
  * @brief Common types.
- * @details C# wrapper for common types export.
- * DllImports for using C type exports. Pointer to class instance
- * is passed between functions.
+ * @details TODOC
  */
 
 using System;
@@ -16,6 +14,7 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
+    // TODOC
     public struct Point2d {
         public double x;
         public double y;
@@ -25,6 +24,7 @@ namespace I3DR.Phase
         }
     };
 
+    // TODOC
     public struct Point2f {
         public float x;
         public float y;
@@ -34,6 +34,7 @@ namespace I3DR.Phase
         }
     };
 
+    // TODOC
     public struct Point2i {
         public int x;
         public int y;
@@ -43,6 +44,7 @@ namespace I3DR.Phase
         }
     };
 
+    // TODOC
     public struct StereoImagePair
     {
         public byte[] left;
@@ -55,6 +57,7 @@ namespace I3DR.Phase
         }
     }
 
+    // TODOC
     public struct CameraReadResult
     {
         public bool valid;
@@ -69,11 +72,13 @@ namespace I3DR.Phase
         }
     }
 
+    // TODOC
     public enum LeftOrRight { 
         LEFT,
         RIGHT
     };
 
+    // TODOC
     public enum CameraDeviceType { 
         DEVICE_TYPE_GENERIC_PYLON,
         DEVICE_TYPE_GENERIC_UVC,
@@ -82,14 +87,18 @@ namespace I3DR.Phase
         DEVICE_TYPE_TITANIA,
         DEVICE_TYPE_INVALID
     };
+
+    // TODOC
     public enum CameraInterfaceType { 
         INTERFACE_TYPE_USB, INTERFACE_TYPE_GIGE, INTERFACE_TYPE_VIRTUAL
     };
 
+    // TODOC
     public enum StereoMatcherType { 
         STEREO_MATCHER_BM, STEREO_MATCHER_SGBM, STEREO_MATCHER_I3DRSGM, STEREO_MATCHER_HOBM
     };
 
+    // TODOC
     public struct StereoMatcherComputeResult
     {
         public bool valid;
@@ -102,6 +111,7 @@ namespace I3DR.Phase
         }
     }
 
+    // TODOC
     public struct StereoVisionReadResult
     {
         public bool valid;
@@ -118,6 +128,8 @@ namespace I3DR.Phase
         }
     }
 
+
+    // TODOC
     public struct RGBDVideoFrame
     {
         public bool valid;

@@ -4,10 +4,8 @@
  * @copyright Copyright (c) I3D Robotics Ltd, 2021
  * 
  * @file abstractstereocamera.cs
- * @brief Abstract Stereo Camera  class
- * @details C#  class for Abstract Stereo Camera class export.
- * DllImports for using C type exports. Pointer to class instance
- * is passed between functions.
+ * @brief Abstract Stereo Camera class
+ * @details TODOC
  */
 
 using System;
@@ -16,8 +14,10 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
+    // TODOC: Class definition
     public class AbstractStereoCamera
     {
+        // Import Phase functions from C API
         [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_CConnect", CallingConvention = CallingConvention.Cdecl)]
         protected static extern bool AbstractStereoCamera_connect(IntPtr cam);
 
@@ -81,60 +81,74 @@ namespace I3DR.Phase
         [DllImport("phase", EntryPoint = "I3DR_AbstractStereoCamera_dispose", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void AbstractStereoCamera_dispose(IntPtr cam);
 
-        protected IntPtr m_AbstractStereoCamera_instance;
-        private byte[] left_image;
-        private byte[] right_image;
+        protected IntPtr m_AbstractStereoCamera_instance; // TODOC
+        private byte[] left_image; // TODOC
+        private byte[] right_image; // TODOC
         
+        // TODOC
         public AbstractStereoCamera(CameraDeviceInfo camera_device_info){
             init(camera_device_info);
         }
 
+        // TODOC
         public AbstractStereoCamera(IntPtr abstractStereoCamera_instance){
             m_AbstractStereoCamera_instance = abstractStereoCamera_instance;
         }
 
+        // TODOC
         public IntPtr getInstancePtr(){
             return m_AbstractStereoCamera_instance;
         }
 
+        // TODOC
         protected virtual void init(CameraDeviceInfo camera_device_info){}
 
+        // TODOC
         public bool connect(){
             return AbstractStereoCamera_connect(m_AbstractStereoCamera_instance);
         }
 
+        // TODOC
         public bool startCapture(){
             return AbstractStereoCamera_startCapture(m_AbstractStereoCamera_instance);
-        }
+        }  
 
+        // TODOC
         public void stopCapture(){
             AbstractStereoCamera_stopCapture(m_AbstractStereoCamera_instance);
         }
 
+        // TODOC
         public bool isCapturing(){
             return AbstractStereoCamera_isCapturing(m_AbstractStereoCamera_instance);
         }
 
+        // TODOC
         public bool isConnected(){
             return AbstractStereoCamera_isConnected(m_AbstractStereoCamera_instance);
         }
 
+        // TODOC
         public int getWidth(){
             return AbstractStereoCamera_getWidth(m_AbstractStereoCamera_instance);
         }
 
+        // TODOC
         public int getHeight(){
             return AbstractStereoCamera_getHeight(m_AbstractStereoCamera_instance); ;
         }
 
+        // TODOC
         public float getFrameRate(){
             return AbstractStereoCamera_getFrameRate(m_AbstractStereoCamera_instance);
         }
 
+        // TODOC
         public void setTestImagePaths(string left_test_image_path, string right_test_image_path){
             AbstractStereoCamera_setTestImagePaths(m_AbstractStereoCamera_instance, left_test_image_path, right_test_image_path);
         }
 
+        // TODOC
         public CameraReadResult read(int timeout = 1000)
         {
             int image_size = getWidth() * getHeight();
@@ -151,14 +165,17 @@ namespace I3DR.Phase
             return new CameraReadResult(valid, left_image, right_image);
         }
 
+        // TODOC
         public void startReadThread(int timeout = 1000){
             AbstractStereoCamera_startReadThread(m_AbstractStereoCamera_instance, timeout);
         }
 
+        // TODOC
         public bool isReadThreadRunning(){
             return AbstractStereoCamera_isReadThreadRunning(m_AbstractStereoCamera_instance);
         }
 
+        // TODOC
         public CameraReadResult getReadThreadResult()
         {
             int image_size = getWidth() * getHeight();
@@ -175,39 +192,48 @@ namespace I3DR.Phase
             return new CameraReadResult(valid, left_image, right_image);
         }
 
+        // TODOC
         public void setDownsampleFactor(float value){
             AbstractStereoCamera_setDownsampleFactor(m_AbstractStereoCamera_instance, value);
         }
 
+        // TODOC
         public void setExposure(int value){
             AbstractStereoCamera_setExposure(m_AbstractStereoCamera_instance, value);
         }
 
+        // TODOC
         public void setFrameRate(float value){
             AbstractStereoCamera_setFrameRate(m_AbstractStereoCamera_instance, value);
         }
 
+        // TODOC
         public void enableHardwareTrigger(bool enable){
             AbstractStereoCamera_enableHardwareTrigger(m_AbstractStereoCamera_instance, enable);
         }
 
+        // TODOC
         public void setLeftAOI(int x_min, int y_min, int x_max, int y_max){
             AbstractStereoCamera_setLeftAOI(m_AbstractStereoCamera_instance, x_min, y_min, x_max, y_max);
         }
 
+        // TODOC
         public void setRightAOI(int x_min, int y_min, int x_max, int y_max){
             AbstractStereoCamera_setRightAOI(m_AbstractStereoCamera_instance, x_min, y_min, x_max, y_max);
         }
 
+        // TODOC
         public void disconnect(){
             AbstractStereoCamera_disconnect(m_AbstractStereoCamera_instance);
         }
 
+        // TODOC
         public void markDisposed()
         {
             m_AbstractStereoCamera_instance = IntPtr.Zero;
         }
 
+        // TODOC
         // [HandleProcessCorruptedStateExceptions]
         public void dispose(){
             if (m_AbstractStereoCamera_instance != IntPtr.Zero){
@@ -224,6 +250,7 @@ namespace I3DR.Phase
             }
         }
 
+        // TODOC
         ~AbstractStereoCamera()
         {
             dispose();

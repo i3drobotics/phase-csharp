@@ -3,8 +3,8 @@
  * @date 2021-05-26
  * @copyright Copyright (c) I3D Robotics Ltd, 2021
  * 
- * @file main.cs
- * @brief Example application using I3DR Stereo Vision C# API
+ * @file demo_rgbd.cs
+ * @brief Example application using RGBD in Phase
  */
 
 using System;

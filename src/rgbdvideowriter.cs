@@ -5,9 +5,7 @@
  * 
  * @file rgbdvideowriter.cs
  * @brief RGBD Video Writer class
- * @details C# class for RGBD Video Writer class export.
- * DllImports for using C type exports. Pointer to class instance
- * is passed between functions.
+ * @details TODOC
  */
 
 using System;
@@ -16,8 +14,10 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
+    // TODOC: Class definition
     public class RGBDVideoWriter
     {
+        // Import Phase functions from C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr RGBDVideoWriter_create(string rgb_video_filepath, string depth_video_filepath, int width, int height);
 
@@ -51,50 +51,61 @@ namespace I3DR.Phase
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_dispose", CallingConvention = CallingConvention.Cdecl)]
         private static extern void RGBDVideoWriter_dispose(IntPtr writer);
 
-        private IntPtr m_RGBDVideoWriter_instance;
+        private IntPtr m_RGBDVideoWriter_instance; // TODOC
 
+        // TODOC
         public RGBDVideoWriter(string rgb_video_filepath, string depth_video_filepath, int width, int height)
         {
             m_RGBDVideoWriter_instance = RGBDVideoWriter_create(rgb_video_filepath, depth_video_filepath, width, height);
         }
 
+        // TODOC
         public int getWidth(){
             return RGBDVideoWriter_getWidth(m_RGBDVideoWriter_instance);
         }
 
+        // TODOC
         public int getHeight(){
             return RGBDVideoWriter_getHeight(m_RGBDVideoWriter_instance);
         }
 
+        // TODOC
         public void add(byte[] rgb, float[] depth)
         {
             RGBDVideoWriter_add(m_RGBDVideoWriter_instance, rgb, depth);
         }
 
+        // TODOC
         public bool isOpened(){
             return RGBDVideoWriter_isOpened(m_RGBDVideoWriter_instance);
         }
 
+        // TODOC
         public bool save(){
             return RGBDVideoWriter_save(m_RGBDVideoWriter_instance);
         }
 
+        // TODOC
         public void saveThreaded(){
             RGBDVideoWriter_saveThreaded(m_RGBDVideoWriter_instance);
         }
 
+        // TODOC
         public bool isSaveThreadRunning(){
             return RGBDVideoWriter_isSaveThreadRunning(m_RGBDVideoWriter_instance);
         }
 
+        // TODOC
         public bool getSaveThreadResult(){
             return RGBDVideoWriter_getSaveThreadResult(m_RGBDVideoWriter_instance);
         }
 
+        // TODOC
         public void close(){
             RGBDVideoWriter_close(m_RGBDVideoWriter_instance);
         }
 
+        // TODOC
         // [HandleProcessCorruptedStateExceptions]
         public void dispose(){
             
@@ -113,6 +124,7 @@ namespace I3DR.Phase
             }
         }
 
+        // TODOC
         ~RGBDVideoWriter()
         {
             dispose();

@@ -15,9 +15,11 @@ using I3DR;
 
 namespace I3DR.Phase.Test
 {
+    // TODOC: Class definition
     [Collection("PhaseSequentialTests")]
     public class StereoCalibrationTests
     {
+        // TODOC: Test description
         [Fact]
         public void test_LoadCalibration()
         {
@@ -145,6 +147,7 @@ namespace I3DR.Phase.Test
             Console.WriteLine("calibration load test success");
         }
 
+        // TODOC: Test description
         [Fact]
         public void test_SaveCalibration()
         {

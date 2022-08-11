@@ -4,10 +4,8 @@
  * @copyright Copyright (c) I3D Robotics Ltd, 2021
  * 
  * @file stereocalibration.cs
- * @brief Stereo Calibration  class
- * @details C#  class for Stereo Calibration class export.
- * DllImports for using C type exports. Pointer to class instance
- * is passed between functions.
+ * @brief Stereo Calibration class
+ * @details TODOC
  */
 
 using System;
@@ -16,8 +14,11 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
+    // TODOC: Class definition
     public class StereoCameraCalibration
     {
+        // Import Phase functions from C API
+
         // TODO load calibration from cameracalibration types
         // [DllImport("phase", EntryPoint = "I3DR_CStereoCameraCalibration_create", CallingConvention = CallingConvention.Cdecl)]
         // private static extern IntPtr CStereoCameraCalibration_create(string left_yaml_filepath, string right_yaml_filepath);
@@ -61,64 +62,76 @@ namespace I3DR.Phase
         [DllImport("phase", EntryPoint = "I3DR_StereoCameraCalibration_dispose", CallingConvention = CallingConvention.Cdecl)]
         private static extern void StereoCameraCalibration_dispose(IntPtr c);
 
-        private IntPtr m_StereoCameraCalibration_instance;
+        private IntPtr m_StereoCameraCalibration_instance; // TODOC
+        private byte[] left_rect_image; // TODOC
+        private byte[] right_rect_image; // TODOC
+        private float[] Q; // TODOC
 
-        private byte[] left_rect_image;
-        private byte[] right_rect_image;
-        private float[] Q;
-
+        // TODOC
         // public StereoCameraCalibration(string left_yaml_filepath, string right_yaml_filepath)
         // {
         //     m_StereoCameraCalibration_instance = CLoadCalibrationFromFile(
         //         left_yaml_filepath, right_yaml_filepath);
         // }
 
+        // TODOC
         public StereoCameraCalibration(IntPtr stereoCameraCalibration_instance){
             m_StereoCameraCalibration_instance = stereoCameraCalibration_instance;
         }
 
+        // TODOC
         public IntPtr getInstancePtr(){
             return m_StereoCameraCalibration_instance;
         }
 
+        // TODOC
         public static StereoCameraCalibration calibrationFromYAML(string left_yaml_filepath, string right_yaml_filepath){
             return new StereoCameraCalibration(CCalibrationFromYAML(left_yaml_filepath, right_yaml_filepath));
         }
 
+        // TODOC
         public static StereoCameraCalibration calibrationFromIdeal(int width, int height, double pixel_pitch, double focal_length, double baseline){
             return new StereoCameraCalibration(CCalibrationFromIdeal(width, height, pixel_pitch, focal_length, baseline));
         }
 
+        // TODOC
         public bool isValid(){
             return CIsValid(m_StereoCameraCalibration_instance);
         }
 
+        // TODOC
         public bool isValidSize(int width, int height){
             return CIsValidSize(m_StereoCameraCalibration_instance, width, height);
         }
 
+        // TODOC
         public float getHFOV(){
             return CGetHFOV(m_StereoCameraCalibration_instance);
         }
 
+        // TODOC
         public double getBaseline(){
             return CGetBaseline(m_StereoCameraCalibration_instance);
         }
 
+        // TODOC
         public float getDownsampleFactor(){
             return CGetDownsampleFactor(m_StereoCameraCalibration_instance);
         }
 
+        // TODOC
         public float[] getQ(){
             Q = new float[4*4];
             CGetQ(m_StereoCameraCalibration_instance, Q);
             return Q;
         }
 
+        // TODOC
         public void setDownsampleFactor(float value){
             CSetDownsampleFactor(m_StereoCameraCalibration_instance, value);
         }
 
+        // TODOC
         public StereoImagePair rectify(byte[] left_image, byte[] right_image, int width, int height){
             left_rect_image = new byte[width * height * 3];
             right_rect_image = new byte[width * height * 3];
@@ -131,6 +144,7 @@ namespace I3DR.Phase
             return new StereoImagePair(left_rect_image, right_rect_image);
         }
 
+        // TODOC
         public Point2i remapPoint(Point2i point, LeftOrRight camera_selection){
             int remapped_x = -1;
             int remapped_y = -1;
@@ -143,6 +157,7 @@ namespace I3DR.Phase
             return new Point2i(remapped_x, remapped_y);
         }
 
+        // TODOC
         public bool saveToYAML(string left_calibration_filepath, string right_calibration_filepath, CalibrationFileType cal_file_type = CalibrationFileType.ROS_YAML){
             return CSaveToYAML(
                 m_StereoCameraCalibration_instance,
@@ -151,11 +166,13 @@ namespace I3DR.Phase
             );
         }
 
+        // TODOC
         public void markDisposed()
         {
             m_StereoCameraCalibration_instance = IntPtr.Zero;
         }
 
+        // TODOC
         // [HandleProcessCorruptedStateExceptions]
         public void dispose(){
             if (m_StereoCameraCalibration_instance != IntPtr.Zero){
@@ -171,6 +188,7 @@ namespace I3DR.Phase
             }
         }
 
+        // TODOC
         ~StereoCameraCalibration()
         {
             dispose();

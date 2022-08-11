@@ -5,9 +5,7 @@
  * 
  * @file cameradeviceinfo.cs
  * @brief Camera Device Info class
- * @details C# class for Camera Device Info class export.
- * DllImports for using C type exports. Pointer to class instance
- * is passed between functions.
+ * @details TODOC
  */
 
 using System;
@@ -16,12 +14,14 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
+    // TODOC
     public struct CameraDeviceInfo {
         public string left_camera_serial; // right camera serial
         public string right_camera_serial; // left camera serial
         public string unique_serial; // defined unique serial for stereo camera pair
         public CameraDeviceType device_type; // device type of camera
         public CameraInterfaceType interface_type; // interface type of camera
+        // TODOC
         public CameraDeviceInfo(
             string left_camera_serial, string right_camera_serial,
             string unique_serial, 

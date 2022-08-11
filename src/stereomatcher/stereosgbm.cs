@@ -5,9 +5,7 @@
  * 
  * @file stereosgbm.cs
  * @brief Stereo Semi-Global Block Matcher  class
- * @details C#  class for Stereo Semi-Global Block Matcher class export.
- * DllImports for using C type exports. Pointer to class instance
- * is passed between functions.
+ * @details TODOC
  */
 
 using System;
@@ -15,9 +13,10 @@ using System.Runtime.InteropServices;
 
 namespace I3DR.Phase
 {
+    // TODOC: Class definition
     public class StereoSGBM : AbstractStereoMatcher
     {
-        // Straight From the c++ Dll (unmanaged)
+        // Import Phase functions from C API
         [DllImport("phase", EntryPoint = "I3DR_StereoSGBM_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr StereoSGBM_create();
 
@@ -30,20 +29,25 @@ namespace I3DR.Phase
         [DllImport("phase", EntryPoint = "I3DR_StereoSGBM_setNumDisparities", CallingConvention = CallingConvention.Cdecl)]
         private static extern void StereoSGBM_setNumDisparities(IntPtr matcher, int value);
 
+        // TODOC
         public StereoSGBM(IntPtr abstractStereoMatcher_instance): base(abstractStereoMatcher_instance){}
 
+        // TODOC
         public StereoSGBM(): base(){
             m_AbstractStereoMatcher_instance = StereoSGBM_create();
         }
 
+        // TODOC
         public void setWindowSize(int value){
             StereoSGBM_setWindowSize(m_AbstractStereoMatcher_instance, value);
         }
 
+        // TODOC
         public void setMinDisparity(int value){
             StereoSGBM_setMinDisparity(m_AbstractStereoMatcher_instance, value);
         }
 
+        // TODOC
         public void setNumDisparities(int value){
             StereoSGBM_setNumDisparities(m_AbstractStereoMatcher_instance, value);
         }

@@ -5,9 +5,7 @@
  * 
  * @file stereoprocess.cs
  * @brief Stereo File System Wrapper class
- * @details C# wrapper class for Stereo Filesystem class export.
- * DllImports for using C type exports. Pointer to class instance
- * is passed between functions.
+ * @details TODOC
  */
 
 using System;
@@ -16,9 +14,10 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
+    // TODOC: Class definition
     public class StereoProcess
     {
-        // Straight From the c++ Dll (unmanaged)
+        // Import Phase functions from C API
         [DllImport("phase", EntryPoint = "I3DR_ProcessStereoFiles")]
         private static extern bool CProcessStereoFiles(
             StereoParams stereo_params, string left_yaml, string right_yaml,
@@ -29,12 +28,14 @@ namespace I3DR.Phase
             StereoParams stereo_params, IntPtr left_image, IntPtr right_image,
             IntPtr calibration, bool rectify);
 
+        // TODOC
         static public bool processStereoFiles(StereoParams stereo_params, string left_yaml, string right_yaml,
             string left_image_path, string right_image_path, string output_folder, bool rectify = true)
         {
             return CProcessStereoFiles(stereo_params, left_yaml, right_yaml, left_image_path, right_image_path, output_folder, rectify);
         }
 
+        // TODOC
         static public MatrixFloat processStereo(
             StereoParams stereo_params, MatrixUInt8 left_image, MatrixUInt8 right_image,
             StereoCameraCalibration calibration, bool rectify = true)

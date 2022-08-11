@@ -5,9 +5,7 @@
  * 
  * @file utils.cs
  * @brief Utility functions.
- * @details C# class for Utility functions export.
- * DllImports for using C type exports. Pointer to class instance
- * is passed between functions.
+ * @details TODOC
  */
 
 using System;
@@ -16,9 +14,10 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
+    // TODOC: Class definition
     public class Utils
     {
-        // Straight From the c++ Dll (unmanaged)
+        // Import Phase functions from C API
         [DllImport("phase", EntryPoint = "I3DR_CScaleImageUChar")]
         private static extern void CScaleImageUChar([In] byte[] in_img, int width, int height, float scale_factor, [Out] byte[] out_scaled_img);
 
@@ -70,6 +69,7 @@ namespace I3DR.Phase
         [DllImport("phase", EntryPoint = "I3DR_CcvMatIsEqualDouble")]
         private static extern bool CcvMatIsEqualDouble([In] double[] in_mat1, [In] double[] in_mat2, int width, int height, int channels);
 
+        // TODOC
         static public byte[] scaleImage(byte[] image, int input_width, int input_height, float scaling_factor)
         {
             int scaled_width = (int)((float)input_width * scaling_factor);
@@ -79,6 +79,7 @@ namespace I3DR.Phase
             return scaled_image;
         }
 
+        // TODOC
         static public byte[] normaliseDisparity(float[] disparity, int width, int height)
         {
             byte[] norm_disparity = new byte[width * height * 3];
@@ -86,6 +87,7 @@ namespace I3DR.Phase
             return norm_disparity;
         }
 
+        // TODOC
         static public byte[] bgra2rgba(byte[] bgra, int width, int height)
         {
             byte[] rgba = new byte[width * height * 4];
@@ -93,6 +95,7 @@ namespace I3DR.Phase
             return rgba;
         }
 
+        // TODOC
         static public byte[] bgr2rgba(byte[] bgr, int width, int height)
         {
             byte[] rgba = new byte[width * height * 4];
@@ -100,6 +103,7 @@ namespace I3DR.Phase
             return rgba;
         }
 
+        // TODOC
         static public byte[] bgr2bgra(byte[] bgr, int width, int height)
         {
             byte[] bgra = new byte[width * height * 4];
@@ -107,6 +111,7 @@ namespace I3DR.Phase
             return bgra;
         }
 
+        // TODOC
         static public float[] disparity2Depth(float[] disparity, int width, int height, float[] Q)
         {
             float[] depth = new float[width * height];
@@ -114,6 +119,7 @@ namespace I3DR.Phase
             return depth;
         }
 
+        // TODOC
         static public float[] disparity2xyz(float[] disparity, int width, int height, float[] Q)
         {
             float[] xyz = new float[width * height * 3];
@@ -121,6 +127,7 @@ namespace I3DR.Phase
             return xyz;
         }
 
+        // TODOC
         static public float[] depth2xyz(float[] depth, int width, int height, float hfov)
         {
             float[] xyz = new float[width * height * 3];
@@ -128,6 +135,7 @@ namespace I3DR.Phase
             return xyz;
         }
 
+        // TODOC
         static public float[] xyz2depth(float[] xyz, int width, int height)
         {
             float[] depth = new float[width * height];
@@ -135,11 +143,13 @@ namespace I3DR.Phase
             return depth;
         }
 
+        // TODOC
         static public int showImage(string window_name, byte[] image, int width, int height)
         {
             return CShowImageUChar(window_name, image, width, height);
         }
 
+        // TODOC
         static public byte[] readImage(string image_filepath, int width, int height)
         {
             byte[] image = new byte[width * height * 3];
@@ -149,6 +159,7 @@ namespace I3DR.Phase
             return new byte[0];
         }
 
+        // TODOC
         static public byte[] flip(byte[] in_img, int width, int height, int channels, int flipcode)
         {
             byte[] flipped_img = new byte[width * height * channels];
@@ -156,6 +167,7 @@ namespace I3DR.Phase
             return flipped_img;
         }
 
+        // TODOC
         static public float[] flip(float[] in_img, int width, int height, int channels, int flipcode)
         {
             float[] flipped_img = new float[width * height * channels];
@@ -163,21 +175,25 @@ namespace I3DR.Phase
             return flipped_img;
         }
 
+        // TODOC
         static public bool savePLY(string ply_filepath, float[] xyz, byte[] bgr, int width, int height)
         {
             return CSavePLY(ply_filepath, xyz, bgr, width, height);
         }
 
+        // TODOC
         static public bool cvMatIsEqual(byte[] in_mat1, byte[] in_mat2, int width, int height, int channels)
         {
             return CcvMatIsEqualUChar(in_mat1, in_mat2, width, height, channels);
         }
 
+        // TODOC
         static public bool cvMatIsEqual(float[] in_mat1, float[] in_mat2, int width, int height, int channels)
         {
             return CcvMatIsEqualFloat(in_mat1, in_mat2, width, height, channels);
         }
 
+        // TODOC
         static public bool cvMatIsEqual(double[] in_mat1, double[] in_mat2, int width, int height, int channels)
         {
             return CcvMatIsEqualDouble(in_mat1, in_mat2, width, height, channels);

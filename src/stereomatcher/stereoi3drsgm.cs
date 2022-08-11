@@ -3,11 +3,9 @@
  * @date 2021-05-26
  * @copyright Copyright (c) I3D Robotics Ltd, 2021
  * 
- * @file stereobm.cs
+ * @file stereoi3drsgm.cs
  * @brief I3DR's Semi-Global Stereo Matcher  class
- * @details C#  class for I3DR's Semi-Global Stereo Matcher class export.
- * DllImports for using C type exports. Pointer to class instance
- * is passed between functions.
+ * @details TODOC
  */
  
 using System;
@@ -15,9 +13,10 @@ using System.Runtime.InteropServices;
 
 namespace I3DR.Phase
 {
+    // TODOC: Class definition
     public class StereoI3DRSGM : AbstractStereoMatcher
     {
-        // Straight From the c++ Dll (unmanaged)
+        // Import Phase functions from C API
         [DllImport("phase", EntryPoint = "I3DR_StereoI3DRSGM_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr StereoI3DRSGM_create();
 
@@ -45,40 +44,50 @@ namespace I3DR.Phase
         [DllImport("phase", EntryPoint = "I3DR_StereoI3DRSGM_isLicenseValid", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool StereoI3DRSGM_isLicenseValid();
 
+        // TODOC
         public StereoI3DRSGM(IntPtr abstractStereoMatcher_instance): base(abstractStereoMatcher_instance){}
 
+        // TODOC
         public StereoI3DRSGM(): base(){
             m_AbstractStereoMatcher_instance = StereoI3DRSGM_create();
         }
 
+        // TODOC
         public void setWindowSize(int value){
             StereoI3DRSGM_setWindowSize(m_AbstractStereoMatcher_instance, value);
         }
 
+        // TODOC
         public void setMinDisparity(int value){
             StereoI3DRSGM_setMinDisparity(m_AbstractStereoMatcher_instance, value);
         }
 
+        // TODOC
         public void setNumDisparities(int value){
             StereoI3DRSGM_setNumDisparities(m_AbstractStereoMatcher_instance, value);
         }
 
+        // TODOC
         public void setSpeckleMaxSize(int value){
             StereoI3DRSGM_setSpeckleMaxSize(m_AbstractStereoMatcher_instance, value);
         }
 
+        // TODOC
         public void setSpeckleMaxDiff(float value){
             StereoI3DRSGM_setSpeckleMaxDiff(m_AbstractStereoMatcher_instance, value);
         }
 
+        // TODOC
         public void enableSubpixel(bool enable){
             StereoI3DRSGM_enableSubpixel(m_AbstractStereoMatcher_instance, enable);
         }
 
+        // TODOC
         public void enableInterpolation(bool enable){
             StereoI3DRSGM_enableInterpolation(m_AbstractStereoMatcher_instance, enable);
         }
 
+        // TODOC
         public static bool isLicenseValid(){
             return StereoI3DRSGM_isLicenseValid();
         }
