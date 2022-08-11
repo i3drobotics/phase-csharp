@@ -4,6 +4,10 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <Target Name="CreateVersionFile" BeforeTargets="BeforeBuild">
+    <WriteLinesToFile File="$(TargetDir)../../../../version.txt" Lines="$(Version)" Overwrite="true" />
+  </Target>
+
   <Target Name="CopyBuild" AfterTargets="Build">
     <Message Text="Executing CopyBuild task" Importance="High" />
 
