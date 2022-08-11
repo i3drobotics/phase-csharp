@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <Target Name="CreateVersionFile" BeforeTargets="BeforeBuild">
+    <WriteLinesToFile File="$(TargetDir)../../../../version.txt" Lines="$(Version)" Overwrite="true" />
+  </Target>
+
+  <Target Name="CopyBuild" AfterTargets="Build">
+    <Message Text="Executing CopyBuild task" Importance="High" />
+
+    <Copy
+      SourceFiles="$(TargetDir)$(ProjectName).dll"
+      DestinationFolder="$(TargetDir)../../../../deployment/bin" />
+
+    <Message Text="Copied build files to deployment" Importance="High" />
+  </Target>
+
+  <ItemGroup>
+    <_PhaseDLLs Include="C:\Program Files\I3DR\Phase\bin\*.dll" />
+  </ItemGroup>
+  <Target Name="CopyPhaseDlls" AfterTargets="Build">
+    <Message Text="Executing CopyPhaseDlls task" Importance="High" />
+    
+    <Copy
+      SourceFiles="@(_PhaseDLLs)"
+      DestinationFolder="$(TargetDir)../../../../deployment/bin" />
+
+    <Message Text="Copied Phase dlls files to deplyoment" Importance="High" />
+  </Target>
+
+</Project>

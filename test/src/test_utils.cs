@@ -8,18 +8,17 @@
  * @details Unit tests generated using MSTest
  */
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System;
 using System.IO;
 using I3DR;
 
 namespace I3DR.Phase.Test
 {
-
-    [TestClass]
+    [Collection("PhaseSequentialTests")]
     public class UtilsTests
     {
-        [TestMethod]
+        [Fact]
         public void test_Utils_checkEqualMat()
         {
             // Create equal matrices
@@ -34,20 +33,20 @@ namespace I3DR.Phase.Test
             }
 
             // Check equal is equal check is correct
-            Assert.IsTrue(Utils.cvMatIsEqual(mat_a, mat_b, width, height, channels));
+            Assert.True(Utils.cvMatIsEqual(mat_a, mat_b, width, height, channels));
 
             // Change one element to make it not equal
             mat_a[0] = 0.0f;
 
             // Check is not equal check is correct
-            Assert.IsTrue(!Utils.cvMatIsEqual(mat_a, mat_b, width, height, channels));
+            Assert.True(!Utils.cvMatIsEqual(mat_a, mat_b, width, height, channels));
         }
 
-        [TestMethod]
+        [Fact]
         public void test_Utils_savePLY()
         {
             string test_folder = ".phase_test";
-            string data_folder = "data";
+            string data_folder = "../../../../data";
             string left_image_file = data_folder + "/left.png";
             string right_image_file = data_folder + "/right.png";
             string left_yaml = test_folder + "/left.yaml";
@@ -110,12 +109,12 @@ namespace I3DR.Phase.Test
             byte[] left_image_cv = Utils.readImage(left_image_file, image_width, image_height);
             byte[] right_image_cv = Utils.readImage(right_image_file, image_width, image_height);
 
-            Assert.IsTrue(left_image_cv.Length != 0);
-            Assert.IsTrue(right_image_cv.Length != 0);
+            Assert.True(left_image_cv.Length != 0);
+            Assert.True(right_image_cv.Length != 0);
 
             StereoCameraCalibration calibration = StereoCameraCalibration.calibrationFromYAML(left_yaml, right_yaml);
 
-            Assert.IsTrue(calibration.isValid());
+            Assert.True(calibration.isValid());
 
             StereoImagePair rect_image_pair = calibration.rectify(left_image_cv, right_image_cv, image_width, image_height);
 
@@ -139,14 +138,14 @@ namespace I3DR.Phase.Test
                 stereo_params, left_image, right_image, calibration, false
             );
 
-            Assert.IsTrue(!disparity.isEmpty());
+            Assert.True(!disparity.isEmpty());
 
             float[] disparity_cv = new float[disparity.getLength()];
             disparity_cv = disparity.getData();
 
             float[] depth = Utils.disparity2Depth(disparity_cv, image_width, image_height, calibration.getQ());
 
-            Assert.IsTrue(depth.Length != 0);
+            Assert.True(depth.Length != 0);
 
             float[] xyz = Utils.depth2xyz(depth, image_width, image_height, calibration.getHFOV());
 

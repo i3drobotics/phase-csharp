@@ -1,4 +1,7 @@
 build
+obj
+bin
 version.txt
 install
 deployment
+.phase_test

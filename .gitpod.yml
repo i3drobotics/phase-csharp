@@ -1,1 +1,12 @@
-# TODO add linux suport
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: Restore & Build
+    init: |
+      dotnet restore
+      dotnet build
+
+vscode:
+  extensions:
+    - muhammad-sammy.csharp
