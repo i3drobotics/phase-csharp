@@ -24,13 +24,12 @@ namespace I3DR.Phase
     Struture to store stereo parameters
     */
     public struct StereoParams {
-        public StereoMatcherType matcherType; // TODOC
-        public int windowSize; // TODOC
-        public int minDisparity; // TODOC
-        public int numDisparities; // TODOC
-        public bool interpolation; // TODOC
+        public StereoMatcherType matcherType; //!< Stereo matcher type
+        public int windowSize; //!< Window size
+        public int minDisparity; //!< Minimum disparity
+        public int numDisparities; //!< Number of disparities
+        public bool interpolation; //!< Enable/disable interpolation
 
-        // TODOC
         public StereoParams(StereoMatcherType matcherType, int windowSize, int minDisparity, int numDisparities, bool interpolation) {
             this.matcherType = matcherType;
             this.windowSize = windowSize;
@@ -51,42 +50,69 @@ namespace I3DR.Phase
     */
     public class AbstractStereoMatcher
     {
-        // Import Phase functions from C API
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_AbstractStereoMatcher_CCompute", CallingConvention = CallingConvention.Cdecl)]
         protected static extern bool AbstractStereoMatcher_CCompute(IntPtr matcher, [In] byte[] left_image, [In] byte[] right_image, int in_width, int in_height, [Out] float[] disparity);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_AbstractStereoMatcher_CStartComputeThread", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void AbstractStereoMatcher_CStartComputeThread(IntPtr matcher, [In] byte[] left_image, [In] byte[] right_image, int in_width, int in_height);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_AbstractStereoMatcher_CIsComputeThreadRunning", CallingConvention = CallingConvention.Cdecl)]
         protected static extern bool AbstractStereoMatcher_CIsComputeThreadRunning(IntPtr matcher);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_AbstractStereoMatcher_CGetComputeThreadResult", CallingConvention = CallingConvention.Cdecl)]
         protected static extern bool AbstractStereoMatcher_CGetComputeThreadResult(IntPtr matcher, int width, int height, [Out] float[] disparity);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_AbstractStereoMatcher_dispose", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void AbstractStereoMatcher_dispose(IntPtr matcher);
         
-        protected IntPtr m_AbstractStereoMatcher_instance; // TODOC
-        private float[] disparity; // TODOC
+        protected IntPtr m_AbstractStereoMatcher_instance; //!< pointer to AbstractStereoMatcher C API instance
+        private float[] disparity; //!< store disparity image
 
-        // TODOC
+        /*!
+        * AbstractStereoMatcher constructor \n
+        * Initalise Stereo matcher and set default matching parameters.
+        * 
+        */
         public AbstractStereoMatcher(){}
 
-        // TODOC
+        /*!
+        * Initalise class using C API class instance reference
+        * 
+        * @IntPtr stereoCameraCalibration_instance
+        */
         public AbstractStereoMatcher(IntPtr abstractStereoMatcher_instance){
             m_AbstractStereoMatcher_instance = abstractStereoMatcher_instance;
         }
 
-        // TODOC
+        /*!
+        * Get C API instance reference
+        * 
+        */
         public IntPtr getInstancePtr(){
             return m_AbstractStereoMatcher_instance;
         }
 
-        // TODOC
+        /*!
+        * Initalise stereo matcher
+        * Should be implemented in derived classes.
+        * 
+        */
         protected virtual void init(){}
 
-        // TODOC
+        /*!
+        * Compute stereo match \n
+        * Generates disparity from stereo image pair. \n
+        * Should be implemented in derived classes.
+        * 
+        * @param left_image left image
+        * @param right_image right image
+        * @return results from stereo matching compute 
+        */
         public StereoMatcherComputeResult compute(byte[] left_image, byte[] right_image, int width, int height)
         {
             disparity = new float[width * height];
@@ -100,14 +126,25 @@ namespace I3DR.Phase
             return processComputeResult(valid);
         }
 
-        // TODOC
+        /*!
+        * Format compute result
+        * 
+        * @param valid validity of compute result
+        */
         private StereoMatcherComputeResult processComputeResult(bool valid)
         {
             StereoMatcherComputeResult result = new StereoMatcherComputeResult(valid, disparity);
             return result;
         }
 
-        // TODOC
+        /*!
+        * Start threaded compute of stereo match \n
+        * Generates disparity from stereo image pair. \n
+        * Use getComputeThreadResult() to get results of compute.
+        * 
+        * @param left_image left image
+        * @param right_image right image
+        */
         public void startComputeThread(byte[] left_image, byte[] right_image, int width, int height)
         {
             AbstractStereoMatcher_CStartComputeThread(
@@ -118,12 +155,24 @@ namespace I3DR.Phase
             );
         }
 
-        // TODOC
+        /*!
+        * Check if compute thread running \n
+        * Should be used with startComputeThread()
+        * 
+        * @return compute thread running status
+        */
         public bool isComputeThreadRunning(){
             return AbstractStereoMatcher_CIsComputeThreadRunning(m_AbstractStereoMatcher_instance);
         }
 
-        // TODOC
+        /*!
+        * Get results from threaded compute process \n
+        * Should be used with startComputeThread()
+        * 
+        * @param width width of image
+        * @param height height of image
+        * @return results from compute process
+        */
         public StereoMatcherComputeResult getComputeThreadResult(int width, int height)
         {
             disparity = new float[width * height];
@@ -135,13 +184,19 @@ namespace I3DR.Phase
             return processComputeResult(valid);
         }
 
-        // TODOC
+        /*!
+        * Remove C API instance reference
+        * 
+        */
         public void markDisposed()
         {
             m_AbstractStereoMatcher_instance = IntPtr.Zero;
         }
 
-        // TODOC
+        /*!
+        * Manually dispose instance of RGBD Video Writer class
+        * 
+        */
         // [HandleProcessCorruptedStateExceptions]
         public void dispose(){
             if (m_AbstractStereoMatcher_instance != IntPtr.Zero){
@@ -157,7 +212,6 @@ namespace I3DR.Phase
             }
         }
 
-        // TODOC
         ~AbstractStereoMatcher()
         {
             dispose();

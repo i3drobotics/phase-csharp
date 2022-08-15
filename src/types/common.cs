@@ -19,8 +19,8 @@ namespace I3DR.Phase
     Struture to 2D point (x, y) with double precision
     */
     public struct Point2d {
-        public double x;
-        public double y;
+        public double x; //!< x coordinate
+        public double y; //!< y coordinate
         public Point2d(double x, double y) {
             this.x = x;
             this.y = y;
@@ -32,8 +32,8 @@ namespace I3DR.Phase
     Struture to 2D point (x, y) with float precision
     */
     public struct Point2f {
-        public float x;
-        public float y;
+        public float x; //!< x coordinate
+        public float y; //!< y coordinate
         public Point2f(float x, float y) {
             this.x = x;
             this.y = y;
@@ -45,8 +45,8 @@ namespace I3DR.Phase
     Struture to 2D point (x, y) with integer precision
     */
     public struct Point2i {
-        public int x;
-        public int y;
+        public int x; //!< x coordinate
+        public int y; //!< y coordinate
         public Point2i(int x, int y) {
             this.x = x;
             this.y = y;
@@ -59,8 +59,8 @@ namespace I3DR.Phase
     */
     public struct StereoImagePair
     {
-        public byte[] left;
-        public byte[] right;
+        public byte[] left; //!< left image
+        public byte[] right; //!< right image
 
         public StereoImagePair(byte[] left, byte[] right)
         {
@@ -75,9 +75,9 @@ namespace I3DR.Phase
     */
     public struct CameraReadResult
     {
-        public bool valid;
-        public byte[] left_image;
-        public byte[] right_image;
+        public bool valid; //!< true if camera read was successful
+        public byte[] left_image; //!< left camera image
+        public byte[] right_image; //!< right camera image
 
         public CameraReadResult(bool valid, byte[] left_image, byte[] right_image)
         {
@@ -92,8 +92,8 @@ namespace I3DR.Phase
     Enum to indicate left or right camera/image
     */
     public enum LeftOrRight { 
-        LEFT,
-        RIGHT
+        LEFT, //!< Left camera/image
+        RIGHT //!< Right camera/image
     };
 
     //!  Camera Device Type enum
@@ -101,12 +101,12 @@ namespace I3DR.Phase
     Enum to indicate the device type of the camera. Used in stereo camera class to select which type to use.
     */
     public enum CameraDeviceType { 
-        DEVICE_TYPE_GENERIC_PYLON,
-        DEVICE_TYPE_GENERIC_UVC,
-        DEVICE_TYPE_DEIMOS,
-        DEVICE_TYPE_PHOBOS,
-        DEVICE_TYPE_TITANIA,
-        DEVICE_TYPE_INVALID
+        DEVICE_TYPE_GENERIC_PYLON, //!< Generic Pylon device
+        DEVICE_TYPE_GENERIC_UVC, //!< Generic UVC device
+        DEVICE_TYPE_DEIMOS, //!< I3DR's Deimos device
+        DEVICE_TYPE_PHOBOS, //!< I3DR's Phobos device
+        DEVICE_TYPE_TITANIA, //!< I3DR's Titania device
+        DEVICE_TYPE_INVALID //!< Invalid device
     };
 
     //!  Camera Interface Type enum
@@ -114,7 +114,10 @@ namespace I3DR.Phase
     Enum to indicate the interface type of the camera. Used in stereo camera class to select which interface to use.
     */
     public enum CameraInterfaceType { 
-        INTERFACE_TYPE_USB, INTERFACE_TYPE_GIGE, INTERFACE_TYPE_VIRTUAL
+        INTERFACE_TYPE_USB, //!< USB interface
+        INTERFACE_TYPE_GIGE, //!< GigE interface
+        INTERFACE_TYPE_VIRTUAL, //!< Virtual interface
+        INTERFACE_TYPE_INVALID //!< Invalid interface
     };
 
     //!  Stereo Matcher Type enum
@@ -122,7 +125,10 @@ namespace I3DR.Phase
     Enum to indicate stereo matcher type. Used in stereo matcher class to select which matcher to use.
     */
     public enum StereoMatcherType { 
-        STEREO_MATCHER_BM, STEREO_MATCHER_SGBM, STEREO_MATCHER_I3DRSGM, STEREO_MATCHER_HOBM
+        STEREO_MATCHER_BM, //!< OpenCV Block Matcher
+        STEREO_MATCHER_SGBM, //!< OpenCV Semi-Global Block Matcher
+        STEREO_MATCHER_I3DRSGM, //!< I3DR's Semi-Global Block Matcher
+        STEREO_MATCHER_HOBM, //!< I3DR's High resolution Optimised Block Matcher
     };
 
     //!  Stereo Matcher Compute Result structure
@@ -131,8 +137,8 @@ namespace I3DR.Phase
     */
     public struct StereoMatcherComputeResult
     {
-        public bool valid;
-        public float[] disparity;
+        public bool valid; //!< true if stereo match was successful
+        public float[] disparity; //!< disparity image
 
         public StereoMatcherComputeResult(bool valid, float[] disparity)
         {
@@ -147,10 +153,10 @@ namespace I3DR.Phase
     */
     public struct StereoVisionReadResult
     {
-        public bool valid;
-        public byte[] left_image;
-        public byte[] right_image;
-        public float[] disparity;
+        public bool valid; //!< true if valid frame
+        public byte[] left_image; //!< left image
+        public byte[] right_image; //!< right image
+        public float[] disparity; //!< disparity image
 
         public StereoVisionReadResult(bool valid, byte[] left_image, byte[] right_image, float[] disparity)
         {
@@ -168,9 +174,9 @@ namespace I3DR.Phase
     */
     public struct RGBDVideoFrame
     {
-        public bool valid;
-        public byte[] image;
-        public float[] depth;
+        public bool valid; //!< true if frame is valid
+        public byte[] image; //!< image data (RGB)
+        public float[] depth; //!< depth data
 
         public RGBDVideoFrame(bool valid, byte[] image, float[] depth)
         {
