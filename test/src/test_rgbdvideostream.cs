@@ -15,11 +15,11 @@ using I3DR;
 
 namespace I3DR.Phase.Test
 {
-    // TODOC: Class definition
+    // Tests for RGBDVideoStream
     [Collection("PhaseSequentialTests")]
     public class RGBDVideoStreamTests
     {
-        // TODOC: Test description
+        // Test RGBD video stream can be created and read
         [Fact]
         public void test_RGBDVideoStream()
         {

@@ -13,7 +13,7 @@ using I3DR;
 
 namespace I3DR.Phase.Test
 {
-    // TODOC: Class definition
+    // Tests for StereoMatcher
     [Collection("PhaseSequentialTests")]
     public class StereoMatcherTests
     {

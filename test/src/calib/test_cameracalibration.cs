@@ -13,7 +13,7 @@ using I3DR;
 
 namespace I3DR.Phase.Test
 {
-    // TODOC: Class definition
+    // Tests for CameraCalibration
     [Collection("PhaseSequentialTests")]
     public class CameraCalibrationTests
     {
