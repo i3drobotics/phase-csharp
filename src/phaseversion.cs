@@ -36,23 +36,39 @@ namespace I3DR.Phase
         [DllImport("phase", EntryPoint = "I3DR_getVersionPatch", CallingConvention = CallingConvention.Cdecl)]
         private static extern int I3DR_getVersionPatch();
 
-        // TODOC
+        /*!
+        * Get the Phase version information in format "major.minor.patch"
+        * 
+        * @return Phase version string
+        */
         public static string getVersionString(){
             // using safe integer passing rather than relying on string passing
             return getVersionMajor().ToString() + "." + getVersionMinor().ToString() + "." + getVersionPatch().ToString();
         }
 
-        // TODOC
+        /*!
+        * Get the major Phase version number
+        * 
+        * @return Phase major version number
+        */
         public static int getVersionMajor(){
             return I3DR_getVersionMajor();
         }
 
-        // TODOC
+        /*!
+        * Get the minor Phase version number
+        * 
+        * @return Phase minor version number
+        */
         public static int getVersionMinor(){
             return I3DR_getVersionMinor();
         }
 
-        // TODOC
+        /*!
+        * Get the patch Phase version number
+        * 
+        * @return Phase patch version number
+        */
         public static int getVersionPatch(){
             return I3DR_getVersionPatch();
         }

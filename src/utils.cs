@@ -74,7 +74,7 @@ namespace I3DR.Phase
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_CSavePLY")]
-        private static extern bool CSavePLY(string ply_filepath, [In] float[] in_xyz, byte[] in_bgr, int width, int height);
+        private static extern bool CSavePLY(string ply_filepath, [In] float[] in_xyz, byte[] in_rgb, int width, int height);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_CcvMatIsEqualUChar")]
@@ -98,12 +98,12 @@ namespace I3DR.Phase
         * @param scale_factor scaling factor to apply (0.5 = half size, 2.0 = double size)
         * @return scaled image
         */
-        static public byte[] scaleImage(byte[] image, int input_width, int input_height, float scaling_factor)
+        static public byte[] scaleImage(byte[] image, int input_width, int input_height, float scale_factor)
         {
-            int scaled_width = (int)((float)input_width * scaling_factor);
-            int scaled_height = (int)((float)input_height * scaling_factor);
+            int scaled_width = (int)((float)input_width * scale_factor);
+            int scaled_height = (int)((float)input_height * scale_factor);
             byte[] scaled_image = new byte[scaled_width * scaled_height * 3];
-            CScaleImageUChar(image, input_width, input_height, scaling_factor, scaled_image);
+            CScaleImageUChar(image, input_width, input_height, scale_factor, scaled_image);
             return scaled_image;
         }
 
@@ -331,16 +331,16 @@ namespace I3DR.Phase
         * @param height \p height of input image
         * @return success of saving ply file
         */
-        static public bool savePLY(string ply_filepath, float[] xyz, byte[] bgr, int width, int height)
+        static public bool savePLY(string ply_filepath, float[] xyz, byte[] rgb, int width, int height)
         {
-            return CSavePLY(ply_filepath, xyz, bgr, width, height);
+            return CSavePLY(ply_filepath, xyz, rgb, width, height);
         }
 
         /*!
         * Check if two matrices are equal
         * 
-        * @param mat1 first matrices to compare
-        * @param mat2 second matrices to compare
+        * @param in_mat1 first matrices to compare
+        * @param in_mat2 second matrices to compare
         * @param width \p width of input matrices
         * @param height \p height of input matrices
         * @param channels \p channels of input matrices
@@ -354,8 +354,8 @@ namespace I3DR.Phase
         /*!
         * Check if two matrices are equal
         * 
-        * @param mat1 first matrices to compare
-        * @param mat2 second matrices to compare
+        * @param in_mat1 first matrices to compare
+        * @param in_mat2 second matrices to compare
         * @param width \p width of input matrices
         * @param height \p height of input matrices
         * @param channels \p channels of input matrices
@@ -369,8 +369,8 @@ namespace I3DR.Phase
         /*!
         * Check if two matrices are equal
         * 
-        * @param mat1 first matrices to compare
-        * @param mat2 second matrices to compare
+        * @param in_mat1 first matrices to compare
+        * @param in_mat2 second matrices to compare
         * @param width \p width of input matrices
         * @param height \p height of input matrices
         * @param channels \p channels of input matrices

@@ -35,25 +35,45 @@ namespace I3DR.Phase
         [DllImport("phase", EntryPoint = "I3DR_StereoHOBM_setNumDisparities", CallingConvention = CallingConvention.Cdecl)]
         private static extern void StereoHOBM_setNumDisparities(IntPtr matcher, int value);
 
-        // TODOC
+        /*!
+        * Initalise class using C API class instance reference
+        * 
+        * @IntPtr stereoCameraCalibration_instance
+        */
         public StereoHOBM(IntPtr abstractStereoMatcher_instance): base(abstractStereoMatcher_instance){}
 
-        // TODOC
+        /*!
+        * StereoHOBM constructor \n
+        * Initalise Stereo matcher and set default matching parameters.
+        * 
+        */
         public StereoHOBM(): base(){
             m_AbstractStereoMatcher_instance = StereoHOBM_create();
         }
 
-        // TODOC
+        /*!
+        * Set window size for matcher
+        * 
+        * @param value window size
+        */
         public void setWindowSize(int value){
             StereoHOBM_setWindowSize(m_AbstractStereoMatcher_instance, value);
         }
 
-        // TODOC
+        /*!
+        * Set minimum disparity for matcher
+        * 
+        * @param value minimum disparity
+        */
         public void setMinDisparity(int value){
             StereoHOBM_setMinDisparity(m_AbstractStereoMatcher_instance, value);
         }
 
-        // TODOC
+        /*!
+        * Set number of disparities for matcher
+        * 
+        * @param value number of disparities
+        */
         public void setNumDisparities(int value){
             StereoHOBM_setNumDisparities(m_AbstractStereoMatcher_instance, value);
         }

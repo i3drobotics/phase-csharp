@@ -27,7 +27,13 @@ namespace I3DR.Phase
         [DllImport("phase", EntryPoint = "I3DR_CCreateStereoCamera", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr CCreateStereoCamera(string left_serial, string right_serial, string unique_serial, CameraDeviceType device_type, CameraInterfaceType interface_type);
 
-        // TODOC
+        /*!
+        * Create Stereo Camera from camera device information \n
+        * Generic way to create any stereo camera without needing to use specific camera classes.
+        * 
+        * @param device_info device info
+        * @return stereo camera
+        */
         public static AbstractStereoCamera createStereoCamera(CameraDeviceInfo camera_device_info){
             return new AbstractStereoCamera(CCreateStereoCamera(
                 camera_device_info.left_camera_serial, camera_device_info.right_camera_serial, 

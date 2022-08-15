@@ -27,7 +27,12 @@ namespace I3DR.Phase
         [DllImport("phase", EntryPoint = "I3DR_CCreateStereoMatcher", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr CCreateStereoMatcher(StereoMatcherType matcher_type);
 
-        // TODOC
+        /*!
+        * Create stereo matching from stereo matcher type
+        *
+        * @param matcher_type stereo matcher type to create
+        * @returns stereo matcher object of type specified
+        */
         public static AbstractStereoMatcher createStereoMatcher(StereoMatcherType matcher_type){
             if (matcher_type == StereoMatcherType.STEREO_MATCHER_I3DRSGM){
                 return new StereoI3DRSGM(CCreateStereoMatcher(matcher_type));

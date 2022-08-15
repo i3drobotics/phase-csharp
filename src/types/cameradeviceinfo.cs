@@ -21,12 +21,22 @@ namespace I3DR.Phase
     Includes serial, interface, and device type.
     */
     public struct CameraDeviceInfo {
-        public string left_camera_serial; // right camera serial
-        public string right_camera_serial; // left camera serial
-        public string unique_serial; // defined unique serial for stereo camera pair
-        public CameraDeviceType device_type; // device type of camera
-        public CameraInterfaceType interface_type; // interface type of camera
-        // TODOC
+        public string left_camera_serial; //!< right camera serial
+        public string right_camera_serial; //!< left camera serial
+        public string unique_serial; //!< defined unique serial for stereo camera pair
+        public CameraDeviceType device_type; //!< device type of camera
+        public CameraInterfaceType interface_type; //!< interface type of camera
+        
+        /*!
+        * CameraDeviceInfo contructor \n
+        * Create device information about the camera
+        * 
+        * @param left_camera_serial left camera serial
+        * @param right_camera_serial right camera serial
+        * @param unique_serial stereo camera unique identifier
+        * @param device_type camera device type
+        * @param interface_type camera interface type
+        */
         public CameraDeviceInfo(
             string left_camera_serial, string right_camera_serial,
             string unique_serial, 

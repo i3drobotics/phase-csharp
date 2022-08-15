@@ -23,10 +23,19 @@ namespace I3DR.Phase
         [DllImport("phase", EntryPoint = "I3DR_DeimosStereoCamera_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr DeimosStereoCamera_create(string left_serial, string right_serial, string unique_serial, CameraDeviceType device_type, CameraInterfaceType interface_type);
 
-        // TODOC
+        /*!
+        * DeimosStereoCamera constructor \n
+        * Initalise Deimos Stereo Camera with the given \p device_info.
+        * 
+        * @param device_info camera device information
+        */
         public DeimosStereoCamera(CameraDeviceInfo camera_device_info): base(camera_device_info){}
 
-        // TODOC
+        /*!
+        * Initalise Deimos Stereo camera
+        * 
+        * @param camera_device_info camera device information
+        */
         protected override void init(CameraDeviceInfo camera_device_info){
             m_AbstractStereoCamera_instance = DeimosStereoCamera_create(
                 camera_device_info.left_camera_serial, camera_device_info.right_camera_serial, 

@@ -25,10 +25,19 @@ namespace I3DR.Phase
         [DllImport("phase", EntryPoint = "I3DR_UVCStereoCamera_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr UVCStereoCamera_create(string left_serial, string right_serial, string unique_serial, CameraDeviceType device_type, CameraInterfaceType interface_type);
         
-        // TODOC
+        /*!
+        * UVCStereoCamera constructor \n
+        * Initalise UVC Stereo Camera with the given \p device_info.
+        * 
+        * @param device_info camera device information
+        */
         public UVCStereoCamera(CameraDeviceInfo camera_device_info): base(camera_device_info){}
 
-        // TODOC
+        /*!
+        * Initalise UVC Stereo camera
+        * 
+        * @param camera_device_info camera device information
+        */
         protected override void init(CameraDeviceInfo camera_device_info){
             m_AbstractStereoCamera_instance = UVCStereoCamera_create(
                 camera_device_info.left_camera_serial, camera_device_info.right_camera_serial, 
