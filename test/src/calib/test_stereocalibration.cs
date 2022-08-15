@@ -15,11 +15,11 @@ using I3DR;
 
 namespace I3DR.Phase.Test
 {
-    // TODOC: Class definition
+    // Tests for Stereo Calibration
     [Collection("PhaseSequentialTests")]
-    public class StereoCalibrationTests
+    public class StereoCameraCalibrationTests
     {
-        // TODOC: Test description
+        // Test loading of calibration data from ROS and OpenCV type YAML files
         [Fact]
         public void test_LoadCalibration()
         {
@@ -147,7 +147,7 @@ namespace I3DR.Phase.Test
             Console.WriteLine("calibration load test success");
         }
 
-        // TODOC: Test description
+        // Test saving of calibration data as ROS and OpenCV YAML files
         [Fact]
         public void test_SaveCalibration()
         {

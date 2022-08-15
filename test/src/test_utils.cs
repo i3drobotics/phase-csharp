@@ -15,11 +15,11 @@ using I3DR;
 
 namespace I3DR.Phase.Test
 {
-    // TODOC: Class definition
+    // Tests for Utils
     [Collection("PhaseSequentialTests")]
     public class UtilsTests
     {
-        // TODOC: Test description
+        // Test checking if two mat are equal
         [Fact]
         public void test_Utils_checkEqualMat()
         {
@@ -44,7 +44,7 @@ namespace I3DR.Phase.Test
             Assert.True(!Utils.cvMatIsEqual(mat_a, mat_b, width, height, channels));
         }
 
-        // TODOC: Test description
+        // Test saving 3D data to ply file
         [Fact]
         public void test_Utils_savePLY()
         {

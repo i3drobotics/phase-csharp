@@ -15,11 +15,11 @@ using I3DR;
 
 namespace I3DR.Phase.Test
 {
-    // TODOC: Class definition
+    // Tests for RGBDVideoWriter
     [Collection("PhaseSequentialTests")]
     public class RGBDVideoWriterTests
     {
-        // TODOC: Test description
+        // Test creation of RGBD video writer
         [Fact]
         public void test_RGBDVideoWriter()
         {

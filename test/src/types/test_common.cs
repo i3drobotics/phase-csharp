@@ -13,7 +13,7 @@ using I3DR;
 
 namespace I3DR.Phase.Test
 {
-    // TODOC: Class definition
+    // Test for Common class
     [Collection("PhaseSequentialTests")]
     public class CommonTests
     {
