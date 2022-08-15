@@ -88,7 +88,16 @@ namespace I3DR.Phase
         [DllImport("phase", EntryPoint = "I3DR_CcvMatIsEqualDouble")]
         private static extern bool CcvMatIsEqualDouble([In] double[] in_mat1, [In] double[] in_mat2, int width, int height, int channels);
 
-        // TODOC
+        /*!
+        * Resize image to by a specified scaling factor \n
+        * Scaled image will be populated into \p out_scaled_img
+        *
+        * @param image input image to apply scaling to
+        * @param input_width width of input image
+        * @param input_height height of input image
+        * @param scale_factor scaling factor to apply (0.5 = half size, 2.0 = double size)
+        * @return scaled image
+        */
         static public byte[] scaleImage(byte[] image, int input_width, int input_height, float scaling_factor)
         {
             int scaled_width = (int)((float)input_width * scaling_factor);
@@ -98,7 +107,17 @@ namespace I3DR.Phase
             return scaled_image;
         }
 
-        // TODOC
+        /*!
+        * Normalise disparity image to floating point 0-1 range \n
+        * Disparity image is the output from stereo matching that describes
+        * the pixel disparity of each pixel from left to right image \n
+        * Normalised disparity image will be populated into \p out_norm_disparity
+        *
+        * @param disparity input \p disparity image to normalise
+        * @param width \p width of input image
+        * @param height \p height of input image
+        * @return normalised disparity image
+        */
         static public byte[] normaliseDisparity(float[] disparity, int width, int height)
         {
             byte[] norm_disparity = new byte[width * height * 3];
@@ -106,7 +125,14 @@ namespace I3DR.Phase
             return norm_disparity;
         }
 
-        // TODOC
+        /*!
+        * Convert BGRA image to RGBA image
+        *
+        * @param bgra input BGRA image to convert
+        * @param width \p width of input image
+        * @param height \p height of input image
+        * @return converted RGBA image
+        */
         static public byte[] bgra2rgba(byte[] bgra, int width, int height)
         {
             byte[] rgba = new byte[width * height * 4];
@@ -114,7 +140,14 @@ namespace I3DR.Phase
             return rgba;
         }
 
-        // TODOC
+        /*!
+        * Convert BGR image to RGBA image
+        *
+        * @param bgr input BGR image to convert
+        * @param width \p width of input image
+        * @param height \p height of input image
+        * @return converted RGBA image
+        */
         static public byte[] bgr2rgba(byte[] bgr, int width, int height)
         {
             byte[] rgba = new byte[width * height * 4];
@@ -122,7 +155,14 @@ namespace I3DR.Phase
             return rgba;
         }
 
-        // TODOC
+        /*!
+        * Convert BGR image to BGRA image
+        *
+        * @param bgr input BGR image to convert
+        * @param width \p width of input image
+        * @param height \p height of input image
+        * @return converted BGRA image
+        */
         static public byte[] bgr2bgra(byte[] bgr, int width, int height)
         {
             byte[] bgra = new byte[width * height * 4];
@@ -130,7 +170,18 @@ namespace I3DR.Phase
             return bgra;
         }
 
-        // TODOC
+        /*!
+        * Convert \p disparity image to depth image \n
+        * Disparity image is the output from stereo matching that describes
+        * the pixel disparity of each pixel from left to right image \n
+        * Depth image is the z distance for each pixel in the image
+        * 
+        * @param disparity input \p disparity image to convert
+        * @param width \p width of input image
+        * @param height \p height of input image
+        * @param Q \p Q matrix from camera calibration
+        * @return depth image (z distance for each pixel)
+        */
         static public float[] disparity2Depth(float[] disparity, int width, int height, float[] Q)
         {
             float[] depth = new float[width * height];
@@ -138,7 +189,19 @@ namespace I3DR.Phase
             return depth;
         }
 
-        // TODOC
+        /*!
+        * Convert \p disparity image to xyz image \n
+        * Disparity image is the output from stereo matching that describes
+        * the pixel disparity of each pixel from left to right image \n
+        * XYZ image is a 3 channel image storing the xyz position \n
+        * for each pixel in the image (in meters)
+        * 
+        * @param disparity input \p disparity image to convert
+        * @param width \p width of input image
+        * @param height \p height of input image
+        * @param Q \p Q matrix from camera calibration
+        * @return xyz image (xyz position for each pixel)
+        */
         static public float[] disparity2xyz(float[] disparity, int width, int height, float[] Q)
         {
             float[] xyz = new float[width * height * 3];
@@ -146,7 +209,18 @@ namespace I3DR.Phase
             return xyz;
         }
 
-        // TODOC
+        /*!
+        * Convert \p depth image to xyz image \n
+        * Depth image is the z distance for each pixel in the image \n
+        * XYZ image is a 3 channel image storing the xyz position \n
+        * for each pixel in the image (in meters)
+        * 
+        * @param depth input \p depth image to convert
+        * @param width \p width of input image
+        * @param height \p height of input image
+        * @param hfov horizontal field of view from camera calibration
+        * @return xyz image (xyz position for each pixel)
+        */
         static public float[] depth2xyz(float[] depth, int width, int height, float hfov)
         {
             float[] xyz = new float[width * height * 3];
@@ -154,7 +228,17 @@ namespace I3DR.Phase
             return xyz;
         }
 
-        // TODOC
+        /*!
+        * Convert xyz image to \p depth image \n
+        * XYZ image is a 3 channel image storing the xyz position \n
+        * for each pixel in the image (in meters)
+        * Depth image is the z distance for each pixel in the image \n
+        * 
+        * @param xyz input \p xyz image to convert
+        * @param width \p width of input image
+        * @param height \p height of input image
+        * @return depth image (z distance for each pixel)
+        */
         static public float[] xyz2depth(float[] xyz, int width, int height)
         {
             float[] depth = new float[width * height];
@@ -162,13 +246,31 @@ namespace I3DR.Phase
             return depth;
         }
 
-        // TODOC
+        /*!
+        * Show image in a window \n
+        * Uses OpenCV's imshow function \n
+        * This also uses the waitKey function to display the window
+        * imediately. Key pressed while window is active is returned.
+        * 
+        * @param window_name name to give the window
+        * @param image \p image to display in window
+        * @param width \p width of input image
+        * @param height \p height of input image
+        * @return key pressed while window is active
+        */
         static public int showImage(string window_name, byte[] image, int width, int height)
         {
             return CShowImageUChar(window_name, image, width, height);
         }
 
-        // TODOC
+        /*!
+        * Read image from file \n
+        * 
+        * @param image_filepath filepath of image to read
+        * @param width \p width of input image
+        * @param height \p height of input image
+        * @return image read from file
+        */
         static public byte[] readImage(string image_filepath, int width, int height)
         {
             byte[] image = new byte[width * height * 3];
@@ -178,7 +280,17 @@ namespace I3DR.Phase
             return new byte[0];
         }
 
-        // TODOC
+        /*!
+        * Flip an image horizontally, vertically, or both \n
+        * Flip code 0 = horizontal, 1 = vertical, -1 = both
+        * 
+        * @param in_img image to flip
+        * @param width \p width of input image
+        * @param height \p height of input image
+        * @param channels \p channels of input image
+        * @param flipcode flip code to apply (0 = horizontal, 1 = vertical, -1 = both)
+        * @return flipped image
+        */
         static public byte[] flip(byte[] in_img, int width, int height, int channels, int flipcode)
         {
             byte[] flipped_img = new byte[width * height * channels];
@@ -186,7 +298,17 @@ namespace I3DR.Phase
             return flipped_img;
         }
 
-        // TODOC
+        /*!
+        * Flip an image horizontally, vertically, or both \n
+        * Flip code 0 = horizontal, 1 = vertical, -1 = both
+        * 
+        * @param in_img image to flip
+        * @param width \p width of input image
+        * @param height \p height of input image
+        * @param channels \p channels of input image
+        * @param flipcode flip code to apply (0 = horizontal, 1 = vertical, -1 = both)
+        * @return flipped image
+        */
         static public float[] flip(float[] in_img, int width, int height, int channels, int flipcode)
         {
             float[] flipped_img = new float[width * height * channels];
@@ -194,25 +316,66 @@ namespace I3DR.Phase
             return flipped_img;
         }
 
-        // TODOC
+        /*!
+        * Save xyz image and rgb image as ply file \n
+        * XYZ image is a 3 channel image storing the xyz position
+        * for each pixel in the image (in meters) \n
+        * RGB image is the colour for each pixel \n
+        * PLY file is a point cloud file format \
+        * RGB and XYZ images must be the same height and width \n
+        * 
+        * @param ply_filepath filepath to save ply point cloud to
+        * @param xyz \p xyz image
+        * @param rgb \p rgb image
+        * @param width \p width of input image
+        * @param height \p height of input image
+        * @return success of saving ply file
+        */
         static public bool savePLY(string ply_filepath, float[] xyz, byte[] bgr, int width, int height)
         {
             return CSavePLY(ply_filepath, xyz, bgr, width, height);
         }
 
-        // TODOC
+        /*!
+        * Check if two matrices are equal
+        * 
+        * @param mat1 first matrices to compare
+        * @param mat2 second matrices to compare
+        * @param width \p width of input matrices
+        * @param height \p height of input matrices
+        * @param channels \p channels of input matrices
+        * @return equality of input matrices
+        */
         static public bool cvMatIsEqual(byte[] in_mat1, byte[] in_mat2, int width, int height, int channels)
         {
             return CcvMatIsEqualUChar(in_mat1, in_mat2, width, height, channels);
         }
 
-        // TODOC
+        /*!
+        * Check if two matrices are equal
+        * 
+        * @param mat1 first matrices to compare
+        * @param mat2 second matrices to compare
+        * @param width \p width of input matrices
+        * @param height \p height of input matrices
+        * @param channels \p channels of input matrices
+        * @return equality of input matrices
+        */
         static public bool cvMatIsEqual(float[] in_mat1, float[] in_mat2, int width, int height, int channels)
         {
             return CcvMatIsEqualFloat(in_mat1, in_mat2, width, height, channels);
         }
 
-        // TODOC
+        /*!
+        * Check if two matrices are equal
+        * 
+        * @param mat1 first matrices to compare
+        * @param mat2 second matrices to compare
+        * @param width \p width of input matrices
+        * @param height \p height of input matrices
+        * @param channels \p channels of input matrices
+        * @return equality of input matrices
+        */
         static public bool cvMatIsEqual(double[] in_mat1, double[] in_mat2, int width, int height, int channels)
         {
             return CcvMatIsEqualDouble(in_mat1, in_mat2, width, height, channels);
