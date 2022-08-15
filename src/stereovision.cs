@@ -22,75 +22,96 @@ namespace I3DR.Phase
     */
     public class StereoVision
     {
-        // Import Phase functions from C API
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr StereoVision_create(
             string left_serial, string right_serial, string unique_serial,
             CameraDeviceType device_type, CameraInterfaceType interface_type, StereoMatcherType matcher_type,
             string left_yaml, string right_yaml);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_CGetCamera", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr StereoVision_getCamera(IntPtr sv);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_CGetMatcher", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr StereoVision_getMatcher(IntPtr sv);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_CGetCalibration", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr StereoVision_getCalibration(IntPtr sv);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_CConnect", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool StereoVision_connect(IntPtr sv);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_CIsConnected", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool StereoVision_isConnected(IntPtr sv);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_CStartCapture", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool StereoVision_startCapture(IntPtr sv);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_CStopCapture", CallingConvention = CallingConvention.Cdecl)]
         private static extern void StereoVision_stopCapture(IntPtr sv);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_CIsCapturing", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool StereoVision_isCapturing(IntPtr sv);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_CIsValidCalibration", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool StereoVision_isValidCalibration(IntPtr sv);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_CGetWidth", CallingConvention = CallingConvention.Cdecl)]
         private static extern int StereoVision_getWidth(IntPtr sv);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_CGetHeight", CallingConvention = CallingConvention.Cdecl)]
         private static extern int StereoVision_getHeight(IntPtr sv);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_CGetHFOV", CallingConvention = CallingConvention.Cdecl)]
         private static extern float StereoVision_getHFOV(IntPtr sv);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_CGetDownsampleFactor", CallingConvention = CallingConvention.Cdecl)]
         private static extern float StereoVision_getDownsampleFactor(IntPtr sv);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_CSetDownsampleFactor", CallingConvention = CallingConvention.Cdecl)]
         private static extern void StereoVision_setDownsampleFactor(IntPtr sv, float value);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_CSetTestImagePaths", CallingConvention = CallingConvention.Cdecl)]
         private static extern void StereoVision_setTestImagePaths(IntPtr cam, string left_test_image_path, string right_test_image_path);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_CRead", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool StereoVision_read(
             IntPtr sv, int timeout, bool rectify, [Out] byte[] left_image, [Out] byte[] right_image, [Out] float[] disparity);
         
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_CStartReadThread", CallingConvention = CallingConvention.Cdecl)]
         private static extern void StereoVision_startReadThread(IntPtr sv, int timeout, bool rectify);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_CIsReadThreadRunning", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool StereoVision_isReadThreadRunning(IntPtr sv);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_CGetReadThreadResult", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool StereoVision_getReadThreadResult(
             IntPtr sv, [Out] byte[] left_image, [Out] byte[] right_image, [Out] float[] disparity);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_CDisconnect", CallingConvention = CallingConvention.Cdecl)]
         private static extern void StereoVision_disconnect(IntPtr sv);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoVision_dispose", CallingConvention = CallingConvention.Cdecl)]
         private static extern void StereoVision_dispose(IntPtr sv);
 

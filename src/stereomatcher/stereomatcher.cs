@@ -23,7 +23,7 @@ namespace I3DR.Phase
     */
     public class StereoMatcher
     {
-        // Import Phase functions from C API
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_CCreateStereoMatcher", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr CCreateStereoMatcher(StereoMatcherType matcher_type);
 

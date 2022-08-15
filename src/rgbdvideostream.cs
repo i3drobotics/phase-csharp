@@ -20,64 +20,83 @@ namespace I3DR.Phase
     */
     public class RGBDVideoStream
     {
-        // Import Phase functions from C API
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr RGBDVideoStream_create(string rgb_video_filepath, string depth_video_filepath, int width, int height);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CGetWidth", CallingConvention = CallingConvention.Cdecl)]
         private static extern int RGBDVideoStream_getWidth(IntPtr stream);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CGetHeight", CallingConvention = CallingConvention.Cdecl)]
         private static extern int RGBDVideoStream_getHeight(IntPtr stream);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CLoad", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoStream_load(IntPtr stream);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CLoadThreaded", CallingConvention = CallingConvention.Cdecl)]
         private static extern void RGBDVideoStream_loadThreaded(IntPtr stream);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CIsLoadThreadRunning", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoStream_isLoadThreadRunning(IntPtr stream);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CGetLoadThreadResult", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoStream_getLoadThreadResult(IntPtr stream);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CRestart", CallingConvention = CallingConvention.Cdecl)]
         private static extern void RGBDVideoStream_restart(IntPtr stream);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CRead", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoStream_read(IntPtr stream, [Out] byte[] rgb, [Out] float[] depth);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CGetReadThreadResult", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoStream_getReadThreadResult(IntPtr stream, [Out] byte[] rgb, [Out] float[] depth);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CReadThreaded", CallingConvention = CallingConvention.Cdecl)]
         private static extern void RGBDVideoStream_readThreaded(IntPtr stream);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CIsReadThreadRunning", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoStream_isReadThreadRunning(IntPtr stream);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CIsOpened", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoStream_isOpened(IntPtr stream);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CIsLoaded", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoStream_isLoaded(IntPtr stream);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CIsFinished", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoStream_isFinished(IntPtr stream);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CGetHFOV", CallingConvention = CallingConvention.Cdecl)]
         private static extern float RGBDVideoStream_getHFOV(IntPtr stream);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CGetDownsampleFactor", CallingConvention = CallingConvention.Cdecl)]
         private static extern float RGBDVideoStream_getDownsampleFactor(IntPtr stream);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CSetDownsampleFactor", CallingConvention = CallingConvention.Cdecl)]
         private static extern void RGBDVideoStream_setDownsampleFactor(IntPtr stream, float value);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_CClose", CallingConvention = CallingConvention.Cdecl)]
         private static extern void RGBDVideoStream_close(IntPtr stream);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoStream_dispose", CallingConvention = CallingConvention.Cdecl)]
         private static extern void RGBDVideoStream_dispose(IntPtr stream);
 

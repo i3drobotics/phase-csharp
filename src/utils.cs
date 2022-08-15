@@ -20,55 +20,71 @@ namespace I3DR.Phase
     */
     public class Utils
     {
-        // Import Phase functions from C API
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_CScaleImageUChar")]
         private static extern void CScaleImageUChar([In] byte[] in_img, int width, int height, float scale_factor, [Out] byte[] out_scaled_img);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_CNormaliseDisparity")]
         private static extern void CNormaliseDisparity([In] float[] in_disparity, int width, int height, [Out] byte[] out_norm_disparity);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_CBgra2rgba")]
         private static extern void CBgra2rgba([In] byte[] in_bgra, int width, int height, [Out] byte[] out_rgba);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_CBgr2rgba")]
         private static extern void CBgr2rgba([In] byte[] in_bgr, int width, int height, [Out] byte[] out_rgba);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_CBgr2bgra")]
         private static extern void CBgr2bgra([In] byte[] in_bgr, int width, int height, [Out] byte[] out_bgra);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_CDisparity2depth")]
         private static extern void CDisparity2Depth([In] float[] in_disparity, int width, int height, [In] float[] in_Q, [Out] float[] out_depth);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_CDisparity2xyz")]
         private static extern void CDisparity2xyz([In] float[] in_disparity, int width, int height, [In] float[] in_Q, [Out] float[] out_xyz);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_CDepth2xyz")]
         private static extern void CDepth2xyz([In] float[] in_depth, int width, int height, float hfov, [Out] float[] out_xyz);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_CXyz2depth")]
         private static extern void CXyz2depth([In] float[] in_xyz, int width, int height, [Out] float[] out_depth);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_CShowImageUChar")]
         private static extern int CShowImageUChar(string window_name, [In] byte[] in_img, int img_width, int img_height);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_CReadImageUChar")]
         private static extern bool CReadImageUChar(string image_filepath, [Out] byte[] out_img, int img_width, int img_height);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_CFlipUChar")]
         private static extern void CFlipUChar([In] byte[] in_img, [Out] byte[] out_flipped_img, int img_width, int img_height, int img_channels, int flipcode);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_CFlipFloat")]
         private static extern void CFlipFloat([In] float[] in_img, [Out] float[] out_flipped_img, int img_width, int img_height, int img_channels, int flipcode);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_CSavePLY")]
         private static extern bool CSavePLY(string ply_filepath, [In] float[] in_xyz, byte[] in_bgr, int width, int height);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_CcvMatIsEqualUChar")]
         private static extern bool CcvMatIsEqualUChar([In] byte[] in_mat1, [In] byte[] in_mat2, int width, int height, int channels);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_CcvMatIsEqualFloat")]
         private static extern bool CcvMatIsEqualFloat([In] float[] in_mat1, [In] float[] in_mat2, int width, int height, int channels);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_CcvMatIsEqualDouble")]
         private static extern bool CcvMatIsEqualDouble([In] double[] in_mat1, [In] double[] in_mat2, int width, int height, int channels);
 

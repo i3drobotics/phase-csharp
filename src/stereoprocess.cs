@@ -19,12 +19,13 @@ namespace I3DR.Phase
     */
     public class StereoProcess
     {
-        // Import Phase functions from C API
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_ProcessStereoFiles")]
         private static extern bool CProcessStereoFiles(
             StereoParams stereo_params, string left_yaml, string right_yaml,
             string left_image_path, string right_image_path, string output_folder, bool rectify);
-
+        
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_ProcessStereo")]
         private static extern IntPtr CProcessStereo(
             StereoParams stereo_params, IntPtr left_image, IntPtr right_image,

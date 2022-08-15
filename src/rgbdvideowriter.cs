@@ -20,37 +20,47 @@ namespace I3DR.Phase
     */
     public class RGBDVideoWriter
     {
-        // Import Phase functions from C API
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr RGBDVideoWriter_create(string rgb_video_filepath, string depth_video_filepath, int width, int height);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_CGetWidth", CallingConvention = CallingConvention.Cdecl)]
         private static extern int RGBDVideoWriter_getWidth(IntPtr writer);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_CGetHeight", CallingConvention = CallingConvention.Cdecl)]
         private static extern int RGBDVideoWriter_getHeight(IntPtr writer);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_CAdd", CallingConvention = CallingConvention.Cdecl)]
         private static extern void RGBDVideoWriter_add(IntPtr writer, [In] byte[] rgb, [In] float[] depth);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_CIsOpened", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoWriter_isOpened(IntPtr writer);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_CSave", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoWriter_save(IntPtr writer);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_CSaveThreaded", CallingConvention = CallingConvention.Cdecl)]
         private static extern void RGBDVideoWriter_saveThreaded(IntPtr writer);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_CIsSaveThreadRunning", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoWriter_isSaveThreadRunning(IntPtr writer);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_CGetSaveThreadResult", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool RGBDVideoWriter_getSaveThreadResult(IntPtr writer);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_CClose", CallingConvention = CallingConvention.Cdecl)]
         private static extern void RGBDVideoWriter_close(IntPtr writer);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_RGBDVideoWriter_dispose", CallingConvention = CallingConvention.Cdecl)]
         private static extern void RGBDVideoWriter_dispose(IntPtr writer);
 

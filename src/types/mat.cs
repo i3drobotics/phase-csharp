@@ -20,40 +20,51 @@ namespace I3DR.Phase
     */
     public class MatrixFloat
     {
-        // Import Phase functions from C API
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr MatrixFloat_create(int rows, int columns, int layers);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_createData", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr MatrixFloat_createData(int rows, int columns, int layers, [In] float[] data, bool copy);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_dispose", CallingConvention = CallingConvention.Cdecl)]
         private static extern void MatrixFloat_dispose(IntPtr MatrixFloat_ptr);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_getRows", CallingConvention = CallingConvention.Cdecl)]
         private static extern int MatrixFloat_getRows(IntPtr mat);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_getColumns", CallingConvention = CallingConvention.Cdecl)]
         private static extern int MatrixFloat_getColumns(IntPtr mat);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_getLayers", CallingConvention = CallingConvention.Cdecl)]
         private static extern int MatrixFloat_getLayers(IntPtr mat);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_isEmpty", CallingConvention = CallingConvention.Cdecl)]
         private static extern bool MatrixFloat_isEmpty(IntPtr mat);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_getLength", CallingConvention = CallingConvention.Cdecl)]
         private static extern int MatrixFloat_getLength(IntPtr mat);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_getSize", CallingConvention = CallingConvention.Cdecl)]
         private static extern int MatrixFloat_getSize(IntPtr mat);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_getAt", CallingConvention = CallingConvention.Cdecl)]
         private static extern float MatrixFloat_getAt(IntPtr mat, int row, int column, int layer);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_setAt", CallingConvention = CallingConvention.Cdecl)]
         private static extern void MatrixFloat_setAt(IntPtr mat, int row, int column, int layer, float value);
 
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_getData", CallingConvention = CallingConvention.Cdecl)]
         private static extern void MatrixFloat_getData(IntPtr mat, [Out] float[] data);
 
@@ -163,7 +174,7 @@ namespace I3DR.Phase
     */
     public class MatrixUInt8
     {
-        // Import Phase functions from C API
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_create", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr MatrixUInt8_create(int rows, int columns, int layers);
 
