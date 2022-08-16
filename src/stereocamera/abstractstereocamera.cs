@@ -16,6 +16,25 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
+
+    //!  Camera Read Result structure
+    /*!
+    Struture to store the result from reading a camera frame. Used in the stereo camera classes.
+    */
+    public struct CameraReadResult
+    {
+        public bool valid; //!< true if camera read was successful
+        public byte[] left; //!< left camera image
+        public byte[] right; //!< right camera image
+
+        public CameraReadResult(bool valid, byte[] left, byte[] right)
+        {
+            this.valid = valid;
+            this.left = left;
+            this.right = right;
+        }
+    }
+
     //!  Abstract Stereo Camera class
     /*!
     Abstract base class for building stereo camera

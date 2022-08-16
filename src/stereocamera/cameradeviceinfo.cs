@@ -15,6 +15,30 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
+    //!  Camera Device Type enum
+    /*!
+    Enum to indicate the device type of the camera. Used in stereo camera class to select which type to use.
+    */
+    public enum CameraDeviceType { 
+        DEVICE_TYPE_GENERIC_PYLON, //!< Generic Pylon device
+        DEVICE_TYPE_GENERIC_UVC, //!< Generic UVC device
+        DEVICE_TYPE_DEIMOS, //!< I3DR's Deimos device
+        DEVICE_TYPE_PHOBOS, //!< I3DR's Phobos device
+        DEVICE_TYPE_TITANIA, //!< I3DR's Titania device
+        DEVICE_TYPE_INVALID //!< Invalid device
+    };
+
+    //!  Camera Interface Type enum
+    /*!
+    Enum to indicate the interface type of the camera. Used in stereo camera class to select which interface to use.
+    */
+    public enum CameraInterfaceType { 
+        INTERFACE_TYPE_USB, //!< USB interface
+        INTERFACE_TYPE_GIGE, //!< GigE interface
+        INTERFACE_TYPE_VIRTUAL, //!< Virtual interface
+        INTERFACE_TYPE_INVALID //!< Invalid interface
+    };
+
     //!  Camera Device Info class
     /*!
     Structure to hold information on a camera.

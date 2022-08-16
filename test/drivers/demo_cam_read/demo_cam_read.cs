@@ -69,23 +69,12 @@ namespace I3DR
                     matcher_type = StereoMatcherType.STEREO_MATCHER_BM;
                 }
 
-                StereoVision sv = new StereoVision(device_info, matcher_type, left_yaml, right_yaml);
-                if (!sv.isValidCalibration()) {
-                    Console.WriteLine("Failed to load calibration");
-                    sv.dispose();
-                    return 1;
-                }
+                AbstractStereoCamera camera = StereoCamera.createStereoCamera(device_info);
+                StereoCameraCalibration calibration = StereoCameraCalibration.calibrationFromYAML(
+                    left_yaml, right_yaml
+                );
 
-                Console.WriteLine("StereoVision instance created");
-                if (use_test_images)
-                {
-                    sv.setTestImagePaths(
-                        left_image_file, right_image_file
-                    );
-                }
-
-                AbstractStereoMatcher matcher;
-                sv.getMatcher(out matcher);
+                AbstractStereoMatcher matcher = StereoMatcher.createStereoMatcher(matcher_type);
                 if (matcher is StereoI3DRSGM){
                     Console.WriteLine("Is I3DRSGM");
                     ((StereoI3DRSGM)matcher).setWindowSize(3);
@@ -95,76 +84,80 @@ namespace I3DR
                 }
                 
                 Console.WriteLine("Connecting to camera...");
-                bool ret = sv.connect();
+                bool ret = camera.connect();
                 
                 if (ret){
                     Console.WriteLine("Camera connected");
-                    sv.startCapture();
-                    int disp_width = (int)((float)sv.getWidth() * 0.25f);
-                    int disp_height = (int)((float)sv.getHeight() * 0.25f);
+                    camera.startCapture();
+                    int disp_width = (int)((float)camera.getWidth() * 0.25f);
+                    int disp_height = (int)((float)camera.getHeight() * 0.25f);
                     int disp_stride = disp_width * 4;
                     Console.WriteLine("Running non-threaded camera capture...");
                     for (int i = 0; i < repeat_capture; i++)
                     {
                         Console.WriteLine("Waiting for result...");
-                        StereoVisionReadResult read_result = sv.read();
+                        CameraReadResult read_result = camera.read();
                         if (read_result.valid)
                         {
                             Console.WriteLine("Stereo result received");
-                            //float val = read_result.disparity[sv.getWidth()*r+nchannels*c+ch]; //useful to remember how to access array elements
-                            byte[] disp_left = Utils.scaleImage(read_result.left_image, sv.getWidth(), sv.getHeight(), 0.25f);
-                            byte[] disp_right = Utils.scaleImage(read_result.right_image, sv.getWidth(), sv.getHeight(), 0.25f);
-                            byte[] norm_disparity = Utils.normaliseDisparity(read_result.disparity, sv.getWidth(), sv.getHeight());
-                            byte[] disp_disparity = Utils.scaleImage(norm_disparity, sv.getWidth(), sv.getHeight(), 0.25f);
-                            if (show_display) {
-                                byte[] disp_left_rgba = Utils.bgr2bgra(disp_left, disp_width, disp_height);
-                                byte[] disp_right_rgba = Utils.bgr2bgra(disp_right, disp_width, disp_height);
-                                byte[] disp_disparity_rgba = Utils.bgr2bgra(disp_disparity, disp_width, disp_height);
-                                // TODO display images
-                                // viewer_left.setImage(disp_left_rgba, disp_width, disp_height, disp_stride);
-                                // viewer_right.setImage(disp_right_rgba, disp_width, disp_height, disp_stride);
-                                // viewer_disparity.setImage(disp_disparity_rgba, disp_width, disp_height, disp_stride);
-                                // viewer_left.show(disp_time);
-                                // viewer_right.show(disp_time);
-                                // viewer_disparity.show(disp_time);
+                            StereoMatcherComputeResult comp_result = matcher.compute(read_result.left, read_result.right, camera.getWidth(), camera.getHeight());
+                            if (comp_result.valid){
+                                //float val = read_result.disparity[sv.getWidth()*r+nchannels*c+ch]; //useful to remember how to access array elements
+                                byte[] disp_left = Utils.scaleImage(read_result.left, camera.getWidth(), camera.getHeight(), 0.25f);
+                                byte[] disp_right = Utils.scaleImage(read_result.right, camera.getWidth(), camera.getHeight(), 0.25f);
+                                byte[] norm_disparity = Utils.normaliseDisparity(comp_result.disparity, camera.getWidth(), camera.getHeight());
+                                byte[] disp_disparity = Utils.scaleImage(norm_disparity, camera.getWidth(), camera.getHeight(), 0.25f);
+                                if (show_display) {
+                                    byte[] disp_left_rgba = Utils.bgr2bgra(disp_left, disp_width, disp_height);
+                                    byte[] disp_right_rgba = Utils.bgr2bgra(disp_right, disp_width, disp_height);
+                                    byte[] disp_disparity_rgba = Utils.bgr2bgra(disp_disparity, disp_width, disp_height);
+                                    // TODO display images
+                                    // viewer_left.setImage(disp_left_rgba, disp_width, disp_height, disp_stride);
+                                    // viewer_right.setImage(disp_right_rgba, disp_width, disp_height, disp_stride);
+                                    // viewer_disparity.setImage(disp_disparity_rgba, disp_width, disp_height, disp_stride);
+                                    // viewer_left.show(disp_time);
+                                    // viewer_right.show(disp_time);
+                                    // viewer_disparity.show(disp_time);
+                                }
                             }
+                            else
+                            {
+                                Console.WriteLine("Failed to compute stereo match");
+                            }
+                            
                         }
                         else
                         {
-                            Console.WriteLine("Failed to read stereo result");
+                            Console.WriteLine("Failed to read stereo camera");
                         }
                     }
 
-                    sv.disconnect();
+                    camera.disconnect();
 
                     Console.WriteLine("Camera disconnected");
-                    ret = sv.connect();
+                    ret = camera.connect();
                     if (ret)
                     {
-                        sv.startCapture();
-                        AbstractStereoCamera cam;
-                        StereoCameraCalibration cal;
-                        sv.getCamera(out cam);
-                        sv.getCalibration(out cal);
-                        int width = sv.getWidth();
-                        int height = sv.getHeight();
+                        camera.startCapture();
+                        int width = camera.getWidth();
+                        int height = camera.getHeight();
                         Console.WriteLine("Running split threaded camera capture...");
                         for (int i = 0; i < repeat_capture; i++)
                         {
-                            cam.startReadThread();
+                            camera.startReadThread();
                             Console.WriteLine("Waiting for result...");
-                            while (cam.isReadThreadRunning()) { }
-                            CameraReadResult cam_result = cam.getReadThreadResult();
+                            while (camera.isReadThreadRunning()) { }
+                            CameraReadResult cam_result = camera.getReadThreadResult();
                             if (cam_result.valid)
                             {
-                                StereoImagePair rect_image_pair = cal.rectify(
-                                    cam_result.left_image, cam_result.right_image,
+                                StereoImagePair rect_image_pair = calibration.rectify(
+                                    cam_result.left, cam_result.right,
                                     width, height
                                 );
                                 Console.WriteLine("Starting compute...");
                                 matcher.startComputeThread(rect_image_pair.left, rect_image_pair.right, width, height);
                                 Console.WriteLine("Stereo result received");
-                                Console.WriteLine("Framerate: {0}", cam.getFrameRate());
+                                Console.WriteLine("Framerate: {0}", camera.getFrameRate());
                                 byte[] disp_left = Utils.scaleImage(rect_image_pair.left, width, height, 0.25f);
                                 byte[] disp_right = Utils.scaleImage(rect_image_pair.right, width, height, 0.25f);
                                 if (show_display)
@@ -203,46 +196,11 @@ namespace I3DR
                                 Console.WriteLine("Failed to read stereo result");
                             }
                         }
-
-                        Console.WriteLine("Running threaded camera capture...");
-                        for (int i = 0; i < repeat_capture; i++)
-                        {
-                            sv.startReadThread();
-                            Console.WriteLine("Waiting for result...");
-                            while (sv.isReadThreadRunning()) { }
-                            StereoVisionReadResult result = sv.getReadThreadResult();
-                            if (result.valid)
-                            {
-                                Console.WriteLine("Stereo result received");
-                                Console.WriteLine("Framerate: {0}", cam.getFrameRate());
-                                byte[] disp_left = Utils.scaleImage(result.left_image, width, height, 0.25f);
-                                byte[] disp_right = Utils.scaleImage(result.right_image, width, height, 0.25f);
-                                byte[] norm_disparity = Utils.normaliseDisparity(result.disparity, width, height);
-                                byte[] disp_disparity = Utils.scaleImage(norm_disparity, width, height, 0.25f);
-                                if (show_display)
-                                {
-                                    byte[] disp_left_rgba = Utils.bgr2bgra(disp_left, disp_width, disp_height);
-                                    byte[] disp_right_rgba = Utils.bgr2bgra(disp_right, disp_width, disp_height);
-                                    byte[] disp_disparity_rgba = Utils.bgr2bgra(disp_disparity, disp_width, disp_height);
-                                    // TODO display images
-                                    // viewer_left.setImage(disp_left_rgba, disp_width, disp_height, disp_stride);
-                                    // viewer_right.setImage(disp_right_rgba, disp_width, disp_height, disp_stride);
-                                    // viewer_disparity.setImage(disp_disparity_rgba, disp_width, disp_height, disp_stride);
-                                    // viewer_left.show(disp_time);
-                                    // viewer_right.show(disp_time);
-                                    // viewer_disparity.show(disp_time);
-                                }
-                            }
-                            else
-                            {
-                                Console.WriteLine("Failed to read stereo result");
-                            }
-                        }
                     }
-                    sv.disconnect();
+                    camera.disconnect();
                     Console.WriteLine("Camera disconnected");
                 }
-                sv.dispose();
+                camera.dispose();
                 return 0;
             }
         }
