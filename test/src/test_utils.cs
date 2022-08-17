@@ -121,32 +121,19 @@ namespace I3DR.Phase.Test
 
             StereoImagePair rect_image_pair = calibration.rectify(left_image_cv, right_image_cv, image_width, image_height);
 
-            int image_rows = image_height;
-            int image_cols = image_width;
-            int image_channels = 3;
-            
-            MatrixUInt8 left_image = new MatrixUInt8(
-                image_rows, image_cols, image_channels,
-                rect_image_pair.left, true);
-            MatrixUInt8 right_image = new MatrixUInt8(
-                image_rows, image_cols, image_channels,
-                rect_image_pair.right, true);
-
             Console.WriteLine("Processing stereo...");
+            StereoMatcherType matcher_type = StereoMatcherType.STEREO_MATCHER_BM;
             StereoParams stereo_params = new StereoParams(
-                StereoMatcherType.STEREO_MATCHER_BM,
+                matcher_type,
                 11, 0, 25, false
             );
-            MatrixFloat disparity = StereoProcess.processStereo(
-                stereo_params, left_image, right_image, calibration, false
-            );
+            
+            AbstractStereoMatcher matcher = StereoMatcher.createStereoMatcher(matcher_type);
+            StereoMatcherComputeResult result = matcher.compute(rect_image_pair.left, rect_image_pair.right, image_width, image_height);
 
-            Assert.True(!disparity.isEmpty());
+            Assert.True(result.valid);
 
-            float[] disparity_cv = new float[disparity.getLength()];
-            disparity_cv = disparity.getData();
-
-            float[] depth = Utils.disparity2Depth(disparity_cv, image_width, image_height, calibration.getQ());
+            float[] depth = Utils.disparity2Depth(result.disparity, image_width, image_height, calibration.getQ());
 
             Assert.True(depth.Length != 0);
 

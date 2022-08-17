@@ -15,6 +15,15 @@ using System.Runtime.ExceptionServices;
 
 namespace I3DR.Phase
 {
+    //!  CameraSelection enum
+    /*!
+    Enum to indicate left or right camera/image
+    */
+    public enum CameraSelection { 
+        LEFT, //!< Left camera/image
+        RIGHT //!< Right camera/image
+    };
+
     //!  Stereo Camera Calibration class
     /*!
     Store and manipulate stereo camera calibration data.
@@ -66,10 +75,6 @@ namespace I3DR.Phase
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoCameraCalibration_CRectify", CallingConvention = CallingConvention.Cdecl)]
         protected static extern bool CRectify(IntPtr c, [In] byte[] left_image, [In] byte[] right_image, int width, int height, [Out] byte[] left_rect_image, [Out] byte[] right_rect_image);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoCameraCalibration_CRemapPoint", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern void CRemapPoint(IntPtr c, int x, int y, LeftOrRight camera_selection, ref int remapped_x, ref int remapped_y);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoCameraCalibration_CSaveToYAML", CallingConvention = CallingConvention.Cdecl)]
@@ -212,26 +217,6 @@ namespace I3DR.Phase
                 left_rect_image, right_rect_image
             );
             return new StereoImagePair(left_rect_image, right_rect_image);
-        }
-
-        /*!
-        * Remap single pixel position in non-rectifed image to rectified image \n
-        * Left or right camera is specified by the \p camera_selection parameter.
-        * 
-        * @param point point to remap
-        * @param camera_selection left or right camera calibration to use
-        * @returns remapped point
-        */
-        public Point2i remapPoint(Point2i point, LeftOrRight camera_selection){
-            int remapped_x = -1;
-            int remapped_y = -1;
-            CRemapPoint(
-                m_StereoCameraCalibration_instance,
-                point.x, point.y,
-                camera_selection,
-                ref remapped_x, ref remapped_y
-            );
-            return new Point2i(remapped_x, remapped_y);
         }
 
         /*!

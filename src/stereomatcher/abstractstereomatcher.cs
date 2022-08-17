@@ -39,6 +39,33 @@ namespace I3DR.Phase
         }
     };
 
+    //!  Stereo Matcher Type enum
+    /*!
+    Enum to indicate stereo matcher type. Used in stereo matcher class to select which matcher to use.
+    */
+    public enum StereoMatcherType { 
+        STEREO_MATCHER_BM, //!< OpenCV Block Matcher
+        STEREO_MATCHER_SGBM, //!< OpenCV Semi-Global Block Matcher
+        STEREO_MATCHER_I3DRSGM, //!< I3DR's Semi-Global Block Matcher
+        STEREO_MATCHER_HOBM, //!< I3DR's High resolution Optimised Block Matcher
+    };
+
+    //!  Stereo Matcher Compute Result structure
+    /*!
+    Struture to store the result from a stereo match. Used in the stereo matcher classes.
+    */
+    public struct StereoMatcherComputeResult
+    {
+        public bool valid; //!< true if stereo match was successful
+        public float[] disparity; //!< disparity image
+
+        public StereoMatcherComputeResult(bool valid, float[] disparity)
+        {
+            this.valid = valid;
+            this.disparity = disparity;
+        }
+    }
+
     //!  Abstract Stereo Matcher class
     /*!
     Abstract base class for building stereo matcher
