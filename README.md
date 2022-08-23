@@ -1,7 +1,6 @@
 # Phase CSharp
 Phase CSharp is a C# wrapper library over the Phase C++ library to enable running Phase in C#.
 
-**NOTE: This package is still in development with missing functionality. Updates coming soon.**
 ## Install
 Download Phase CSharp library from [latest release](https://github.com/i3drobotics/phase-csharp/releases)  
 This includes the binararies for running and using Phase CSharp.
