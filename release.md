@@ -2,7 +2,7 @@
 ***WARNING: This is an early alpha release so may be unstable with breaking changes and have missing documentaiton. Use with caution.***
 
 Built using:
- - Phase [v0.1.2-3](https://github.com/i3drobotics/phase/releases/tag/v0.1.2-3)
+ - Phase [v0.1.2-10](https://github.com/i3drobotics/phase/releases/tag/v0.1.2-10)
  - .NET v4.7.2
 
 See [Phase Unity](https://github.com/i3drobotics/phase-unity.git) for an example of how these binaries are used.
