@@ -9,9 +9,6 @@
  * including the camera's serials, interface, and device type
  */
 
-using System;
-using System.Runtime.InteropServices;
-using System.Runtime.ExceptionServices;
 using I3DR.CPhase;
 
 namespace I3DR.Phase

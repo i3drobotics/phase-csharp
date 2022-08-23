@@ -8,9 +8,6 @@
  * @brief Phase version information
  */
 
-using System;
-using System.Runtime.InteropServices;
-using System.Runtime.ExceptionServices;
 using I3DR.CPhase;
 
 namespace I3DR.Phase
@@ -38,7 +35,7 @@ namespace I3DR.Phase
         * @return Phase major version number
         */
         public static int getVersionMajor(){
-            return PhaseGetVersionMajor();
+            return CVersion.PhaseGetVersionMajor();
         }
 
         /*!
@@ -47,7 +44,7 @@ namespace I3DR.Phase
         * @return Phase minor version number
         */
         public static int getVersionMinor(){
-            return PhaseGetVersionMinor();
+            return CVersion.PhaseGetVersionMinor();
         }
 
         /*!
@@ -56,7 +53,7 @@ namespace I3DR.Phase
         * @return Phase patch version number
         */
         public static int getVersionPatch(){
-            return PhaseGetVersionPatch();
+            return CVersion.PhaseGetVersionPatch();
         }
     }
 }

@@ -11,7 +11,6 @@
  */
 
 using System;
-using System.Runtime.InteropServices;
 using I3DR.CPhase;
 
 namespace I3DR.Phase
@@ -24,10 +23,6 @@ namespace I3DR.Phase
     */
     public class StereoMatcher
     {
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_CCreateStereoMatcher", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr CCreateStereoMatcher(StereoMatcherType matcher_type);
-
         /*!
         * Create stereo matching from stereo matcher type
         *

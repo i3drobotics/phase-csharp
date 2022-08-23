@@ -8,9 +8,7 @@
  * @brief Phase version information
  */
 
-using System;
 using System.Runtime.InteropServices;
-using System.Runtime.ExceptionServices;
 
 namespace I3DR.CPhase
 {
@@ -18,23 +16,23 @@ namespace I3DR.CPhase
     /*!
     Phase version information
     */
-    public class Version
+    public class CVersion
     {
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseGetVersionString", CallingConvention = CallingConvention.Cdecl)]
-        private static extern string PhaseGetVersionString();
+        public static extern string PhaseGetVersionString();
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseGetVersionMajor", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int PhaseGetVersionMajor();
+        public static extern int PhaseGetVersionMajor();
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseGetVersionMinor", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int PhaseGetVersionMinor();
+        public static extern int PhaseGetVersionMinor();
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseGetVersionPatch", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int PhaseGetVersionPatch();
+        public static extern int PhaseGetVersionPatch();
 
     }
 }

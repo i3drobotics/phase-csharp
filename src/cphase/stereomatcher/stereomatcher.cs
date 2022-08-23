@@ -26,26 +26,5 @@ namespace I3DR.CPhase
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_CCreateStereoMatcher", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr CCreateStereoMatcher(StereoMatcherType matcher_type);
-
-        /*!
-        * Create stereo matching from stereo matcher type
-        *
-        * @param matcher_type stereo matcher type to create
-        * @returns stereo matcher object of type specified
-        */
-        public static AbstractStereoMatcher createStereoMatcher(StereoMatcherType matcher_type){
-            if (matcher_type == StereoMatcherType.STEREO_MATCHER_I3DRSGM){
-                return new StereoI3DRSGM(CCreateStereoMatcher(matcher_type));
-            } else if (matcher_type == StereoMatcherType.STEREO_MATCHER_BM){
-                return new StereoBM(CCreateStereoMatcher(matcher_type));
-            } else if (matcher_type == StereoMatcherType.STEREO_MATCHER_SGBM){
-                return new StereoSGBM(CCreateStereoMatcher(matcher_type));
-            } else if (matcher_type == StereoMatcherType.STEREO_MATCHER_HOBM){
-                return new StereoHOBM(CCreateStereoMatcher(matcher_type));
-            } else {
-                throw new ArgumentException(
-                    String.Format("Unsupported matcher type: {0}", matcher_type),"matcher_type");
-            }
-        }
     }
 }

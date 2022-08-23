@@ -8,9 +8,6 @@
  * @details TODOC
  */
 
-using System;
-using System.Runtime.InteropServices;
-using System.Runtime.ExceptionServices;
 using I3DR.CPhase;
 
 namespace I3DR.Phase
@@ -36,7 +33,7 @@ namespace I3DR.Phase
             int scaled_width = (int)((float)input_width * scale_factor);
             int scaled_height = (int)((float)input_height * scale_factor);
             byte[] scaled_image = new byte[scaled_width * scaled_height * 3];
-            PhaseScaleImageUChar(image, input_width, input_height, scale_factor, scaled_image);
+            CUtils.PhaseScaleImageUChar(image, input_width, input_height, scale_factor, scaled_image);
             return scaled_image;
         }
 
@@ -54,7 +51,7 @@ namespace I3DR.Phase
         static public byte[] normaliseDisparity(float[] disparity, int width, int height)
         {
             byte[] norm_disparity = new byte[width * height * 3];
-            PhaseNormaliseDisparity(disparity, width, height, norm_disparity);
+            CUtils.PhaseNormaliseDisparity(disparity, width, height, norm_disparity);
             return norm_disparity;
         }
 
@@ -69,7 +66,7 @@ namespace I3DR.Phase
         static public byte[] bgra2rgba(byte[] bgra, int width, int height)
         {
             byte[] rgba = new byte[width * height * 4];
-            PhaseBgra2rgba(bgra, width, height, rgba);
+            CUtils.PhaseBgra2rgba(bgra, width, height, rgba);
             return rgba;
         }
 
@@ -84,7 +81,7 @@ namespace I3DR.Phase
         static public byte[] bgr2rgba(byte[] bgr, int width, int height)
         {
             byte[] rgba = new byte[width * height * 4];
-            PhaseBgr2rgba(bgr, width, height, rgba);
+            CUtils.PhaseBgr2rgba(bgr, width, height, rgba);
             return rgba;
         }
 
@@ -99,7 +96,7 @@ namespace I3DR.Phase
         static public byte[] bgr2bgra(byte[] bgr, int width, int height)
         {
             byte[] bgra = new byte[width * height * 4];
-            PhaseBgr2bgra(bgr, width, height, bgra);
+            CUtils.PhaseBgr2bgra(bgr, width, height, bgra);
             return bgra;
         }
 
@@ -118,7 +115,7 @@ namespace I3DR.Phase
         static public float[] disparity2Depth(float[] disparity, int width, int height, float[] Q)
         {
             float[] depth = new float[width * height];
-            PhaseDisparity2depth(disparity, width, height, Q, depth);
+            CUtils.PhaseDisparity2depth(disparity, width, height, Q, depth);
             return depth;
         }
 
@@ -138,7 +135,7 @@ namespace I3DR.Phase
         static public float[] disparity2xyz(float[] disparity, int width, int height, float[] Q)
         {
             float[] xyz = new float[width * height * 3];
-            PhaseDisparity2xyz(disparity, width, height, Q, xyz);
+            CUtils.PhaseDisparity2xyz(disparity, width, height, Q, xyz);
             return xyz;
         }
 
@@ -157,7 +154,7 @@ namespace I3DR.Phase
         static public float[] depth2xyz(float[] depth, int width, int height, float hfov)
         {
             float[] xyz = new float[width * height * 3];
-            PhaseDepth2xyz(depth, width, height, hfov, xyz);
+            CUtils.PhaseDepth2xyz(depth, width, height, hfov, xyz);
             return xyz;
         }
 
@@ -175,7 +172,7 @@ namespace I3DR.Phase
         static public float[] xyz2depth(float[] xyz, int width, int height)
         {
             float[] depth = new float[width * height];
-            PhaseXyz2depth(xyz, width, height, depth);
+            CUtils.PhaseXyz2depth(xyz, width, height, depth);
             return depth;
         }
 
@@ -193,7 +190,7 @@ namespace I3DR.Phase
         */
         static public int showImage(string window_name, byte[] image, int width, int height)
         {
-            return PhaseShowImageUChar(window_name, image, width, height);
+            return CUtils.PhaseShowImageUChar(window_name, image, width, height);
         }
 
         /*!
@@ -207,7 +204,7 @@ namespace I3DR.Phase
         static public byte[] readImage(string image_filepath, int width, int height)
         {
             byte[] image = new byte[width * height * 3];
-            if (PhaseReadImageUChar(image_filepath, image, width, height)){
+            if (CUtils.PhaseReadImageUChar(image_filepath, image, width, height)){
                 return image;
             }
             return new byte[0];
@@ -227,7 +224,7 @@ namespace I3DR.Phase
         static public byte[] flip(byte[] in_img, int width, int height, int channels, int flipcode)
         {
             byte[] flipped_img = new byte[width * height * channels];
-            PhaseFlipUChar(in_img, flipped_img, width, height, channels, flipcode);
+            CUtils.PhaseFlipUChar(in_img, flipped_img, width, height, channels, flipcode);
             return flipped_img;
         }
 
@@ -245,7 +242,7 @@ namespace I3DR.Phase
         static public float[] flip(float[] in_img, int width, int height, int channels, int flipcode)
         {
             float[] flipped_img = new float[width * height * channels];
-            PhaseFlipFloat(in_img, flipped_img, width, height, channels, flipcode);
+            CUtils.PhaseFlipFloat(in_img, flipped_img, width, height, channels, flipcode);
             return flipped_img;
         }
 
@@ -266,7 +263,7 @@ namespace I3DR.Phase
         */
         static public bool savePLY(string ply_filepath, float[] xyz, byte[] rgb, int width, int height)
         {
-            return PhaseSavePLY(ply_filepath, xyz, rgb, width, height);
+            return CUtils.PhaseSavePLY(ply_filepath, xyz, rgb, width, height);
         }
 
         /*!
@@ -281,7 +278,7 @@ namespace I3DR.Phase
         */
         static public bool cvMatIsEqual(byte[] in_mat1, byte[] in_mat2, int width, int height, int channels)
         {
-            return PhaseCVMatIsEqualUChar(in_mat1, in_mat2, width, height, channels);
+            return CUtils.PhaseCVMatIsEqualUChar(in_mat1, in_mat2, width, height, channels);
         }
 
         /*!
@@ -296,7 +293,7 @@ namespace I3DR.Phase
         */
         static public bool cvMatIsEqual(float[] in_mat1, float[] in_mat2, int width, int height, int channels)
         {
-            return PhaseCVMatIsEqualFloat(in_mat1, in_mat2, width, height, channels);
+            return CUtils.PhaseCVMatIsEqualFloat(in_mat1, in_mat2, width, height, channels);
         }
 
         /*!
@@ -311,7 +308,7 @@ namespace I3DR.Phase
         */
         static public bool cvMatIsEqual(double[] in_mat1, double[] in_mat2, int width, int height, int channels)
         {
-            return PhaseCVMatIsEqualDouble(in_mat1, in_mat2, width, height, channels);
+            return CUtils.PhaseCVMatIsEqualDouble(in_mat1, in_mat2, width, height, channels);
         }
     }
 }

@@ -9,7 +9,6 @@
  */
 
 using System;
-using System.Runtime.InteropServices;
 using I3DR.CPhase;
 
 namespace I3DR.Phase
@@ -20,22 +19,6 @@ namespace I3DR.Phase
     */
     public class StereoBM : AbstractStereoMatcher
     {
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoBM_create", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr StereoBM_create();
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoBM_setWindowSize", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void StereoBM_setWindowSize(IntPtr matcher, int value);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoBM_setMinDisparity", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void StereoBM_setMinDisparity(IntPtr matcher, int value);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoBM_setNumDisparities", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void StereoBM_setNumDisparities(IntPtr matcher, int value);
-
         /*!
         * Initalise class using C API class instance reference
         * 

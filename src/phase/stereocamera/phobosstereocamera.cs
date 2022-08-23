@@ -8,8 +8,6 @@
  * @details Capture data from I3DR's Phobos stereo camera.
  */
 
-using System;
-using System.Runtime.InteropServices;
 using I3DR.CPhase;
 
 namespace I3DR.Phase
@@ -20,10 +18,6 @@ namespace I3DR.Phase
     */
     public class PhobosStereoCamera : AbstractStereoCamera
     {
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_PhobosStereoCamera_create", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr PhobosStereoCamera_create(string left_serial, string right_serial, string unique_serial, CameraDeviceType device_type, CameraInterfaceType interface_type);
-        
         /*!
         * PhobosStereoCamera constructor \n
         * Initalise Phobos Stereo Camera with the given \p device_info.

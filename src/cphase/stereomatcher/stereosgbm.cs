@@ -17,7 +17,7 @@ namespace I3DR.CPhase
     /*!
     OpenCV's semi-global block matcher for generting disparity from stereo images.
     */
-    public class StereoSGBM : AbstractStereoMatcher
+    public class StereoSGBM
     {
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoSGBM_create", CallingConvention = CallingConvention.Cdecl)]
@@ -34,48 +34,5 @@ namespace I3DR.CPhase
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_StereoSGBM_setNumDisparities", CallingConvention = CallingConvention.Cdecl)]
         private static extern void StereoSGBM_setNumDisparities(IntPtr matcher, int value);
-
-        /*!
-        * Initalise class using C API class instance reference
-        * 
-        * @IntPtr stereoCameraCalibration_instance
-        */
-        public StereoSGBM(IntPtr abstractStereoMatcher_instance): base(abstractStereoMatcher_instance){}
-
-        /*!
-        * StereoSGBM constructor \n
-        * Initalise Stereo matcher and set default matching parameters.
-        * 
-        */
-        public StereoSGBM(): base(){
-            m_AbstractStereoMatcher_instance = StereoSGBM_create();
-        }
-
-        /*!
-        * Set window size for matcher
-        * 
-        * @param value window size
-        */
-        public void setWindowSize(int value){
-            StereoSGBM_setWindowSize(m_AbstractStereoMatcher_instance, value);
-        }
-
-        /*!
-        * Set minimum disparity for matcher
-        * 
-        * @param value minimum disparity
-        */
-        public void setMinDisparity(int value){
-            StereoSGBM_setMinDisparity(m_AbstractStereoMatcher_instance, value);
-        }
-
-        /*!
-        * Set number of disparities for matcher
-        * 
-        * @param value number of disparities
-        */
-        public void setNumDisparities(int value){
-            StereoSGBM_setNumDisparities(m_AbstractStereoMatcher_instance, value);
-        }
     }
 }

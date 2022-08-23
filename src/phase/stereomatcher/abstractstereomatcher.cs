@@ -14,8 +14,6 @@
  */
 
 using System;
-using System.Runtime.InteropServices;
-using System.Runtime.ExceptionServices;
 using I3DR.CPhase;
 
 namespace I3DR.Phase
@@ -78,26 +76,6 @@ namespace I3DR.Phase
     */
     public class AbstractStereoMatcher
     {
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoMatcher_CCompute", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern bool AbstractStereoMatcher_CCompute(IntPtr matcher, [In] byte[] left_image, [In] byte[] right_image, int in_width, int in_height, [Out] float[] disparity);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoMatcher_CStartComputeThread", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern void AbstractStereoMatcher_CStartComputeThread(IntPtr matcher, [In] byte[] left_image, [In] byte[] right_image, int in_width, int in_height);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoMatcher_CIsComputeThreadRunning", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern bool AbstractStereoMatcher_CIsComputeThreadRunning(IntPtr matcher);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoMatcher_CGetComputeThreadResult", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern bool AbstractStereoMatcher_CGetComputeThreadResult(IntPtr matcher, int width, int height, [Out] float[] disparity);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_AbstractStereoMatcher_dispose", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern void AbstractStereoMatcher_dispose(IntPtr matcher);
-        
         protected IntPtr m_AbstractStereoMatcher_instance; //!< pointer to AbstractStereoMatcher C API instance
         private float[] disparity; //!< store disparity image
 

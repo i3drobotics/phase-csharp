@@ -9,8 +9,6 @@
  * where left and right is transported via green and red channels.
  */
 
-using System;
-using System.Runtime.InteropServices;
 using I3DR.CPhase;
 
 namespace I3DR.Phase
@@ -22,10 +20,6 @@ namespace I3DR.Phase
     */
     public class UVCStereoCamera : AbstractStereoCamera
     {
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_UVCStereoCamera_create", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr UVCStereoCamera_create(string left_serial, string right_serial, string unique_serial, CameraDeviceType device_type, CameraInterfaceType interface_type);
-        
         /*!
         * UVCStereoCamera constructor \n
         * Initalise UVC Stereo Camera with the given \p device_info.

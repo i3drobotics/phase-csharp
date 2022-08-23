@@ -9,7 +9,6 @@
  */
  
 using System;
-using System.Runtime.InteropServices;
 using I3DR.CPhase;
 
 namespace I3DR.Phase
@@ -20,42 +19,6 @@ namespace I3DR.Phase
     */
     public class StereoI3DRSGM : AbstractStereoMatcher
     {
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoI3DRSGM_create", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr StereoI3DRSGM_create();
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoI3DRSGM_setWindowSize", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void StereoI3DRSGM_setWindowSize(IntPtr matcher, int value);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoI3DRSGM_setMinDisparity", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void StereoI3DRSGM_setMinDisparity(IntPtr matcher, int value);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoI3DRSGM_setNumDisparities", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void StereoI3DRSGM_setNumDisparities(IntPtr matcher, int value);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoI3DRSGM_setSpeckleMaxSize", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void StereoI3DRSGM_setSpeckleMaxSize(IntPtr matcher, int value);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoI3DRSGM_setSpeckleMaxDiff", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void StereoI3DRSGM_setSpeckleMaxDiff(IntPtr matcher, float value);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoI3DRSGM_enableSubpixel", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void StereoI3DRSGM_enableSubpixel(IntPtr matcher, bool enable);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoI3DRSGM_enableInterpolation", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void StereoI3DRSGM_enableInterpolation(IntPtr matcher, bool enable);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoI3DRSGM_isLicenseValid", CallingConvention = CallingConvention.Cdecl)]
-        private static extern bool StereoI3DRSGM_isLicenseValid();
-
         /*!
         * Initalise class using C API class instance reference
         * 

@@ -8,8 +8,6 @@
  * @details Capture data from a stereo camera using Basler cameras.
  */
 
-using System;
-using System.Runtime.InteropServices;
 using I3DR.CPhase;
 
 namespace I3DR.Phase
@@ -20,10 +18,6 @@ namespace I3DR.Phase
     */
     public class PylonStereoCamera : AbstractStereoCamera
     {
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_PylonStereoCamera_create", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr PylonStereoCamera_create(string left_serial, string right_serial, string unique_serial, CameraDeviceType device_type, CameraInterfaceType interface_type);
-        
         /*!
         * PylonStereoCamera constructor \n
         * Initalise Pylon Stereo Camera with the given \p device_info.
