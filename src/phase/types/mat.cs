@@ -21,54 +21,6 @@ namespace I3DR.Phase
     */
     public class MatrixFloat
     {
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_create", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr MatrixFloat_create(int rows, int columns, int layers);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_createData", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr MatrixFloat_createData(int rows, int columns, int layers, [In] float[] data, bool copy);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_dispose", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void MatrixFloat_dispose(IntPtr MatrixFloat_ptr);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_getRows", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int MatrixFloat_getRows(IntPtr mat);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_getColumns", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int MatrixFloat_getColumns(IntPtr mat);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_getLayers", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int MatrixFloat_getLayers(IntPtr mat);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_isEmpty", CallingConvention = CallingConvention.Cdecl)]
-        private static extern bool MatrixFloat_isEmpty(IntPtr mat);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_getLength", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int MatrixFloat_getLength(IntPtr mat);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_getSize", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int MatrixFloat_getSize(IntPtr mat);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_getAt", CallingConvention = CallingConvention.Cdecl)]
-        private static extern float MatrixFloat_getAt(IntPtr mat, int row, int column, int layer);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_setAt", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void MatrixFloat_setAt(IntPtr mat, int row, int column, int layer, float value);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixFloat_getData", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void MatrixFloat_getData(IntPtr mat, [Out] float[] data);
-
         private float[] m_data; //!< stored matrix data
 
         private IntPtr m_MatrixFloat_ptr; //!< pointer to MatrixFloat C API instance
@@ -91,7 +43,7 @@ namespace I3DR.Phase
         * @param layers number of layers to create in matrix
         */
         public MatrixFloat(int rows, int columns, int layers){
-            m_MatrixFloat_ptr = MatrixFloat_create(rows, columns, layers);
+            m_MatrixFloat_ptr = PhaseMatrixFloatCreate(rows, columns, layers);
         }
 
         /*!
@@ -104,7 +56,7 @@ namespace I3DR.Phase
         * @param copy if true, copy data, otherwise just point to data
         */
         public MatrixFloat(int rows, int columns, int layers, float[] data, bool copy){
-            m_MatrixFloat_ptr = MatrixFloat_createData(rows, columns, layers, data, copy);
+            m_MatrixFloat_ptr = PhaseMatrixFloatCreateData(rows, columns, layers, data, copy);
         }
 
         /*!
@@ -122,7 +74,7 @@ namespace I3DR.Phase
         */
         public int getRows()
         {
-            return MatrixFloat_getRows(m_MatrixFloat_ptr);
+            return PhaseMatrixFloatGetRows(m_MatrixFloat_ptr);
         }
 
         /*!
@@ -132,7 +84,7 @@ namespace I3DR.Phase
         */
         public int getColumns()
         {
-            return MatrixFloat_getColumns(m_MatrixFloat_ptr);
+            return PhaseMatrixFloatGetColumns(m_MatrixFloat_ptr);
         }
 
         /*!
@@ -142,7 +94,7 @@ namespace I3DR.Phase
         */
         public int getLayers()
         {
-            return MatrixFloat_getLayers(m_MatrixFloat_ptr);
+            return PhaseMatrixFloatGetLayers(m_MatrixFloat_ptr);
         }
 
         /*!
@@ -152,7 +104,7 @@ namespace I3DR.Phase
         */
         public bool isEmpty()
         {
-            return MatrixFloat_isEmpty(m_MatrixFloat_ptr);
+            return PhaseMatrixFloatIsEmpty(m_MatrixFloat_ptr);
         }
 
         /*!
@@ -163,7 +115,7 @@ namespace I3DR.Phase
         */
         public int getLength()
         {
-            return MatrixFloat_getLength(m_MatrixFloat_ptr);
+            return PhaseMatrixFloatGetLength(m_MatrixFloat_ptr);
         }
 
         /*!
@@ -174,7 +126,7 @@ namespace I3DR.Phase
         */
         public int getSize()
         {
-            return MatrixFloat_getSize(m_MatrixFloat_ptr);
+            return PhaseMatrixFloatGetSize(m_MatrixFloat_ptr);
         }
 
         /*!
@@ -186,7 +138,7 @@ namespace I3DR.Phase
         * @param value value to set element to
         */
         public void setAt(int row, int column, int layer, float value){
-            MatrixFloat_setAt(m_MatrixFloat_ptr, row, column, layer, value);
+            PhaseMatrixFloatSetAt(m_MatrixFloat_ptr, row, column, layer, value);
         }
 
         /*!
@@ -198,7 +150,7 @@ namespace I3DR.Phase
         * @return value of element
         */
         public float getAt(int row, int column, int layer){
-            return MatrixFloat_getAt(m_MatrixFloat_ptr, row, column, layer);
+            return PhaseMatrixFloatGetAt(m_MatrixFloat_ptr, row, column, layer);
         }
 
         /*!
@@ -208,7 +160,7 @@ namespace I3DR.Phase
         */
         public float[] getData(){
             m_data = new float[getLength()];
-            MatrixFloat_getData(m_MatrixFloat_ptr, m_data);
+            PhaseMatrixFloatGetData(m_MatrixFloat_ptr, m_data);
             return m_data;
         }
 
@@ -220,7 +172,7 @@ namespace I3DR.Phase
         public void dispose(){
             if (m_MatrixFloat_ptr != IntPtr.Zero){
                 try {
-                    MatrixFloat_dispose(m_MatrixFloat_ptr);
+                    PhaseMatrixFloatDispose(m_MatrixFloat_ptr);
                 }
                 catch (AccessViolationException e)
                 {
@@ -243,54 +195,6 @@ namespace I3DR.Phase
     */
     public class MatrixUInt8
     {
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_create", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr MatrixUInt8_create(int rows, int columns, int layers);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_createData", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr MatrixUInt8_createData(int rows, int columns, int layers, [In] byte[] data, bool copy);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_dispose", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void MatrixUInt8_dispose(IntPtr MatrixUInt8_ptr);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_getRows", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int MatrixUInt8_getRows(IntPtr mat);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_getColumns", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int MatrixUInt8_getColumns(IntPtr mat);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_getLayers", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int MatrixUInt8_getLayers(IntPtr mat);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_isEmpty", CallingConvention = CallingConvention.Cdecl)]
-        private static extern bool MatrixUInt8_isEmpty(IntPtr mat);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_getLength", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int MatrixUInt8_getLength(IntPtr mat);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_getSize", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int MatrixUInt8_getSize(IntPtr mat);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_getAt", CallingConvention = CallingConvention.Cdecl)]
-        private static extern byte MatrixUInt8_getAt(IntPtr mat, int row, int column, int layer);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_setAt", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void MatrixUInt8_setAt(IntPtr mat, int row, int column, int layer, byte value);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_MatrixUInt8_getData", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void MatrixUInt8_getData(IntPtr mat, [Out] byte[] data);
-
         private byte[] m_data; //!< stores matrix data
 
         private IntPtr m_MatrixUInt8_ptr; //!< pointer to MatrixUInt8 C API instance
@@ -313,7 +217,7 @@ namespace I3DR.Phase
         * @param layers number of layers to create in matrix
         */
         public MatrixUInt8(int rows, int columns, int layers){
-            m_MatrixUInt8_ptr = MatrixUInt8_create(rows, columns, layers);
+            m_MatrixUInt8_ptr = PhaseMatrixUInt8Create(rows, columns, layers);
         }
 
         /*!
@@ -326,7 +230,7 @@ namespace I3DR.Phase
         * @param copy if true, copy data, otherwise just point to data
         */
         public MatrixUInt8(int rows, int columns, int layers, byte[] data, bool copy){
-            m_MatrixUInt8_ptr = MatrixUInt8_createData(rows, columns, layers, data, copy);
+            m_MatrixUInt8_ptr = PhaseMatrixUInt8CreateData(rows, columns, layers, data, copy);
         }
 
         /*!
@@ -344,7 +248,7 @@ namespace I3DR.Phase
         */
         public int getRows()
         {
-            return MatrixUInt8_getRows(m_MatrixUInt8_ptr);
+            return PhaseMatrixUInt8GetRows(m_MatrixUInt8_ptr);
         }
 
         /*!
@@ -354,7 +258,7 @@ namespace I3DR.Phase
         */
         public int getColumns()
         {
-            return MatrixUInt8_getColumns(m_MatrixUInt8_ptr);
+            return PhaseMatrixUInt8GetColumns(m_MatrixUInt8_ptr);
         }
 
         /*!
@@ -364,7 +268,7 @@ namespace I3DR.Phase
         */
         public int getLayers()
         {
-            return MatrixUInt8_getLayers(m_MatrixUInt8_ptr);
+            return PhaseMatrixUInt8GetLayers(m_MatrixUInt8_ptr);
         }
 
         /*!
@@ -374,7 +278,7 @@ namespace I3DR.Phase
         */
         public bool isEmpty()
         {
-            return MatrixUInt8_isEmpty(m_MatrixUInt8_ptr);
+            return PhaseMatrixUInt8IsEmpty(m_MatrixUInt8_ptr);
         }
 
         /*!
@@ -385,7 +289,7 @@ namespace I3DR.Phase
         */
         public int getLength()
         {
-            return MatrixUInt8_getLength(m_MatrixUInt8_ptr);
+            return PhaseMatrixUInt8GetLength(m_MatrixUInt8_ptr);
         }
 
         /*!
@@ -396,7 +300,7 @@ namespace I3DR.Phase
         */
         public int getSize()
         {
-            return MatrixUInt8_getSize(m_MatrixUInt8_ptr);
+            return PhaseMatrixUInt8GetSize(m_MatrixUInt8_ptr);
         }
 
         /*!
@@ -408,7 +312,7 @@ namespace I3DR.Phase
         * @param value value to set element to
         */
         public void setAt(int row, int column, int layer, byte value){
-            MatrixUInt8_setAt(m_MatrixUInt8_ptr, row, column, layer, value);
+            PhaseMatrixUInt8SetAt(m_MatrixUInt8_ptr, row, column, layer, value);
         }
 
         /*!
@@ -420,7 +324,7 @@ namespace I3DR.Phase
         * @return value of element
         */
         public byte getAt(int row, int column, int layer){
-            return MatrixUInt8_getAt(m_MatrixUInt8_ptr, row, column, layer);
+            return PhaseMatrixUInt8GetAt(m_MatrixUInt8_ptr, row, column, layer);
         }
 
         /*!
@@ -430,7 +334,7 @@ namespace I3DR.Phase
         */
         public byte[] getData(){
             m_data = new byte[getLength()];
-            MatrixUInt8_getData(m_MatrixUInt8_ptr, m_data);
+            PhaseMatrixUInt8GetData(m_MatrixUInt8_ptr, m_data);
             return m_data;
         }
 
@@ -442,7 +346,7 @@ namespace I3DR.Phase
         public void dispose(){
             if (m_MatrixUInt8_ptr != IntPtr.Zero){
                 try {
-                    MatrixUInt8_dispose(m_MatrixUInt8_ptr);
+                    PhaseMatrixUInt8Dispose(m_MatrixUInt8_ptr);
                 }
                 catch (AccessViolationException e)
                 {
