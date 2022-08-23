@@ -11,7 +11,7 @@
 
 using System;
 using System.Runtime.InteropServices;
-using I3DR.Phase;
+using I3DR.Phase.Calib;
 
 namespace I3DR.CPhase.Calib
 {

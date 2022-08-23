@@ -10,6 +10,7 @@
  */
 
 using System;
+using I3DR.Phase.Types;
 using I3DR.CPhase.Calib;
 
 namespace I3DR.Phase.Calib
