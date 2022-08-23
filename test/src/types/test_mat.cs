@@ -9,9 +9,8 @@
  */
 
 using Xunit;
-using I3DR;
 
-namespace I3DR.Phase.Test
+namespace I3DR.PhaseTest
 {
     // Tests for Matrix
     [Collection("PhaseSequentialTests")]

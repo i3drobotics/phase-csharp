@@ -9,9 +9,9 @@
  */
 
 using Xunit;
-using I3DR;
+using I3DR.Phase.StereoMatcher;
 
-namespace I3DR.Phase.Test
+namespace I3DR.PhaseTest
 {
     // Tests for StereoMatcher
     [Collection("PhaseSequentialTests")]
