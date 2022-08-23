@@ -24,7 +24,7 @@ namespace I3DR.Phase.Test
         public void test_LoadCalibration()
         {
             string test_folder = ".phase_test";
-            string data_folder = "../../../../data";
+            // string data_folder = "../../../../data";
             string left_ros_yaml = test_folder + "/left_ros.yaml";
             string right_ros_yaml = test_folder + "/right_ros.yaml";
             string left_cv_yaml = test_folder + "/left_cv.yaml";
@@ -152,7 +152,7 @@ namespace I3DR.Phase.Test
         public void test_SaveCalibration()
         {
             string test_folder = ".phase_test";
-            string data_folder = "../../../../data";
+            // string data_folder = "../../../../data";
             string left_yaml = test_folder + "/left.yaml";
             string right_yaml = test_folder + "/right.yaml";
             string left_ros_yaml = test_folder + "/left_ros.yaml";

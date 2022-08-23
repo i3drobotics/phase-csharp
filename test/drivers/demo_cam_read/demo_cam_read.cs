@@ -48,7 +48,6 @@ namespace I3DR
                 bool use_test_images = true;
                 int repeat_capture = 1;
                 bool show_display = true;
-                int disp_time = 1;
 
                 CameraInterfaceType interface_type;
                 if (use_test_images){
