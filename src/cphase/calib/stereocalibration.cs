@@ -67,11 +67,11 @@ namespace I3DR.CPhase
         public static extern bool rectify(IntPtr c, [In] byte[] left_image, [In] byte[] right_image, int width, int height, [Out] byte[] left_rect_image, [Out] byte[] right_rect_image);
 
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "StereoCameraCalibrationSaveToYAML", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "PhaseStereoCameraCalibrationSaveToYAML", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool saveToYAML(IntPtr c, string left_calibration_filepath, string right_calibration_filepath, CalibrationFileType cal_file_type);
 
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "StereoCameraCalibrationDispose", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "PhaseStereoCameraCalibrationDispose", CallingConvention = CallingConvention.Cdecl)]
         public static extern void dispose(IntPtr c);
     }
 }
