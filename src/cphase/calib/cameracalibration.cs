@@ -18,54 +18,34 @@ namespace I3DR.CPhase
     /*!
     Store and manipulate camera calibration data.
     */
-    public class CameraCalibration
+    public class CCameraCalibration
     {
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoCameraCalibration_CalibrationFromYAML", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr CCalibrationFromYAML(string left_yaml_filepath, string right_yaml_filepath);
+        [DllImport("phase", EntryPoint = "PhaseCameraCalibrationCreate", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr PhaseCameraCalibrationCreate(string left_yaml_filepath);
 
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoCameraCalibration_CalibrationFromIdeal", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr CCalibrationFromIdeal(int width, int height, double pixel_pitch, double focal_length, double baseline);
+        [DllImport("phase", EntryPoint = "PhaseCameraCalibrationCalibrationFromIdeal", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr PhaseCameraCalibrationCalibrationFromIdeal(int width, int height, double pixel_pitch, double focal_length, double translation_x, double translation_y);
 
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoCameraCalibration_CIsValid", CallingConvention = CallingConvention.Cdecl)]
-        private static extern bool CIsValid(IntPtr c);
+        [DllImport("phase", EntryPoint = "PhaseCameraCalibrationRectify", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void PhaseCameraCalibrationRectify(IntPtr c, [In] byte[] image, int width, int height, [Out] byte[] rect_image);
 
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoCameraCalibration_CIsValidSize", CallingConvention = CallingConvention.Cdecl)]
-        private static extern bool CIsValidSize(IntPtr c, int width, int height);
+        [DllImport("phase", EntryPoint = "PhaseCameraCalibrationIsValid", CallingConvention = CallingConvention.Cdecl)]
+        public static extern bool PhaseCameraCalibrationIsValid(IntPtr c);
 
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoCameraCalibration_CGetHFOV", CallingConvention = CallingConvention.Cdecl)]
-        private static extern float CGetHFOV(IntPtr c);
+        [DllImport("phase", EntryPoint = "PhaseCameraCalibrationGetDownsampleFactor", CallingConvention = CallingConvention.Cdecl)]
+        public static extern float PhaseCameraCalibrationGetDownsampleFactor(IntPtr c);
 
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoCameraCalibration_CGetBaseline", CallingConvention = CallingConvention.Cdecl)]
-        private static extern double CGetBaseline(IntPtr c);
+        [DllImport("phase", EntryPoint = "PhaseCameraCalibrationSetDownsampleFactor", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void PhaseCameraCalibrationSetDownsampleFactor(IntPtr c, float value);
 
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoCameraCalibration_CGetQ", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void CGetQ(IntPtr c, [Out] float[] out_Q);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoCameraCalibration_CGetDownsampleFactor", CallingConvention = CallingConvention.Cdecl)]
-        private static extern float CGetDownsampleFactor(IntPtr c);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoCameraCalibration_CSetDownsampleFactor", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void CSetDownsampleFactor(IntPtr c, float value);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoCameraCalibration_CRectify", CallingConvention = CallingConvention.Cdecl)]
-        protected static extern bool CRectify(IntPtr c, [In] byte[] left_image, [In] byte[] right_image, int width, int height, [Out] byte[] left_rect_image, [Out] byte[] right_rect_image);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoCameraCalibration_CSaveToYAML", CallingConvention = CallingConvention.Cdecl)]
-        private static extern bool CSaveToYAML(IntPtr c, string left_calibration_filepath, string right_calibration_filepath, CalibrationFileType cal_file_type);
-
-        //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoCameraCalibration_dispose", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void StereoCameraCalibration_dispose(IntPtr c);
+        [DllImport("phase", EntryPoint = "PhaseCameraCalibrationDispose", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void PhaseCameraCalibrationDispose(IntPtr c);
     }
 }

@@ -12,6 +12,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using I3DR.Phase;
 
 namespace I3DR.CPhase
 {
@@ -21,10 +22,10 @@ namespace I3DR.CPhase
     CameraDeviceInfo. This allows for the same interface to be
     used for any stereo camera. 
     */
-    public class StereoCamera
+    public class CStereoCamera
     {
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "I3DR_CCreateStereoCamera", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr CCreateStereoCamera(string left_serial, string right_serial, string unique_serial, CameraDeviceType device_type, CameraInterfaceType interface_type);
+        public static extern IntPtr CCreateStereoCamera(string left_serial, string right_serial, string unique_serial, CameraDeviceType device_type, CameraInterfaceType interface_type);
     }
 }

@@ -10,6 +10,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using I3DR.Phase;
 
 namespace I3DR.CPhase
 {
@@ -17,10 +18,10 @@ namespace I3DR.CPhase
     /*!
     Capture data from I3DR's Titania stereo camera.
     */
-    public class TitaniaStereoCamera
+    public class CTitaniaStereoCamera
     {
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_TitaniaStereoCamera_create", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr TitaniaStereoCamera_create(string left_serial, string right_serial, string unique_serial, CameraDeviceType device_type, CameraInterfaceType interface_type);
+        [DllImport("phase", EntryPoint = "PhaseTitaniaStereoCameraCreate", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr PhaseTitaniaStereoCameraCreate(string left_serial, string right_serial, string unique_serial, CameraDeviceType device_type, CameraInterfaceType interface_type);
     }
 }

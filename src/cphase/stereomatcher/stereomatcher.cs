@@ -12,6 +12,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using I3DR.Phase;
 
 namespace I3DR.CPhase
 {
@@ -21,10 +22,10 @@ namespace I3DR.CPhase
     StereoMatcherType. This allows for the same interface to be
     used for any stereo matcher. 
     */
-    public class StereoMatcher
+    public class CStereoMatcher
     {
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_CCreateStereoMatcher", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr CCreateStereoMatcher(StereoMatcherType matcher_type);
+        [DllImport("phase", EntryPoint = "PhaseCreateStereoMatcher", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr PhaseCreateStereoMatcher(StereoMatcherType matcher_type);
     }
 }

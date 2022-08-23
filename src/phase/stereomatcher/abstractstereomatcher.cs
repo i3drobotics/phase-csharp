@@ -46,7 +46,6 @@ namespace I3DR.Phase
         STEREO_MATCHER_BM, //!< OpenCV Block Matcher
         STEREO_MATCHER_SGBM, //!< OpenCV Semi-Global Block Matcher
         STEREO_MATCHER_I3DRSGM, //!< I3DR's Semi-Global Block Matcher
-        STEREO_MATCHER_HOBM, //!< I3DR's High resolution Optimised Block Matcher
     };
 
     //!  Stereo Matcher Compute Result structure
@@ -122,7 +121,7 @@ namespace I3DR.Phase
         public StereoMatcherComputeResult compute(byte[] left_image, byte[] right_image, int width, int height)
         {
             disparity = new float[width * height];
-            bool valid = AbstractStereoMatcher_CCompute(
+            bool valid = CAbstractStereoMatcher.PhaseAbstractStereoMatcherCompute(
                 m_AbstractStereoMatcher_instance,
                 left_image,
                 right_image,
@@ -153,7 +152,7 @@ namespace I3DR.Phase
         */
         public void startComputeThread(byte[] left_image, byte[] right_image, int width, int height)
         {
-            AbstractStereoMatcher_CStartComputeThread(
+            CAbstractStereoMatcher.PhaseAbstractStereoMatcherStartComputeThread(
                 m_AbstractStereoMatcher_instance,
                 left_image,
                 right_image,
@@ -168,7 +167,7 @@ namespace I3DR.Phase
         * @return compute thread running status
         */
         public bool isComputeThreadRunning(){
-            return AbstractStereoMatcher_CIsComputeThreadRunning(m_AbstractStereoMatcher_instance);
+            return CAbstractStereoMatcher.PhaseAbstractStereoMatcherIsComputeThreadRunning(m_AbstractStereoMatcher_instance);
         }
 
         /*!
@@ -182,7 +181,7 @@ namespace I3DR.Phase
         public StereoMatcherComputeResult getComputeThreadResult(int width, int height)
         {
             disparity = new float[width * height];
-            bool valid = AbstractStereoMatcher_CGetComputeThreadResult(
+            bool valid = CAbstractStereoMatcher.PhaseAbstractStereoMatcherGetComputeThreadResult(
                 m_AbstractStereoMatcher_instance,
                 width, height,
                 disparity
@@ -207,7 +206,7 @@ namespace I3DR.Phase
         public void dispose(){
             if (m_AbstractStereoMatcher_instance != IntPtr.Zero){
                 try { 
-                    AbstractStereoMatcher_dispose(m_AbstractStereoMatcher_instance);
+                    CAbstractStereoMatcher.PhaseAbstractStereoMatcherDispose(m_AbstractStereoMatcher_instance);
                 }
                 catch (AccessViolationException e)
                 {

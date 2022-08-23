@@ -30,7 +30,7 @@ namespace I3DR.Phase
         * @return stereo camera
         */
         public static AbstractStereoCamera createStereoCamera(CameraDeviceInfo camera_device_info){
-            return new AbstractStereoCamera(CCreateStereoCamera(
+            return new AbstractStereoCamera(CStereoCamera.CCreateStereoCamera(
                 camera_device_info.left_camera_serial, camera_device_info.right_camera_serial, 
                 camera_device_info.unique_serial, 
                 camera_device_info.device_type, camera_device_info.interface_type

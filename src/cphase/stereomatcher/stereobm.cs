@@ -17,22 +17,22 @@ namespace I3DR.CPhase
     /*!
     OpenCV's block matcher for generting disparity from stereo images.
     */
-    public class StereoBM
+    public class CStereoBM
     {
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoBM_create", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr StereoBM_create();
+        [DllImport("phase", EntryPoint = "PhaseStereoBMCreate", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr PhaseStereoBMCreate();
 
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoBM_setWindowSize", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void StereoBM_setWindowSize(IntPtr matcher, int value);
+        [DllImport("phase", EntryPoint = "PhaseStereoBMSetWindowSize", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void PhaseStereoBMSetWindowSize(IntPtr matcher, int value);
 
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoBM_setMinDisparity", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void StereoBM_setMinDisparity(IntPtr matcher, int value);
+        [DllImport("phase", EntryPoint = "PhaseStereoBMSetMinDisparity", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void PhaseStereoBMSetMinDisparity(IntPtr matcher, int value);
 
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_StereoBM_setNumDisparities", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void StereoBM_setNumDisparities(IntPtr matcher, int value);
+        [DllImport("phase", EntryPoint = "PhaseStereoBMSetNumDisparities", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void PhaseStereoBMSetNumDisparities(IntPtr matcher, int value);
     }
 }

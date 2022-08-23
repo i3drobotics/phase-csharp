@@ -9,8 +9,6 @@
  */
 
 using System;
-using System.Runtime.InteropServices;
-using System.Runtime.ExceptionServices;
 using I3DR.CPhase;
 
 namespace I3DR.Phase

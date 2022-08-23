@@ -32,7 +32,7 @@ namespace I3DR.Phase
         * 
         */
         public StereoSGBM(): base(){
-            m_AbstractStereoMatcher_instance = StereoSGBM_create();
+            m_AbstractStereoMatcher_instance = CStereoSGBM.PhaseStereoSGBMCreate();
         }
 
         /*!
@@ -41,7 +41,7 @@ namespace I3DR.Phase
         * @param value window size
         */
         public void setWindowSize(int value){
-            StereoSGBM_setWindowSize(m_AbstractStereoMatcher_instance, value);
+            CStereoSGBM.PhaseStereoSGBMSetWindowSize(m_AbstractStereoMatcher_instance, value);
         }
 
         /*!
@@ -50,7 +50,7 @@ namespace I3DR.Phase
         * @param value minimum disparity
         */
         public void setMinDisparity(int value){
-            StereoSGBM_setMinDisparity(m_AbstractStereoMatcher_instance, value);
+            CStereoSGBM.PhaseStereoSGBMSetMinDisparity(m_AbstractStereoMatcher_instance, value);
         }
 
         /*!
@@ -59,7 +59,7 @@ namespace I3DR.Phase
         * @param value number of disparities
         */
         public void setNumDisparities(int value){
-            StereoSGBM_setNumDisparities(m_AbstractStereoMatcher_instance, value);
+            CStereoSGBM.PhaseStereoSGBMSetNumDisparities(m_AbstractStereoMatcher_instance, value);
         }
     }
 }

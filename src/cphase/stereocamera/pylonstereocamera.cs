@@ -10,6 +10,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using I3DR.Phase;
 
 namespace I3DR.CPhase
 {
@@ -17,10 +18,10 @@ namespace I3DR.CPhase
     /*!
     Capture data from a stereo camera using Basler cameras via the Pylon API
     */
-    public class PylonStereoCamera
+    public class CPylonStereoCamera
     {
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_PylonStereoCamera_create", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr PylonStereoCamera_create(string left_serial, string right_serial, string unique_serial, CameraDeviceType device_type, CameraInterfaceType interface_type);
+        [DllImport("phase", EntryPoint = "PhasePylonStereoCameraCreate", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr PhasePylonStereoCameraCreate(string left_serial, string right_serial, string unique_serial, CameraDeviceType device_type, CameraInterfaceType interface_type);
     }
 }
