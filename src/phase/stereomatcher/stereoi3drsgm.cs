@@ -9,9 +9,9 @@
  */
  
 using System;
-using I3DR.CPhase;
+using I3DR.CPhase.StereoMatcher;
 
-namespace I3DR.Phase
+namespace I3DR.Phase.StereoMatcher
 {
     //!  Stereo I3DRSGM class
     /*!

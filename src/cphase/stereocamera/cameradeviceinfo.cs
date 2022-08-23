@@ -9,6 +9,6 @@
  * including the camera's serials, interface, and device type
  */
 
-namespace I3DR.CPhase
+namespace I3DR.CPhase.StereoCamera
 {
 }

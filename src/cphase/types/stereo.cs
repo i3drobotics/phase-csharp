@@ -8,6 +8,6 @@
  * @brief Commmon types used in Phase
  */
 
-namespace I3DR.CPhase
+namespace I3DR.CPhase.Types
 {
 }

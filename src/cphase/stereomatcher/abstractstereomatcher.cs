@@ -16,7 +16,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace I3DR.CPhase
+namespace I3DR.CPhase.StereoMatcher
 {
     //!  Abstract Stereo Matcher class
     /*!

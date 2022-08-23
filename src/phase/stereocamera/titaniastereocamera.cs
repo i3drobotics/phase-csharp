@@ -8,9 +8,9 @@
  * @details Capture data from I3DR's Titania stereo camera.
  */
 
-using I3DR.CPhase;
+using I3DR.CPhase.StereoCamera;
 
-namespace I3DR.Phase
+namespace I3DR.Phase.StereoCamera
 {
     //!  Titania Stereo Camera class
     /*!

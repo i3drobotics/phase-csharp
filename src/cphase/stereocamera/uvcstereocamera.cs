@@ -11,9 +11,9 @@
 
 using System;
 using System.Runtime.InteropServices;
-using I3DR.Phase;
+using I3DR.Phase.StereoCamera;
 
-namespace I3DR.CPhase
+namespace I3DR.CPhase.StereoCamera
 {   
     //!  UVC Stereo Camera class
     /*!

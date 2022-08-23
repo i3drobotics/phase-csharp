@@ -8,7 +8,7 @@
  * @brief Stereo types used in Phase
  */
 
-namespace I3DR.Phase
+namespace I3DR.Phase.Types
 {
 
     //!  Stereo Image Pair structure

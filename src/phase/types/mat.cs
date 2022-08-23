@@ -11,7 +11,7 @@
 using System;
 using I3DR.CPhase;
 
-namespace I3DR.Phase
+namespace I3DR.Phase.Types
 {
     //!  Matrix Float class
     /*!

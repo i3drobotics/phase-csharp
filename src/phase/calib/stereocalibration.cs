@@ -10,9 +10,9 @@
  */
 
 using System;
-using I3DR.CPhase;
+using I3DR.CPhase.Calib;
 
-namespace I3DR.Phase
+namespace I3DR.Phase.Calib
 {
     //!  CameraSelection enum
     /*!

@@ -9,7 +9,7 @@
  * including the camera's serials, interface, and device type
  */
 
-namespace I3DR.Phase
+namespace I3DR.Phase.StereoCamera
 {
     //!  Camera Device Type enum
     /*!

@@ -14,7 +14,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Runtime.ExceptionServices;
 
-namespace I3DR.CPhase
+namespace I3DR.CPhase.StereoCamera
 {
     //!  Abstract Stereo Camera class
     /*!

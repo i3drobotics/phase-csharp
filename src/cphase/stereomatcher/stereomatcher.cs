@@ -12,9 +12,9 @@
 
 using System;
 using System.Runtime.InteropServices;
-using I3DR.Phase;
+using I3DR.Phase.StereoMatcher;
 
-namespace I3DR.CPhase
+namespace I3DR.CPhase.StereoMatcher
 {
     //!  Stereo Matcher class
     /*!

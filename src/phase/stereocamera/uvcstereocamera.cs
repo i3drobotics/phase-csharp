@@ -9,9 +9,9 @@
  * where left and right is transported via green and red channels.
  */
 
-using I3DR.CPhase;
+using I3DR.CPhase.StereoCamera;
 
-namespace I3DR.Phase
+namespace I3DR.Phase.StereoCamera
 {   
     //!  UVC Stereo Camera class
     /*!

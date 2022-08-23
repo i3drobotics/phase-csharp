@@ -13,7 +13,7 @@ using System;
 using System.Runtime.InteropServices;
 using I3DR.Phase;
 
-namespace I3DR.CPhase
+namespace I3DR.CPhase.Calib
 {
     //!  Stereo Camera Calibration class
     /*!
