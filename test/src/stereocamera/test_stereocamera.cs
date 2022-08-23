@@ -9,9 +9,9 @@
  */
 
 using Xunit;
-using I3DR;
+using I3DR.Phase.StereoCamera;
 
-namespace I3DR.Phase.Test
+namespace I3DR.PhaseTest
 {
     // Tests for StereoCamera
     [Collection("PhaseSequentialTests")]

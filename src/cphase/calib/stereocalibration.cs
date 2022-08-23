@@ -43,23 +43,23 @@ namespace I3DR.CPhase.Calib
         public static extern bool isValidSize(IntPtr c, int width, int height);
 
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "StereoCameraCalibrationGetHFOV", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "PhaseStereoCameraCalibrationGetHFOV", CallingConvention = CallingConvention.Cdecl)]
         public static extern float getHFOV(IntPtr c);
 
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "StereoCameraCalibrationGetBaseline", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "PhaseStereoCameraCalibrationGetBaseline", CallingConvention = CallingConvention.Cdecl)]
         public static extern double getBaseline(IntPtr c);
 
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "StereoCameraCalibrationGetQ", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "PhaseStereoCameraCalibrationGetQ", CallingConvention = CallingConvention.Cdecl)]
         public static extern void getQ(IntPtr c, [Out] float[] out_Q);
 
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "StereoCameraCalibrationGetDownsampleFactor", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "PhaseStereoCameraCalibrationGetDownsampleFactor", CallingConvention = CallingConvention.Cdecl)]
         public static extern float getDownsampleFactor(IntPtr c);
 
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "StereoCameraCalibrationSetDownsampleFactor", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "PhaseStereoCameraCalibrationSetDownsampleFactor", CallingConvention = CallingConvention.Cdecl)]
         public static extern void setDownsampleFactor(IntPtr c, float value);
 
         //! Imported from Phase C API

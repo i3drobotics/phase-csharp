@@ -11,9 +11,9 @@
 using Xunit;
 using System;
 using System.IO;
-using I3DR;
+using I3DR.Phase.Calib;
 
-namespace I3DR.Phase.Test
+namespace I3DR.PhaseTest
 {
     // Tests for Stereo Calibration
     [Collection("PhaseSequentialTests")]

@@ -9,7 +9,7 @@
  */
 
 using System;
-using I3DR.CPhase;
+using I3DR.CPhase.Types;
 
 namespace I3DR.Phase.Types
 {
