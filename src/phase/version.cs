@@ -35,7 +35,7 @@ namespace I3DR.Phase
         * @return Phase major version number
         */
         public static int getVersionMajor(){
-            return CVersion.PhaseGetVersionMajor();
+            return CVersion.getVersionMajor();
         }
 
         /*!
@@ -44,7 +44,7 @@ namespace I3DR.Phase
         * @return Phase minor version number
         */
         public static int getVersionMinor(){
-            return CVersion.PhaseGetVersionMinor();
+            return CVersion.getVersionMinor();
         }
 
         /*!
@@ -53,7 +53,7 @@ namespace I3DR.Phase
         * @return Phase patch version number
         */
         public static int getVersionPatch(){
-            return CVersion.PhaseGetVersionPatch();
+            return CVersion.getVersionPatch();
         }
     }
 }

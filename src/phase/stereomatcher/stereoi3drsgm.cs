@@ -32,7 +32,7 @@ namespace I3DR.Phase
         * 
         */
         public StereoI3DRSGM(): base(){
-            m_AbstractStereoMatcher_instance = CStereoI3DRSGM.PhaseStereoI3DRSGMCreate();
+            m_AbstractStereoMatcher_instance = CStereoI3DRSGM.create();
         }
 
         /*!
@@ -41,7 +41,7 @@ namespace I3DR.Phase
         * @param value window size
         */
         public void setWindowSize(int value){
-            CStereoI3DRSGM.PhaseStereoI3DRSGMSetWindowSize(m_AbstractStereoMatcher_instance, value);
+            CStereoI3DRSGM.setWindowSize(m_AbstractStereoMatcher_instance, value);
         }
 
         /*!
@@ -50,7 +50,7 @@ namespace I3DR.Phase
         * @param value minimum disparity
         */
         public void setMinDisparity(int value){
-            CStereoI3DRSGM.PhaseStereoI3DRSGMSetMinDisparity(m_AbstractStereoMatcher_instance, value);
+            CStereoI3DRSGM.setMinDisparity(m_AbstractStereoMatcher_instance, value);
         }
 
         /*!
@@ -59,7 +59,7 @@ namespace I3DR.Phase
         * @param value number of disparities
         */
         public void setNumDisparities(int value){
-            CStereoI3DRSGM.PhaseStereoI3DRSGMSetNumDisparities(m_AbstractStereoMatcher_instance, value);
+            CStereoI3DRSGM.setNumDisparities(m_AbstractStereoMatcher_instance, value);
         }
 
         /*!
@@ -68,7 +68,7 @@ namespace I3DR.Phase
         * @param value speckle max size
         */
         public void setSpeckleMaxSize(int value){
-            CStereoI3DRSGM.PhaseStereoI3DRSGMSetSpeckleMaxSize(m_AbstractStereoMatcher_instance, value);
+            CStereoI3DRSGM.setSpeckleMaxSize(m_AbstractStereoMatcher_instance, value);
         }
 
         /*!
@@ -77,7 +77,7 @@ namespace I3DR.Phase
         * @param value speckle max difference
         */
         public void setSpeckleMaxDiff(float value){
-            CStereoI3DRSGM.PhaseStereoI3DRSGMSetSpeckleMaxDiff(m_AbstractStereoMatcher_instance, value);
+            CStereoI3DRSGM.setSpeckleMaxDiff(m_AbstractStereoMatcher_instance, value);
         }
 
         /*!
@@ -86,7 +86,7 @@ namespace I3DR.Phase
         * @param enable enable/disable subpixel refinement
         */
         public void enableSubpixel(bool enable){
-            CStereoI3DRSGM.PhaseStereoI3DRSGMEnableSubpixel(m_AbstractStereoMatcher_instance, enable);
+            CStereoI3DRSGM.enableSubpixel(m_AbstractStereoMatcher_instance, enable);
         }
 
         /*!
@@ -95,7 +95,7 @@ namespace I3DR.Phase
         * @param enable enable/disable interpolation
         */
         public void enableInterpolation(bool enable){
-            CStereoI3DRSGM.PhaseStereoI3DRSGMEnableInterpolation(m_AbstractStereoMatcher_instance, enable);
+            CStereoI3DRSGM.enableInterpolation(m_AbstractStereoMatcher_instance, enable);
         }
 
         /*!
@@ -108,7 +108,7 @@ namespace I3DR.Phase
         * @return license validitiy
         */
         public static bool isLicenseValid(){
-            return CStereoI3DRSGM.PhaseStereoI3DRSGMIsLicenseValid();
+            return CStereoI3DRSGM.isLicenseValid();
         }
     }
 }

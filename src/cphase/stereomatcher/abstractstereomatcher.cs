@@ -31,22 +31,22 @@ namespace I3DR.CPhase
     {
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoMatcherCompute", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool PhaseAbstractStereoMatcherCompute(IntPtr matcher, [In] byte[] left_image, [In] byte[] right_image, int in_width, int in_height, [Out] float[] disparity);
+        public static extern bool compute(IntPtr matcher, [In] byte[] left_image, [In] byte[] right_image, int in_width, int in_height, [Out] float[] disparity);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoMatcherStartComputeThread", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void PhaseAbstractStereoMatcherStartComputeThread(IntPtr matcher, [In] byte[] left_image, [In] byte[] right_image, int in_width, int in_height);
+        public static extern void startComputeThread(IntPtr matcher, [In] byte[] left_image, [In] byte[] right_image, int in_width, int in_height);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoMatcherIsComputeThreadRunning", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool PhaseAbstractStereoMatcherIsComputeThreadRunning(IntPtr matcher);
+        public static extern bool isComputeThreadRunning(IntPtr matcher);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoMatcherGetComputeThreadResult", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool PhaseAbstractStereoMatcherGetComputeThreadResult(IntPtr matcher, int width, int height, [Out] float[] disparity);
+        public static extern bool getComputeThreadResult(IntPtr matcher, int width, int height, [Out] float[] disparity);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoMatcherDispose", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void PhaseAbstractStereoMatcherDispose(IntPtr matcher);
+        public static extern void dispose(IntPtr matcher);
     }
 }

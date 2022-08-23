@@ -3,13 +3,10 @@
  * @date 2021-05-26
  * @copyright Copyright (c) I3D Robotics Ltd, 2021
  * 
- * @file common.cs
- * @brief Common types.
- * @brief Commmon types used in Phase
+ * @file stereo.cs
+ * @brief Stereo types.
+ * @brief Stereo types used in Phase
  */
-
-using System;
-using I3DR.CPhase;
 
 namespace I3DR.Phase
 {

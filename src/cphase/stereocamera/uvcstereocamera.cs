@@ -24,6 +24,6 @@ namespace I3DR.CPhase
     {
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseUVCStereoCameraCreate", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr PhaseUVCStereoCameraCreate(string left_serial, string right_serial, string unique_serial, CameraDeviceType device_type, CameraInterfaceType interface_type);
+        public static extern IntPtr create(string left_serial, string right_serial, string unique_serial, CameraDeviceType device_type, CameraInterfaceType interface_type);
     }
 }

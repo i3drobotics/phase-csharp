@@ -25,7 +25,7 @@ namespace I3DR.CPhase
     public class CStereoCamera
     {
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "I3DR_CCreateStereoCamera", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr CCreateStereoCamera(string left_serial, string right_serial, string unique_serial, CameraDeviceType device_type, CameraInterfaceType interface_type);
+        [DllImport("phase", EntryPoint = "PhaseCreateStereoMatcher", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr createStereoMatcher(string left_serial, string right_serial, string unique_serial, CameraDeviceType device_type, CameraInterfaceType interface_type);
     }
 }

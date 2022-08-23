@@ -60,7 +60,7 @@ namespace I3DR.Phase
         * @param translation_y translation of principle point in Y
         */
         public static CameraCalibration calibrationFromIdeal(int width, int height, double pixel_pitch, double focal_length, double translation_x, double translation_y){
-            return new CameraCalibration(CCameraCalibration.PhaseCameraCalibrationCalibrationFromIdeal(width, height, pixel_pitch, focal_length, translation_x, translation_y));
+            return new CameraCalibration(CCameraCalibration.calibrationFromIdeal(width, height, pixel_pitch, focal_length, translation_x, translation_y));
         }
 
         /*!
@@ -69,7 +69,7 @@ namespace I3DR.Phase
         * @returns true if valid calibration
         */
         public bool isValid(){
-            return CCameraCalibration.PhaseCameraCalibrationIsValid(m_CameraCalibration_instance);
+            return CCameraCalibration.isValid(m_CameraCalibration_instance);
         }
 
         /*!
@@ -78,7 +78,7 @@ namespace I3DR.Phase
         * @returns downsample factor value
         */
         public float getDownsampleFactor(){
-            return CCameraCalibration.PhaseCameraCalibrationGetDownsampleFactor(m_CameraCalibration_instance);
+            return CCameraCalibration.getDownsampleFactor(m_CameraCalibration_instance);
         }
 
         /*!
@@ -87,7 +87,7 @@ namespace I3DR.Phase
         * @param value value of downsample factor
         */
         public void setDownsampleFactor(float value){
-            CCameraCalibration.PhaseCameraCalibrationSetDownsampleFactor(m_CameraCalibration_instance, value);
+            CCameraCalibration.setDownsampleFactor(m_CameraCalibration_instance, value);
         }
 
         /*!
@@ -100,7 +100,7 @@ namespace I3DR.Phase
         */
         public void rectify(byte[] image, int width, int height, out byte[] rect_image){
             rect_image = new byte[width * height * 3];
-            CCameraCalibration.PhaseCameraCalibrationRectify(
+            CCameraCalibration.rectify(
                 m_CameraCalibration_instance,
                 image,
                 width, height,
@@ -125,7 +125,7 @@ namespace I3DR.Phase
         public void dispose(){
             if (m_CameraCalibration_instance != IntPtr.Zero){
                 try {
-                    CCameraCalibration.PhaseCameraCalibrationDispose(m_CameraCalibration_instance);
+                    CCameraCalibration.dispose(m_CameraCalibration_instance);
                 }
                 catch (AccessViolationException e)
                 {

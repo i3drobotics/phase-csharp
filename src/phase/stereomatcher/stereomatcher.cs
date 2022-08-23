@@ -31,11 +31,11 @@ namespace I3DR.Phase
         */
         public static AbstractStereoMatcher createStereoMatcher(StereoMatcherType matcher_type){
             if (matcher_type == StereoMatcherType.STEREO_MATCHER_I3DRSGM){
-                return new StereoI3DRSGM(CStereoMatcher.PhaseCreateStereoMatcher(matcher_type));
+                return new StereoI3DRSGM(CStereoMatcher.createStereoMatcher(matcher_type));
             } else if (matcher_type == StereoMatcherType.STEREO_MATCHER_BM){
-                return new StereoBM(CStereoMatcher.PhaseCreateStereoMatcher(matcher_type));
+                return new StereoBM(CStereoMatcher.createStereoMatcher(matcher_type));
             } else if (matcher_type == StereoMatcherType.STEREO_MATCHER_SGBM){
-                return new StereoSGBM(CStereoMatcher.PhaseCreateStereoMatcher(matcher_type));
+                return new StereoSGBM(CStereoMatcher.createStereoMatcher(matcher_type));
             } else {
                 throw new ArgumentException(
                     String.Format("Unsupported matcher type: {0}", matcher_type),"matcher_type");

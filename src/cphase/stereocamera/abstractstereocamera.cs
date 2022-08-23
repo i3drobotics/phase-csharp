@@ -26,113 +26,113 @@ namespace I3DR.CPhase
     {
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraConnect", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool PhaseAbstractStereoCameraConnect(IntPtr cam);
+        public static extern bool connect(IntPtr cam);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraStartCapture", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool PhaseAbstractStereoCameraStartCapture(IntPtr cam);
+        public static extern bool startCapture(IntPtr cam);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraStopCapture", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void PhaseAbstractStereoCameraStopCapture(IntPtr cam);
+        public static extern void stopCapture(IntPtr cam);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraIsCapturing", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool PhaseAbstractStereoCameraIsCapturing(IntPtr cam);
+        public static extern bool isCapturing(IntPtr cam);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraIsConnected", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool PhaseAbstractStereoCameraIsConnected(IntPtr cam);
+        public static extern bool isConnected(IntPtr cam);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraGetWidth", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int PhaseAbstractStereoCameraGetWidth(IntPtr cam);
+        public static extern int getWidth(IntPtr cam);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraGetHeight", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int PhaseAbstractStereoCameraGetHeight(IntPtr cam);
+        public static extern int getHeight(IntPtr cam);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraGetFrameRate", CallingConvention = CallingConvention.Cdecl)]
-        public static extern float PhaseAbstractStereoCameraGetFrameRate(IntPtr cam);
+        public static extern float getFrameRate(IntPtr cam);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraSetTestImagePaths", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void PhaseAbstractStereoCameraSetTestImagePaths(IntPtr cam, string left_test_image_path, string right_test_image_path);
+        public static extern void setTestImagePaths(IntPtr cam, string left_test_image_path, string right_test_image_path);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraRead", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool PhaseAbstractStereoCameraRead(IntPtr cam, int timeout, [In] byte[] left_img, [In] byte[] right_img);
+        public static extern bool read(IntPtr cam, int timeout, [In] byte[] left_img, [In] byte[] right_img);
         
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraStartReadThread", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void PhaseAbstractStereoCameraStartReadThread(IntPtr cam, int timeout);
+        public static extern void startReadThread(IntPtr cam, int timeout);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraIsReadThreadRunning", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool PhaseAbstractStereoCameraIsReadThreadRunning(IntPtr cam);
+        public static extern bool isReadThreadRunning(IntPtr cam);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraGetReadThreadResult", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool PhaseAbstractStereoCameraGetReadThreadResult(IntPtr cam, [In] byte[] left_img, [In] byte[] right_img);
+        public static extern bool getReadThreadResult(IntPtr cam, [In] byte[] left_img, [In] byte[] right_img);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraSetDownsampleFactor", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void PhaseAbstractStereoCameraSetDownsampleFactor(IntPtr cam, float value);
+        public static extern void setDownsampleFactor(IntPtr cam, float value);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraSetExposure", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void PhaseAbstractStereoCameraSetExposure(IntPtr cam, int value);
+        public static extern void setExposure(IntPtr cam, int value);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraSetFrameRate", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void PhaseAbstractStereoCameraSetFrameRate(IntPtr cam, float value);
+        public static extern void setFrameRate(IntPtr cam, float value);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraEnableHardwareTrigger", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void PhaseAbstractStereoCameraEnableHardwareTrigger(IntPtr cam, bool enable);
+        public static extern void enableHardwareTrigger(IntPtr cam, bool enable);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraSetLeftAOI", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void PhaseAbstractStereoCameraSetLeftAOI(IntPtr cam, int x_min, int y_min, int x_max, int y_max);
+        public static extern void setLeftAOI(IntPtr cam, int x_min, int y_min, int x_max, int y_max);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraSetRightAOI", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void PhaseAbstractStereoCameraSetRightAOI(IntPtr cam, int x_min, int y_min, int x_max, int y_max);
+        public static extern void setRightAOI(IntPtr cam, int x_min, int y_min, int x_max, int y_max);
         
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraDisconnect", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void PhaseAbstractStereoCameraDisconnect(IntPtr cam);
+        public static extern void disconnect(IntPtr cam);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraEnableDataCapture", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void PhaseAbstractStereoCameraEnableDataCapture(IntPtr cam, bool enable);
+        public static extern void enableDataCapture(IntPtr cam, bool enable);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraSetDataCapturePath", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void PhaseAbstractStereoCameraSetDataCapturePath(IntPtr cam, string data_capture_path);
+        public static extern void setDataCapturePath(IntPtr cam, string data_capture_path);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraResetCaptureCount", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void PhaseAbstractStereoCameraResetCaptureCount(IntPtr cam);
+        public static extern void resetCaptureCount(IntPtr cam);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraGetCaptureCount", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int PhaseAbstractStereoCameraGetCaptureCount(IntPtr cam);
+        public static extern int getCaptureCount(IntPtr cam);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraStartContinousReadThread", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool PhaseAbstractStereoCameraStartContinousReadThread(IntPtr cam, int timeout);
+        public static extern bool startContinousReadThread(IntPtr cam, int timeout);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraStopContinousReadThread", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int PhaseAbstractStereoCameraStopContinousReadThread(IntPtr cam);
+        public static extern int stopContinousReadThread(IntPtr cam);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraIsContinousReadThreadRunning", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool PhaseAbstractStereoCameraIsContinousReadThreadRunning(IntPtr cam);
+        public static extern bool isContinousReadThreadRunning(IntPtr cam);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraDispose", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void PhaseAbstractStereoCameraDispose(IntPtr cam);
+        public static extern void dispose(IntPtr cam);
     }
 }

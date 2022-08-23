@@ -8,10 +8,6 @@
  * @brief Commmon types used in Phase
  */
 
-using System;
-using System.Runtime.InteropServices;
-using System.Runtime.ExceptionServices;
-
 namespace I3DR.CPhase
 {
 }

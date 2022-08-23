@@ -41,7 +41,7 @@ namespace I3DR.Phase
         * @param layers number of layers to create in matrix
         */
         public MatrixFloat(int rows, int columns, int layers){
-            m_MatrixFloat_ptr = CMatrixFloat.PhaseMatrixFloatCreate(rows, columns, layers);
+            m_MatrixFloat_ptr = CMatrixFloat.create(rows, columns, layers);
         }
 
         /*!
@@ -54,7 +54,7 @@ namespace I3DR.Phase
         * @param copy if true, copy data, otherwise just point to data
         */
         public MatrixFloat(int rows, int columns, int layers, float[] data, bool copy){
-            m_MatrixFloat_ptr = CMatrixFloat.PhaseMatrixFloatCreateData(rows, columns, layers, data, copy);
+            m_MatrixFloat_ptr = CMatrixFloat.createData(rows, columns, layers, data, copy);
         }
 
         /*!
@@ -72,7 +72,7 @@ namespace I3DR.Phase
         */
         public int getRows()
         {
-            return CMatrixFloat.PhaseMatrixFloatGetRows(m_MatrixFloat_ptr);
+            return CMatrixFloat.getRows(m_MatrixFloat_ptr);
         }
 
         /*!
@@ -82,7 +82,7 @@ namespace I3DR.Phase
         */
         public int getColumns()
         {
-            return CMatrixFloat.PhaseMatrixFloatGetColumns(m_MatrixFloat_ptr);
+            return CMatrixFloat.getColumns(m_MatrixFloat_ptr);
         }
 
         /*!
@@ -92,7 +92,7 @@ namespace I3DR.Phase
         */
         public int getLayers()
         {
-            return CMatrixFloat.PhaseMatrixFloatGetLayers(m_MatrixFloat_ptr);
+            return CMatrixFloat.getLayers(m_MatrixFloat_ptr);
         }
 
         /*!
@@ -102,7 +102,7 @@ namespace I3DR.Phase
         */
         public bool isEmpty()
         {
-            return CMatrixFloat.PhaseMatrixFloatIsEmpty(m_MatrixFloat_ptr);
+            return CMatrixFloat.isEmpty(m_MatrixFloat_ptr);
         }
 
         /*!
@@ -113,7 +113,7 @@ namespace I3DR.Phase
         */
         public int getLength()
         {
-            return CMatrixFloat.PhaseMatrixFloatGetLength(m_MatrixFloat_ptr);
+            return CMatrixFloat.getLength(m_MatrixFloat_ptr);
         }
 
         /*!
@@ -124,7 +124,7 @@ namespace I3DR.Phase
         */
         public int getSize()
         {
-            return CMatrixFloat.PhaseMatrixFloatGetSize(m_MatrixFloat_ptr);
+            return CMatrixFloat.getSize(m_MatrixFloat_ptr);
         }
 
         /*!
@@ -136,7 +136,7 @@ namespace I3DR.Phase
         * @param value value to set element to
         */
         public void setAt(int row, int column, int layer, float value){
-            CMatrixFloat.PhaseMatrixFloatSetAt(m_MatrixFloat_ptr, row, column, layer, value);
+            CMatrixFloat.setAt(m_MatrixFloat_ptr, row, column, layer, value);
         }
 
         /*!
@@ -148,7 +148,7 @@ namespace I3DR.Phase
         * @return value of element
         */
         public float getAt(int row, int column, int layer){
-            return CMatrixFloat.PhaseMatrixFloatGetAt(m_MatrixFloat_ptr, row, column, layer);
+            return CMatrixFloat.getAt(m_MatrixFloat_ptr, row, column, layer);
         }
 
         /*!
@@ -158,7 +158,7 @@ namespace I3DR.Phase
         */
         public float[] getData(){
             m_data = new float[getLength()];
-            CMatrixFloat.PhaseMatrixFloatGetData(m_MatrixFloat_ptr, m_data);
+            CMatrixFloat.getData(m_MatrixFloat_ptr, m_data);
             return m_data;
         }
 
@@ -170,7 +170,7 @@ namespace I3DR.Phase
         public void dispose(){
             if (m_MatrixFloat_ptr != IntPtr.Zero){
                 try {
-                    CMatrixFloat.PhaseMatrixFloatDispose(m_MatrixFloat_ptr);
+                    CMatrixFloat.dispose(m_MatrixFloat_ptr);
                 }
                 catch (AccessViolationException e)
                 {
@@ -215,7 +215,7 @@ namespace I3DR.Phase
         * @param layers number of layers to create in matrix
         */
         public MatrixUInt8(int rows, int columns, int layers){
-            m_MatrixUInt8_ptr = CMatrixUInt8.PhaseMatrixUInt8Create(rows, columns, layers);
+            m_MatrixUInt8_ptr = CMatrixUInt8.create(rows, columns, layers);
         }
 
         /*!
@@ -228,7 +228,7 @@ namespace I3DR.Phase
         * @param copy if true, copy data, otherwise just point to data
         */
         public MatrixUInt8(int rows, int columns, int layers, byte[] data, bool copy){
-            m_MatrixUInt8_ptr = CMatrixUInt8.PhaseMatrixUInt8CreateData(rows, columns, layers, data, copy);
+            m_MatrixUInt8_ptr = CMatrixUInt8.createData(rows, columns, layers, data, copy);
         }
 
         /*!
@@ -246,7 +246,7 @@ namespace I3DR.Phase
         */
         public int getRows()
         {
-            return CMatrixUInt8.PhaseMatrixUInt8GetRows(m_MatrixUInt8_ptr);
+            return CMatrixUInt8.getRows(m_MatrixUInt8_ptr);
         }
 
         /*!
@@ -256,7 +256,7 @@ namespace I3DR.Phase
         */
         public int getColumns()
         {
-            return CMatrixUInt8.PhaseMatrixUInt8GetColumns(m_MatrixUInt8_ptr);
+            return CMatrixUInt8.getColumns(m_MatrixUInt8_ptr);
         }
 
         /*!
@@ -266,7 +266,7 @@ namespace I3DR.Phase
         */
         public int getLayers()
         {
-            return CMatrixUInt8.PhaseMatrixUInt8GetLayers(m_MatrixUInt8_ptr);
+            return CMatrixUInt8.getLayers(m_MatrixUInt8_ptr);
         }
 
         /*!
@@ -276,7 +276,7 @@ namespace I3DR.Phase
         */
         public bool isEmpty()
         {
-            return CMatrixUInt8.PhaseMatrixUInt8IsEmpty(m_MatrixUInt8_ptr);
+            return CMatrixUInt8.isEmpty(m_MatrixUInt8_ptr);
         }
 
         /*!
@@ -287,7 +287,7 @@ namespace I3DR.Phase
         */
         public int getLength()
         {
-            return CMatrixUInt8.PhaseMatrixUInt8GetLength(m_MatrixUInt8_ptr);
+            return CMatrixUInt8.getLength(m_MatrixUInt8_ptr);
         }
 
         /*!
@@ -298,7 +298,7 @@ namespace I3DR.Phase
         */
         public int getSize()
         {
-            return CMatrixUInt8.PhaseMatrixUInt8GetSize(m_MatrixUInt8_ptr);
+            return CMatrixUInt8.getSize(m_MatrixUInt8_ptr);
         }
 
         /*!
@@ -310,7 +310,7 @@ namespace I3DR.Phase
         * @param value value to set element to
         */
         public void setAt(int row, int column, int layer, byte value){
-            CMatrixUInt8.PhaseMatrixUInt8SetAt(m_MatrixUInt8_ptr, row, column, layer, value);
+            CMatrixUInt8.setAt(m_MatrixUInt8_ptr, row, column, layer, value);
         }
 
         /*!
@@ -322,7 +322,7 @@ namespace I3DR.Phase
         * @return value of element
         */
         public byte getAt(int row, int column, int layer){
-            return CMatrixUInt8.PhaseMatrixUInt8GetAt(m_MatrixUInt8_ptr, row, column, layer);
+            return CMatrixUInt8.getAt(m_MatrixUInt8_ptr, row, column, layer);
         }
 
         /*!
@@ -332,7 +332,7 @@ namespace I3DR.Phase
         */
         public byte[] getData(){
             m_data = new byte[getLength()];
-            CMatrixUInt8.PhaseMatrixUInt8GetData(m_MatrixUInt8_ptr, m_data);
+            CMatrixUInt8.getData(m_MatrixUInt8_ptr, m_data);
             return m_data;
         }
 
@@ -344,7 +344,7 @@ namespace I3DR.Phase
         public void dispose(){
             if (m_MatrixUInt8_ptr != IntPtr.Zero){
                 try {
-                    CMatrixUInt8.PhaseMatrixUInt8Dispose(m_MatrixUInt8_ptr);
+                    CMatrixUInt8.dispose(m_MatrixUInt8_ptr);
                 }
                 catch (AccessViolationException e)
                 {

@@ -26,6 +26,6 @@ namespace I3DR.CPhase
     {
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseCreateStereoMatcher", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr PhaseCreateStereoMatcher(StereoMatcherType matcher_type);
+        public static extern IntPtr createStereoMatcher(StereoMatcherType matcher_type);
     }
 }

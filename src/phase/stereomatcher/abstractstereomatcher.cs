@@ -121,7 +121,7 @@ namespace I3DR.Phase
         public StereoMatcherComputeResult compute(byte[] left_image, byte[] right_image, int width, int height)
         {
             disparity = new float[width * height];
-            bool valid = CAbstractStereoMatcher.PhaseAbstractStereoMatcherCompute(
+            bool valid = CAbstractStereoMatcher.compute(
                 m_AbstractStereoMatcher_instance,
                 left_image,
                 right_image,
@@ -152,7 +152,7 @@ namespace I3DR.Phase
         */
         public void startComputeThread(byte[] left_image, byte[] right_image, int width, int height)
         {
-            CAbstractStereoMatcher.PhaseAbstractStereoMatcherStartComputeThread(
+            CAbstractStereoMatcher.startComputeThread(
                 m_AbstractStereoMatcher_instance,
                 left_image,
                 right_image,
@@ -167,7 +167,7 @@ namespace I3DR.Phase
         * @return compute thread running status
         */
         public bool isComputeThreadRunning(){
-            return CAbstractStereoMatcher.PhaseAbstractStereoMatcherIsComputeThreadRunning(m_AbstractStereoMatcher_instance);
+            return CAbstractStereoMatcher.isComputeThreadRunning(m_AbstractStereoMatcher_instance);
         }
 
         /*!
@@ -181,7 +181,7 @@ namespace I3DR.Phase
         public StereoMatcherComputeResult getComputeThreadResult(int width, int height)
         {
             disparity = new float[width * height];
-            bool valid = CAbstractStereoMatcher.PhaseAbstractStereoMatcherGetComputeThreadResult(
+            bool valid = CAbstractStereoMatcher.getComputeThreadResult(
                 m_AbstractStereoMatcher_instance,
                 width, height,
                 disparity
@@ -206,7 +206,7 @@ namespace I3DR.Phase
         public void dispose(){
             if (m_AbstractStereoMatcher_instance != IntPtr.Zero){
                 try { 
-                    CAbstractStereoMatcher.PhaseAbstractStereoMatcherDispose(m_AbstractStereoMatcher_instance);
+                    CAbstractStereoMatcher.dispose(m_AbstractStereoMatcher_instance);
                 }
                 catch (AccessViolationException e)
                 {

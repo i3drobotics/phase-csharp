@@ -9,8 +9,6 @@
  * including the camera's serials, interface, and device type
  */
 
-using I3DR.CPhase;
-
 namespace I3DR.Phase
 {
     //!  Camera Device Type enum

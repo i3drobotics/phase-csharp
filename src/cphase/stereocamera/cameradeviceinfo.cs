@@ -9,10 +9,6 @@
  * including the camera's serials, interface, and device type
  */
 
-using System;
-using System.Runtime.InteropServices;
-using System.Runtime.ExceptionServices;
-
 namespace I3DR.CPhase
 {
 }

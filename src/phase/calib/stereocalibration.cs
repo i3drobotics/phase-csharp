@@ -59,7 +59,7 @@ namespace I3DR.Phase
         * @returns stereo camera calibration
         */
         public static StereoCameraCalibration calibrationFromYAML(string left_yaml_filepath, string right_yaml_filepath){
-            return new StereoCameraCalibration(CStereoCameraCalibration.PhaseStereoCameraCalibrationCalibrationFromYAML(left_yaml_filepath, right_yaml_filepath));
+            return new StereoCameraCalibration(CStereoCameraCalibration.calibrationFromYAML(left_yaml_filepath, right_yaml_filepath));
         }
 
         /*!
@@ -73,7 +73,7 @@ namespace I3DR.Phase
         * @returns stereo camera calibration
         */
         public static StereoCameraCalibration calibrationFromIdeal(int width, int height, double pixel_pitch, double focal_length, double baseline){
-            return new StereoCameraCalibration(CStereoCameraCalibration.PhaseStereoCameraCalibrationCalibrationFromIdeal(width, height, pixel_pitch, focal_length, baseline));
+            return new StereoCameraCalibration(CStereoCameraCalibration.calibrationFromIdeal(width, height, pixel_pitch, focal_length, baseline));
         }
 
         /*!
@@ -82,7 +82,7 @@ namespace I3DR.Phase
         * @returns true if valid calibration
         */
         public bool isValid(){
-            return CStereoCameraCalibration.PhaseStereoCameraCalibrationIsValid(m_StereoCameraCalibration_instance);
+            return CStereoCameraCalibration.isValid(m_StereoCameraCalibration_instance);
         }
 
         /*!
@@ -93,7 +93,7 @@ namespace I3DR.Phase
         * @returns true if calibration size matches specified values
         */
         public bool isValidSize(int width, int height){
-            return CStereoCameraCalibration.PhaseStereoCameraCalibrationIsValidSize(m_StereoCameraCalibration_instance, width, height);
+            return CStereoCameraCalibration.isValidSize(m_StereoCameraCalibration_instance, width, height);
         }
 
         /*!
@@ -102,7 +102,7 @@ namespace I3DR.Phase
         * @returns horizontal field of view
         */
         public float getHFOV(){
-            return CStereoCameraCalibration.StereoCameraCalibrationGetHFOV(m_StereoCameraCalibration_instance);
+            return CStereoCameraCalibration.getHFOV(m_StereoCameraCalibration_instance);
         }
 
         /*!
@@ -111,7 +111,7 @@ namespace I3DR.Phase
         * @returns baseline
         */
         public double getBaseline(){
-            return CStereoCameraCalibration.StereoCameraCalibrationGetBaseline(m_StereoCameraCalibration_instance);
+            return CStereoCameraCalibration.getBaseline(m_StereoCameraCalibration_instance);
         }
 
         /*!
@@ -120,7 +120,7 @@ namespace I3DR.Phase
         * @returns downsample factor value
         */
         public float getDownsampleFactor(){
-            return CStereoCameraCalibration.StereoCameraCalibrationGetDownsampleFactor(m_StereoCameraCalibration_instance);
+            return CStereoCameraCalibration.getDownsampleFactor(m_StereoCameraCalibration_instance);
         }
 
         /*!
@@ -129,7 +129,7 @@ namespace I3DR.Phase
         * @param value value of downsample factor
         */
         public void setDownsampleFactor(float value){
-            CStereoCameraCalibration.StereoCameraCalibrationSetDownsampleFactor(m_StereoCameraCalibration_instance, value);
+            CStereoCameraCalibration.setDownsampleFactor(m_StereoCameraCalibration_instance, value);
         }
 
         /*!
@@ -139,7 +139,7 @@ namespace I3DR.Phase
         */
         public float[] getQ(){
             Q = new float[4*4];
-            CStereoCameraCalibration.StereoCameraCalibrationGetQ(m_StereoCameraCalibration_instance, Q);
+            CStereoCameraCalibration.getQ(m_StereoCameraCalibration_instance, Q);
             return Q;
         }
 
@@ -155,7 +155,7 @@ namespace I3DR.Phase
         public StereoImagePair rectify(byte[] left_image, byte[] right_image, int width, int height){
             left_rect_image = new byte[width * height * 3];
             right_rect_image = new byte[width * height * 3];
-            CStereoCameraCalibration.PhaseStereoCameraCalibrationRectify(
+            CStereoCameraCalibration.rectify(
                 m_StereoCameraCalibration_instance,
                 left_image, right_image,
                 width, height,
@@ -173,7 +173,7 @@ namespace I3DR.Phase
         * @returns success of saving calibration
         */
         public bool saveToYAML(string left_calibration_filepath, string right_calibration_filepath, CalibrationFileType cal_file_type = CalibrationFileType.ROS_YAML){
-            return CStereoCameraCalibration.StereoCameraCalibrationSaveToYAML(
+            return CStereoCameraCalibration.saveToYAML(
                 m_StereoCameraCalibration_instance,
                 left_calibration_filepath, right_calibration_filepath,
                 cal_file_type
@@ -197,7 +197,7 @@ namespace I3DR.Phase
         public void dispose(){
             if (m_StereoCameraCalibration_instance != IntPtr.Zero){
                 try {
-                    CStereoCameraCalibration.StereoCameraCalibrationDispose(m_StereoCameraCalibration_instance);
+                    CStereoCameraCalibration.dispose(m_StereoCameraCalibration_instance);
                 }
                 catch (AccessViolationException e)
                 {

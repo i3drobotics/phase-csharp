@@ -87,7 +87,7 @@ namespace I3DR.Phase
         * @returns true if connected successfully
         */
         public bool connect(){
-            return CAbstractStereoCamera.PhaseAbstractStereoCameraConnect(m_AbstractStereoCamera_instance);
+            return CAbstractStereoCamera.connect(m_AbstractStereoCamera_instance);
         }
 
         /*!
@@ -98,7 +98,7 @@ namespace I3DR.Phase
         * @return success of capture start
         */
         public bool startCapture(){
-            return CAbstractStereoCamera.PhaseAbstractStereoCameraStartCapture(m_AbstractStereoCamera_instance);
+            return CAbstractStereoCamera.startCapture(m_AbstractStereoCamera_instance);
         }  
 
         /*!
@@ -107,7 +107,7 @@ namespace I3DR.Phase
         * Must be implemented by child class
         */
         public void stopCapture(){
-            CAbstractStereoCamera.PhaseAbstractStereoCameraStopCapture(m_AbstractStereoCamera_instance);
+            CAbstractStereoCamera.stopCapture(m_AbstractStereoCamera_instance);
         }
 
         /*!
@@ -117,7 +117,7 @@ namespace I3DR.Phase
         * @return status of camera capture
         */
         public bool isCapturing(){
-            return CAbstractStereoCamera.PhaseAbstractStereoCameraIsCapturing(m_AbstractStereoCamera_instance);
+            return CAbstractStereoCamera.isCapturing(m_AbstractStereoCamera_instance);
         }
 
         /*!
@@ -127,7 +127,7 @@ namespace I3DR.Phase
         * @returns true if connected
         */
         public bool isConnected(){
-            return CAbstractStereoCamera.PhaseAbstractStereoCameraIsConnected(m_AbstractStereoCamera_instance);
+            return CAbstractStereoCamera.isConnected(m_AbstractStereoCamera_instance);
         }
 
         /*!
@@ -136,7 +136,7 @@ namespace I3DR.Phase
         * @return camera image width
         */
         public int getWidth(){
-            return CAbstractStereoCamera.PhaseAbstractStereoCameraGetWidth(m_AbstractStereoCamera_instance);
+            return CAbstractStereoCamera.getWidth(m_AbstractStereoCamera_instance);
         }
 
         /*!
@@ -145,7 +145,7 @@ namespace I3DR.Phase
         * @return camera image height
         */
         public int getHeight(){
-            return CAbstractStereoCamera.PhaseAbstractStereoCameraGetHeight(m_AbstractStereoCamera_instance); ;
+            return CAbstractStereoCamera.getHeight(m_AbstractStereoCamera_instance); ;
         }
 
         /*!
@@ -155,7 +155,7 @@ namespace I3DR.Phase
         * @return frame rate of camera
         */
         public float getFrameRate(){
-            return CAbstractStereoCamera.PhaseAbstractStereoCameraGetFrameRate(m_AbstractStereoCamera_instance);
+            return CAbstractStereoCamera.getFrameRate(m_AbstractStereoCamera_instance);
         }
 
         /*!
@@ -167,7 +167,7 @@ namespace I3DR.Phase
         * @param right_test_image_path filepath to right test image
         */
         public void setTestImagePaths(string left_test_image_path, string right_test_image_path){
-            CAbstractStereoCamera.PhaseAbstractStereoCameraSetTestImagePaths(m_AbstractStereoCamera_instance, left_test_image_path, right_test_image_path);
+            CAbstractStereoCamera.setTestImagePaths(m_AbstractStereoCamera_instance, left_test_image_path, right_test_image_path);
         }
 
         /*!
@@ -185,7 +185,7 @@ namespace I3DR.Phase
             if (right_image == null){
                 right_image = new byte[image_size * 3];
             }
-            bool valid = CAbstractStereoCamera.PhaseAbstractStereoCameraRead(
+            bool valid = CAbstractStereoCamera.read(
                 m_AbstractStereoCamera_instance, timeout,
                 left_image, right_image
             );
@@ -199,7 +199,7 @@ namespace I3DR.Phase
         * @param timeout timeout for camera data capture
         */
         public void startReadThread(int timeout = 1000){
-            CAbstractStereoCamera.PhaseAbstractStereoCameraStartReadThread(m_AbstractStereoCamera_instance, timeout);
+            CAbstractStereoCamera.startReadThread(m_AbstractStereoCamera_instance, timeout);
         }
 
         /*!
@@ -209,7 +209,7 @@ namespace I3DR.Phase
         * @return read thread running status
         */
         public bool isReadThreadRunning(){
-            return CAbstractStereoCamera.PhaseAbstractStereoCameraIsReadThreadRunning(m_AbstractStereoCamera_instance);
+            return CAbstractStereoCamera.isReadThreadRunning(m_AbstractStereoCamera_instance);
         }
 
         /*!
@@ -227,7 +227,7 @@ namespace I3DR.Phase
             if (right_image == null){
                 right_image = new byte[image_size * 3];
             }
-            bool valid = CAbstractStereoCamera.PhaseAbstractStereoCameraGetReadThreadResult(
+            bool valid = CAbstractStereoCamera.getReadThreadResult(
                 m_AbstractStereoCamera_instance,
                 left_image, right_image
             );
@@ -241,7 +241,7 @@ namespace I3DR.Phase
         * @param value downsample factor value
         */
         public void setDownsampleFactor(float value){
-            CAbstractStereoCamera.PhaseAbstractStereoCameraSetDownsampleFactor(m_AbstractStereoCamera_instance, value);
+            CAbstractStereoCamera.setDownsampleFactor(m_AbstractStereoCamera_instance, value);
         }
 
         /*!
@@ -251,7 +251,7 @@ namespace I3DR.Phase
         * @param value exposure value in microseconds
         */
         public void setExposure(int value){
-            CAbstractStereoCamera.PhaseAbstractStereoCameraSetExposure(m_AbstractStereoCamera_instance, value);
+            CAbstractStereoCamera.setExposure(m_AbstractStereoCamera_instance, value);
         }
 
         /*!
@@ -261,7 +261,7 @@ namespace I3DR.Phase
         * @param value frame rate in frames per second
         */
         public void setFrameRate(float value){
-            CAbstractStereoCamera.PhaseAbstractStereoCameraSetFrameRate(m_AbstractStereoCamera_instance, value);
+            CAbstractStereoCamera.setFrameRate(m_AbstractStereoCamera_instance, value);
         }
 
         /*!
@@ -271,7 +271,7 @@ namespace I3DR.Phase
         * @param enable toggle hardware triggering
         */
         public void enableHardwareTrigger(bool enable){
-            CAbstractStereoCamera.PhaseAbstractStereoCameraEnableHardwareTrigger(m_AbstractStereoCamera_instance, enable);
+            CAbstractStereoCamera.enableHardwareTrigger(m_AbstractStereoCamera_instance, enable);
         }
 
         /*!
@@ -284,7 +284,7 @@ namespace I3DR.Phase
         * @param y_max y coordinate of bottom right corner of area of interest
         */
         public void setLeftAOI(int x_min, int y_min, int x_max, int y_max){
-            CAbstractStereoCamera.PhaseAbstractStereoCameraSetLeftAOI(m_AbstractStereoCamera_instance, x_min, y_min, x_max, y_max);
+            CAbstractStereoCamera.setLeftAOI(m_AbstractStereoCamera_instance, x_min, y_min, x_max, y_max);
         }
 
         /*!
@@ -297,7 +297,7 @@ namespace I3DR.Phase
         * @param y_max y coordinate of bottom right corner of area of interest
         */
         public void setRightAOI(int x_min, int y_min, int x_max, int y_max){
-            CAbstractStereoCamera.PhaseAbstractStereoCameraSetRightAOI(m_AbstractStereoCamera_instance, x_min, y_min, x_max, y_max);
+            CAbstractStereoCamera.setRightAOI(m_AbstractStereoCamera_instance, x_min, y_min, x_max, y_max);
         }
 
         /*!
@@ -306,7 +306,7 @@ namespace I3DR.Phase
         * 
         */
         public void disconnect(){
-            CAbstractStereoCamera.PhaseAbstractStereoCameraDisconnect(m_AbstractStereoCamera_instance);
+            CAbstractStereoCamera.disconnect(m_AbstractStereoCamera_instance);
         }
 
         /*!
@@ -327,7 +327,7 @@ namespace I3DR.Phase
             if (m_AbstractStereoCamera_instance != IntPtr.Zero){
                 try
                 {
-                    CAbstractStereoCamera.PhaseAbstractStereoCameraDispose(m_AbstractStereoCamera_instance);
+                    CAbstractStereoCamera.dispose(m_AbstractStereoCamera_instance);
                 }
                 catch (AccessViolationException e)
                 {

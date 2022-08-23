@@ -20,19 +20,19 @@ namespace I3DR.CPhase
     {
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseGetVersionString", CallingConvention = CallingConvention.Cdecl)]
-        public static extern string PhaseGetVersionString();
+        public static extern string getVersionString();
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseGetVersionMajor", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int PhaseGetVersionMajor();
+        public static extern int getVersionMajor();
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseGetVersionMinor", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int PhaseGetVersionMinor();
+        public static extern int getVersionMinor();
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseGetVersionPatch", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int PhaseGetVersionPatch();
+        public static extern int getVersionPatch();
 
     }
 }

@@ -21,18 +21,18 @@ namespace I3DR.CPhase
     {
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseStereoBMCreate", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr PhaseStereoBMCreate();
+        public static extern IntPtr create();
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseStereoBMSetWindowSize", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void PhaseStereoBMSetWindowSize(IntPtr matcher, int value);
+        public static extern void setWindowSize(IntPtr matcher, int value);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseStereoBMSetMinDisparity", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void PhaseStereoBMSetMinDisparity(IntPtr matcher, int value);
+        public static extern void setMinDisparity(IntPtr matcher, int value);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseStereoBMSetNumDisparities", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void PhaseStereoBMSetNumDisparities(IntPtr matcher, int value);
+        public static extern void setNumDisparities(IntPtr matcher, int value);
     }
 }
