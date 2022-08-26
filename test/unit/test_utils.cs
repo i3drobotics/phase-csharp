@@ -10,12 +10,7 @@
 
 using Xunit;
 using System;
-using System.IO;
-using System.Linq;
 using I3DR.Phase;
-using I3DR.Phase.Types;
-using I3DR.Phase.StereoMatcher;
-using I3DR.Phase.Calib;
 
 namespace I3DR.PhaseTest
 {
@@ -42,7 +37,7 @@ namespace I3DR.PhaseTest
             // has output image type of CV_8UC1
             byte[] input_img = new byte[2448*2048*1];
             for (int i = 0; i < input_img.Length; i++){input_img[i] = 1;} // fill with ones
-            /// TODO impliment toMono function
+            // TODO impliment toMono function
         }
 
         [Fact]
