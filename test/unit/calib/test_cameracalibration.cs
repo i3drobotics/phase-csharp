@@ -68,7 +68,7 @@ namespace I3DR.PhaseTest
                 return cal_data;
             }
 
-            public static void verify_stereo_cal(CameraCalibration cal, CalData cal_data){
+            public static void verify_cal(CameraCalibration cal, CalData cal_data){
                 Assert.True(cal.isValid());
 
                 // TODO impliment get methods for calibration parameters
@@ -103,41 +103,12 @@ namespace I3DR.PhaseTest
                 // REQUIRE(cal.getProjectionMatrix().at<double>(2,3) == cal_data.proj_mat.at<double>(2,3));
             }
 
-            public static void save_yaml_data(CalData cal_data, CalibrationFileType cal_type, string left_yaml, string right_yaml){ 
+            public static void save_yaml_data(CalData cal_data, CalibrationFileType cal_type, string yaml_file){ 
                 Assert.True((cal_type == CalibrationFileType.OPENCV_YAML || cal_type == CalibrationFileType.ROS_YAML));
-                string left_yaml_data = "";
-                string right_yaml_data = "";
+                string yaml_data = "";
                 // TODO fill yaml data strings from StereoCalData
                 if (cal_type ==CalibrationFileType.OPENCV_YAML){
-                    left_yaml_data = @"
-%YAML:1.0
----
-image_width: 2448
-image_height: 2048
-camera_name: leftCamera
-camera_matrix: !!opencv-matrix
-   rows: 3
-   cols: 3
-   dt: d
-   data: [ 3.4782608695652175e+03, 0., 1224., 0., 3.4782608695652175e+03, 1024., 0., 0., 1. ]
-distortion_model: plumb_bob
-distortion_coefficients: !!opencv-matrix
-   rows: 1
-   cols: 5
-   dt: d
-   data: [ 0., 0., 0., 0., 0. ]
-rectification_matrix: !!opencv-matrix
-   rows: 3
-   cols: 3
-   dt: d
-   data: [1., 0., 0., 0., 1., 0., 0., 0., 1.]
-projection_matrix: !!opencv-matrix
-   rows: 3
-   cols: 4
-   dt: d
-   data: [ 3.4782608695652175e+03, 0., 1224., 0., 0., 3.4782608695652175e+03, 1024., 0., 0., 0., 1., 0. ]
-rms_error: ";
-                    right_yaml_data = @"
+                    yaml_data = @"
 %YAML:1.0
 ---
 image_width: 2448
@@ -166,28 +137,7 @@ projection_matrix: !!opencv-matrix
    data: [ 3.4782608695652175e+03, 0., 1224., -347.8260921395, 0., 3.4782608695652175e+03, 1024., 0., 0., 0., 1., 0. ]
 rms_error: ";
                 } else if (cal_type == CalibrationFileType.ROS_YAML){
-                    left_yaml_data = @"
-image_width: 2448
-image_height: 2048
-camera_name: leftCamera
-camera_matrix:
-   rows: 3
-   cols: 3
-   data: [ 3.4782608695652175e+03, 0., 1224., 0., 3.4782608695652175e+03, 1024., 0., 0., 1. ]
-distortion_model: plumb_bob
-distortion_coefficients:
-   rows: 1
-   cols: 5
-   data: [ 0., 0., 0., 0., 0. ]
-rectification_matrix:
-   rows: 3
-   cols: 3
-   data: [1., 0., 0., 0., 1., 0., 0., 0., 1.]
-projection_matrix:
-   rows: 3
-   cols: 4
-   data: [ 3.4782608695652175e+03, 0., 1224., 0., 0., 3.4782608695652175e+03, 1024., 0., 0., 0., 1., 0. ]";
-                    right_yaml_data = @"
+                    yaml_data = @"
 image_width: 2448
 image_height: 2048
 camera_name: rightCamera
@@ -209,8 +159,7 @@ projection_matrix:
     cols: 4
     data: [ 3.4782608695652175e+03, 0., 1224., -347.8260921395, 0., 3.4782608695652175e+03, 1024., 0., 0., 0., 1., 0. ]";
                 }
-                File.WriteAllText(left_yaml, left_yaml_data);
-                File.WriteAllText(right_yaml, right_yaml_data);
+                File.WriteAllText(yaml_file, yaml_data);
             }
         }
 
@@ -224,7 +173,20 @@ projection_matrix:
         {
             // Test calibration data is loaded from ROS YAML file
             // and values from file match parameters in calibration class 
-            // TOTEST
+            string test_folder = ".phase_test";
+            string yaml_file = test_folder + "/left.yaml";
+
+            // Create output folder
+            System.IO.Directory.CreateDirectory(test_folder);
+            
+            CameraCalibrationTestUtils.CalData cal_data = CameraCalibrationTestUtils.gen_cal_data();
+            CameraCalibrationTestUtils.save_yaml_data(cal_data, CalibrationFileType.ROS_YAML, yaml_file);
+
+            // Load calibration files
+            CameraCalibration cal = new CameraCalibration(yaml_file);
+            
+            CameraCalibrationTestUtils.verify_cal(cal, cal_data);
+            cal.dispose();
         }
 
         [Fact]
@@ -232,7 +194,20 @@ projection_matrix:
         {
             // Test calibration data is loaded from OpenCV YAML file
             // and values from file match parameters in calibration class 
-            // TOTEST
+            string test_folder = ".phase_test";
+            string yaml_file = test_folder + "/left.yaml";
+
+            // Create output folder
+            System.IO.Directory.CreateDirectory(test_folder);
+            
+            CameraCalibrationTestUtils.CalData cal_data = CameraCalibrationTestUtils.gen_cal_data();
+            CameraCalibrationTestUtils.save_yaml_data(cal_data, CalibrationFileType.OPENCV_YAML, yaml_file);
+
+            // Load calibration files
+            CameraCalibration cal = new CameraCalibration(yaml_file);
+            
+            CameraCalibrationTestUtils.verify_cal(cal, cal_data);
+            cal.dispose();
         }
 
         [Fact]
@@ -240,22 +215,34 @@ projection_matrix:
         {
             // Test Calibration data is loaded from ideal camera parameters
             // using ‘calibrationFromIdeal’ function and loaded parameters match expected values 
-            // TOTEST
+            CameraCalibrationTestUtils.CalData cal_data = CameraCalibrationTestUtils.gen_cal_data();
+            CameraCalibration cal = CameraCalibration.calibrationFromIdeal(
+                cal_data.image_width, cal_data.image_height,
+                cal_data.pixel_pitch, cal_data.focal_length,
+                cal_data.translation_x, cal_data.translation_y);
+            Assert.True(cal.isValid());
+            CameraCalibrationTestUtils.verify_cal(cal, cal_data);
+            cal.dispose();
         }
 
         [Fact]
         public void test_SuccessfulRectify()
         {
             // Test image is successfully rectified using ‘rectify’ function 
-            // TOTEST
-        }
-
-        [Fact]
-        public void test_EmptyRectify()
-        {
-            // Test attempt to rectify empty image using
-            // ‘rectify’ function should result in empty result image 
-            // TOTEST
+            int width = 2448;
+            int height = 2048;
+            byte[] img = new byte[height*width*3];
+            for (int i = 0; i < img.Length; i++){img[i] = 1;}
+            CameraCalibrationTestUtils.CalData cal_data = CameraCalibrationTestUtils.gen_cal_data();
+            CameraCalibration cal = CameraCalibration.calibrationFromIdeal(
+                cal_data.image_width, cal_data.image_height,
+                cal_data.pixel_pitch, cal_data.focal_length,
+                cal_data.translation_x, cal_data.translation_y);
+            Assert.True(cal.isValid());
+            // TODO fix rectify function not working
+            // byte[] rect = cal.rectify(img, width, height);
+            // Assert.True(rect.Length > 0);
+            cal.dispose();
         }
     }
 }

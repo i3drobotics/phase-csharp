@@ -11,6 +11,7 @@
 using Xunit;
 using System;
 using System.IO;
+using I3DR.Phase.Types;
 using I3DR.Phase.Calib;
 
 namespace I3DR.PhaseTest
@@ -24,7 +25,23 @@ namespace I3DR.PhaseTest
         {
             // Test rectification of stereo image pair of size 2448x2048
             // using ‘rectify’ function is completed in less than 0.3s
-            // TOTEST
+            float timeout = 300; //ms
+            int width = 2448;
+            int height = 2048;
+            byte[] left = new byte[height*width*3];
+            for (int i = 0; i < left.Length; i++){left[i] = 1;}
+            byte[] right = new byte[height*width*3];
+            for (int i = 0; i < right.Length; i++){right[i] = 1;}
+            StereoCameraCalibration cal = StereoCameraCalibration.calibrationFromIdeal(
+                2448, 2048, 0.00000345, 0.012, 0.1);
+            Assert.True(cal.isValid());
+
+            long start = System.DateTime.Now.Ticks / System.TimeSpan.TicksPerMillisecond;
+            StereoImagePair rect = cal.rectify(left, right, width, height);
+            long end = System.DateTime.Now.Ticks / System.TimeSpan.TicksPerMillisecond;
+
+            long duration = end - start;
+            Assert.True(duration < timeout, "Expected: " + timeout + " Actual: " + duration);
         }
     }
 }
