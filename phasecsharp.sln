@@ -8,6 +8,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{54536433-C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "phasecsharp-unit-test", "test\unit\phasecsharp-unit-test.csproj", "{9EF61BD9-FD0C-4C48-9B71-CD3B7C3F6D89}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "phasecsharp-perf-test", "test\perf\phasecsharp-perf-test.csproj", "{1E3CFC82-9C52-469D-8EF9-5765C427BAF5}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "drivers", "drivers", "{A708CD37-9D2A-43DD-BA45-53121AB3533F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "phasecsharp-demo-cam-read", "test\drivers\demo_cam_read\phasecsharp-demo-cam-read.csproj", "{272CED2E-0330-4A86-B0A4-135A0050D9B3}"
@@ -33,10 +35,15 @@ Global
 		{272CED2E-0330-4A86-B0A4-135A0050D9B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{272CED2E-0330-4A86-B0A4-135A0050D9B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{272CED2E-0330-4A86-B0A4-135A0050D9B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E3CFC82-9C52-469D-8EF9-5765C427BAF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E3CFC82-9C52-469D-8EF9-5765C427BAF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E3CFC82-9C52-469D-8EF9-5765C427BAF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E3CFC82-9C52-469D-8EF9-5765C427BAF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9EF61BD9-FD0C-4C48-9B71-CD3B7C3F6D89} = {54536433-C606-4E45-8617-53718D6BCBF6}
 		{A708CD37-9D2A-43DD-BA45-53121AB3533F} = {54536433-C606-4E45-8617-53718D6BCBF6}
 		{272CED2E-0330-4A86-B0A4-135A0050D9B3} = {A708CD37-9D2A-43DD-BA45-53121AB3533F}
+		{1E3CFC82-9C52-469D-8EF9-5765C427BAF5} = {54536433-C606-4E45-8617-53718D6BCBF6}
 	EndGlobalSection
 EndGlobal
