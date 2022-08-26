@@ -9,8 +9,7 @@ PROJECT_LOGO           = "./docs/i3dr_logo_128x128.png"
 OUTPUT_DIRECTORY       = "./deployment/docs"
 INPUT                  = ./src \
                          ./docs/doxygen/README_docs.md \
-                         ./test/drivers/demo_cam_read/demo_cam_read.cs \
-                         ./test/drivers/demo_rgbd/demo_rgbd.cs
+                         ./test/demo/demo_cam_read/demo_cam_read.cs
 USE_MDFILE_AS_MAINPAGE = README_docs.md
 
 #---------------------------------------------------------------------------

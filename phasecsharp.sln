@@ -8,9 +8,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{54536433-C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "phasecsharp-test", "test\src\phasecsharp-test.csproj", "{9EF61BD9-FD0C-4C48-9B71-CD3B7C3F6D89}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "drivers", "drivers", "{A708CD37-9D2A-43DD-BA45-53121AB3533F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{A708CD37-9D2A-43DD-BA45-53121AB3533F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "phasecsharp-demo-cam-read", "test\drivers\demo_cam_read\phasecsharp-demo-cam-read.csproj", "{272CED2E-0330-4A86-B0A4-135A0050D9B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "phasecsharp-demo-cam-read", "test\demo\demo_cam_read\phasecsharp-demo-cam-read.csproj", "{272CED2E-0330-4A86-B0A4-135A0050D9B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
