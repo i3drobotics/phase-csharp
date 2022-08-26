@@ -43,6 +43,14 @@ namespace I3DR.CPhase.Calib
         public static extern bool isValidSize(IntPtr c, int width, int height);
 
         //! Imported from Phase C API
+        [DllImport("phase", EntryPoint = "PhaseStereoCameraCalibrationGetLeftCalibration", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr getLeftCalibration(IntPtr c);
+
+        //! Imported from Phase C API
+        [DllImport("phase", EntryPoint = "PhaseStereoCameraCalibrationGetRightCalibration", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr getRightCalibration(IntPtr c);
+
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseStereoCameraCalibrationGetHFOV", CallingConvention = CallingConvention.Cdecl)]
         public static extern float getHFOV(IntPtr c);
 

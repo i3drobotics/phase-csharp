@@ -82,6 +82,105 @@ namespace I3DR.Phase.Calib
         }
 
         /*!
+        * Get camera image width in calibration
+        * 
+        * @returns camera image width
+        */
+        public int getImageWidth(){
+            return CCameraCalibration.getImageWidth(m_CameraCalibration_instance);
+        }
+
+        /*!
+        * Get camera image height in calibration
+        * 
+        * @returns camera image height
+        */
+        public int getImageHeight(){
+            return CCameraCalibration.getImageHeight(m_CameraCalibration_instance);
+        }
+
+        /*!
+        * Get camera focal length in X in calibration (in pixels)
+        * 
+        * @returns focal length in X
+        */
+        public double getCameraFX(){
+            return CCameraCalibration.getCameraFX(m_CameraCalibration_instance);
+        }
+
+        /*!
+        * Get camera focal length in Y in calibration (in pixels)
+        * 
+        * @returns focal length in Y
+        */
+        public double getCameraFY(){
+            return CCameraCalibration.getCameraFY(m_CameraCalibration_instance);
+        }
+
+        /*!
+        * Get camera principle point in X in calibration (in pixels)
+        * 
+        * @returns principle point in X
+        */
+        public double getCameraCX(){
+            return CCameraCalibration.getCameraCX(m_CameraCalibration_instance);
+        }
+
+        /*!
+        * Get camera principle point in Y in calibration (in pixels)
+        * 
+        * @returns principle point in Y
+        */
+        public double getCameraCY(){
+            return CCameraCalibration.getCameraCY(m_CameraCalibration_instance);
+        }
+
+        /*!
+        * Get camera focal length in X in calibration projection (in pixels)
+        * 
+        * @returns focal length in X
+        */
+        public double getProjectionFX(){
+            return CCameraCalibration.getProjectionFX(m_CameraCalibration_instance);
+        }
+
+        /*!
+        * Get camera focal length in Y in calibration projection (in pixels)
+        * 
+        * @returns focal length in Y
+        */
+        public double getProjectionFY(){
+            return CCameraCalibration.getProjectionFY(m_CameraCalibration_instance);
+        }
+
+        /*!
+        * Get camera principle point in X in calibration projection (in pixels)
+        * 
+        * @returns principle point in X
+        */
+        public double getProjectionCX(){
+            return CCameraCalibration.getProjectionCX(m_CameraCalibration_instance);
+        }
+
+        /*!
+        * Get camera principle point in Y in calibration projection (in pixels)
+        * 
+        * @returns principle point in Y
+        */
+        public double getProjectionCY(){
+            return CCameraCalibration.getProjectionCY(m_CameraCalibration_instance);
+        }
+
+        /*!
+        * Get camera baseline in calibration projection (in pixels)
+        * 
+        * @returns baseline
+        */
+        public double getProjectionTX(){
+            return CCameraCalibration.getProjectionTX(m_CameraCalibration_instance);
+        }
+
+        /*!
         * Get downsample factor
         * 
         * @returns downsample factor value

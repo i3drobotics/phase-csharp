@@ -37,6 +37,66 @@ namespace I3DR.CPhase.Calib
         public static extern bool isValid(IntPtr c);
 
         //! Imported from Phase C API
+        [DllImport("phase", EntryPoint = "PhaseCameraCalibrationGetImageWidth", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int getImageWidth(IntPtr c);
+
+        //! Imported from Phase C API
+        [DllImport("phase", EntryPoint = "PhaseCameraCalibrationGetImageHeight", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int getImageHeight(IntPtr c);
+
+        //! Imported from Phase C API
+        [DllImport("phase", EntryPoint = "PhaseCameraCalibrationGetCameraFX", CallingConvention = CallingConvention.Cdecl)]
+        public static extern double getCameraFX(IntPtr c);
+
+        //! Imported from Phase C API
+        [DllImport("phase", EntryPoint = "PhaseCameraCalibrationGetCameraFY", CallingConvention = CallingConvention.Cdecl)]
+        public static extern double getCameraFY(IntPtr c);
+
+        //! Imported from Phase C API
+        [DllImport("phase", EntryPoint = "PhaseCameraCalibrationGetCameraCX", CallingConvention = CallingConvention.Cdecl)]
+        public static extern double getCameraCX(IntPtr c);
+
+        //! Imported from Phase C API
+        [DllImport("phase", EntryPoint = "PhaseCameraCalibrationGetCameraCY", CallingConvention = CallingConvention.Cdecl)]
+        public static extern double getCameraCY(IntPtr c);
+
+        //! Imported from Phase C API
+        [DllImport("phase", EntryPoint = "PhaseCameraCalibrationGetProjectionFX", CallingConvention = CallingConvention.Cdecl)]
+        public static extern double getProjectionFX(IntPtr c);
+
+        //! Imported from Phase C API
+        [DllImport("phase", EntryPoint = "PhaseCameraCalibrationGetProjectionFY", CallingConvention = CallingConvention.Cdecl)]
+        public static extern double getProjectionFY(IntPtr c);
+
+        //! Imported from Phase C API
+        [DllImport("phase", EntryPoint = "PhaseCameraCalibrationGetProjectionCX", CallingConvention = CallingConvention.Cdecl)]
+        public static extern double getProjectionCX(IntPtr c);
+
+        //! Imported from Phase C API
+        [DllImport("phase", EntryPoint = "PhaseCameraCalibrationGetProjectionCY", CallingConvention = CallingConvention.Cdecl)]
+        public static extern double getProjectionCY(IntPtr c);
+
+        //! Imported from Phase C API
+        [DllImport("phase", EntryPoint = "PhaseCameraCalibrationGetProjectionTX", CallingConvention = CallingConvention.Cdecl)]
+        public static extern double getProjectionTX(IntPtr c);
+
+        //! Imported from Phase C API
+        [DllImport("phase", EntryPoint = "PhaseCameraCalibrationGetCameraMatrix", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void getCameraMatrix(IntPtr c, [Out] double[] out_mat);
+
+        //! Imported from Phase C API
+        [DllImport("phase", EntryPoint = "PhaseCameraCalibrationGetDistortionCoefficients", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void getDistortionCoefficients(IntPtr c, [Out] double[] out_mat);
+
+        //! Imported from Phase C API
+        [DllImport("phase", EntryPoint = "PhaseCameraCalibrationGetRectificationMatrix", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void getRectificationMatrix(IntPtr c, [Out] double[] out_mat);
+
+        //! Imported from Phase C API
+        [DllImport("phase", EntryPoint = "PhaseCameraCalibrationGetProjectionMatrix", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void getProjectionMatrix(IntPtr c, [Out] double[] out_mat);
+
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseCameraCalibrationGetDownsampleFactor", CallingConvention = CallingConvention.Cdecl)]
         public static extern float getDownsampleFactor(IntPtr c);
 
