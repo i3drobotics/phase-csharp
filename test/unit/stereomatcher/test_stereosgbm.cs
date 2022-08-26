@@ -25,18 +25,16 @@ namespace I3DR.PhaseTest
             StereoSGBM matcher = new StereoSGBM();
 
             int window_size = 11;
-            // int min_disparity = 0;
+            int min_disparity = 0;
             int num_disparities = 25;
 
             matcher.setWindowSize(window_size);
-            // TODO Fix Unable to find an entry point named 'PhaseStereoSGBMSetMinDisparity'
-            // matcher.setMinDisparity(min_disparity);
+            matcher.setMinDisparity(min_disparity);
             matcher.setNumDisparities(num_disparities);
 
-            // TODO impliment stereo matcher getter methods
-            // Assert.Equal(window_size, matcher.getWindowSize());
-            // Assert.Equal(window_size, matcher.getMinDisparity());
-            // Assert.Equal(window_size, matcher.getNumDisparities());
+            Assert.Equal(window_size, matcher.getWindowSize());
+            Assert.Equal(min_disparity, matcher.getMinDisparity());
+            Assert.Equal(num_disparities, matcher.getNumDisparities());
             matcher.dispose();
         }
 
@@ -53,12 +51,11 @@ namespace I3DR.PhaseTest
                 StereoMatcherType.STEREO_MATCHER_SGBM,
                 window_size, min_disparity, num_disparities, true
             );
-            AbstractStereoMatcher matcher = StereoMatcher.createStereoMatcher(stereo_params);
+            StereoSGBM matcher = (StereoSGBM) StereoMatcher.createStereoMatcher(stereo_params);
 
-            // TODO impliment stereo matcher getter methods
-            // Assert.Equal(window_size, matcher.getWindowSize());
-            // Assert.Equal(window_size, matcher.getMinDisparity());
-            // Assert.Equal(window_size, matcher.getNumDisparities());
+            Assert.Equal(window_size, matcher.getWindowSize());
+            Assert.Equal(min_disparity, matcher.getMinDisparity());
+            Assert.Equal(num_disparities, matcher.getNumDisparities());
         }
 
         [Fact]

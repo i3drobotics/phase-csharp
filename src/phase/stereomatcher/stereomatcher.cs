@@ -30,7 +30,16 @@ namespace I3DR.Phase.StereoMatcher
         * @returns stereo matcher object of type specified
         */
         public static AbstractStereoMatcher createStereoMatcher(StereoMatcherType matcher_type){
-            return new AbstractStereoMatcher(CStereoMatcher.createStereoMatcher(matcher_type));
+            if (matcher_type == StereoMatcherType.STEREO_MATCHER_I3DRSGM){
+                return new StereoI3DRSGM(CStereoMatcher.createStereoMatcher(matcher_type));
+            } else if (matcher_type == StereoMatcherType.STEREO_MATCHER_BM){
+                return new StereoBM(CStereoMatcher.createStereoMatcher(matcher_type));
+            } else if (matcher_type == StereoMatcherType.STEREO_MATCHER_SGBM){
+                return new StereoSGBM(CStereoMatcher.createStereoMatcher(matcher_type));
+            } else {
+                throw new ArgumentException(
+                    String.Format("Unsupported matcher type: {0}", matcher_type),"matcher_type");
+            }
         }
 
         /*!
@@ -40,7 +49,17 @@ namespace I3DR.Phase.StereoMatcher
         * @returns stereo matcher object of type specified in parameters
         */
         public static AbstractStereoMatcher createStereoMatcher(StereoParams stereo_params){
-            return new AbstractStereoMatcher(CStereoMatcher.createStereoMatcher(stereo_params));
+            StereoMatcherType matcher_type = stereo_params.matcherType;
+            if (matcher_type == StereoMatcherType.STEREO_MATCHER_I3DRSGM){
+                return new StereoI3DRSGM(CStereoMatcher.createStereoMatcher(stereo_params));
+            } else if (matcher_type == StereoMatcherType.STEREO_MATCHER_BM){
+                return new StereoBM(CStereoMatcher.createStereoMatcher(stereo_params));
+            } else if (matcher_type == StereoMatcherType.STEREO_MATCHER_SGBM){
+                return new StereoSGBM(CStereoMatcher.createStereoMatcher(stereo_params));
+            } else {
+                throw new ArgumentException(
+                    String.Format("Unsupported matcher type: {0}", matcher_type),"matcher_type");
+            }
         }
     }
 }

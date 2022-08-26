@@ -32,10 +32,9 @@ namespace I3DR.PhaseTest
             matcher.setMinDisparity(min_disparity);
             matcher.setNumDisparities(num_disparities);
 
-            // TODO impliment stereo matcher getter methods
-            // Assert.Equal(window_size, matcher.getWindowSize());
-            // Assert.Equal(window_size, matcher.getMinDisparity());
-            // Assert.Equal(window_size, matcher.getNumDisparities());
+            Assert.Equal(window_size, matcher.getWindowSize());
+            Assert.Equal(min_disparity, matcher.getMinDisparity());
+            Assert.Equal(num_disparities, matcher.getNumDisparities());
             matcher.dispose();
         }
 
@@ -52,12 +51,11 @@ namespace I3DR.PhaseTest
                 StereoMatcherType.STEREO_MATCHER_BM,
                 window_size, min_disparity, num_disparities, true
             );
-            AbstractStereoMatcher matcher = StereoMatcher.createStereoMatcher(stereo_params);
+            StereoBM matcher = (StereoBM) StereoMatcher.createStereoMatcher(stereo_params);
 
-            // TODO impliment stereo matcher getter methods
-            // Assert.Equal(window_size, matcher.getWindowSize());
-            // Assert.Equal(window_size, matcher.getMinDisparity());
-            // Assert.Equal(window_size, matcher.getNumDisparities());
+            Assert.Equal(window_size, matcher.getWindowSize());
+            Assert.Equal(min_disparity, matcher.getMinDisparity());
+            Assert.Equal(num_disparities, matcher.getNumDisparities());
         }
 
         [Fact]
@@ -89,8 +87,7 @@ namespace I3DR.PhaseTest
             int precision = 2;
             Assert.Equal(-1.0f, disparity[0]);
             Assert.Equal(239.5f, disparity[(1024 * width + 1224)], precision);
-            // TODO find out why this is -1?
-            // Assert.Equal(224.4375f, disparity[(1400 * width + 2200)], precision);
+            Assert.Equal(224.4375f, disparity[(1400 * width + 2200)], precision);
 
             matcher.dispose();
         }
@@ -138,8 +135,7 @@ namespace I3DR.PhaseTest
             int precision = 2;
             Assert.Equal(-1.0f, disparity[0]);
             Assert.Equal(239.5f, disparity[(1024 * width + 1224)], precision);
-            // TODO find out why this is -1?
-            // Assert.Equal(224.4375f, disparity[(1400 * width + 2200)], precision);
+            Assert.Equal(224.4375f, disparity[(1400 * width + 2200)], precision);
 
             matcher.dispose();
         }
