@@ -6,7 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "phasecsharp", "src\phasecsh
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{54536433-C606-4E45-8617-53718D6BCBF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "phasecsharp-test", "test\src\phasecsharp-test.csproj", "{9EF61BD9-FD0C-4C48-9B71-CD3B7C3F6D89}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "phasecsharp-unit-test", "test\unit\phasecsharp-unit-test.csproj", "{9EF61BD9-FD0C-4C48-9B71-CD3B7C3F6D89}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "drivers", "drivers", "{A708CD37-9D2A-43DD-BA45-53121AB3533F}"
 EndProject
