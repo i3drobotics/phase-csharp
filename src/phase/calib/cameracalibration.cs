@@ -295,7 +295,7 @@ namespace I3DR.Phase.Calib
 
         ~CameraCalibration()
         {
-            dispose();
+            // dispose();
         }
     }
 }

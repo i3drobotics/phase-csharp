@@ -9,6 +9,7 @@
  */
 
 using Xunit;
+using System;
 using System.IO;
 using I3DR.Phase.Calib;
 
@@ -81,7 +82,7 @@ namespace I3DR.PhaseTest
                 Assert.True(cal.getProjectionCY() == cal_data.proj_cy);
                 Assert.True(cal.getProjectionFX() == cal_data.proj_fx);
                 Assert.True(cal.getProjectionFY() == cal_data.proj_fy);
-                Assert.True(fabs(cal.getProjectionTX() - cal_data.proj_tx) < 0.0001 );
+                Assert.True(Math.Abs(cal.getProjectionTX() - cal_data.proj_tx) < 0.0001 );
 
                 // REQUIRE(cv::sum(cal.getCameraMatrix() != cal_data.cam_mat) == cv::Scalar(0));
                 // REQUIRE(cv::sum(cal.getDistortionCoefficients() != cal_data.dist_coef) == cv::Scalar(0));
