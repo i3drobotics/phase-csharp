@@ -8,6 +8,7 @@
  * @details Capture data from I3DR's Deimos stereo camera
  */
 
+using System;
 using I3DR.CPhase.StereoCamera;
 
 namespace I3DR.Phase.StereoCamera
@@ -25,6 +26,14 @@ namespace I3DR.Phase.StereoCamera
         * @param device_info camera device information
         */
         public DeimosStereoCamera(CameraDeviceInfo camera_device_info): base(camera_device_info){}
+
+        /*!
+        * DeimosStereoCamera constructor \n
+        * Initalise Deimos Stereo Camera with the given \p device_info.
+        * 
+        * @param abstractStereoCamera_instance stereo camera instance pointer
+        */
+        public DeimosStereoCamera(IntPtr abstractStereoCamera_instance): base(abstractStereoCamera_instance){}
 
         /*!
         * Initalise Deimos Stereo camera

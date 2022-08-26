@@ -103,13 +103,6 @@ namespace I3DR.Phase.StereoMatcher
         }
 
         /*!
-        * Initalise stereo matcher
-        * Should be implemented in derived classes.
-        * 
-        */
-        protected virtual void init(){}
-
-        /*!
         * Compute stereo match \n
         * Generates disparity from stereo image pair. \n
         * Should be implemented in derived classes.
