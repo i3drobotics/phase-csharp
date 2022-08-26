@@ -22,7 +22,23 @@ namespace I3DR.PhaseTest
         {
             // Test reading of frame from virtual camera
             // using ‘read’ function is completed in less than 0.1s
-            // TOTEST
+            int timeout = 100;
+            CameraDeviceInfo device_info = new CameraDeviceInfo(
+                "0815-0000", "0815-0001", "virtual-camera",
+                CameraDeviceType.DEVICE_TYPE_PHOBOS,
+                CameraInterfaceType.INTERFACE_TYPE_VIRTUAL
+            );
+            AbstractStereoCamera cam = StereoCamera.createStereoCamera(device_info);
+            bool connected = cam.connect();
+            Assert.True(connected);
+            cam.startCapture();
+
+            long start = System.DateTime.Now.Ticks / System.TimeSpan.TicksPerMillisecond;
+            CameraReadResult read_result = cam.read();
+            long end = System.DateTime.Now.Ticks / System.TimeSpan.TicksPerMillisecond;
+
+            long duration = end - start;
+            Assert.True(duration < timeout, "Expected: " + timeout + " Actual: " + duration);
         }
     }
 }
