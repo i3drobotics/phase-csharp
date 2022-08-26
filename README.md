@@ -36,8 +36,7 @@ Alternatively, after building run the tests graphically using Visual Studio and 
 ### Apps
 To run the test applications, use the following commands:
 ```bash
-dotnet run --project=test/drivers/demo_cam_read/PhaseCSharp.demo_cam_read.csproj 
-dotnet run --project=test/drivers/demo_rgbd/PhaseCSharp.demo_rgbd.csproj 
+dotnet run --project=test/demo/demo_cam_read/PhaseCSharp.demo_cam_read.csproj
 ```
 
 *Note: Make sure to run this from the project root directory*
