@@ -62,7 +62,7 @@ namespace I3DR.CPhase.StereoCamera
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraRead", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool read(IntPtr cam, int timeout, [In] byte[] left_img, [In] byte[] right_img);
+        public static extern bool read(IntPtr cam, [In] byte[] left_img, [In] byte[] right_img, int timeout);
         
         [DllImport("phase", EntryPoint = "PhaseAbstractStereoCameraStartReadThread", CallingConvention = CallingConvention.Cdecl)]
         public static extern void startReadThread(IntPtr cam, int timeout);
