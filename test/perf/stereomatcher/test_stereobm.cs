@@ -33,9 +33,7 @@ namespace I3DR.PhaseTest
                 StereoMatcherType.STEREO_MATCHER_BM,
                 11, 0, 25, true
             );
-            // TODO impliment create stereo matcher from stereo params
-            // StereoBM matcher = StereoMatcher.createStereoMatcher(stereo_params);
-            StereoBM matcher = (StereoBM) StereoMatcher.createStereoMatcher(StereoMatcherType.STEREO_MATCHER_BM);
+            AbstractStereoMatcher matcher = StereoMatcher.createStereoMatcher(stereo_params);
             
             int width = 2448;
             int height = 2048;

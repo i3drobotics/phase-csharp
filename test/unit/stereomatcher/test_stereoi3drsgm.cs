@@ -71,8 +71,7 @@ namespace I3DR.PhaseTest
                 StereoMatcherType.STEREO_MATCHER_I3DRSGM,
                 window_size, min_disparity, num_disparities, true
             );
-            // TODO impliment create stereo matcher from stereo params
-            // StereoI3DRSGM matcher = StereoMatcher.createStereoMatcher(stereo_params);
+            AbstractStereoMatcher matcher = StereoMatcher.createStereoMatcher(stereo_params);
 
             // TODO impliment stereo matcher getter methods
             // Assert.Equal(window_size, matcher.getWindowSize());
@@ -94,9 +93,7 @@ namespace I3DR.PhaseTest
                 StereoMatcherType.STEREO_MATCHER_I3DRSGM,
                 11, 0, 25, true
             );
-            // TODO impliment create stereo matcher from stereo params
-            // StereoI3DRSGM matcher = StereoMatcher.createStereoMatcher(stereo_params);
-            StereoI3DRSGM matcher = (StereoI3DRSGM) StereoMatcher.createStereoMatcher(StereoMatcherType.STEREO_MATCHER_I3DRSGM);
+            AbstractStereoMatcher matcher = StereoMatcher.createStereoMatcher(stereo_params);
             
             int width = 2448;
             int height = 2048;
@@ -134,9 +131,7 @@ namespace I3DR.PhaseTest
                 StereoMatcherType.STEREO_MATCHER_I3DRSGM,
                 11, 0, 25, true
             );
-            // TODO impliment create stereo matcher from stereo params
-            // StereoI3DRSGM matcher = StereoI3DRSGM.createStereoMatcher(stereo_params);
-            StereoI3DRSGM matcher = (StereoI3DRSGM) StereoMatcher.createStereoMatcher(StereoMatcherType.STEREO_MATCHER_I3DRSGM);
+            AbstractStereoMatcher matcher = StereoMatcher.createStereoMatcher(stereo_params);
             
             int width = 2448;
             int height = 2048;
