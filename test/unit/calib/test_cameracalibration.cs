@@ -239,9 +239,8 @@ projection_matrix:
                 cal_data.pixel_pitch, cal_data.focal_length,
                 cal_data.translation_x, cal_data.translation_y);
             Assert.True(cal.isValid());
-            // TODO fix rectify function not working
-            // byte[] rect = cal.rectify(img, width, height);
-            // Assert.True(rect.Length > 0);
+            byte[] rect = cal.rectify(img, width, height);
+            Assert.True(rect.Length > 0);
             cal.dispose();
         }
     }
