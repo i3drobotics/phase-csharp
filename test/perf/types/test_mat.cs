@@ -16,11 +16,5 @@ namespace I3DR.PhaseTest
     [Collection("PhaseSequentialTests")]
     public class MatTests
     {
-        // TODOC: Test description
-        [Fact]
-        public void test_Mat()
-        {
-            // TODO
-        }
     }
 }

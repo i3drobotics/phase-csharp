@@ -17,11 +17,12 @@ namespace I3DR.PhaseTest
     [Collection("PhaseSequentialTests")]
     public class CameraCalibrationTests
     {
-        // TODOC: Test description
         [Fact]
-        public void test_CameraCalibration()
+        public void test_PerfRectify()
         {
-            //TODO
+            // Test rectification of image of size 2448x2048
+            // using ‘rectify’ function is completed in less than 0.2s
+            // TOTEST
         }
     }
 }

@@ -22,127 +22,110 @@ namespace I3DR.PhaseTest
     [Collection("PhaseSequentialTests")]
     public class UtilsTests
     {
-        // Test checking if two mat are equal
         [Fact]
-        public void test_Utils_checkEqualMat()
+        public void test_PerfSmallImageScaling()
         {
-            // Create equal matrices
-            int width = 3;
-            int height = 3;
-            int channels = 1;
-            float[] mat_a = new float[width*height*channels];
-            float[] mat_b = new float[width*height*channels];
-            for (int i = 0; i < width*height*channels; i++){
-                mat_a[i] = 1.0f;
-                mat_b[i] = 1.0f;
-            }
-
-            // Check equal is equal check is correct
-            Assert.True(Utils.cvMatIsEqual(mat_a, mat_b, width, height, channels));
-
-            // Change one element to make it not equal
-            mat_a[0] = 0.0f;
-
-            // Check is not equal check is correct
-            Assert.True(!Utils.cvMatIsEqual(mat_a, mat_b, width, height, channels));
+            // Test image with size 640x480 scaled by ‘scaleImage’ function
+            // with a scaling factor of 2 in less than 0.1s
+            // TOTEST
         }
 
-        // Test saving 3D data to ply file
         [Fact]
-        public void test_Utils_savePLY()
+        public void test_PerfLargeImageScaling()
         {
-            string test_folder = ".phase_test";
-            string data_folder = "../../../../data";
-            string left_image_file = data_folder + "/left.png";
-            string right_image_file = data_folder + "/right.png";
-            string left_yaml = test_folder + "/left.yaml";
-            string right_yaml = test_folder + "/right.yaml";
-            string out_ply = test_folder + "/out.ply";
+            // Test image with size 2448x2048 scaled by ‘scaleImage’ function
+            // with a scaling factor of 2 in less than 0.1s
+            // TOTEST
+        }
 
-            Directory.CreateDirectory(test_folder);
+        [Fact]
+        public void test_PerfConvertBGR2Mono()
+        {
+            // Test image of type CV_8UC3 converted to mono
+            // by ‘toMono’ function in less than 0.1s
+            // TOTEST
+        }
 
-            Console.WriteLine("Generating test data...");
+        [Fact]
+        public void test_PerfConvertBGRA2RGBA()
+        {
+            // Test BGRA image converted to RGBA using ‘bgra2rgba’ function in less than 0.8s
+            // TOTEST
+        }
 
-            string left_yaml_data = "" +
-                "image_width: 2448\n" +
-                "image_height: 2048\n" +
-                "camera_name: leftCamera\n" +
-                "camera_matrix:\n" +
-                "   rows: 3\n" +
-                "   cols: 3\n" +
-                "   data: [ 3.4782608695652175e+03, 0., 1224., 0., 3.4782608695652175e+03, 1024., 0., 0., 1. ]\n" +
-                "distortion_model: plumb_bob\n" +
-                "distortion_coefficients:\n" +
-                "   rows: 1\n" +
-                "   cols: 5\n" +
-                "   data: [ 0., 0., 0., 0., 0. ]\n" +
-                "rectification_matrix:\n" +
-                "   rows: 3\n" +
-                "   cols: 3\n" +
-                "   data: [1., 0., 0., 0., 1., 0., 0., 0., 1.]\n" +
-                "projection_matrix:\n" +
-                "   rows: 3\n" +
-                "   cols: 4\n" +
-                "   data: [ 3.4782608695652175e+03, 0., 1224., 0., 0., 3.4782608695652175e+03, 1024., 0., 0., 0., 1., 0. ]\n";
-            string right_yaml_data = "" +
-                "image_width: 2448\n" +
-                "image_height: 2048\n" +
-                "camera_name: rightCamera\n" +
-                "camera_matrix:\n" +
-                "   rows: 3\n" +
-                "   cols: 3\n" +
-                "   data: [ 3.4782608695652175e+03, 0., 1224., 0., 3.4782608695652175e+03, 1024., 0., 0., 1. ]\n" +
-                "distortion_model: plumb_bob\n" +
-                "distortion_coefficients:\n" +
-                "   rows: 1\n" +
-                "   cols: 5\n" +
-                "   data: [ 0., 0., 0., 0., 0. ]\n" +
-                "rectification_matrix:\n" +
-                "   rows: 3\n" +
-                "   cols: 3\n" +
-                "   data: [1., 0., 0., 0., 1., 0., 0., 0., 1.]\n" +
-                "projection_matrix:\n" +
-                "   rows: 3\n" +
-                "   cols: 4\n" +
-                "   data: [ 3.4782608695652175e+03, 0., 1224., -3.4782608695652175e+02, 0., 3.4782608695652175e+03, 1024., 0., 0., 0., 1., 0. ]\n";
+        [Fact]
+        public void test_PerfConvertBGR2RGBA()
+        {
+            // Test BGR image converted to RGBA using ‘bgr2rgba’ function in less than 0.8s
+            // TOTEST
+        }
 
-            File.WriteAllText(left_yaml, left_yaml_data);
-            File.WriteAllText(right_yaml, right_yaml_data);
-            
-            //TODO get image size from file
-            int image_width = 2448;
-            int image_height = 2048;
-            byte[] left_image_cv = Utils.readImage(left_image_file, image_width, image_height);
-            byte[] right_image_cv = Utils.readImage(right_image_file, image_width, image_height);
+        [Fact]
+        public void test_PerfConvertBGR2BGRA()
+        {
+            // Test BGR image converted to BGRA using ‘bgr2bgra’ function in less than 0.8s
+            // TOTEST
+        }
 
-            Assert.True(left_image_cv.Length != 0);
-            Assert.True(right_image_cv.Length != 0);
+        [Fact]
+        public void test_PerfConvertDisparity2Depth()
+        {
+            // Test disparity image of size 2448x2048 converted to depth
+            // by ‘disparity2Depth’ function in less than 0.5s
+            // TOTEST
+        }
 
-            StereoCameraCalibration calibration = StereoCameraCalibration.calibrationFromYAML(left_yaml, right_yaml);
+        [Fact]
+        public void test_PerfConvertDisparity2Xyz()
+        {
+            // Test disparity image of size 2448x2048 converted to xyz image
+            // by ‘disparity2xyz’ function in less than 0.5s
+            // TOTEST
+        }
 
-            Assert.True(calibration.isValid());
+        [Fact]
+        public void test_PerfConvertDepth2Xyz()
+        {
+            // Test depth image of size 2448x2048 converted to xyz image
+            // by ‘depth2xyz’ function in less than 0.5s
+            // TOTEST
+        }
 
-            StereoImagePair rect_image_pair = calibration.rectify(left_image_cv, right_image_cv, image_width, image_height);
+        [Fact]
+        public void test_PerfConvertXyz2Depth()
+        {
+            // Test XYZ image of size 2448x2048 converted to depth image
+            // by ‘xyz2depth’ function in less than 0.1s
+            // TOTEST
+        }
 
-            Console.WriteLine("Processing stereo...");
-            StereoMatcherType matcher_type = StereoMatcherType.STEREO_MATCHER_BM;
-            StereoParams stereo_params = new StereoParams(
-                matcher_type,
-                11, 0, 25, false
-            );
-            
-            AbstractStereoMatcher matcher = StereoMatcher.createStereoMatcher(matcher_type);
-            StereoMatcherComputeResult result = matcher.compute(rect_image_pair.left, rect_image_pair.right, image_width, image_height);
+        [Fact]
+        public void test_PerfReadImage()
+        {
+            // Test read image of size 2448x2048 using ‘readImage’ function in less than 0.2s
+            // TOTEST
+        }
 
-            Assert.True(result.valid);
+        [Fact]
+        public void test_PerfFlipImageHorizontally()
+        {
+            // Test flip image of size 2448x2048 horizontally using ‘flip’ function in less than 0.1s
+            // TOTEST
+        }
 
-            float[] depth = Utils.disparity2Depth(result.disparity, image_width, image_height, calibration.getQ());
+        [Fact]
+        public void test_PerfSavePLY()
+        {
+            // Test save RGB and XYZ image of size 2448x2048 as point cloud
+            // in PLY format using ‘savePLY’ function in less than 5s
+            // TOTEST
+        }
 
-            Assert.True(depth.Length != 0);
-
-            float[] xyz = Utils.depth2xyz(depth, image_width, image_height, calibration.getHFOV());
-
-            Utils.savePLY(out_ply, xyz, rect_image_pair.left, image_width, image_height);
+        [Fact]
+        public void test_PerfCheckMatEqual()
+        {
+            // Test checking equality of two cv::Mat’s using function ‘cvMatIsEqual’ in less than 0.1s
+            // TOTEST
         }
     }
 }

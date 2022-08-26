@@ -3,19 +3,19 @@
  * @date 2021-05-26
  * @copyright Copyright (c) I3D Robotics Ltd, 2021
  * 
- * @file test_stereomatcher.cs
- * @brief Unit tests for Stereo Matcher class
+ * @file test_abstractstereocamera.cs
+ * @brief Unit tests for Stereo Camera class
  * @details Unit tests generated using MSTest
  */
 
 using Xunit;
-using I3DR.Phase.StereoMatcher;
+using I3DR.Phase.StereoCamera;
 
 namespace I3DR.PhaseTest
 {
-    // Tests for StereoMatcher
+    // Tests for AbstractStereoCamera
     [Collection("PhaseSequentialTests")]
-    public class StereoMatcherTests
+    public class AbstractStereoCameraTests
     {
     }
 }
