@@ -9,6 +9,7 @@
  */
 
 using Xunit;
+using I3DR.Phase.Types;
 
 namespace I3DR.PhaseTest
 {
@@ -21,7 +22,13 @@ namespace I3DR.PhaseTest
         {
             // Test MatrixFloat created with 10 rows, 10 columns, 2 layers
             // has specified number of rows, columns, and layers
-            // TOTEST
+            int r = 10;
+            int c = 10;
+            int l = 2;
+            MatrixFloat mat = new MatrixFloat(r, c, l);
+            Assert.Equal(r, mat.getRows());
+            Assert.Equal(c, mat.getColumns());
+            Assert.Equal(l, mat.getLayers());
         }
 
         [Fact]
@@ -29,7 +36,13 @@ namespace I3DR.PhaseTest
         {
             // Test MatrixUInt8 created with 10 rows, 10 columns, 2 layers
             // has specified number of rows, columns, and layers
-            // TOTEST
+            int r = 10;
+            int c = 10;
+            int l = 2;
+            MatrixUInt8 mat = new MatrixUInt8(r, c, l);
+            Assert.Equal(r, mat.getRows());
+            Assert.Equal(c, mat.getColumns());
+            Assert.Equal(l, mat.getLayers());
         }
 
         [Fact]
@@ -37,7 +50,13 @@ namespace I3DR.PhaseTest
         {
             // Test MatrixFloat element can be set to specific value
             // and value can be read back and responds with new value 
-            // TOTEST
+            MatrixFloat mat = new MatrixFloat(10, 10, 2);
+            int r = 1;
+            int c = 2;
+            int l = 1;
+            float value = 100;
+            mat.setAt(r, c, l, value);
+            Assert.Equal(value, mat.getAt(r,c,l));
         }
 
         [Fact]
@@ -45,21 +64,13 @@ namespace I3DR.PhaseTest
         {
             // Test MatrixUInt8 element can be set to specific value
             // and value can be read back and responds with new value 
-            // TOTEST
-        }
-
-        [Fact]
-        public void test_MatrixFloatEmpty()
-        {
-            // Test a MatrixFloat that is empty reports as empty using ‘isEmpty’ function
-            // TOTEST
-        }
-
-        [Fact]
-        public void test_MatrixUInt8Empty()
-        {
-            // Test a MatrixUInt8 that is empty reports as empty using ‘isEmpty’ function
-            // TOTEST
+            MatrixUInt8 mat = new MatrixUInt8(10, 10, 2);
+            int r = 1;
+            int c = 2;
+            int l = 1;
+            byte value = 100;
+            mat.setAt(r, c, l, value);
+            Assert.Equal(value, mat.getAt(r,c,l));
         }
     }
 }
