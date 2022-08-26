@@ -54,7 +54,7 @@
 
     <Copy
       SourceFiles="@(_TestData)"
-      DestinationFolder="$(TargetDir)../../../../../../deployment/bin/test/data" />
+      DestinationFolder="$(TargetDir)../../../../../../deployment/bin/data" />
 
     <Message Text="Copied test data to deployment" Importance="High" />
   </Target>
