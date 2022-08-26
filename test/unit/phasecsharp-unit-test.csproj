@@ -21,4 +21,17 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <_TestData Include="$(TargetDir)../../../../data/*" />
+  </ItemGroup>
+  <Target Name="CopyTestData" AfterTargets="Build" >
+    <Message Text="Executing CopyTestData task" Importance="High" />
+
+    <Copy
+      SourceFiles="@(_TestData)"
+      DestinationFolder="$(TargetDir)/data" />
+
+    <Message Text="Copied test data to target" Importance="High" />
+  </Target>
+
 </Project>
