@@ -14,6 +14,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{A708CD37-9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "phasecsharp-demo-cam-read", "test\demo\demo_cam_read\phasecsharp-demo-cam-read.csproj", "{272CED2E-0330-4A86-B0A4-135A0050D9B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "phasecsharp-demo-cam-read-thread", "test\demo\demo_cam_read_thread\phasecsharp-demo-cam-read-thread.csproj", "{2363DB72-1EBD-418C-A65F-D6AF608CD482}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "phasecsharp-demo-cam-match", "test\demo\demo_cam_match\phasecsharp-demo-cam-match.csproj", "{9DCEAE20-CC51-47AC-AF2F-39C8D4B14C28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "phasecsharp-demo-cam-match-thread", "test\demo\demo_cam_match_thread\phasecsharp-demo-cam-match-thread.csproj", "{042F0FA4-D9AD-4871-871E-AC78C4D8C637}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "phasecsharp-demo-titania-read", "test\demo\demo_titania_read\phasecsharp-demo-titania-read.csproj", "{2E885BBC-53E0-4E1C-9839-88BCCE8B56B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,11 +47,31 @@ Global
 		{1E3CFC82-9C52-469D-8EF9-5765C427BAF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E3CFC82-9C52-469D-8EF9-5765C427BAF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E3CFC82-9C52-469D-8EF9-5765C427BAF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2363DB72-1EBD-418C-A65F-D6AF608CD482}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2363DB72-1EBD-418C-A65F-D6AF608CD482}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2363DB72-1EBD-418C-A65F-D6AF608CD482}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2363DB72-1EBD-418C-A65F-D6AF608CD482}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DCEAE20-CC51-47AC-AF2F-39C8D4B14C28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DCEAE20-CC51-47AC-AF2F-39C8D4B14C28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DCEAE20-CC51-47AC-AF2F-39C8D4B14C28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DCEAE20-CC51-47AC-AF2F-39C8D4B14C28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{042F0FA4-D9AD-4871-871E-AC78C4D8C637}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{042F0FA4-D9AD-4871-871E-AC78C4D8C637}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{042F0FA4-D9AD-4871-871E-AC78C4D8C637}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{042F0FA4-D9AD-4871-871E-AC78C4D8C637}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E885BBC-53E0-4E1C-9839-88BCCE8B56B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E885BBC-53E0-4E1C-9839-88BCCE8B56B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E885BBC-53E0-4E1C-9839-88BCCE8B56B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E885BBC-53E0-4E1C-9839-88BCCE8B56B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9EF61BD9-FD0C-4C48-9B71-CD3B7C3F6D89} = {54536433-C606-4E45-8617-53718D6BCBF6}
 		{A708CD37-9D2A-43DD-BA45-53121AB3533F} = {54536433-C606-4E45-8617-53718D6BCBF6}
 		{272CED2E-0330-4A86-B0A4-135A0050D9B3} = {A708CD37-9D2A-43DD-BA45-53121AB3533F}
 		{1E3CFC82-9C52-469D-8EF9-5765C427BAF5} = {54536433-C606-4E45-8617-53718D6BCBF6}
+		{2363DB72-1EBD-418C-A65F-D6AF608CD482} = {A708CD37-9D2A-43DD-BA45-53121AB3533F}
+		{9DCEAE20-CC51-47AC-AF2F-39C8D4B14C28} = {A708CD37-9D2A-43DD-BA45-53121AB3533F}
+		{042F0FA4-D9AD-4871-871E-AC78C4D8C637} = {A708CD37-9D2A-43DD-BA45-53121AB3533F}
+		{2E885BBC-53E0-4E1C-9839-88BCCE8B56B9} = {A708CD37-9D2A-43DD-BA45-53121AB3533F}
 	EndGlobalSection
 EndGlobal

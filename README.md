@@ -37,7 +37,8 @@ Alternatively, after building run the tests graphically using Visual Studio and 
 ### Apps
 To run the test applications, use the following commands:
 ```bash
-dotnet run --project=test/demo/demo_cam_read/PhaseCSharp.demo_cam_read.csproj
+cd deployment/bin
+./phasecsharp-demo-cam-read
 ```
 
 *Note: Make sure to run this from the project root directory*
