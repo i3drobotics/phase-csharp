@@ -71,19 +71,17 @@ namespace I3DR.PhaseTest
             public static void verify_cal(CameraCalibration cal, CalData cal_data){
                 Assert.True(cal.isValid());
 
-                // TODO impliment get methods for calibration parameters
-
-                // REQUIRE(cal.getImageHeight() == cal_data.image_height);
-                // REQUIRE(cal.getImageWidth() == cal_data.image_width);
-                // REQUIRE(cal.getCameraCX() == cal_data.cx);
-                // REQUIRE(cal.getCameraCY() == cal_data.cy);
-                // REQUIRE(cal.getCameraFX() == cal_data.fx);
-                // REQUIRE(cal.getCameraFY() == cal_data.fy);
-                // REQUIRE(cal.getProjectionCX() == cal_data.proj_cx);
-                // REQUIRE(cal.getProjectionCY() == cal_data.proj_cy);
-                // REQUIRE(cal.getProjectionFX() == cal_data.proj_fx);
-                // REQUIRE(cal.getProjectionFY() == cal_data.proj_fy);
-                // REQUIRE(fabs(cal.getProjectionTX() - cal_data.proj_tx) < 0.0001 );
+                Assert.True(cal.getImageHeight() == cal_data.image_height);
+                Assert.True(cal.getImageWidth() == cal_data.image_width);
+                Assert.True(cal.getCameraCX() == cal_data.cx);
+                Assert.True(cal.getCameraCY() == cal_data.cy);
+                Assert.True(cal.getCameraFX() == cal_data.fx);
+                Assert.True(cal.getCameraFY() == cal_data.fy);
+                Assert.True(cal.getProjectionCX() == cal_data.proj_cx);
+                Assert.True(cal.getProjectionCY() == cal_data.proj_cy);
+                Assert.True(cal.getProjectionFX() == cal_data.proj_fx);
+                Assert.True(cal.getProjectionFY() == cal_data.proj_fy);
+                Assert.True(fabs(cal.getProjectionTX() - cal_data.proj_tx) < 0.0001 );
 
                 // REQUIRE(cv::sum(cal.getCameraMatrix() != cal_data.cam_mat) == cv::Scalar(0));
                 // REQUIRE(cv::sum(cal.getDistortionCoefficients() != cal_data.dist_coef) == cv::Scalar(0));

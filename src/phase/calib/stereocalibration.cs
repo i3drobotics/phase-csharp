@@ -97,6 +97,14 @@ namespace I3DR.Phase.Calib
             return CStereoCameraCalibration.isValidSize(m_StereoCameraCalibration_instance, width, height);
         }
 
+        public CameraCalibration getLeftCalibration(){
+            return new CameraCalibration(CStereoCameraCalibration.getLeftCalibration(m_StereoCameraCalibration_instance));
+        }
+
+        public CameraCalibration getRightCalibration(){
+            return new CameraCalibration(CStereoCameraCalibration.getRightCalibration(m_StereoCameraCalibration_instance));
+        }
+
         /*!
         * Get camera horizontal field of view
         * 

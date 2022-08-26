@@ -31,6 +31,10 @@ namespace I3DR.Phase.Calib
     public class CameraCalibration
     {
         private IntPtr m_CameraCalibration_instance; //!< pointer to CameraCalibration C API instance
+        private double[] cam_mat; //!< stores camera matrix
+        private double[] dist_coef; //!< stores distortion coefficients
+        private double[] rect_mat; //!< stores rectification matrix
+        private double[] proj_mat; //!< stores projection matrix
 
         /*!
         * Initalise class using C API class instance reference
@@ -178,6 +182,50 @@ namespace I3DR.Phase.Calib
         */
         public double getProjectionTX(){
             return CCameraCalibration.getProjectionTX(m_CameraCalibration_instance);
+        }
+
+        /*!
+        * Get camera matrix from calibration
+        * 
+        * @returns camera matrix
+        */
+        public double[] getCameraMatrix(){
+            cam_mat = new double[3*3];
+            CCameraCalibration.getCameraMatrix(m_CameraCalibration_instance, cam_mat);
+            return cam_mat;
+        }
+
+        /*!
+        * Get distortion coefficients from calibration
+        * 
+        * @returns distortion coefficients
+        */
+        public double[] getDistortionCoefficients(){
+            dist_coef = new double[1*5];
+            CCameraCalibration.getDistortionCoefficients(m_CameraCalibration_instance, dist_coef);
+            return dist_coef;
+        }
+
+        /*!
+        * Get rectification matrix from calibration
+        * 
+        * @returns rectification matrix
+        */
+        public double[] getRectificationMatrix(){
+            rect_mat = new double[3*3];
+            CCameraCalibration.getRectificationMatrix(m_CameraCalibration_instance, rect_mat);
+            return rect_mat;
+        }
+
+        /*!
+        * Get projection matrix from calibration
+        * 
+        * @returns projection matrix
+        */
+        public double[] getProjectionMatrix(){
+            proj_mat = new double[3*4];
+            CCameraCalibration.getProjectionMatrix(m_CameraCalibration_instance, proj_mat);
+            return proj_mat;
         }
 
         /*!
