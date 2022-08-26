@@ -16,11 +16,50 @@ namespace I3DR.PhaseTest
     [Collection("PhaseSequentialTests")]
     public class MatTests
     {
-        // TODOC: Test description
         [Fact]
-        public void test_Mat()
+        public void test_MatrixFloatCreate()
         {
-            // TODO
+            // Test MatrixFloat created with 10 rows, 10 columns, 2 layers
+            // has specified number of rows, columns, and layers
+            // TOTEST
+        }
+
+        [Fact]
+        public void test_MatrixUInt8Create()
+        {
+            // Test MatrixUInt8 created with 10 rows, 10 columns, 2 layers
+            // has specified number of rows, columns, and layers
+            // TOTEST
+        }
+
+        [Fact]
+        public void test_MatrixFloatElementSetting()
+        {
+            // Test MatrixFloat element can be set to specific value
+            // and value can be read back and responds with new value 
+            // TOTEST
+        }
+
+        [Fact]
+        public void test_MatrixUInt8ElementSetting()
+        {
+            // Test MatrixUInt8 element can be set to specific value
+            // and value can be read back and responds with new value 
+            // TOTEST
+        }
+
+        [Fact]
+        public void test_MatrixFloatEmpty()
+        {
+            // Test a MatrixFloat that is empty reports as empty using ‘isEmpty’ function
+            // TOTEST
+        }
+
+        [Fact]
+        public void test_MatrixUInt8Empty()
+        {
+            // Test a MatrixUInt8 that is empty reports as empty using ‘isEmpty’ function
+            // TOTEST
         }
     }
 }

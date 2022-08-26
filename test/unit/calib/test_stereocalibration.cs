@@ -19,10 +19,68 @@ namespace I3DR.PhaseTest
     [Collection("PhaseSequentialTests")]
     public class StereoCameraCalibrationTests
     {
+        [Fact]
+        public void test_ValidLoadROSYAMLs()
+        {
+            // Test calibration data is loaded from ROS YAML file
+            // and values from file match parameters in stereo calibration class
+            // TOTEST
+        }
+
+        [Fact]
+        public void test_ValidLoadOpenCVYAMLs()
+        {
+            // Test calibration data is loaded from OpenCV YAML file
+            // and values from file match parameters in stereo calibration class 
+            // TOTEST
+        }
+
+        [Fact]
+        public void test_SaveROSYAMLIsValid()
+        {
+            // Test calibration data is saved to ROS YAML file
+            // and values in file match parameters in calibration class 
+            // TOTEST
+        }
+
+        [Fact]
+        public void test_SaveOpenCVYAMLIsValid()
+        {
+            // Test calibration data is saved to OpenCV YAML file
+            // and values in file match parameters in calibration class 
+            // TOTEST
+        }
+
+        [Fact]
+        public void test_ValidCalibrationFromIdeal()
+        {
+            // Test Calibration data is loaded from ideal camera parameters
+            // using ‘calibrationFromIdeal’ function and loaded parameters match expected values
+            // TOTEST
+        }
+
+        [Fact]
+        public void test_SuccessfulRectify()
+        {
+            // Test left and right images are successfully rectified using ‘rectify’ function 
+            // TOTEST
+        }
+
+        [Fact]
+        public void test_EmptyRectify()
+        {
+            // Test attempt to rectify empty images using
+            // ‘rectify’ function should result in empty left and right images
+            // TOTEST
+        }
+
+
+
         // Test loading of calibration data from ROS and OpenCV type YAML files
         [Fact]
         public void test_LoadCalibration()
         {
+            // TOTEST Remove test
             string test_folder = ".phase_test";
             // string data_folder = "../../../../data";
             string left_ros_yaml = test_folder + "/left_ros.yaml";
@@ -151,6 +209,7 @@ namespace I3DR.PhaseTest
         [Fact]
         public void test_SaveCalibration()
         {
+            // TOTEST remove test
             string test_folder = ".phase_test";
             // string data_folder = "../../../../data";
             string left_yaml = test_folder + "/left.yaml";

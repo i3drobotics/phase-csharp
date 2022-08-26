@@ -17,13 +17,5 @@ namespace I3DR.PhaseTest
     [Collection("PhaseSequentialTests")]
     public class StereoCameraTests
     {
-        // TODOC: Test description
-        [Fact]
-        public void test_StereoCamera()
-        {
-            //TODO
-            // AbstractStereoCamera cam = createStereoCamera();
-            // cam.dispose(); //check manual dispose of class works (useful in Unity when used in Editor)
-        }
     }
 }

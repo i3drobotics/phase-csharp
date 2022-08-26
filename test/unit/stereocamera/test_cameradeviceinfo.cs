@@ -17,11 +17,5 @@ namespace I3DR.PhaseTest
     [Collection("PhaseSequentialTests")]
     public class CameraDeviceInfoTests
     {
-        // TODOC: Test description
-        [Fact]
-        public void test_CameraDeviceInfo()
-        {
-            //TODO
-        }
     }
 }

@@ -17,11 +17,43 @@ namespace I3DR.PhaseTest
     [Collection("PhaseSequentialTests")]
     public class CameraCalibrationTests
     {
-        // TODOC: Test description
         [Fact]
-        public void test_CameraCalibration()
+        public void test_ValidLoadROSYAML()
         {
-            //TODO
+            // Test calibration data is loaded from ROS YAML file
+            // and values from file match parameters in calibration class 
+            // TOTEST
+        }
+
+        [Fact]
+        public void test_ValidLoadOpenCVYAML()
+        {
+            // Test calibration data is loaded from OpenCV YAML file
+            // and values from file match parameters in calibration class 
+            // TOTEST
+        }
+
+        [Fact]
+        public void test_ValidCalibrationFromIdeal()
+        {
+            // Test Calibration data is loaded from ideal camera parameters
+            // using ‘calibrationFromIdeal’ function and loaded parameters match expected values 
+            // TOTEST
+        }
+
+        [Fact]
+        public void test_SuccessfulRectify()
+        {
+            // Test image is successfully rectified using ‘rectify’ function 
+            // TOTEST
+        }
+
+        [Fact]
+        public void test_EmptyRectify()
+        {
+            // Test attempt to rectify empty image using
+            // ‘rectify’ function should result in empty result image 
+            // TOTEST
         }
     }
 }
