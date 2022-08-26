@@ -37,6 +37,13 @@ namespace I3DR.Phase
             return scaled_image;
         }
 
+        static public byte[] toMono(byte[] image, int width, int height, int channels)
+        {
+            byte[] mono_image = new byte[width * height * 1];
+            CUtils.toMonoUChar(image, width, height, channels, mono_image);
+            return mono_image;
+        }
+
         /*!
         * Normalise disparity image to floating point 0-1 range \n
         * Disparity image is the output from stereo matching that describes

@@ -72,9 +72,10 @@ namespace I3DR.PhaseTest
             int height = 2048;
             byte[] input_img = new byte[width*height*3];
             for (int i = 0; i < input_img.Length; i++){input_img[i] = 1;} // fill with ones
+            
 
             long start = System.DateTime.Now.Ticks / System.TimeSpan.TicksPerMillisecond;
-            // TODO impliment toMono function
+            byte[] mono_image = Utils.toMono(input_img, width, height, 3);
             long end = System.DateTime.Now.Ticks / System.TimeSpan.TicksPerMillisecond;
 
             long duration = end - start;

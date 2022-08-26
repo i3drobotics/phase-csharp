@@ -22,6 +22,10 @@ namespace I3DR.CPhase
         [DllImport("phase", EntryPoint = "PhaseScaleImageUChar")]
         public static extern void scaleImageUChar([In] byte[] in_img, int width, int height, float scale_factor, [Out] byte[] out_scaled_img);
 
+        
+        [DllImport("phase", EntryPoint = "PhaseToMonoUChar")]
+        public static extern bool toMonoUChar([In] byte[] in_img, int width, int height, int channels, [Out] byte[] out_mono_image);
+        
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseNormaliseDisparity")]
         public static extern void normaliseDisparity([In] float[] in_disparity, int width, int height, [Out] byte[] out_norm_disparity);
