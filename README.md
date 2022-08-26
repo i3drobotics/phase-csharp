@@ -39,6 +39,9 @@ To run the test applications, use the following commands:
 ```bash
 cd deployment/bin
 ./phasecsharp-demo-cam-read
+./phasecsharp-demo-cam-read-thread
+./phasecsharp-demo-cam-match
+./phasecsharp-demo-cam-match-thread
 ```
 
 *Note: Make sure to run this from the project root directory*
