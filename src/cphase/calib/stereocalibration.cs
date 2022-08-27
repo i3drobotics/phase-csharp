@@ -22,11 +22,6 @@ namespace I3DR.CPhase.Calib
     public class CStereoCameraCalibration
     {
         //! Imported from Phase C API
-        // TODO add empty constructor initialisation to C-API
-        // [DllImport("phase", EntryPoint = "PhaseStereoCameraCalibrationCreate", CallingConvention = CallingConvention.Cdecl)]
-        // public static extern IntPtr PhaseStereoCameraCalibrationCreate(string left_yaml_filepath, string right_yaml_filepath);
-
-        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseStereoCameraCalibrationCalibrationFromYAML", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr calibrationFromYAML(string left_yaml_filepath, string right_yaml_filepath);
 

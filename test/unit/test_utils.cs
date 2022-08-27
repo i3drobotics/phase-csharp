@@ -37,7 +37,8 @@ namespace I3DR.PhaseTest
             // has output image type of CV_8UC1
             byte[] input_img = new byte[2448*2048*1];
             for (int i = 0; i < input_img.Length; i++){input_img[i] = 1;} // fill with ones
-            // TODO impliment toMono function
+            byte[] mono_image = Utils.toMono(input_img, 2448, 2048, 1);
+            Assert.True(mono_image.Length == 2448*2048*1);
         }
 
         [Fact]
@@ -45,9 +46,10 @@ namespace I3DR.PhaseTest
         {
             // Test image of type CV_8UC4 converted to mono by ‘toMono’ function
             // has output image type of CV_8UC1
-            byte[] input_img = new byte[2448*2048*1];
+            byte[] input_img = new byte[2448*2048*4];
             for (int i = 0; i < input_img.Length; i++){input_img[i] = 1;} // fill with ones
-            /// TODO impliment toMono function
+            byte[] mono_image = Utils.toMono(input_img, 2448, 2048, 4);
+            Assert.True(mono_image.Length == 2448*2048*1);
         }
 
         [Fact]
@@ -55,9 +57,10 @@ namespace I3DR.PhaseTest
         {
             // Test image of type CV_8UC3 converted to mono by ‘toMono’ function
             // has output image type of CV_8UC1
-            byte[] input_img = new byte[2448*2048*1];
+            byte[] input_img = new byte[2448*2048*3];
             for (int i = 0; i < input_img.Length; i++){input_img[i] = 1;} // fill with ones
-            /// TODO impliment toMono function
+            byte[] mono_image = Utils.toMono(input_img, 2448, 2048, 3);
+            Assert.True(mono_image.Length == 2448*2048*1);
         }
 
         [Fact]
