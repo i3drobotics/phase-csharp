@@ -61,5 +61,32 @@ namespace I3DR.Phase.StereoMatcher
         public void setNumDisparities(int value){
             CStereoSGBM.setNumDisparities(m_AbstractStereoMatcher_instance, value);
         }
+
+        /*!
+        * Get window size from matcher
+        * 
+        * @returns window size
+        */
+        public int getWindowSize(){
+            return CStereoSGBM.getWindowSize(m_AbstractStereoMatcher_instance);
+        }
+
+        /*!
+        * Get minimum disparity from matcher
+        * 
+        * @returns minimum disparity
+        */
+        public int getMinDisparity(){
+            return CStereoSGBM.getMinDisparity(m_AbstractStereoMatcher_instance);
+        }
+
+        /*!
+        * Get number of disparities from matcher
+        * 
+        * @returns number of disparities
+        */
+        public int getNumDisparities(){
+            return CStereoSGBM.getNumDisparities(m_AbstractStereoMatcher_instance);
+        }
     }
 }

@@ -31,8 +31,8 @@ namespace I3DR.PhaseTest
             float speckle_max_diff = 0.5f;
             bool enable_subpixel = true;
             bool enable_interpolation = true;
-            // bool enable_occ_detection = true;
-            // bool enable_occ_interpolation = true;
+            bool enable_occ_detection = true;
+            bool enable_occ_interpolation = true;
 
             matcher.setWindowSize(window_size);
             matcher.setMinDisparity(min_disparity);
@@ -41,20 +41,18 @@ namespace I3DR.PhaseTest
             matcher.setSpeckleMaxDiff(speckle_max_diff);
             matcher.enableSubpixel(enable_subpixel);
             matcher.enableInterpolation(enable_interpolation);
-            // TODO impliment stereo matcher enable methods
-            // matcher.enableOcclusionDetection(enable_occ_detection);
-            // matcher.enableOcclusionInterpolation(enable_occ_interpolation);
+            matcher.enableOcclusionDetection(enable_occ_detection);
+            matcher.enableOcclusionInterpolation(enable_occ_interpolation);
 
-            // TODO impliment stereo matcher getter methods
-            // Assert.Equal(window_size, matcher.getWindowSize());
-            // Assert.Equal(min_disparity, matcher.getMinDisparity());
-            // Assert.Equal(num_disparities, matcher.getNumDisparities());
-            // Assert.Equal(speckle_max_size, matcher.getSpeckleMaxSize());
-            // Assert.Equal(speckle_max_diff, matcher.getSpeckleMaxDiff());
-            // Assert.Equal(enable_subpixel, matcher.isSubpixelEnabled());
-            // Assert.Equal(enable_interpolation, matcher.isInterpolationEnabled());
-            // Assert.Equal(enable_occ_detection, matcher.isOcclusionDetectionEnabled());
-            // Assert.Equal(enable_occ_interpolation, matcher.isOcclusionInterpolationEnabled());
+            Assert.Equal(window_size, matcher.getWindowSize());
+            Assert.Equal(min_disparity, matcher.getMinDisparity());
+            Assert.Equal(num_disparities, matcher.getNumDisparities());
+            Assert.Equal(speckle_max_size, matcher.getSpeckleMaxSize());
+            Assert.Equal(speckle_max_diff, matcher.getSpeckleMaxDiff());
+            Assert.Equal(enable_subpixel, matcher.isSubpixelEnabled());
+            Assert.Equal(enable_interpolation, matcher.isInterpolationEnabled());
+            Assert.Equal(enable_occ_detection, matcher.isOcclusionDetectionEnabled());
+            Assert.Equal(enable_occ_interpolation, matcher.isOcclusionInterpolationEnabled());
             matcher.dispose();
         }
 
@@ -71,13 +69,11 @@ namespace I3DR.PhaseTest
                 StereoMatcherType.STEREO_MATCHER_I3DRSGM,
                 window_size, min_disparity, num_disparities, true
             );
-            // TODO impliment create stereo matcher from stereo params
-            // StereoI3DRSGM matcher = StereoMatcher.createStereoMatcher(stereo_params);
+            StereoI3DRSGM matcher = (StereoI3DRSGM) StereoMatcher.createStereoMatcher(stereo_params);
 
-            // TODO impliment stereo matcher getter methods
-            // Assert.Equal(window_size, matcher.getWindowSize());
-            // Assert.Equal(window_size, matcher.getMinDisparity());
-            // Assert.Equal(window_size, matcher.getNumDisparities());
+            Assert.Equal(window_size, matcher.getWindowSize());
+            Assert.Equal(min_disparity, matcher.getMinDisparity());
+            Assert.Equal(num_disparities, matcher.getNumDisparities());
         }
 
         [Fact]
@@ -94,9 +90,7 @@ namespace I3DR.PhaseTest
                 StereoMatcherType.STEREO_MATCHER_I3DRSGM,
                 11, 0, 25, true
             );
-            // TODO impliment create stereo matcher from stereo params
-            // StereoI3DRSGM matcher = StereoMatcher.createStereoMatcher(stereo_params);
-            StereoI3DRSGM matcher = (StereoI3DRSGM) StereoMatcher.createStereoMatcher(StereoMatcherType.STEREO_MATCHER_I3DRSGM);
+            AbstractStereoMatcher matcher = StereoMatcher.createStereoMatcher(stereo_params);
             
             int width = 2448;
             int height = 2048;
@@ -134,9 +128,7 @@ namespace I3DR.PhaseTest
                 StereoMatcherType.STEREO_MATCHER_I3DRSGM,
                 11, 0, 25, true
             );
-            // TODO impliment create stereo matcher from stereo params
-            // StereoI3DRSGM matcher = StereoI3DRSGM.createStereoMatcher(stereo_params);
-            StereoI3DRSGM matcher = (StereoI3DRSGM) StereoMatcher.createStereoMatcher(StereoMatcherType.STEREO_MATCHER_I3DRSGM);
+            AbstractStereoMatcher matcher = StereoMatcher.createStereoMatcher(stereo_params);
             
             int width = 2448;
             int height = 2048;

@@ -41,5 +41,25 @@ namespace I3DR.Phase.StereoMatcher
                     String.Format("Unsupported matcher type: {0}", matcher_type),"matcher_type");
             }
         }
+
+        /*!
+        * Create stereo matching from stereo parameters
+        *
+        * @param matcher_type stereo parameters to create
+        * @returns stereo matcher object of type specified in parameters
+        */
+        public static AbstractStereoMatcher createStereoMatcher(StereoParams stereo_params){
+            StereoMatcherType matcher_type = stereo_params.matcherType;
+            if (matcher_type == StereoMatcherType.STEREO_MATCHER_I3DRSGM){
+                return new StereoI3DRSGM(CStereoMatcher.createStereoMatcher(stereo_params));
+            } else if (matcher_type == StereoMatcherType.STEREO_MATCHER_BM){
+                return new StereoBM(CStereoMatcher.createStereoMatcher(stereo_params));
+            } else if (matcher_type == StereoMatcherType.STEREO_MATCHER_SGBM){
+                return new StereoSGBM(CStereoMatcher.createStereoMatcher(stereo_params));
+            } else {
+                throw new ArgumentException(
+                    String.Format("Unsupported matcher type: {0}", matcher_type),"matcher_type");
+            }
+        }
     }
 }

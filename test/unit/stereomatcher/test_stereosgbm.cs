@@ -25,18 +25,16 @@ namespace I3DR.PhaseTest
             StereoSGBM matcher = new StereoSGBM();
 
             int window_size = 11;
-            // int min_disparity = 0;
+            int min_disparity = 0;
             int num_disparities = 25;
 
             matcher.setWindowSize(window_size);
-            // TODO Fix Unable to find an entry point named 'PhaseStereoSGBMSetMinDisparity'
-            // matcher.setMinDisparity(min_disparity);
+            matcher.setMinDisparity(min_disparity);
             matcher.setNumDisparities(num_disparities);
 
-            // TODO impliment stereo matcher getter methods
-            // Assert.Equal(window_size, matcher.getWindowSize());
-            // Assert.Equal(window_size, matcher.getMinDisparity());
-            // Assert.Equal(window_size, matcher.getNumDisparities());
+            Assert.Equal(window_size, matcher.getWindowSize());
+            Assert.Equal(min_disparity, matcher.getMinDisparity());
+            Assert.Equal(num_disparities, matcher.getNumDisparities());
             matcher.dispose();
         }
 
@@ -53,13 +51,11 @@ namespace I3DR.PhaseTest
                 StereoMatcherType.STEREO_MATCHER_SGBM,
                 window_size, min_disparity, num_disparities, true
             );
-            // TODO impliment create stereo matcher from stereo params
-            // StereoSGBM matcher = StereoMatcher.createStereoMatcher(stereo_params);
+            StereoSGBM matcher = (StereoSGBM) StereoMatcher.createStereoMatcher(stereo_params);
 
-            // TODO impliment stereo matcher getter methods
-            // Assert.Equal(window_size, matcher.getWindowSize());
-            // Assert.Equal(window_size, matcher.getMinDisparity());
-            // Assert.Equal(window_size, matcher.getNumDisparities());
+            Assert.Equal(window_size, matcher.getWindowSize());
+            Assert.Equal(min_disparity, matcher.getMinDisparity());
+            Assert.Equal(num_disparities, matcher.getNumDisparities());
         }
 
         [Fact]
@@ -76,9 +72,7 @@ namespace I3DR.PhaseTest
                 StereoMatcherType.STEREO_MATCHER_SGBM,
                 11, 0, 25, true
             );
-            // TODO impliment create stereo matcher from stereo params
-            // StereoSGBM matcher = StereoMatcher.createStereoMatcher(stereo_params);
-            StereoSGBM matcher = (StereoSGBM) StereoMatcher.createStereoMatcher(StereoMatcherType.STEREO_MATCHER_SGBM);
+            AbstractStereoMatcher matcher = StereoMatcher.createStereoMatcher(stereo_params);
             
             int width = 2448;
             int height = 2048;
@@ -92,8 +86,8 @@ namespace I3DR.PhaseTest
             float[] disparity = match_result.disparity;
             int precision = 2;
             Assert.Equal(-1.0f, disparity[0]);
-            Assert.Equal(239.75f, disparity[(1024 * width + 1224)], precision);
-            Assert.Equal(224.375f, disparity[(1400 * width + 2200)], precision);
+            Assert.Equal(239.44f, disparity[(1024 * width + 1224)], precision);
+            Assert.Equal(224.44f, disparity[(1400 * width + 2200)], precision);
 
             matcher.dispose();
         }
@@ -112,9 +106,7 @@ namespace I3DR.PhaseTest
                 StereoMatcherType.STEREO_MATCHER_SGBM,
                 11, 0, 25, true
             );
-            // TODO impliment create stereo matcher from stereo params
-            // StereoSGBM matcher = StereoMatcher.createStereoMatcher(stereo_params);
-            StereoSGBM matcher = (StereoSGBM) StereoMatcher.createStereoMatcher(StereoMatcherType.STEREO_MATCHER_SGBM);
+            AbstractStereoMatcher matcher = StereoMatcher.createStereoMatcher(stereo_params);
             
             int width = 2448;
             int height = 2048;
@@ -142,8 +134,8 @@ namespace I3DR.PhaseTest
             float[] disparity = match_result.disparity;
             int precision = 2;
             Assert.Equal(-1.0f, disparity[0]);
-            Assert.Equal(239.75f, disparity[(1024 * width + 1224)], precision);
-            Assert.Equal(224.375f, disparity[(1400 * width + 2200)], precision);
+            Assert.Equal(239.44f, disparity[(1024 * width + 1224)], precision);
+            Assert.Equal(224.44f, disparity[(1400 * width + 2200)], precision);
 
             matcher.dispose();
         }

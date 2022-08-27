@@ -28,11 +28,23 @@ namespace I3DR.CPhase.StereoMatcher
         public static extern void setWindowSize(IntPtr matcher, int value);
 
         //! Imported from Phase C API
+        [DllImport("phase", EntryPoint = "PhaseStereoSGBMGetWindowSize", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int getWindowSize(IntPtr matcher);
+
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseStereoSGBMSetMinDisparity", CallingConvention = CallingConvention.Cdecl)]
         public static extern void setMinDisparity(IntPtr matcher, int value);
 
         //! Imported from Phase C API
+        [DllImport("phase", EntryPoint = "PhaseStereoSGBMGetMinDisparity", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int getMinDisparity(IntPtr matcher);
+
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseStereoSGBMSetNumDisparities", CallingConvention = CallingConvention.Cdecl)]
         public static extern void setNumDisparities(IntPtr matcher, int value);
+
+        //! Imported from Phase C API
+        [DllImport("phase", EntryPoint = "PhaseStereoSGBMGetNumDisparities", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int getNumDisparities(IntPtr matcher);
     }
 }
