@@ -31,6 +31,8 @@ namespace I3DR.Phase.Calib
     public class StereoCameraCalibration
     {
         private IntPtr m_StereoCameraCalibration_instance; //!< pointer to StereoCameraCalibration C API instance
+        private CameraCalibration m_LeftCameraCalibration; //!< left CameraCalibration instance
+        private CameraCalibration m_RightCameraCalibration; //!< right CameraCalibration instance
         private byte[] left_rect_image; //!< stores rectified left image
         private byte[] right_rect_image; //!< stores rectified right image
         private float[] Q; //!< stores Q matrix
@@ -42,6 +44,10 @@ namespace I3DR.Phase.Calib
         */
         public StereoCameraCalibration(IntPtr stereoCameraCalibration_instance){
             m_StereoCameraCalibration_instance = stereoCameraCalibration_instance;
+            m_LeftCameraCalibration = new CameraCalibration(
+                CStereoCameraCalibration.getLeftCalibration(m_StereoCameraCalibration_instance));
+            m_RightCameraCalibration = new CameraCalibration(
+                CStereoCameraCalibration.getRightCalibration(m_StereoCameraCalibration_instance));
         }
 
         /*!
@@ -95,6 +101,24 @@ namespace I3DR.Phase.Calib
         */
         public bool isValidSize(int width, int height){
             return CStereoCameraCalibration.isValidSize(m_StereoCameraCalibration_instance, width, height);
+        }
+
+        /*!
+        * Get left camera calibration
+        * 
+        * @params cameraCalibration camera calibration to store left camera calibration
+        */
+        public void getLeftCalibration(out CameraCalibration cameraCalibration){
+            cameraCalibration = m_LeftCameraCalibration;
+        }
+
+        /*!
+        * Get right camera calibration
+        * 
+        * @params cameraCalibration camera calibration to store right camera calibration
+        */
+        public void getRightCalibration(out CameraCalibration cameraCalibration){
+            cameraCalibration = m_RightCameraCalibration;
         }
 
         /*!
