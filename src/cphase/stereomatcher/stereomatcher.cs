@@ -25,7 +25,11 @@ namespace I3DR.CPhase.StereoMatcher
     public class CStereoMatcher
     {
         //! Imported from Phase C API
-        [DllImport("phase", EntryPoint = "PhaseCreateStereoMatcher", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("phase", EntryPoint = "PhaseCreateStereoMatcherFromMatcherType", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr createStereoMatcher(StereoMatcherType matcher_type);
+
+        //! Imported from Phase C API
+        [DllImport("phase", EntryPoint = "PhaseCreateStereoMatcherFromStereoParams", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr createStereoMatcher(StereoParams stereo_params);
     }
 }

@@ -193,8 +193,8 @@ namespace I3DR.Phase.StereoCamera
                 right_image = new byte[image_size * 3];
             }
             bool valid = CAbstractStereoCamera.read(
-                m_AbstractStereoCamera_instance, timeout,
-                left_image, right_image
+                m_AbstractStereoCamera_instance,
+                left_image, right_image, timeout
             );
             return new CameraReadResult(valid, left_image, right_image);
         }
