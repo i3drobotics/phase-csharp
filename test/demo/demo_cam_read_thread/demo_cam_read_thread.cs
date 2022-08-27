@@ -8,6 +8,7 @@
  */
 
 using System;
+using System.Threading;
 using System.IO;
 using I3DR.Phase;
 using I3DR.Phase.Types;
@@ -21,7 +22,7 @@ namespace I3DR.PhaseDemo
     /*!
     Demo program read and display 20 frames of virtual Pylon camera
     */
-    class DemoCameraRead
+    class DemoCameraReadThread
     {
         static int Main(string[] args)
         {
@@ -63,10 +64,14 @@ namespace I3DR.PhaseDemo
                 System.Console.WriteLine("Running camera capture...");
                 for (int i = 0; i < frames; i++) {
                     long start_read = System.DateTime.Now.Ticks / System.TimeSpan.TicksPerMillisecond;
-                    CameraReadResult read_result = cam.read();
+                    cam.startReadThread();
+                    while(cam.isReadThreadRunning()){
+                        Thread.Sleep(1);
+                    }
                     long end_read = System.DateTime.Now.Ticks / System.TimeSpan.TicksPerMillisecond;
                     long read_duration = end_read - start_read;
                     System.Console.WriteLine("Read speed: " + read_duration);
+                    CameraReadResult read_result = cam.getReadThreadResult();
                     // Check if the stereo image pair is valid, display images if valid
                     if (read_result.valid) {
                         long start_proc = System.DateTime.Now.Ticks / System.TimeSpan.TicksPerMillisecond;

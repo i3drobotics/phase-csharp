@@ -6,7 +6,6 @@
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\src\phasecsharp.csproj" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
@@ -20,5 +19,18 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
+
+  <ItemGroup>
+    <_TestData Include="$(TargetDir)../../../../data/*" />
+  </ItemGroup>
+  <Target Name="CopyTestData" AfterTargets="Build" >
+    <Message Text="Executing CopyTestData task" Importance="High" />
+
+    <Copy
+      SourceFiles="@(_TestData)"
+      DestinationFolder="$(TargetDir)/data" />
+
+    <Message Text="Copied test data to target" Importance="High" />
+  </Target>
 
 </Project>

@@ -3,24 +3,19 @@
  * @date 2021-05-26
  * @copyright Copyright (c) I3D Robotics Ltd, 2021
  * 
- * @file test_mat.cs
- * @brief Unit tests for Matrix class
+ * @file test_stereomatcher.cs
+ * @brief Unit tests for Stereo Matcher class
  * @details Unit tests generated using MSTest
  */
 
 using Xunit;
+using I3DR.Phase.StereoMatcher;
 
 namespace I3DR.PhaseTest
 {
-    // Tests for Matrix
+    // Tests for StereoMatcher
     [Collection("PhaseSequentialTests")]
-    public class MatTests
+    public class StereoMatcherTests
     {
-        // TODOC: Test description
-        [Fact]
-        public void test_Mat()
-        {
-            // TODO
-        }
     }
 }

@@ -49,14 +49,14 @@
   <ItemGroup>
     <_TestData Include="$(TargetDir)../../../../../data/*" />
   </ItemGroup>
-  <Target Name="CopyTestData" AfterTargets="Build" >
-    <Message Text="Executing CopyTestData task" Importance="High" />
+  <!-- <Target Name="CopyTestData" AfterTargets="Build" >
+    <Message Text="Executing CopyTestDataDeployment task" Importance="High" />
 
     <Copy
       SourceFiles="@(_TestData)"
       DestinationFolder="$(TargetDir)../../../../../../deployment/bin/data" />
 
     <Message Text="Copied test data to deployment" Importance="High" />
-  </Target>
+  </Target> -->
 
 </Project>

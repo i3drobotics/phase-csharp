@@ -42,6 +42,15 @@ namespace I3DR.Phase.Calib
         }
 
         /*!
+        * Initalise class using C API class instance reference
+        * 
+        * @IntPtr cameraCalibration_instance
+        */
+        public CameraCalibration(string yaml_filepath){
+            m_CameraCalibration_instance = CCameraCalibration.create(yaml_filepath);
+        }
+
+        /*!
         * Get C API instance reference
         * 
         */
@@ -98,14 +107,15 @@ namespace I3DR.Phase.Calib
         * @param height image height
         * @returns rectified image
         */
-        public void rectify(byte[] image, int width, int height, out byte[] rect_image){
-            rect_image = new byte[width * height * 3];
+        public byte[] rectify(byte[] image, int width, int height){
+            byte[] rect_image = new byte[width * height * 3];
             CCameraCalibration.rectify(
                 m_CameraCalibration_instance,
                 image,
                 width, height,
                 rect_image
             );
+            return rect_image;
         }
 
         /*!

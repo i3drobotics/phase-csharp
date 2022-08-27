@@ -26,6 +26,8 @@ namespace I3DR.PhaseDemo
         static int Main(string[] args)
         {
             string data_folder = "data";
+            string left_yaml = data_folder + "/left.yaml";
+            string right_yaml = data_folder + "/right.yaml";
             string left_image_file = data_folder + "/left.png";
             string right_image_file = data_folder + "/right.png";
             // Information of the virtual camera
@@ -43,9 +45,35 @@ namespace I3DR.PhaseDemo
                 dev_type, interface_type
             );
 
+            // Check for I3DRSGM license
+            bool license_valid = StereoI3DRSGM.isLicenseValid();
+            if (license_valid){
+                System.Console.WriteLine("I3DRSGM license accepted");
+            } else {
+                System.Console.WriteLine("Missing or invalid I3DRSGM license");
+            }
+            StereoMatcherType matcher_type;
+            if (license_valid){
+                matcher_type = StereoMatcherType.STEREO_MATCHER_I3DRSGM;
+            } else {
+                matcher_type = StereoMatcherType.STEREO_MATCHER_BM;
+            }
+
             // Create camera
             AbstractStereoCamera cam = StereoCamera.createStereoCamera(device_info);
             cam.setTestImagePaths(left_image_file, right_image_file);
+
+            // Load calibration
+            StereoCameraCalibration cal = StereoCameraCalibration.calibrationFromYAML(
+                left_yaml, right_yaml
+            );
+            if (!cal.isValid()){
+                System.Console.WriteLine("Calibration is invalid");
+                return -1;
+            }
+
+            // Create a stereo matcher 
+            AbstractStereoMatcher matcher = StereoMatcher.createStereoMatcher(matcher_type);
             
             // Connect camera and start data capture
             System.Console.WriteLine("Connecting to camera...");
@@ -71,6 +99,24 @@ namespace I3DR.PhaseDemo
                     if (read_result.valid) {
                         long start_proc = System.DateTime.Now.Ticks / System.TimeSpan.TicksPerMillisecond;
                         System.Console.WriteLine("Internal framerate: " + cam.getFrameRate());
+
+                        StereoImagePair rect = cal.rectify(
+                            read_result.left, read_result.right, cam_width, cam_height);
+                        StereoMatcherComputeResult match_result = matcher.compute(
+                            rect.left, rect.right, cam_width, cam_height);
+                        if (match_result.valid) {
+                            System.Console.WriteLine("Match result received");
+                            byte[] norm_disparity = Utils.normaliseDisparity(
+                                match_result.disparity, cam_width, cam_height);
+                            byte[] disp_image_disparity = Utils.scaleImage(
+                                norm_disparity, cam_width, cam_height, scaling_factor);
+                            int c = Utils.showImage("disparity", disp_image_disparity, scal_width, scal_height);
+                            if ((char)c == 'q') break;
+                        } else {
+                            System.Console.WriteLine("Failed to compute match");
+                        }
+
+
                         // Display downsampled stereo images
                         byte[] disp_image_left = Utils.scaleImage(
                             read_result.left, cam_width, cam_height, scaling_factor);

@@ -81,6 +81,13 @@ namespace I3DR.Phase.StereoCamera
         protected virtual void init(CameraDeviceInfo camera_device_info){}
 
         /*!
+        * Initalise stereo matcher
+        * Should be implemented in derived classes.
+        * 
+        */
+        protected virtual void init(IntPtr abstractStereoCamera_instance){}
+
+        /*!
         * Connect to camera \n
         * Must be implemented by child class
         * 

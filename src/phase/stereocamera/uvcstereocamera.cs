@@ -9,6 +9,7 @@
  * where left and right is transported via green and red channels.
  */
 
+using System;
 using I3DR.CPhase.StereoCamera;
 
 namespace I3DR.Phase.StereoCamera
@@ -27,6 +28,14 @@ namespace I3DR.Phase.StereoCamera
         * @param device_info camera device information
         */
         public UVCStereoCamera(CameraDeviceInfo camera_device_info): base(camera_device_info){}
+
+        /*!
+        * UVCStereoCamera constructor \n
+        * Initalise UVC Stereo Camera with the given \p device_info.
+        * 
+        * @param abstractStereoCamera_instance stereo camera instance pointer
+        */
+        public UVCStereoCamera(IntPtr abstractStereoCamera_instance): base(abstractStereoCamera_instance){}
 
         /*!
         * Initalise UVC Stereo camera

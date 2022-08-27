@@ -22,7 +22,7 @@ namespace I3DR.CPhase.Calib
     {
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseCameraCalibrationCreate", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr create(string left_yaml_filepath);
+        public static extern IntPtr create(string yaml_filepath);
 
         //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseCameraCalibrationCalibrationFromIdeal", CallingConvention = CallingConvention.Cdecl)]
