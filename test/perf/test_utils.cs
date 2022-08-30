@@ -109,7 +109,7 @@ namespace I3DR.PhaseTest
         public void test_PerfConvertBGR2RGBA()
         {
             // Test BGR image converted to RGBA using ‘bgr2rgba’ function in less than 1.0s
-            int timeout = 100;
+            int timeout = 1000;
             int width = 3;
             int height = 3;
             int image_size = width*height;

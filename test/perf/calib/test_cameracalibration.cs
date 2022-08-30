@@ -21,7 +21,7 @@ namespace I3DR.PhaseTest
         public void test_PerfRectify()
         {
             // Test rectification of image of size 2448x2048
-            // using ‘rectify’ function is completed in less than 0.2s
+            // using ‘rectify’ function is completed in less than 0.3s
             float timeout = 300; //ms
             int width = 2448;
             int height = 2048;
