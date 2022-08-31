@@ -44,4 +44,5 @@ jobs:
       - name: Unit Test
         shell: bash
         run: |
-          dotnet test
+          dotnet test test/unit/phasecsharp-unit-test.csproj
+          dotnet test test/perf/phasecsharp-perf-test.csproj
