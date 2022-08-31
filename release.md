@@ -2,7 +2,7 @@
 ***WARNING: This is an early alpha release so may be unstable with breaking changes and have missing documentaiton. Use with caution.***
 
 Built using:
- - Phase [v0.1.2-14](https://github.com/i3drobotics/phase/releases/tag/v0.1.2-14)
+ - Phase [v0.1.2-15](https://github.com/i3drobotics/phase/releases/tag/v0.1.2-15)
  - .NET v5.0
 
 See [Phase Unity](https://github.com/i3drobotics/phase-unity.git) for an example of how these binaries are used.
@@ -18,13 +18,13 @@ Documentation is available [here](https://i3drobotics.github.io/phase-csharp/)
 - Added toMono function to Utils class [#15](https://github.com/i3drobotics/phase-csharp/pull/15)
 - Added ability to create stereo matcher from stereo params [#16](https://github.com/i3drobotics/phase-csharp/pull/16)
 - Improved tests & demos [#12](https://github.com/i3drobotics/phase-csharp/pull/12)
-- Upgrade to Phase v0.1.2-14
+- Upgrade to Phase v0.1.2-15
     - Improved placement of types in code file structure [#10](https://github.com/i3drobotics/phase-csharp/pull/10)
     - Added C-API for CameraCalibration class [#10](https://github.com/i3drobotics/phase-csharp/pull/10)
     - Consistent naming convension for C-API [#10](https://github.com/i3drobotics/phase-csharp/pull/10)
 
 ### Breaking changes
-- Phase v0.1.2-14 upgrade has breaking changes
+- Phase v0.1.2-15 upgrade has breaking changes
     - Removed StereoProcess and StereoVision [#10](https://github.com/i3drobotics/phase-csharp/pull/10)
     - Removed RGBDVideoStreamer and RGBDVideoWriter [#10](https://github.com/i3drobotics/phase-csharp/pull/10)
     - Moved CameraDeviceInfo from 'types' to 'stereocamera' folder [#10](https://github.com/i3drobotics/phase-csharp/pull/10)
