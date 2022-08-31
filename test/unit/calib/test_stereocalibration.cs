@@ -160,12 +160,12 @@ namespace I3DR.PhaseTest
                                                  0, 0, 1, 0,
                                                  0, 0, 0, 1};
                 int cols = 4;
-                stereo_cal_data.Q[(0 * cols + 3)] = -163.92555;
-                stereo_cal_data.Q[(1 * cols + 3)] = -264.79688;
+                stereo_cal_data.Q[(0 * cols + 3)] = -163.92555f;
+                stereo_cal_data.Q[(1 * cols + 3)] = -264.79688f;
                 stereo_cal_data.Q[(2 * cols + 2)] = 0.0f;
-                stereo_cal_data.Q[(2 * cols + 3)] = (float) 879.26245;
-                stereo_cal_data.Q[(3 * cols + 2)] = 2.2222228;
-                stereo_cal_data.Q[(3 * cols + 3)] = 658.04865;
+                stereo_cal_data.Q[(2 * cols + 3)] = 879.26245f;
+                stereo_cal_data.Q[(3 * cols + 2)] = 2.2222228f;
+                stereo_cal_data.Q[(3 * cols + 3)] = 658.04865f;
                 return stereo_cal_data;
             }
 
@@ -405,7 +405,7 @@ projection_matrix:
             StereoCameraCalibration cal = StereoCameraCalibration.calibrationFromImages(
                 left_cal_folder, right_cal_folder,
                 left_img_wildcard, right_img_wildcard,
-                image_type, 10, 6, 0.039
+                board_type, 10, 6, 0.039
             );
             
             StereoCameraCalibrationTestUtils.verify_stereo_cal(cal, st_cal_data);
