@@ -17,6 +17,8 @@ Documentation is available [here](https://i3drobotics.github.io/phase-csharp/)
 - Added getter methods for parameters to CameraCalibration class [#14](https://github.com/i3drobotics/phase-csharp/pull/14)
 - Added toMono function to Utils class [#15](https://github.com/i3drobotics/phase-csharp/pull/15)
 - Added ability to create stereo matcher from stereo params [#16](https://github.com/i3drobotics/phase-csharp/pull/16)
+- Add CalibrationBoardType to CameraCalibration [#20](https://github.com/i3drobotics/phase-csharp/pull/20)
+- Add ability to generate calibration from checkerboard images (calibrationFromImages in StereoCameraCalibration) [#20](https://github.com/i3drobotics/phase-csharp/pull/20)
 - Improved tests & demos [#12](https://github.com/i3drobotics/phase-csharp/pull/12)
 - Upgrade to Phase v0.1.2-15
     - Improved placement of types in code file structure [#10](https://github.com/i3drobotics/phase-csharp/pull/10)

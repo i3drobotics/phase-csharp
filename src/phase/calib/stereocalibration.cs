@@ -84,6 +84,28 @@ namespace I3DR.Phase.Calib
         }
 
         /*!
+        * Load stereo camera calibration from collection of images taken with calibration board
+        * 
+        * @param left_cal_folder path to folder with left calibration images
+        * @param right_cal_folder path to folder with right calibration images
+        * @param left_img_wildcard wildcard to use for identifying left images
+        * @param right_img_wildcard wildcard to use for identifying right images
+        * @param board_type calibration board type used in calibration images
+        * @param pattern_size_x number of rows in calibration board pattern
+        * @param pattern_size_y number of columns in calibration board pattern
+        * @param square_size width of single square in calibration board pattern (in meters)
+        * @returns stereo camera calibration
+        */
+        public static StereoCameraCalibration calibrationFromImages(
+                string left_cal_folder, string right_cal_folder,
+                string left_img_wildcard, string right_img_wildcard,
+                CalibrationBoardType board_type, int pattern_size_x, int pattern_size_y, double square_size){
+            return new StereoCameraCalibration(CStereoCameraCalibration.calibrationFromImages(
+                left_cal_folder, right_cal_folder, left_img_wildcard, right_img_wildcard,
+                board_type, pattern_size_x, pattern_size_y, square_size));
+        }
+
+        /*!
         * Check if loaded calibration is valid
         * 
         * @returns true if valid calibration

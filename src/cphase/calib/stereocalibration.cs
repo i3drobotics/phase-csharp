@@ -30,6 +30,14 @@ namespace I3DR.CPhase.Calib
         public static extern IntPtr calibrationFromIdeal(int width, int height, double pixel_pitch, double focal_length, double baseline);
 
         //! Imported from Phase C API
+        [DllImport("phase", EntryPoint = "PhaseStereoCameraCalibrationCalibrationFromImages", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr calibrationFromImages(
+            string left_cal_folder, string right_cal_folder,
+            string left_img_wildcard, string right_img_wildcard,
+            CalibrationBoardType board_type = CalibrationBoardType.CHECKERBOARD,
+            int pattern_size_x = 8, int pattern_size_y = 6, double square_size = 0.039);
+        
+        //! Imported from Phase C API
         [DllImport("phase", EntryPoint = "PhaseStereoCameraCalibrationIsValid", CallingConvention = CallingConvention.Cdecl)]
         public static extern bool isValid(IntPtr c);
 

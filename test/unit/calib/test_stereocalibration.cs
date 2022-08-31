@@ -114,7 +114,62 @@ namespace I3DR.PhaseTest
                 return stereo_cal_data;
             }
 
-            private static int getProjMatIndex(int row, int column){
+            public static StereoCalData gen_checker_sample_data(){
+                StereoCalData stereo_cal_data = new StereoCalData();
+                stereo_cal_data.image_width = 612;
+                stereo_cal_data.image_height = 512;
+
+                CalData left_cal_data;
+                left_cal_data.fx = 879.6401059203;
+                left_cal_data.fy = 879.8789408574;
+                left_cal_data.cx = 304.5127903095;
+                left_cal_data.cy = 265.9179405536;
+                left_cal_data.proj_fx = 879.2624248102;
+                left_cal_data.proj_fy = 879.2624248102;
+                left_cal_data.proj_cx = 163.9255523682;
+                left_cal_data.proj_cy = 264.7968616486;
+                left_cal_data.proj_tx = 0.0;
+                left_cal_data.cam_mat = new double[]{left_cal_data.fx, 0, left_cal_data.cx, 0, left_cal_data.fy, left_cal_data.cy, 0, 0, 1};
+                left_cal_data.dist_coef = new double[]{ -0.0541917641, 0.3666700783, -0.0010133199, -0.0012571497, -0.50851111 };
+                left_cal_data.rect_mat = new double[]{ 0.9900942219983122, 0.0008700163736823347, 0.1404018327411238, -0.0003018064579999549, 0.9999916790189494, -0.004068268148024957, -0.1404042039200354, 0.003985594607062984, 0.9900862460196128 };
+                left_cal_data.proj_mat = new double[]{left_cal_data.proj_fx, 0, left_cal_data.proj_cx, left_cal_data.proj_tx, 0, left_cal_data.proj_fy, left_cal_data.proj_cy, 0, 0, 0, 1, 0};
+
+                CalData right_cal_data;
+                right_cal_data.fx = 878.4473843097;
+                right_cal_data.fy = 878.6459087631;
+                right_cal_data.cx = 306.9593300268;
+                right_cal_data.cy = 263.9915546904;
+                right_cal_data.proj_fx = 879.2624248102;
+                right_cal_data.proj_fy = 879.2624248102;
+                right_cal_data.proj_cx = 460.0473518372;
+                right_cal_data.proj_cy = 264.7968616486;
+                right_cal_data.proj_tx = -395.6679851775;
+                right_cal_data.cam_mat = new double[]{right_cal_data.fx, 0, right_cal_data.cx, 0, right_cal_data.fy, right_cal_data.cy, 0, 0, 1};
+                right_cal_data.dist_coef = new double[]{ -0.0360479725, 0.1531926905, -0.0003590501, 0.0004811706, 0.3374149346 };
+                right_cal_data.rect_mat = new double[]{ 0.9882401488216741, 0.0001799830984224486, -0.1529096983941819, 0.0004391286583745972, 0.9999918430758864, 0.004015090000604598, 0.1529091737697147, -0.004035020170438205, 0.9882320087860377 };
+                right_cal_data.proj_mat = new double[]{right_cal_data.proj_fx, 0, right_cal_data.proj_cx, right_cal_data.proj_tx, 0, right_cal_data.proj_fy, right_cal_data.proj_cy, 0, 0, 0, 1, 0};
+
+                stereo_cal_data.left_cal_data = left_cal_data;
+                stereo_cal_data.right_cal_data = right_cal_data;
+                stereo_cal_data.hfov = 0.36864f;
+                stereo_cal_data.focal_length = 0.012;
+                stereo_cal_data.pixel_pitch = 0.00000345;
+                stereo_cal_data.baseline = 0.4499998795f;
+                stereo_cal_data.Q = new float[]{1, 0, 0, 0, 
+                                                 0, 1, 0, 0,
+                                                 0, 0, 1, 0,
+                                                 0, 0, 0, 1};
+                int cols = 4;
+                stereo_cal_data.Q[(0 * cols + 3)] = -163.92555;
+                stereo_cal_data.Q[(1 * cols + 3)] = -264.79688;
+                stereo_cal_data.Q[(2 * cols + 2)] = 0.0f;
+                stereo_cal_data.Q[(2 * cols + 3)] = (float) 879.26245;
+                stereo_cal_data.Q[(3 * cols + 2)] = 2.2222228;
+                stereo_cal_data.Q[(3 * cols + 3)] = 658.04865;
+                return stereo_cal_data;
+            }
+
+            private static int get2DIndex(int row, int column){
                 return getArrayIndex(row, column, 0, 4, 1);
             }
 
@@ -139,6 +194,7 @@ namespace I3DR.PhaseTest
 
                 Assert.True(left_cal.getImageHeight() == st_cal_data.image_height);
                 Assert.True(left_cal.getImageWidth() == st_cal_data.image_width);
+
                 Assert.True(left_cal.getCameraCX() == lcal.cx);
                 Assert.True(left_cal.getCameraCY() == lcal.cy);
                 Assert.True(left_cal.getCameraFX() == lcal.fx);
@@ -171,17 +227,17 @@ namespace I3DR.PhaseTest
                 // Assert.True(right_cal.getProjectionMatrix().SequenceEqual(rcal.proj_mat);
                 int precision = 4;
                 Assert.Equal(right_cal.getProjectionMatrix()[0], rcal.proj_mat[0]);
-                Assert.Equal(right_cal.getProjectionMatrix()[getProjMatIndex(0, 1)], rcal.proj_mat[getProjMatIndex(0, 1)], precision);
-                Assert.Equal(right_cal.getProjectionMatrix()[getProjMatIndex(0, 2)], rcal.proj_mat[getProjMatIndex(0, 2)], precision);
-                Assert.Equal(right_cal.getProjectionMatrix()[getProjMatIndex(0, 3)], rcal.proj_mat[getProjMatIndex(0, 3)], precision);
-                Assert.Equal(right_cal.getProjectionMatrix()[getProjMatIndex(1, 0)], rcal.proj_mat[getProjMatIndex(1, 0)], precision);
-                Assert.Equal(right_cal.getProjectionMatrix()[getProjMatIndex(1, 1)], rcal.proj_mat[getProjMatIndex(1, 1)], precision);
-                Assert.Equal(right_cal.getProjectionMatrix()[getProjMatIndex(1, 2)], rcal.proj_mat[getProjMatIndex(1, 2)], precision);
-                Assert.Equal(right_cal.getProjectionMatrix()[getProjMatIndex(1, 3)], rcal.proj_mat[getProjMatIndex(1, 3)], precision);
-                Assert.Equal(right_cal.getProjectionMatrix()[getProjMatIndex(2, 0)], rcal.proj_mat[getProjMatIndex(2, 0)], precision);
-                Assert.Equal(right_cal.getProjectionMatrix()[getProjMatIndex(2, 1)], rcal.proj_mat[getProjMatIndex(2, 1)], precision);
-                Assert.Equal(right_cal.getProjectionMatrix()[getProjMatIndex(2, 2)], rcal.proj_mat[getProjMatIndex(2, 2)], precision);
-                Assert.Equal(right_cal.getProjectionMatrix()[getProjMatIndex(2, 3)], rcal.proj_mat[getProjMatIndex(2, 3)], precision);
+                Assert.Equal(right_cal.getProjectionMatrix()[get2DIndex(0, 1)], rcal.proj_mat[get2DIndex(0, 1)], precision);
+                Assert.Equal(right_cal.getProjectionMatrix()[get2DIndex(0, 2)], rcal.proj_mat[get2DIndex(0, 2)], precision);
+                Assert.Equal(right_cal.getProjectionMatrix()[get2DIndex(0, 3)], rcal.proj_mat[get2DIndex(0, 3)], precision);
+                Assert.Equal(right_cal.getProjectionMatrix()[get2DIndex(1, 0)], rcal.proj_mat[get2DIndex(1, 0)], precision);
+                Assert.Equal(right_cal.getProjectionMatrix()[get2DIndex(1, 1)], rcal.proj_mat[get2DIndex(1, 1)], precision);
+                Assert.Equal(right_cal.getProjectionMatrix()[get2DIndex(1, 2)], rcal.proj_mat[get2DIndex(1, 2)], precision);
+                Assert.Equal(right_cal.getProjectionMatrix()[get2DIndex(1, 3)], rcal.proj_mat[get2DIndex(1, 3)], precision);
+                Assert.Equal(right_cal.getProjectionMatrix()[get2DIndex(2, 0)], rcal.proj_mat[get2DIndex(2, 0)], precision);
+                Assert.Equal(right_cal.getProjectionMatrix()[get2DIndex(2, 1)], rcal.proj_mat[get2DIndex(2, 1)], precision);
+                Assert.Equal(right_cal.getProjectionMatrix()[get2DIndex(2, 2)], rcal.proj_mat[get2DIndex(2, 2)], precision);
+                Assert.Equal(right_cal.getProjectionMatrix()[get2DIndex(2, 3)], rcal.proj_mat[get2DIndex(2, 3)], precision);
 
                 Assert.True(Math.Abs(cal.getHFOV() - st_cal_data.hfov) < 0.001 );
                 Assert.True(Math.Abs(cal.getBaseline() - st_cal_data.baseline) < 0.001 );
@@ -307,6 +363,31 @@ projection_matrix:
     [Collection("PhaseSequentialTests")]
     public class StereoCameraCalibrationTests
     {
+        [Fact]
+        public void test_ValidLoadFromImages()
+        {
+            // Test generation of calibration from series 13 images
+            // of size 2448x2048 of a checkerboard and verify values
+            // match expected in stereo calibration class
+            string data_folder = "data";
+            string left_cal_folder = data_folder + "/checker_sample";
+            string right_cal_folder = data_folder + "/checker_sample";
+            string left_img_wildcard = "*_l.png";
+            string right_img_wildcard = "*_r.png";
+            CalibrationBoardType board_type = CalibrationBoardType.CHECKERBOARD;
+            
+            StereoCameraCalibrationTestUtils.StereoCalData st_cal_data = StereoCameraCalibrationTestUtils.gen_checker_sample_data();
+
+            // Load calibration from series of checkerboard images
+            StereoCameraCalibration cal = StereoCameraCalibration.calibrationFromImages(
+                left_cal_folder, right_cal_folder,
+                left_img_wildcard, right_img_wildcard,
+                image_type, 10, 6, 0.039
+            );
+            
+            StereoCameraCalibrationTestUtils.verify_stereo_cal(cal, st_cal_data);
+        }
+
         [Fact]
         public void test_ValidLoadROSYAMLs()
         {

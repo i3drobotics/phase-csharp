@@ -43,5 +43,30 @@ namespace I3DR.PhaseTest
             long duration = end - start;
             Assert.True(duration < timeout, "Expected: " + timeout + " Actual: " + duration);
         }
+
+        [Fact]
+        public void test_PerfCalibFromImages()
+        {
+            // Test generation of calibration from series 13 images
+            // of size 612x512 of a checkerboard completes in less than 5s
+            float timeout = 5000; //ms
+            string data_folder = "data";
+            string left_cal_folder = data_folder + "/checker_sample";
+            string right_cal_folder = data_folder + "/checker_sample";
+            string left_img_wildcard = "*_l.png";
+            string right_img_wildcard = "*_r.png";
+            CalibrationBoardType board_type = CalibrationBoardType.CHECKERBOARD;
+
+            long start = System.DateTime.Now.Ticks / System.TimeSpan.TicksPerMillisecond;
+            StereoCameraCalibration cal = StereoCameraCalibration.calibrationFromImages(
+                left_cal_folder, right_cal_folder,
+                left_img_wildcard, right_img_wildcard,
+                board_type, 10, 6, 0.039);
+            long end = System.DateTime.Now.Ticks / System.TimeSpan.TicksPerMillisecond;
+            
+            Assert.True(cal.isValid());            
+            long duration = end - start;
+            Assert.True(duration < timeout, "Expected: " + timeout + " Actual: " + duration);
+        }
     }
 }
