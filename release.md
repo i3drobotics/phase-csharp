@@ -11,13 +11,18 @@ Documentation is available [here](https://i3drobotics.github.io/phase-csharp/)
 
 ## Changelog
 ### Improvements
-- Add documentation for all classes
-- Add documentation for all tests
-- Add CameraCalibration class
+- Added documentation for all classes
+- Added documentation for all tests
+- Added CameraCalibration class
+- Added getter methods for parameters to CameraCalibration class
+- Added toMono function to Utils class
+- Improved tests
+- Improved demos
 - Upgrade to Phase v0.1.2-14
     - Improved placement of types in code file structure
-    - Add C-API for CameraCalibration class
+    - Added C-API for CameraCalibration class
     - Consistent naming convension for C-API
+    - Added ability to create stereo matcher from stereo params
 
 ### Breaking changes
 - Phase v0.1.2-14 upgrade has breaking changes
@@ -30,6 +35,8 @@ Documentation is available [here](https://i3drobotics.github.io/phase-csharp/)
     - Created 'types/stereo.cs'
     - Moved StereoImagePair to 'types/stereo.cs'
     - Renamed phaseversion.cs to version.cs
+    - Rename enableOccInterpol in StereoI3DRSGM to enableOcclusionInterpolation
+    - Moved timeout to last parameter in the AbstractStereoCamera 'read' and 'startReadThread' functions
 - Added namespaces: 'I3DR.Phase.types', 'I3DR.Phase.stereocamera', 'I3DR.Phase.stereomatcher', 'I3DR.Phase.calib'
 - Moved classes to specific namespaces
 - Moved Phase C-API dllImports to phasec folder
