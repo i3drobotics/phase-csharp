@@ -14,7 +14,7 @@ on:
           required: true
 
 env:
-  PHASE_VERSION: v0.1.2-13
+  PHASE_VERSION: v0.1.2-14
   PHASE_REPO: i3drobotics/phase
 
 jobs:
@@ -96,7 +96,8 @@ jobs:
       - name: Unit Test
         shell: bash
         run: |
-          dotnet test
+          dotnet test test/unit/phasecsharp-unit-test.csproj
+          dotnet test test/perf/phasecsharp-perf-test.csproj
       # Upload deployment artifact
       # (for data sharing across jobs)
       - name: Upload deployment artifact
