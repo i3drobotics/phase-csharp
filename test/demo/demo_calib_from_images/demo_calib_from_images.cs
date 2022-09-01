@@ -35,6 +35,8 @@ namespace I3DR.PhaseDemo
             string right_img_wildcard = "*_r.png";
             CalibrationBoardType image_type = CalibrationBoardType.CHECKERBOARD;
 
+            System.IO.Directory.CreateDirectory(test_folder);
+
             // Load calibration
             StereoCameraCalibration cal = StereoCameraCalibration.calibrationFromImages(
                 left_cal_folder, right_cal_folder,
