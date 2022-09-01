@@ -25,7 +25,7 @@ dotnet build
 ## Test
 
 ### Unit test
-Unit testing is performed by xunity.  
+Unit testing is performed by xunit.  
 To run the tests, use the following commands:
 ```bash
 dotnet test test/unit/phasecsharp-unit-test.csproj
