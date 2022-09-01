@@ -41,9 +41,13 @@ jobs:
         shell: bash
         run: |
           dotnet build --configuration Release
+        env:
+          Phase_DIR: "C:\Program Files\I3DR\Phase"
       # Unit Test
       - name: Unit Test
         shell: bash
         run: |
           dotnet test test/unit/phasecsharp-unit-test.csproj
           dotnet test test/perf/phasecsharp-perf-test.csproj
+        env:
+          Phase_DIR: "C:\Program Files\I3DR\Phase"
