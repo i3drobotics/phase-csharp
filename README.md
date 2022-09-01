@@ -38,6 +38,7 @@ Alternatively, after building run the tests graphically using Visual Studio and 
 To run the test applications, use the following commands:
 ```bash
 cd deployment/bin
+./phasecsharp-demo-calib-from-images
 ./phasecsharp-demo-cam-read
 ./phasecsharp-demo-cam-read-thread
 ./phasecsharp-demo-cam-match

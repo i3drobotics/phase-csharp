@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <_TestData Include="$(TargetDir)../../../../data/*" />
+    <_TestDataChecker Include="$(TargetDir)../../../../data/checker_sample/*" />
   </ItemGroup>
   <Target Name="CopyTestData" AfterTargets="Build" >
     <Message Text="Executing CopyTestData task" Importance="High" />
@@ -29,6 +30,9 @@
     <Copy
       SourceFiles="@(_TestData)"
       DestinationFolder="$(TargetDir)/data" />
+    <Copy
+      SourceFiles="@(_TestDataChecker)"
+      DestinationFolder="$(TargetDir)/data/checker_sample" />
 
     <Message Text="Copied test data to target" Importance="High" />
   </Target>

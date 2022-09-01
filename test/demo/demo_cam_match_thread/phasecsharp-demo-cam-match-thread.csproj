@@ -46,15 +46,19 @@
     <Message Text="Copied build files to deployment" Importance="High" />
   </Target>
 
-  <ItemGroup>
+  <!-- <ItemGroup>
     <_TestData Include="$(TargetDir)../../../../../data/*" />
+    <_TestDataChecker Include="$(TargetDir)../../../../../data/checker_sample/*" />
   </ItemGroup>
-  <!-- <Target Name="CopyTestData" AfterTargets="Build" >
+  <Target Name="CopyTestData" AfterTargets="Build" >
     <Message Text="Executing CopyTestData task" Importance="High" />
 
     <Copy
       SourceFiles="@(_TestData)"
       DestinationFolder="$(TargetDir)../../../../../../deployment/bin/data" />
+    <Copy
+      SourceFiles="@(_TestDataChecker)"
+      DestinationFolder="$(TargetDir)../../../../../../deployment/bin/data/checker_sample" />
 
     <Message Text="Copied test data to deployment" Importance="High" />
   </Target> -->

@@ -69,37 +69,56 @@ namespace I3DR.PhaseTest
                 return cal_data;
             }
 
+            private static int get2DIndex(int row, int column, int columns){
+                return getArrayIndex(row, column, 0, columns, 1);
+            }
+
+            private static int getArrayIndex(int row, int column, int layer, int columns, int layers){
+                return (row * columns + column) * layers + layer;
+            }
+
+            private static int getImageArrayIndex(int row, int column, int channel, int width, int channels){
+                return (row * width + column) * channels + channel;
+            }
+
             public static void verify_cal(CameraCalibration cal, CalData cal_data){
                 Assert.True(cal.isValid());
 
                 Assert.True(cal.getImageHeight() == cal_data.image_height);
                 Assert.True(cal.getImageWidth() == cal_data.image_width);
-                Assert.True(cal.getCameraCX() == cal_data.cx);
-                Assert.True(cal.getCameraCY() == cal_data.cy);
-                Assert.True(cal.getCameraFX() == cal_data.fx);
-                Assert.True(cal.getCameraFY() == cal_data.fy);
-                Assert.True(cal.getProjectionCX() == cal_data.proj_cx);
-                Assert.True(cal.getProjectionCY() == cal_data.proj_cy);
-                Assert.True(cal.getProjectionFX() == cal_data.proj_fx);
-                Assert.True(cal.getProjectionFY() == cal_data.proj_fy);
-                Assert.True(Math.Abs(cal.getProjectionTX() - cal_data.proj_tx) < 0.0001 );
+                
+                int precision = 2;
 
-                // REQUIRE(cv::sum(cal.getCameraMatrix() != cal_data.cam_mat) == cv::Scalar(0));
-                // REQUIRE(cv::sum(cal.getDistortionCoefficients() != cal_data.dist_coef) == cv::Scalar(0));
-                // REQUIRE(cv::sum(cal.getRectificationMatrix() != cal_data.rect_mat) == cv::Scalar(0));
+                Assert.Equal(cal.getCameraCX(), cal_data.cx, precision);
+                Assert.Equal(cal.getCameraCY(), cal_data.cy, precision);
+                Assert.Equal(cal.getCameraFX(), cal_data.fx, precision);
+                Assert.Equal(cal.getCameraFY(), cal_data.fy, precision);
+                Assert.Equal(cal.getProjectionCX(), cal_data.proj_cx, precision);
+                Assert.Equal(cal.getProjectionCY(), cal_data.proj_cy, precision);
+                Assert.Equal(cal.getProjectionFX(), cal_data.proj_fx, precision);
+                Assert.Equal(cal.getProjectionFY(), cal_data.proj_fy, precision);
+                Assert.Equal(cal.getProjectionTX(), cal_data.proj_tx, precision);
 
-                // REQUIRE(cal.getProjectionMatrix().at<double>(0,0) == cal_data.proj_mat.at<double>(0,0));
-                // REQUIRE(cal.getProjectionMatrix().at<double>(0,1) == cal_data.proj_mat.at<double>(0,1));
-                // REQUIRE(cal.getProjectionMatrix().at<double>(0,2) == cal_data.proj_mat.at<double>(0,2));
-                // REQUIRE(fabs(cal.getProjectionMatrix().at<double>(0,3) - cal_data.proj_mat.at<double>(0,3)) < 0.0001 );
-                // REQUIRE(cal.getProjectionMatrix().at<double>(1,0) == cal_data.proj_mat.at<double>(1,0));
-                // REQUIRE(cal.getProjectionMatrix().at<double>(1,1) == cal_data.proj_mat.at<double>(1,1));
-                // REQUIRE(cal.getProjectionMatrix().at<double>(1,2) == cal_data.proj_mat.at<double>(1,2));
-                // REQUIRE(cal.getProjectionMatrix().at<double>(1,3) == cal_data.proj_mat.at<double>(1,3));
-                // REQUIRE(cal.getProjectionMatrix().at<double>(2,0) == cal_data.proj_mat.at<double>(2,0));
-                // REQUIRE(cal.getProjectionMatrix().at<double>(2,1) == cal_data.proj_mat.at<double>(2,1));
-                // REQUIRE(cal.getProjectionMatrix().at<double>(2,2) == cal_data.proj_mat.at<double>(2,2));
-                // REQUIRE(cal.getProjectionMatrix().at<double>(2,3) == cal_data.proj_mat.at<double>(2,3));
+                for (int j = 0; j < 3; j++) {
+                    for (int i = 0; i < 3; i++) {
+                        Assert.Equal(cal.getCameraMatrix()[get2DIndex(j, i, 3)], cal_data.cam_mat[get2DIndex(j, i, 3)], precision);
+                    }
+                }
+                for (int j = 0; j < 1; j++) {
+                    for (int i = 0; i < 5; i++) {
+                        Assert.Equal(cal.getDistortionCoefficients()[get2DIndex(j, i, 5)], cal_data.dist_coef[get2DIndex(j, i, 5)], precision);
+                    }
+                }
+                for (int j = 0; j < 3; j++) {
+                    for (int i = 0; i < 3; i++) {
+                        Assert.Equal(cal.getRectificationMatrix()[get2DIndex(j, i, 3)], cal_data.rect_mat[get2DIndex(j, i, 3)], precision);
+                    }
+                }
+                for (int j = 0; j < 3; j++) {
+                    for (int i = 0; i < 4; i++) {
+                        Assert.Equal(cal.getProjectionMatrix()[get2DIndex(j, i, 4)], cal_data.proj_mat[get2DIndex(j, i, 4)], precision);
+                    }
+                }
             }
 
             public static void save_yaml_data(CalData cal_data, CalibrationFileType cal_type, string yaml_file){ 

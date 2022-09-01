@@ -21,7 +21,16 @@ namespace I3DR.Phase.Calib
     public enum CalibrationFileType { 
         ROS_YAML,
         OPENCV_YAML,
-        INVALID
+        INVALID_YAML
+    };
+
+    //!  Calibration Board Type enum
+    /*!
+    Enum to indicate calibration board type when loading images
+    */
+    public enum CalibrationBoardType { 
+        CHECKERBOARD, //!< Checkerboard calibration board type
+        INVALID_BOARD //!< Invalid calibration board type
     };
 
     //!  Camera Calibration class
