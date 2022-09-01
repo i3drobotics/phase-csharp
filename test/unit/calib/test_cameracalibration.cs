@@ -87,7 +87,7 @@ namespace I3DR.PhaseTest
                 Assert.True(cal.getImageHeight() == cal_data.image_height);
                 Assert.True(cal.getImageWidth() == cal_data.image_width);
                 
-                int precision = 3;
+                int precision = 2;
 
                 Assert.Equal(cal.getCameraCX(), cal_data.cx, precision);
                 Assert.Equal(cal.getCameraCY(), cal_data.cy, precision);
