@@ -21,5 +21,6 @@ RUN bash \
         echo 'fi'; } >> /home/gitpod/.bashrc.d/110-dotnet
 RUN chmod +x /home/gitpod/.bashrc.d/110-dotnet
 RUN sudo apt update && \
-    curl --output phase.deb -L https://github.com/i3drobotics/phase/releases/download/v0.0.20/phase-v0.0.20-ubuntu-20.04-x86_64.deb && \
+    sudo apt install -y doxygen && \
+    curl --output phase.deb -L https://github.com/i3drobotics/phase/releases/download/v0.2.0/phase-v0.2.0-ubuntu-20.04-x86_64.deb && \
     sudo apt install -y ./phase.deb

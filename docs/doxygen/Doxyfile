@@ -8,7 +8,12 @@ PROJECT_NAME           = "PhaseCSharp"
 PROJECT_LOGO           = "./docs/i3dr_logo_128x128.png"
 OUTPUT_DIRECTORY       = "./deployment/docs"
 INPUT                  = ./src \
-                         ./docs/doxygen/README_docs.md
+                         ./docs/doxygen/README_docs.md \
+                         ./test/demo/demo_cam_read/demo_cam_read.cs \
+                         ./test/demo/demo_cam_match/demo_cam_match.cs \
+                         ./test/demo/demo_cam_read_thread/demo_cam_read_thread.cs \
+                         ./test/demo/demo_cam_match_thread/demo_cam_match_thread.cs \
+                         ./test/demo/demo_cam_read/demo_titania_read.cs
 USE_MDFILE_AS_MAINPAGE = README_docs.md
 
 #---------------------------------------------------------------------------
@@ -135,7 +140,9 @@ FILE_PATTERNS          =
 RECURSIVE              = YES
 EXCLUDE                =
 EXCLUDE_SYMLINKS       = NO
-EXCLUDE_PATTERNS       =
+EXCLUDE_PATTERNS       = *csproj
+EXCLUDE_PATTERNS      += */obj/*
+EXCLUDE_PATTERNS      += */bin/*
 EXCLUDE_SYMBOLS        =
 EXAMPLE_PATH           =
 EXAMPLE_PATTERNS       =
