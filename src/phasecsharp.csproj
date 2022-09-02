@@ -7,15 +7,11 @@
   <Target Name="CreateVersionFile" BeforeTargets="BeforeBuild">
     <WriteLinesToFile File="$(TargetDir)../../../../version.txt" Lines="$(Version)" Overwrite="true" />
   </Target>
-  <AssemblyInfo 
-    CodeLanguage="CS" 
-    OutputFile="$(MSBuildProjectDirectory)\Properties\AssemblyInfo.cs" 
-    AssemblyTitle="I3DR.Phase"
-    AssemblyProduct="Phase CSharp"
-    AssemblyCompany="I3D Robotics"
-    AssemblyCopyright="Copyright @ I3D Robotics 2022"
-    AssemblyVersion="$(Version)" 
-    AssemblyFileVersion="$(Version)"/>
+  <PropertyGroup>
+    <PackageId>PhaseCSharp</PackageId>
+    <Version>$(Version)</Version>
+    <Company>I3D Robotics</Company>
+  </PropertyGroup>
 
   <Target Name="CopyBuild" AfterTargets="Build">
     <Message Text="Executing CopyBuild task" Importance="High" />
