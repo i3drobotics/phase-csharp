@@ -4,6 +4,7 @@ image:
 tasks:
   - name: Restore & Build
     init: |
+      export Phase_DIR="/opt/i3dr/phase"
       dotnet restore
       dotnet build
 

@@ -19,7 +19,7 @@
   </Target>
 
   <ItemGroup>
-    <_PhaseDLLs Include="C:\Program Files\I3DR\Phase\bin\*.dll" />
+    <_PhaseDLLs Include="$(Phase_DIR)\bin\*.dll" />
   </ItemGroup>
   <Target Name="CopyPhaseDlls" AfterTargets="Build">
     <Message Text="Executing CopyPhaseDlls task" Importance="High" />

@@ -9,7 +9,7 @@ This includes the binararies for running and using Phase CSharp.
 ### Phase
 Phase library is required to be installed for use in the build process.  
 Download Windows installer from the [v0.1.2-15 release](https://github.com/i3drobotics/phase/releases/tag/v0.1.2-15).  
-Install using the installer GUI, this should install to `C:\Program Files\i3DR\Phase`
+Install using the installer GUI, this installs to `C:\Program Files\I3DR\Phase` by default.
 ### Dotnet
 .NET 5.0 is required to build the Phase CSharp library. Download and install from [here](https://dotnet.microsoft.com/en-us/download/dotnet/5.0)
 
@@ -18,7 +18,9 @@ Doxygen is used for documentation.
 On Windows download and install doxygen from [here](https://www.doxygen.nl/download.html)
 
 ## Build
+Set the environment variable to the install location of Phase and then building using dotnet:
 ```bash
+export Phase_DIR="C:\Program Files\I3DR\Phase"
 dotnet build
 ```
 
