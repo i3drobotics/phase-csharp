@@ -9,7 +9,7 @@ This includes the binararies for running and using Phase CSharp.
 ### Phase
 Phase library is required to be installed for use in the build process.  
 Download Windows installer from the [v0.2.0 release](https://github.com/i3drobotics/phase/releases/tag/v0.2.0).  
-Install using the installer GUI, this should install to `C:\Program Files\i3DR\Phase`
+Install using the installer GUI, this should install to `C:\Program Files\I3DR\Phase`
 ### Dotnet
 .NET 5.0 is required to build the Phase CSharp library. Download and install from [here](https://dotnet.microsoft.com/en-us/download/dotnet/5.0)
 
@@ -18,17 +18,20 @@ Doxygen is used for documentation.
 On Windows download and install doxygen from [here](https://www.doxygen.nl/download.html)
 
 ## Build
+Set the environment variable to the install location of Phase and then building using dotnet:
 ```bash
+export Phase_DIR="C:\Program Files\I3DR\Phase"
 dotnet build
 ```
 
 ## Test
 
 ### Unit test
-Unit testing is performed by xunity.  
+Unit testing is performed by xunit.  
 To run the tests, use the following commands:
 ```bash
-dotnet test
+dotnet test test/unit/phasecsharp-unit-test.csproj
+dotnet test test/perf/phasecsharp-perf-test.csproj
 ```
 *Note: Make sure to run this from the project root directory*  
 Alternatively, after building run the tests graphically using Visual Studio and Test Explorer.  
@@ -36,7 +39,12 @@ Alternatively, after building run the tests graphically using Visual Studio and 
 ### Apps
 To run the test applications, use the following commands:
 ```bash
-dotnet run --project=test/demo/demo_cam_read/PhaseCSharp.demo_cam_read.csproj
+cd deployment/bin
+./phasecsharp-demo-calib-from-images
+./phasecsharp-demo-cam-read
+./phasecsharp-demo-cam-read-thread
+./phasecsharp-demo-cam-match
+./phasecsharp-demo-cam-match-thread
 ```
 
 *Note: Make sure to run this from the project root directory*
