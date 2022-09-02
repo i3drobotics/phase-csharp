@@ -22,15 +22,37 @@ for the JavaScript code in this file
 */
 var NAVTREE =
 [
-  [ "PhaseSharp", "index.html", [
-    [ "Install", "index.html#autotoc_md1", null ],
+  [ "PhaseCSharp", "index.html", [
+    [ "Phase CSharp", "index.html", [
+      [ "Install", "index.html#autotoc_md1", null ],
+      [ "Dependencies", "index.html#autotoc_md2", [
+        [ "Phase", "index.html#autotoc_md3", null ],
+        [ "Dotnet", "index.html#autotoc_md4", null ],
+        [ "Additional dependencies", "index.html#autotoc_md5", null ]
+      ] ],
+      [ "Build", "index.html#autotoc_md6", null ],
+      [ "Test", "index.html#autotoc_md7", [
+        [ "Unit test", "index.html#autotoc_md8", null ],
+        [ "Apps", "index.html#autotoc_md9", null ]
+      ] ],
+      [ "Docs", "index.html#autotoc_md10", null ]
+    ] ],
     [ "Namespaces", "namespaces.html", [
-      [ "Namespace List", "namespaces.html", "namespaces_dup" ]
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ]
+      ] ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
-      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ]
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", "functions_dup" ],
+        [ "Functions", "functions_func.html", "functions_func" ],
+        [ "Variables", "functions_vars.html", null ]
+      ] ]
     ] ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ]
@@ -40,9 +62,9 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"abstractstereocamera_8cs.html",
-"class_i3_d_r_1_1_phase_1_1_stereo_camera_calibration.html#a2392e6d3e1a51c1fef1c6e4710a1a759",
-"struct_i3_d_r_1_1_phase_1_1_stereo_image_pair.html#aeef04f560e7a56ef572f414355456ffe"
+"annotated.html",
+"class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_abstract_stereo_camera.html#a906c4c2b9ad22c7096497313cb6660c4",
+"namespace_i3_d_r_1_1_c_phase_1_1_types.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
