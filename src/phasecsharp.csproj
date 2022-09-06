@@ -7,6 +7,11 @@
   <Target Name="CreateVersionFile" BeforeTargets="BeforeBuild">
     <WriteLinesToFile File="$(TargetDir)../../../../version.txt" Lines="$(Version)" Overwrite="true" />
   </Target>
+  <PropertyGroup>
+    <PackageId>PhaseCSharp</PackageId>
+    <Version>$(Version)</Version>
+    <Company>I3D Robotics</Company>
+  </PropertyGroup>
 
   <Target Name="CopyBuild" AfterTargets="Build">
     <Message Text="Executing CopyBuild task" Importance="High" />
