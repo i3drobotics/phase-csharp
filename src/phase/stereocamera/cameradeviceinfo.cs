@@ -9,6 +9,10 @@
  * including the camera's serials, interface, and device type
  */
 
+using System;
+using System.Text;
+using I3DR.CPhase.StereoCamera;
+
 namespace I3DR.Phase.StereoCamera
 {
     //!  Camera Device Type enum
@@ -40,34 +44,113 @@ namespace I3DR.Phase.StereoCamera
     Structure to hold information on a camera.
     Includes serial, interface, and device type.
     */
-    public struct CameraDeviceInfo {
-        public string left_camera_serial; //!< right camera serial
-        public string right_camera_serial; //!< left camera serial
-        public string unique_serial; //!< defined unique serial for stereo camera pair
-        public CameraDeviceType device_type; //!< device type of camera
-        public CameraInterfaceType interface_type; //!< interface type of camera
-        
+    public class CameraDeviceInfo {
+        private IntPtr m_CameraDeviceInfo_ptr; //!< pointer to CameraDeviceInfo C API instance
+
         /*!
-        * CameraDeviceInfo contructor \n
-        * Create device information about the camera
+        * CameraDeviceInfo pointer constructor \n
+        * Initalise CameraDeviceInfo with reference to existing CameraDeviceInfo pointer
         * 
-        * @param left_camera_serial left camera serial
-        * @param right_camera_serial right camera serial
-        * @param unique_serial stereo camera unique identifier
-        * @param device_type camera device type
-        * @param interface_type camera interface type
+        * @param CameraDeviceInfo_ptr CameraDeviceInfo instance pointer
         */
-        public CameraDeviceInfo(
-            string left_camera_serial, string right_camera_serial,
-            string unique_serial, 
-            CameraDeviceType device_type, CameraInterfaceType interface_type
-            )
-        {
-            this.left_camera_serial = left_camera_serial;
-            this.right_camera_serial = right_camera_serial;
-            this.unique_serial = unique_serial;
-            this.device_type = device_type;
-            this.interface_type = interface_type;
+        public CameraDeviceInfo(IntPtr CameraDeviceInfo_ptr){
+            m_CameraDeviceInfo_ptr = CameraDeviceInfo_ptr;
         }
+
+        /*!
+        * Matrix assignment contructor
+        * 
+        * @param rows number of rows to create in matrix
+        * @param columns number of columns to create in matrix
+        * @param layers number of layers to create in matrix
+        */
+        public CameraDeviceInfo(string left_serial, string right_serial, string unique_serial, CameraDeviceType device_type, CameraInterfaceType interface_type){
+            m_CameraDeviceInfo_ptr = CCameraDeviceInfo.create(left_serial, right_serial, unique_serial, device_type, interface_type);
+        }
+
+        public string left_camera_serial
+        {
+            get {
+                int length = CCameraDeviceInfo.getLeftCameraSerialLength(m_CameraDeviceInfo_ptr);
+                StringBuilder m_left_camera_serial = new StringBuilder(length + 1);
+                CCameraDeviceInfo.getLeftCameraSerial(m_CameraDeviceInfo_ptr, m_left_camera_serial, m_left_camera_serial.Capacity);
+                return m_left_camera_serial.ToString();
+            }
+            set {
+                CCameraDeviceInfo.setLeftCameraSerial(m_CameraDeviceInfo_ptr, value);
+            }
+        }
+
+        public string right_camera_serial
+        {
+            get {
+                int length = CCameraDeviceInfo.getRightCameraSerialLength(m_CameraDeviceInfo_ptr);
+                StringBuilder m_right_camera_serial = new StringBuilder(length + 1);
+                CCameraDeviceInfo.getRightCameraSerial(m_CameraDeviceInfo_ptr, m_right_camera_serial, m_right_camera_serial.Capacity);
+                return m_right_camera_serial.ToString();
+            }
+            set {
+                CCameraDeviceInfo.setRightCameraSerial(m_CameraDeviceInfo_ptr, value);
+            }
+        }
+
+        public string unique_serial
+        {
+            get {
+                int length = CCameraDeviceInfo.getUniqueSerialLength(m_CameraDeviceInfo_ptr);
+                StringBuilder m_unique_serial = new StringBuilder(length + 1);
+                CCameraDeviceInfo.getUniqueSerial(m_CameraDeviceInfo_ptr, m_unique_serial, m_unique_serial.Capacity);
+                return m_unique_serial.ToString();
+            }
+            set {
+                CCameraDeviceInfo.setUniqueSerial(m_CameraDeviceInfo_ptr, value);
+            }
+        }
+
+        public CameraDeviceType device_type
+        {
+            get {
+                return CCameraDeviceInfo.getDeviceType(m_CameraDeviceInfo_ptr);
+            }
+            set {
+                CCameraDeviceInfo.setDeviceType(m_CameraDeviceInfo_ptr, value);
+            }
+        }
+
+        public CameraInterfaceType interface_type
+        {
+            get {
+                return CCameraDeviceInfo.getInterfaceType(m_CameraDeviceInfo_ptr);
+            }
+            set {
+                CCameraDeviceInfo.setInterfaceType(m_CameraDeviceInfo_ptr, value);
+            }
+        }
+
+        /*!
+        * Manually dispose instance of CameraDeviceInfo class
+        * 
+        */
+        // [HandleProcessCorruptedStateExceptions]
+        public void dispose(){
+            if (m_CameraDeviceInfo_ptr != IntPtr.Zero){
+                try
+                {
+                    CCameraDeviceInfo.dispose(m_CameraDeviceInfo_ptr);
+                }
+                catch (AccessViolationException e)
+                {
+                    Console.WriteLine(e);
+                    Console.WriteLine("Please call 'dispose()' to make sure library memory is freed.");
+                }
+                m_CameraDeviceInfo_ptr = IntPtr.Zero;
+            }
+        }
+
+        ~CameraDeviceInfo()
+        {
+            dispose();
+        }
+
     };
 }

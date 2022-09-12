@@ -30,11 +30,18 @@ namespace I3DR.Phase.StereoCamera
         * @return stereo camera
         */
         public static AbstractStereoCamera createStereoCamera(CameraDeviceInfo camera_device_info){
-            return new AbstractStereoCamera(CStereoCamera.createStereoCamera(
+            return new AbstractStereoCamera(CStereoCamera.createStereoCameraFromParams(
                 camera_device_info.left_camera_serial, camera_device_info.right_camera_serial, 
                 camera_device_info.unique_serial, 
                 camera_device_info.device_type, camera_device_info.interface_type
             ));
         }
+
+        public static CameraDeviceInfo[] availableDevices(){
+            int device_count = CStereoCamera.availableDevicesCount();
+            CameraDeviceInfo[] device_info_list = new CameraDeviceInfo[device_count];
+            return device_info_list;
+        }
+
     }
 }
