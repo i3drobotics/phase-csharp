@@ -14,7 +14,7 @@ on:
           required: true
 
 env:
-  PHASE_VERSION: v0.2.1-1
+  PHASE_VERSION: v0.2.1
   PHASE_REPO: i3drobotics/phase
 
 jobs:
