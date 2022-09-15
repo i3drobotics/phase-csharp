@@ -3,30 +3,25 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows> 
-    <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX> 
-    <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux> 
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\phasecsharp.csproj" />
   </ItemGroup>
 
-  <Target Name="CopyEXBuild" AfterTargets="Build" Condition="'$(IsWindows)'=='true'">
-    <Message Text="Executing CopyBuild task" Importance="High" />
+  <ItemGroup Condition=" '$(OS)' == 'Windows_NT' ">
+    <_AppBuild Include="$(TargetDir)$(ProjectName).exe" />
+  </ItemGroup>
 
-    <Copy
-      SourceFiles="$(TargetDir)$(ProjectName).exe"
-      DestinationFolder="$(TargetDir)../../../../../../deployment/bin" />
+  <ItemGroup Condition=" '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' ">
+    <_AppBuild Include="$(TargetDir)$(ProjectName)" />
+  </ItemGroup>
 
-    <Message Text="Copied build files to deployment" Importance="High" />
-  </Target>
-
-  <Target Name="CopyEXBuild" AfterTargets="Build" Condition="'$(IsLinux)'=='true'">
+  <Target Name="CopyEXBuild" AfterTargets="Build" >
     <Message Text="Executing CopyEXBuild task" Importance="High" />
 
     <Copy
-      SourceFiles="$(TargetDir)$(ProjectName)"
+      SourceFiles="@(_AppBuild)"
       DestinationFolder="$(TargetDir)../../../../../../deployment/bin" />
 
     <Message Text="Copied build files to deployment" Importance="High" />

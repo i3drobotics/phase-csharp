@@ -2,7 +2,7 @@
 ***WARNING: This is an early alpha release so may be unstable with breaking changes and have missing documentaiton. Use with caution.***
 
 Built using:
- - Phase [v0.2.0](https://github.com/i3drobotics/phase/releases/tag/v0.2.0)
+ - Phase [v0.2.1-1](https://github.com/i3drobotics/phase/releases/tag/v0.2.1-1)
  - .NET v5.0
 
 See [Phase Unity](https://github.com/i3drobotics/phase-unity.git) for an example of how these binaries are used.
@@ -10,3 +10,6 @@ See [Phase Unity](https://github.com/i3drobotics/phase-unity.git) for an example
 Documentation is available [here](https://i3drobotics.github.io/phase-csharp/)
 
 ## Changelog
+Added ability to get a list of all availble devices
+Added empty camera device info constructor
+Added get and set camera device info parameters
