@@ -9,7 +9,9 @@
  * CameraDeviceInfo. This allows for the same interface to be
  * used for any stereo camera. 
  */
-
+ 
+using System;
+using System.Runtime.InteropServices;
 using I3DR.CPhase.StereoCamera;
 
 namespace I3DR.Phase.StereoCamera
@@ -37,10 +39,23 @@ namespace I3DR.Phase.StereoCamera
             ));
         }
 
+        /*!
+        * Get available camera list \n
+        * Call to get available camera as a list of CameraDeviceInfo.
+        * 
+        * @return available camera in CameraDeviceInfo array
+        */
         public static CameraDeviceInfo[] availableDevices(){
             int device_count = CStereoCamera.availableDevicesCount();
-            CameraDeviceInfo[] device_info_list = new CameraDeviceInfo[device_count];
-            return device_info_list;
+            CameraDeviceInfo[] device_infos = new CameraDeviceInfo[device_count];
+            IntPtr[] instances = new IntPtr[device_count];
+            for(int i = 0; i < device_count; i++){
+                device_infos[i] = new CameraDeviceInfo();
+                instances[i] = device_infos[i].getInstance();
+            }
+
+            CStereoCamera.availableDevices(instances ,device_count);
+            return device_infos;
         }
 
     }

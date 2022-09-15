@@ -58,16 +58,42 @@ namespace I3DR.Phase.StereoCamera
         }
 
         /*!
-        * Matrix assignment contructor
+        * CameraDeviceInfo parameter constructor \n
+        * Initalise CameraDeviceInfo with CameraDeviceInfo paramters
         * 
-        * @param rows number of rows to create in matrix
-        * @param columns number of columns to create in matrix
-        * @param layers number of layers to create in matrix
+        * @param left_serial \p left camera serial string
+        * @param right_serial \p right camera serial string
+        * @param unique_serial \p unique camera name string
+        * @param device_type \p device type in enum
+        * @param interface_type \p interfacetype in enum
         */
         public CameraDeviceInfo(string left_serial, string right_serial, string unique_serial, CameraDeviceType device_type, CameraInterfaceType interface_type){
-            m_CameraDeviceInfo_ptr = CCameraDeviceInfo.create(left_serial, right_serial, unique_serial, device_type, interface_type);
+            m_CameraDeviceInfo_ptr = init(left_serial, right_serial, unique_serial, device_type, interface_type);
         }
 
+        /*!
+        * CameraDeviceInfo empty constructor \n
+        * Initalise CameraDeviceInfo with empty input
+        */
+        public CameraDeviceInfo(){
+            m_CameraDeviceInfo_ptr = init("", "", "", CameraDeviceType.DEVICE_TYPE_INVALID, CameraInterfaceType.INTERFACE_TYPE_INVALID);
+        }
+
+        private IntPtr init(string left_serial, string right_serial, string unique_serial, CameraDeviceType device_type, CameraInterfaceType interface_type){
+            return CCameraDeviceInfo.create(left_serial, right_serial, unique_serial, device_type, interface_type);
+        }
+
+        /*!
+        * Function to get info of CameraDeviceInfo pointer \n
+        */
+        public IntPtr getInstance(){
+            return m_CameraDeviceInfo_ptr;
+        }
+
+        /*!
+        * Get and set left_camera_serial to CameraDeviceInfo pointer \n
+        * @return left camera serial string
+        */
         public string left_camera_serial
         {
             get {
@@ -81,6 +107,10 @@ namespace I3DR.Phase.StereoCamera
             }
         }
 
+        /*!
+        * Get and set right_camera_serial to CameraDeviceInfo pointer \n
+        * @return right camera serial string
+        */
         public string right_camera_serial
         {
             get {
@@ -94,6 +124,10 @@ namespace I3DR.Phase.StereoCamera
             }
         }
 
+        /*!
+        * Get and set unique_serial to CameraDeviceInfo pointer \n
+        * @return unique camera name string
+        */
         public string unique_serial
         {
             get {
@@ -107,6 +141,10 @@ namespace I3DR.Phase.StereoCamera
             }
         }
 
+        /*!
+        * Get and set device_type to CameraDeviceInfo pointer \n
+        * @return device type
+        */
         public CameraDeviceType device_type
         {
             get {
@@ -117,6 +155,10 @@ namespace I3DR.Phase.StereoCamera
             }
         }
 
+        /*!
+        * Get and set interface_type to CameraDeviceInfo pointer \n
+        * @return interface type
+        */
         public CameraInterfaceType interface_type
         {
             get {

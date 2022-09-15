@@ -10,3 +10,6 @@ See [Phase Unity](https://github.com/i3drobotics/phase-unity.git) for an example
 Documentation is available [here](https://i3drobotics.github.io/phase-csharp/)
 
 ## Changelog
+Added ability to get a list of all availble devices
+Added empty camera device info constructor
+Added get and set camera device info parameters
