@@ -9,12 +9,8 @@
     <ProjectReference Include="..\..\..\src\phasecsharp.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(OS)' == 'Windows_NT' ">
-    <_AppBuild Include="$(TargetDir)$(ProjectName).exe" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' ">
-    <_AppBuild Include="$(TargetDir)$(ProjectName)" />
+  <ItemGroup>
+    <_AppBuild Include="$(TargetDir)$(ProjectName)*" />
   </ItemGroup>
 
   <Target Name="CopyEXBuild" AfterTargets="Build">
@@ -26,7 +22,7 @@
 
     <Message Text="Copied build files to deployment" Importance="High" />
   </Target>
-  
+
   <Target Name="CopyBuildDll" AfterTargets="Build" >
     <Message Text="Executing CopyBuildDll task" Importance="High" />
 

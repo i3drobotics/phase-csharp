@@ -37,4 +37,17 @@
     <Message Text="Copied test data to target" Importance="High" />
   </Target>
 
+  <ItemGroup>
+    <_PhaseDLLs Include="$(Phase_DIR)\bin\*.dll" />
+  </ItemGroup>
+  <Target Name="CopyPhaseDlls" AfterTargets="Build">
+    <Message Text="Executing CopyPhaseDlls task" Importance="High" />
+    
+    <Copy
+      SourceFiles="@(_PhaseDLLs)"
+      DestinationFolder="$(TargetDir)" />
+
+    <Message Text="Copied Phase dlls files to deplyoment" Importance="High" />
+  </Target>
+
 </Project>

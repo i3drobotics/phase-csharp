@@ -24,9 +24,9 @@ namespace I3DR.Phase
         * 
         * @return Phase version string
         */
-        public static string getVersionString(){
+        public static string getAPIVersionString(){
             // using safe integer passing rather than relying on string passing
-            return getVersionMajor().ToString() + "." + getVersionMinor().ToString() + "." + getVersionPatch().ToString();
+            return getAPIVersionMajor().ToString() + "." + getAPIVersionMinor().ToString() + "." + getAPIVersionPatch().ToString();
         }
 
         /*!
@@ -34,7 +34,7 @@ namespace I3DR.Phase
         * 
         * @return Phase major version number
         */
-        public static int getVersionMajor(){
+        public static int getAPIVersionMajor(){
             return CVersion.getVersionMajor();
         }
 
@@ -43,7 +43,7 @@ namespace I3DR.Phase
         * 
         * @return Phase minor version number
         */
-        public static int getVersionMinor(){
+        public static int getAPIVersionMinor(){
             return CVersion.getVersionMinor();
         }
 
@@ -52,7 +52,7 @@ namespace I3DR.Phase
         * 
         * @return Phase patch version number
         */
-        public static int getVersionPatch(){
+        public static int getAPIVersionPatch(){
             return CVersion.getVersionPatch();
         }
     }
