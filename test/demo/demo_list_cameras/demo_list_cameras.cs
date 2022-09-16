@@ -8,13 +8,7 @@
  */
 
 using System;
-using System.Threading;
-using System.IO;
-using I3DR.Phase;
-using I3DR.Phase.Types;
-using I3DR.Phase.StereoMatcher;
 using I3DR.Phase.StereoCamera;
-using I3DR.Phase.Calib;
 
 namespace I3DR.PhaseDemo
 {
