@@ -8,7 +8,7 @@ This includes the binararies for running and using Phase CSharp.
 ## Dependencies
 ### Phase
 Phase library is required to be installed for use in the build process.  
-Download Windows installer from the [v0.2.1-2 release](https://github.com/i3drobotics/phase/releases/tag/v0.2.1-2).  
+Download Windows installer from the [v0.2.1-3 release](https://github.com/i3drobotics/phase/releases/tag/v0.2.1-3).  
 Install using the installer GUI, this should install to `C:\Program Files\I3DR\Phase`
 ### Dotnet
 .NET 5.0 is required to build the Phase CSharp library. Download and install from [here](https://dotnet.microsoft.com/en-us/download/dotnet/5.0)
@@ -45,6 +45,7 @@ cd deployment/bin
 ./phasecsharp-demo-cam-read-thread
 ./phasecsharp-demo-cam-match
 ./phasecsharp-demo-cam-match-thread
+./phasecsharp-demo-list-cameras
 ```
 
 *Note: Make sure to run this from the project root directory*

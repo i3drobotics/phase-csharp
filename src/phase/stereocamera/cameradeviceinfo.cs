@@ -59,7 +59,7 @@ namespace I3DR.Phase.StereoCamera
 
         /*!
         * CameraDeviceInfo parameter constructor \n
-        * Initalise CameraDeviceInfo with CameraDeviceInfo paramters
+        * Initalise CameraDeviceInfo with the given \p device info parameters.
         * 
         * @param left_serial \p left camera serial string
         * @param right_serial \p right camera serial string
