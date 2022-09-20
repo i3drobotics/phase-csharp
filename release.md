@@ -13,4 +13,5 @@ Documentation is available [here](https://i3drobotics.github.io/phase-csharp/)
 - Added ability to get a list of all availble devices [#26 ](https://github.com/i3drobotics/phase-csharp/pull/26)
 - Added empty camera device info constructor [#26 ](https://github.com/i3drobotics/phase-csharp/pull/26)
 - Added get and set camera device info parameters [#26 ](https://github.com/i3drobotics/phase-csharp/pull/26)
+
 - Updated phase version to v0.3.0
