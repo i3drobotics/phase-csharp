@@ -51,7 +51,8 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Variables", "functions_vars.html", null ],
+        [ "Properties", "functions_prop.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -63,8 +64,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_abstract_stereo_camera.html#a906c4c2b9ad22c7096497313cb6660c4",
-"namespace_i3_d_r_1_1_c_phase_1_1_types.html"
+"class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_abstract_stereo_camera.html",
+"functions_p.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

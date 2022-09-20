@@ -1,6 +1,6 @@
 var phase_2stereocamera_2cameradeviceinfo_8cs =
 [
-    [ "CameraDeviceInfo", "struct_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_camera_device_info.html", "struct_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_camera_device_info" ],
+    [ "CameraDeviceInfo", "class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_camera_device_info.html", "class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_camera_device_info" ],
     [ "CameraDeviceType", "phase_2stereocamera_2cameradeviceinfo_8cs.html#a19e334ffe3804ce4fb331c103ff72fb8", [
       [ "DEVICE_TYPE_GENERIC_PYLON", "phase_2stereocamera_2cameradeviceinfo_8cs.html#a19e334ffe3804ce4fb331c103ff72fb8a2b390ae13e037364ce40434f78939b82", null ],
       [ "DEVICE_TYPE_GENERIC_UVC", "phase_2stereocamera_2cameradeviceinfo_8cs.html#a19e334ffe3804ce4fb331c103ff72fb8a064a492f4f3edab9f14e58e4bd9d3e2d", null ],

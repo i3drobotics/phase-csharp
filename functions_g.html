@@ -29,7 +29,7 @@
   <td id="projectlogo"><img alt="Logo" src="i3dr_logo_128x128.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PhaseCSharp
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.2.0</span>
    </div>
   </td>
  </tr>
@@ -88,6 +88,18 @@ $(document).ready(function(){initNavTree('functions_g.html',''); initResizable()
 <div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
 
 <h3><a id="index_g"></a>- g -</h3><ul>
+<li>getAPIVersionMajor()
+: <a class="el" href="class_i3_d_r_1_1_phase_1_1_version.html#a3632912e11d93b2430ab20306043961b">I3DR.Phase.Version</a>
+</li>
+<li>getAPIVersionMinor()
+: <a class="el" href="class_i3_d_r_1_1_phase_1_1_version.html#a83a7e95b64a433772fa43e80c71174d5">I3DR.Phase.Version</a>
+</li>
+<li>getAPIVersionPatch()
+: <a class="el" href="class_i3_d_r_1_1_phase_1_1_version.html#a4c66d2d3b5b5cf67676cb6113f3d11a0">I3DR.Phase.Version</a>
+</li>
+<li>getAPIVersionString()
+: <a class="el" href="class_i3_d_r_1_1_phase_1_1_version.html#a1c97ba13e9eef07ad5a1471a9f7aa097">I3DR.Phase.Version</a>
+</li>
 <li>getAt()
 : <a class="el" href="class_i3_d_r_1_1_c_phase_1_1_types_1_1_c_matrix_float.html#a855d6ef8835f7acb8fe37dd202438426">I3DR.CPhase.Types.CMatrixFloat</a>
 , <a class="el" href="class_i3_d_r_1_1_c_phase_1_1_types_1_1_c_matrix_u_int8.html#aba9ca91279680b9deb3b4157c61efa33">I3DR.CPhase.Types.CMatrixUInt8</a>
@@ -166,6 +178,9 @@ $(document).ready(function(){initNavTree('functions_g.html',''); initResizable()
 <li>getImageWidth()
 : <a class="el" href="class_i3_d_r_1_1_c_phase_1_1_calib_1_1_c_camera_calibration.html#a2ae6b8f7edd1078ac6ea464b049b7b3b">I3DR.CPhase.Calib.CCameraCalibration</a>
 , <a class="el" href="class_i3_d_r_1_1_phase_1_1_calib_1_1_camera_calibration.html#a738b8db12b4fc68f95824ee25f8f0097">I3DR.Phase.Calib.CameraCalibration</a>
+</li>
+<li>getInstance()
+: <a class="el" href="class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_camera_device_info.html#aaa4b1a4032941f9b7185bcd9f84f474e">I3DR.Phase.StereoCamera.CameraDeviceInfo</a>
 </li>
 <li>getInstancePtr()
 : <a class="el" href="class_i3_d_r_1_1_phase_1_1_calib_1_1_camera_calibration.html#a288ea850525874c477bcb0ea3cce2099">I3DR.Phase.Calib.CameraCalibration</a>
@@ -269,19 +284,15 @@ $(document).ready(function(){initNavTree('functions_g.html',''); initResizable()
 </li>
 <li>getVersionMajor()
 : <a class="el" href="class_i3_d_r_1_1_c_phase_1_1_c_version.html#aa35caf6ed37244c999b052b41ccb599a">I3DR.CPhase.CVersion</a>
-, <a class="el" href="class_i3_d_r_1_1_phase_1_1_version.html#a737d364a8fa082dbbe51c1d5cfd0c725">I3DR.Phase.Version</a>
 </li>
 <li>getVersionMinor()
 : <a class="el" href="class_i3_d_r_1_1_c_phase_1_1_c_version.html#a7292ad6eedd20765261d4028e5e0ecaa">I3DR.CPhase.CVersion</a>
-, <a class="el" href="class_i3_d_r_1_1_phase_1_1_version.html#a2eb4181799d8820b910fd5c3b56b8873">I3DR.Phase.Version</a>
 </li>
 <li>getVersionPatch()
 : <a class="el" href="class_i3_d_r_1_1_c_phase_1_1_c_version.html#aa33515fe0c4f535cdb3b8d113b306057">I3DR.CPhase.CVersion</a>
-, <a class="el" href="class_i3_d_r_1_1_phase_1_1_version.html#a4a1264fb9d911b0f74f182d0738b32e5">I3DR.Phase.Version</a>
 </li>
 <li>getVersionString()
 : <a class="el" href="class_i3_d_r_1_1_c_phase_1_1_c_version.html#a31ef457436fbf6dcada7a0a334bdd094">I3DR.CPhase.CVersion</a>
-, <a class="el" href="class_i3_d_r_1_1_phase_1_1_version.html#a197a701f074b55cb77cb5eec51d2a3d9">I3DR.Phase.Version</a>
 </li>
 <li>getWidth()
 : <a class="el" href="class_i3_d_r_1_1_c_phase_1_1_stereo_camera_1_1_c_abstract_stereo_camera.html#aa67304a8d6f1e9f5aeb98fd279ef21a5">I3DR.CPhase.StereoCamera.CAbstractStereoCamera</a>
@@ -301,7 +312,7 @@ $(document).ready(function(){initNavTree('functions_g.html',''); initResizable()
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 2 2022 10:30:06 for PhaseCSharp by
+    <li class="footer">Generated on Tue Sep 20 2022 11:48:16 for PhaseCSharp by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

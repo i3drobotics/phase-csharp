@@ -3,7 +3,9 @@ var dir_051a6936f926abdcd6d97e76d57c1279 =
     [ "abstractstereocamera.cs", "cphase_2stereocamera_2abstractstereocamera_8cs.html", [
       [ "CAbstractStereoCamera", "class_i3_d_r_1_1_c_phase_1_1_stereo_camera_1_1_c_abstract_stereo_camera.html", "class_i3_d_r_1_1_c_phase_1_1_stereo_camera_1_1_c_abstract_stereo_camera" ]
     ] ],
-    [ "cameradeviceinfo.cs", "cphase_2stereocamera_2cameradeviceinfo_8cs.html", null ],
+    [ "cameradeviceinfo.cs", "cphase_2stereocamera_2cameradeviceinfo_8cs.html", [
+      [ "CCameraDeviceInfo", "class_i3_d_r_1_1_c_phase_1_1_stereo_camera_1_1_c_camera_device_info.html", "class_i3_d_r_1_1_c_phase_1_1_stereo_camera_1_1_c_camera_device_info" ]
+    ] ],
     [ "deimosstereocamera.cs", "cphase_2stereocamera_2deimosstereocamera_8cs.html", [
       [ "CDeimosStereoCamera", "class_i3_d_r_1_1_c_phase_1_1_stereo_camera_1_1_c_deimos_stereo_camera.html", "class_i3_d_r_1_1_c_phase_1_1_stereo_camera_1_1_c_deimos_stereo_camera" ]
     ] ],

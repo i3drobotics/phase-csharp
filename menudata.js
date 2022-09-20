@@ -80,8 +80,8 @@ var menudata={children:[
 {text:"p",url:"functions_vars.html#index_p"},
 {text:"q",url:"functions_vars.html#index_q"},
 {text:"r",url:"functions_vars.html#index_r"},
-{text:"u",url:"functions_vars.html#index_u"},
 {text:"v",url:"functions_vars.html#index_v"},
-{text:"w",url:"functions_vars.html#index_w"}]}]}]},
+{text:"w",url:"functions_vars.html#index_w"}]},
+{text:"Properties",url:"functions_prop.html"}]}]},
 {text:"Files",url:"files.html",children:[
 {text:"File List",url:"files.html"}]}]}

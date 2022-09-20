@@ -29,7 +29,7 @@
   <td id="projectlogo"><img alt="Logo" src="i3dr_logo_128x128.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PhaseCSharp
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.2.0</span>
    </div>
   </td>
  </tr>
@@ -98,10 +98,19 @@ $(document).ready(function(){initNavTree('class_i3_d_r_1_1_c_phase_1_1_stereo_ca
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a028b9d0031c02cfd190aed9fbcc30389"><td class="memItemLeft" align="right" valign="top"><a id="a028b9d0031c02cfd190aed9fbcc30389"></a>
-static IntPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i3_d_r_1_1_c_phase_1_1_stereo_camera_1_1_c_stereo_camera.html#a028b9d0031c02cfd190aed9fbcc30389">createStereoCamera</a> (string left_serial, string right_serial, string unique_serial, <a class="el" href="namespace_i3_d_r_1_1_phase_1_1_stereo_camera.html#a19e334ffe3804ce4fb331c103ff72fb8">CameraDeviceType</a> device_type, <a class="el" href="namespace_i3_d_r_1_1_phase_1_1_stereo_camera.html#a4657530a90183b5b40f43fe802a30412">CameraInterfaceType</a> interface_type)</td></tr>
-<tr class="memdesc:a028b9d0031c02cfd190aed9fbcc30389"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imported from <a class="el" href="namespace_i3_d_r_1_1_phase.html">Phase</a> C API. <br /></td></tr>
-<tr class="separator:a028b9d0031c02cfd190aed9fbcc30389"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8c2df8b2d106ed0174a24b6de1690de"><td class="memItemLeft" align="right" valign="top"><a id="ad8c2df8b2d106ed0174a24b6de1690de"></a>
+static IntPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i3_d_r_1_1_c_phase_1_1_stereo_camera_1_1_c_stereo_camera.html#ad8c2df8b2d106ed0174a24b6de1690de">createStereoCameraFromParams</a> (string left_serial, string right_serial, string unique_serial, <a class="el" href="namespace_i3_d_r_1_1_phase_1_1_stereo_camera.html#a19e334ffe3804ce4fb331c103ff72fb8">CameraDeviceType</a> device_type, <a class="el" href="namespace_i3_d_r_1_1_phase_1_1_stereo_camera.html#a4657530a90183b5b40f43fe802a30412">CameraInterfaceType</a> interface_type)</td></tr>
+<tr class="memdesc:ad8c2df8b2d106ed0174a24b6de1690de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imported from <a class="el" href="namespace_i3_d_r_1_1_phase.html">Phase</a> C API. <br /></td></tr>
+<tr class="separator:ad8c2df8b2d106ed0174a24b6de1690de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a88e29fbde48c42391aea9ef715be92"><td class="memItemLeft" align="right" valign="top"><a id="a3a88e29fbde48c42391aea9ef715be92"></a>
+static IntPtr&#160;</td><td class="memItemRight" valign="bottom"><b>createStereoCamera</b> (IntPtr device_info)</td></tr>
+<tr class="separator:a3a88e29fbde48c42391aea9ef715be92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a89f632e5b08225fefa4bafbbee1c88"><td class="memItemLeft" align="right" valign="top"><a id="a7a89f632e5b08225fefa4bafbbee1c88"></a>
+static int&#160;</td><td class="memItemRight" valign="bottom"><b>availableDevicesCount</b> ()</td></tr>
+<tr class="separator:a7a89f632e5b08225fefa4bafbbee1c88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58295fb9735b54de69c6b9d2e0dbaf91"><td class="memItemLeft" align="right" valign="top"><a id="a58295fb9735b54de69c6b9d2e0dbaf91"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>availableDevices</b> ([Out] IntPtr[] device_info, int length)</td></tr>
+<tr class="separator:a58295fb9735b54de69c6b9d2e0dbaf91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Stereo Camera class. </p>
@@ -117,7 +126,7 @@ static IntPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_i3_d_r.html">I3DR</a></li><li class="navelem"><a class="el" href="namespace_i3_d_r_1_1_c_phase.html">CPhase</a></li><li class="navelem"><a class="el" href="namespace_i3_d_r_1_1_c_phase_1_1_stereo_camera.html">StereoCamera</a></li><li class="navelem"><a class="el" href="class_i3_d_r_1_1_c_phase_1_1_stereo_camera_1_1_c_stereo_camera.html">CStereoCamera</a></li>
-    <li class="footer">Generated on Fri Sep 2 2022 10:30:06 for PhaseCSharp by
+    <li class="footer">Generated on Tue Sep 20 2022 11:48:16 for PhaseCSharp by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

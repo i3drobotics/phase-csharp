@@ -29,7 +29,7 @@
   <td id="projectlogo"><img alt="Logo" src="i3dr_logo_128x128.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PhaseCSharp
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.2.0</span>
    </div>
   </td>
  </tr>
@@ -98,17 +98,52 @@ $(document).ready(function(){initNavTree('class_i3_d_r_1_1_phase_1_1_stereo_came
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a6d7842b24b816dc527eb61093f5c744d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_abstract_stereo_camera.html">AbstractStereoCamera</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_stereo_camera.html#a6d7842b24b816dc527eb61093f5c744d">createStereoCamera</a> (<a class="el" href="struct_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_camera_device_info.html">CameraDeviceInfo</a> camera_device_info)</td></tr>
+<tr class="memitem:a6d7842b24b816dc527eb61093f5c744d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_abstract_stereo_camera.html">AbstractStereoCamera</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_stereo_camera.html#a6d7842b24b816dc527eb61093f5c744d">createStereoCamera</a> (<a class="el" href="class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_camera_device_info.html">CameraDeviceInfo</a> camera_device_info)</td></tr>
 <tr class="memdesc:a6d7842b24b816dc527eb61093f5c744d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create Stereo Camera from camera device information <br  />
 Generic way to create any stereo camera without needing to use specific camera classes.  <a href="class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_stereo_camera.html#a6d7842b24b816dc527eb61093f5c744d">More...</a><br /></td></tr>
 <tr class="separator:a6d7842b24b816dc527eb61093f5c744d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9aafc53f2abcf7b5fd4ef7053e76079"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_camera_device_info.html">CameraDeviceInfo</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_stereo_camera.html#ab9aafc53f2abcf7b5fd4ef7053e76079">availableDevices</a> ()</td></tr>
+<tr class="memdesc:ab9aafc53f2abcf7b5fd4ef7053e76079"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get available camera list <br  />
+Call to get available camera as a list of <a class="el" href="class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_camera_device_info.html" title="Camera Device Info class.">CameraDeviceInfo</a>.  <a href="class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_stereo_camera.html#ab9aafc53f2abcf7b5fd4ef7053e76079">More...</a><br /></td></tr>
+<tr class="separator:ab9aafc53f2abcf7b5fd4ef7053e76079"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Stereo Camera class. </p>
-<p>Create stereo camera of any type using <a class="el" href="struct_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_camera_device_info.html" title="Camera Device Info class.">CameraDeviceInfo</a>. This allows for the same interface to be used for any stereo camera. </p>
+<p>Create stereo camera of any type using <a class="el" href="class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_camera_device_info.html" title="Camera Device Info class.">CameraDeviceInfo</a>. This allows for the same interface to be used for any stereo camera. </p>
 
-<p class="definition">Definition at line <a class="el" href="phase_2stereocamera_2stereocamera_8cs_source.html#l00023">23</a> of file <a class="el" href="phase_2stereocamera_2stereocamera_8cs_source.html">stereocamera.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phase_2stereocamera_2stereocamera_8cs_source.html#l00025">25</a> of file <a class="el" href="phase_2stereocamera_2stereocamera_8cs_source.html">stereocamera.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab9aafc53f2abcf7b5fd4ef7053e76079"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9aafc53f2abcf7b5fd4ef7053e76079">&#9670;&nbsp;</a></span>availableDevices()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_camera_device_info.html">CameraDeviceInfo</a> [] I3DR.Phase.StereoCamera.StereoCamera.availableDevices </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get available camera list <br  />
+Call to get available camera as a list of <a class="el" href="class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_camera_device_info.html" title="Camera Device Info class.">CameraDeviceInfo</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>available camera in <a class="el" href="class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_camera_device_info.html" title="Camera Device Info class.">CameraDeviceInfo</a> array </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="phase_2stereocamera_2stereocamera_8cs_source.html#l00048">48</a> of file <a class="el" href="phase_2stereocamera_2stereocamera_8cs_source.html">stereocamera.cs</a>.</p>
+
+</div>
+</div>
 <a id="a6d7842b24b816dc527eb61093f5c744d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6d7842b24b816dc527eb61093f5c744d">&#9670;&nbsp;</a></span>createStereoCamera()</h2>
 
@@ -121,7 +156,7 @@ Generic way to create any stereo camera without needing to use specific camera c
         <tr>
           <td class="memname">static <a class="el" href="class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_abstract_stereo_camera.html">AbstractStereoCamera</a> I3DR.Phase.StereoCamera.StereoCamera.createStereoCamera </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_camera_device_info.html">CameraDeviceInfo</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_camera_device_info.html">CameraDeviceInfo</a>&#160;</td>
           <td class="paramname"><em>camera_device_info</em></td><td>)</td>
           <td></td>
         </tr>
@@ -143,7 +178,7 @@ Generic way to create any stereo camera without needing to use specific camera c
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>stereo camera </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="phase_2stereocamera_2stereocamera_8cs_source.html#l00032">32</a> of file <a class="el" href="phase_2stereocamera_2stereocamera_8cs_source.html">stereocamera.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="phase_2stereocamera_2stereocamera_8cs_source.html#l00034">34</a> of file <a class="el" href="phase_2stereocamera_2stereocamera_8cs_source.html">stereocamera.cs</a>.</p>
 
 </div>
 </div>
@@ -156,7 +191,7 @@ Generic way to create any stereo camera without needing to use specific camera c
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_i3_d_r.html">I3DR</a></li><li class="navelem"><a class="el" href="namespace_i3_d_r_1_1_phase.html">Phase</a></li><li class="navelem"><a class="el" href="namespace_i3_d_r_1_1_phase_1_1_stereo_camera.html">StereoCamera</a></li><li class="navelem"><a class="el" href="class_i3_d_r_1_1_phase_1_1_stereo_camera_1_1_stereo_camera.html">StereoCamera</a></li>
-    <li class="footer">Generated on Fri Sep 2 2022 10:30:06 for PhaseCSharp by
+    <li class="footer">Generated on Tue Sep 20 2022 11:48:16 for PhaseCSharp by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
